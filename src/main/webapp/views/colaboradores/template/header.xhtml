@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>AADSP</title>
+        <link rel="shortcut icon" href="../../../img/favicon.ico"/>
+        <link href="../../bootstrap/css/bootstrap-master.css" rel="stylesheet"/>
+        <link href="../../bootstrap/css/bootstrap.css" rel="stylesheet"/>
+        <link href="../../bootstrap/css/bootstrap-general.css" rel="stylesheet"/>
+        
+        <script type="text/javascript" src="../../../bootstrap/js/bootstrap.js"></script>
+    </h:head>
+    <body>
+        <div>
+            <h:form>
+            <p:growl id="growl" showDetail="true" sticky="true" />    
+            <div class="menu-top">
+                <div class="container-fluid">
+                    <a class="brand" href="../../../faces/views/menu/Index.xhtml">
+                    <div class="left" style="color:#FFF">
+                        <h1>AADSP</h1>
+                        <p>Adaptive Approach for Deployment of Software Process</p>
+                    </div>
+                    </a>
+                     <div class="right menu-top-info">
+                            <div class="control-group">
+                                <i class="icon icon-user icon-white"></i>
+                                <strong>Login:</strong>
+                                <span>
+                                    #{headerTemplate.usuarioNome}</span>
+                                <br/>
+                                <i class="icon icon-bookmark icon-white"></i>
+                                <strong>Função:</strong>
+                                <span>
+                                    #{headerTemplate.usuarioFuncao}</span>
+                            </div>
+                            <div class="clear">
+                            </div>
+                            <div class="control-group pull-right">
+                                <i class="icon icon-off icon-white"></i>
+                                <p:commandButton class="btn btn-transparent" style="color:#FFF" value="SAIR" actionListener="#{headerTemplate.closeSession()}"/>    
+                                
+                            </div>
+                            <div class="clear">
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="navbar navbar-static-top" id="nav-contratos">
+            <div class="navbar-inner">
+            <a class="brand" href="../../faces/views/colaboradores/Index.xhtml">
+                    <span style="margin-left: 5px;"><i class="icon icon-home"></i>
+                        <span style="margin-left: 5px;"/>Home</span>
+            </a>
+            <ul class="nav">
+                <li class="divider-vertical"></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Pessoal<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+
+                        <li>
+                            <a href="../../views/colaboradores/PessoalConsultar.xhtml">Consultar</a></li>
+                        <li>
+                            <a href="../../views/colaboradores/PessoalCadastrar.xhtml">Cadastrar</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Funcionários<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+
+                        <li>
+                            <a href="../../views/colaboradores/FuncionarioConsultar.xhtml">Consultar</a></li>
+                        <li>
+                            <a href="../../views/colaboradores/FuncionarioCadastrar.xhtml">Cadastrar</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="clear"></div>    
+            </h:form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link href="../../bootstrap/css/bootstrap-general.css" rel="stylesheet"/>
+        <script type="text/javascript" src="../../primefaces/js/showcase.js"></script>
+    </h:head>
+    <h:body>
+        <ui:composition template="template/template.xhtml">
+            <ui:define name="content">
+            <h:form id="form">
+                <p:growl id="growl" showDetail="true" sticky="true" /> 
+                <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+                <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                    <img src="../../img/loading.gif" alt=""/>
+                </p:dialog>
+                <div class="margin-right-left-20">
+                    <div>
+                        <h3>FUNCIONÁRIO</h3>
+                         <div class="right">
+                             <a class="btn btn" href="FuncionarioConsultar.xhtml">VOLTAR</a>
+                        </div>
+                        <p><strong>CADASTRO</strong></p>
+                    <div>
+                </div>
+                <div class="space-40"></div>
+                <div class="control-group">   
+                
+                    
+                        
+                </div>
+                <div class="space-20"></div>
+                <p:commandButton class="btn btn-success" value="CADASTRAR" update="growl" actionListener="#{CadastrarFuncionario.cadastrar()}"/>
+                    </div>
+                </div>
+                <div class="space-50"></div>
+            </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

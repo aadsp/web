@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>AADSP</title>
+        <link rel="shortcut icon" href="img/favicon.ico"/>
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="bootstrap/css/bootstrap-signin.css" rel="stylesheet" type="text/css" />
+        <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body>
+            <div class="main">
+                <div class="line-top">
+                            <center>
+                                <h1>AADSP</h1>
+                                <div class="space-10"></div>
+                                <p>Adaptive Approach for Deployment of Software Process</p>
+                            </center>
+                        </div>
+            </div>
+            <div class="top-40">
+                <div class="container">
+                    <h:form class="form-signin">
+                        <h3>Olá, seja bem vindo</h3>
+                         
+                        <h2 class="form-signin-heading"></h2>
+                        <p:inputText class="input-block-level" id="login" size="30" placeholder="digite seu login" value="#{index.autenticacao.login}" />
+                        <p:password  class="input-block-level" id="senha" size="30" placeholder="digite sua senha" value="#{index.autenticacao.senha}"/><br/>
+                        <p:commandButton class="btn btn-inverse" value="ENTRAR" update="growl" actionListener="#{index.autenticar()}"/>
+                        
+                        <p:growl id="growl" showDetail="true" sticky="true" /> 
+                        <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+                        <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                            <img src="img/loading.gif" alt=""/>
+                        </p:dialog>
+                    </h:form>
+                </div>
+           </div>
+    <div id="footer" class="container-fluid">
+        <center class="muted credit">
+            <strong>AADSP - Adaptive Approach for Deployment of Software Process</strong>
+            <p>LABRASOFT - Laboratório de Desenvolvimento de Software</p>
+        </center>
+    </div>
+    </h:body>
+</html>

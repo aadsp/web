@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link href="../../bootstrap/css/bootstrap-general.css" rel="stylesheet"/>
+        <script type="text/javascript" src="../../primefaces/js/showcase.js"></script>
+    </h:head>
+    <h:body>
+        <ui:composition template="template/template.xhtml">
+            <ui:define name="content">
+            <h:form id="form">
+            <p:growl id="growl" showDetail="true" sticky="true" /> 
+            <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+            <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                <img src="../../img/loading.gif" alt=""/>
+            </p:dialog>
+            <div class="margin-right-left-20">
+            <div class="form-inline">
+                <div class="control-group">
+                    <div>
+                        <h3>CONTROLE DE ACESSO PELO TIPO DE USUÁRIO</h3>
+                         <div class="right">
+                             <a class="btn btn-inverse" href="#">NOVO</a>
+                        </div>
+                        <p><strong>CONSULTA</strong></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="space-10"></div>
+
+                    <div class="space-10"></div>
+                        <div>
+                            <div class="form-search">
+                                <a class="label label-info">Filtrar por:</a>
+
+                            </div>
+                        </div>
+                        <div class="space-30"></div>
+                        <div>
+                            <div class="table-responsive">
+                           
+                                <p:dataTable id="tbl" style="text-align:center" var="tipos" value="#{perfilConsultar.tiposUsuario}"
+                                                paginator="true" rows="10">
+                                       <p:column style="width:60px">
+                                           <f:facet name="header" >
+                                               <h:outputText value="#"  />
+                                           </f:facet>
+                                           <h:outputText value="#{tipos.ID}" />
+                                       </p:column>
+                                       <p:column>
+                                           <f:facet name="header">
+                                               <h:outputText value="Descrição" />
+                                           </f:facet>
+                                           <h:outputText value="#{tipos.descricao}" />
+                                       </p:column>
+                                        <p:column style="width:30px" >
+                                            <p:commandButton icon="ui-icon ui-icon-search"  action="#{perfilConsultar.editar(tipos)}" />
+                                        </p:column>
+                                    
+                                   </p:dataTable>
+                            
+                        </div>
+                 </div>
+            </div>
+            </div>
+            </div>
+            
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
