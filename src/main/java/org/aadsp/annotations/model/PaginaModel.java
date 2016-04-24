@@ -1,24 +1,25 @@
 
-package org.aadsp.annotations.crud;
+package org.aadsp.annotations.model;
 
-import java.util.List;
+import org.aadsp.annotations.Pagina;
 import org.aadsp.annotations.Usuario;
-import org.aadsp.interfaces.ICrud;
+import org.aadsp.interfaces.ICRUD;
+import org.aadsp.utils.FactoryHibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 
-public class UsuarioCRUD implements ICrud
+public class PaginaModel implements ICRUD
 {
-    private Session sessao;
+private Session sessao;
     
-    @Override
-    public void setSession(Session sessao) {
-        this.sessao = sessao;
+    public PaginaModel()
+    {
+        this.sessao = FactoryHibernate.getSessionFactory().openSession();
     }
-
-    @Override
+    
+     @Override
     public void salvar(Object obj) {
         Transaction transacao = sessao.beginTransaction();
         sessao.save(obj);
@@ -42,29 +43,19 @@ public class UsuarioCRUD implements ICrud
         sessao.close();
     }
     
-    public Usuario consultarPorID(Usuario usuario)throws Exception
+    public Pagina consultar(Pagina pagina)
     {
-        try{
-        Query consulta = sessao.createQuery("from Usuario where ID = :idParametro");
-        consulta.setInteger("idParametro", usuario.getID());
-        return (Usuario) consulta.uniqueResult();
+        try
+        { 
+            Query consulta = sessao.createQuery("from Pagina where ID = :ID");
+            consulta.setInteger("ID", pagina.getID());
+            return (Pagina) consulta.uniqueResult();
         }catch(Exception e){
             throw e;
         }finally{
             sessao.close();
         }
-    }
     
-    public List<Usuario> listar()throws Exception
-    {
-        try{
-            Query consulta = sessao.createQuery("from Usuario");
-            return consulta.list();
-        }catch(Exception e){
-            throw e;
-        }finally{
-            sessao.close();
-        }
     }
     
 }

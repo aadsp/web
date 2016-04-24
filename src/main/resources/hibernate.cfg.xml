@@ -21,14 +21,11 @@
     <property name="c3po.max_statements">50</property>
     <property name="c3po.idle_test_period">3000</property>
     
-    <mapping class="org.aadsp.annotations.Autenticacao" />
-    <mapping class="org.aadsp.annotations.TipoUsuario" />
+    <!--Mapeando as tabelas do banco de dados-->
     <mapping class="org.aadsp.annotations.Usuario" />
-    <mapping class="org.aadsp.annotations.Logradouro" />
-    <mapping class="org.aadsp.annotations.Bairro" />
-    <mapping class="org.aadsp.annotations.Cidade" />
-    <mapping class="org.aadsp.annotations.Estado" />
-    <mapping class="org.aadsp.annotations.Permissoes" />
-    <mapping class="org.aadsp.annotations.Paginas" />
+    <mapping class="org.aadsp.annotations.Funcao" />
+    <mapping class="org.aadsp.annotations.Acesso" />
+    <mapping class="org.aadsp.annotations.Pagina" />
+    
   </session-factory>
 </hibernate-configuration>

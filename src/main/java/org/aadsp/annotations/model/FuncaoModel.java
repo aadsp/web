@@ -1,23 +1,22 @@
 
-package org.aadsp.annotations.crud;
+package org.aadsp.annotations.model;
 
-import org.aadsp.annotations.Bairro;
-import org.aadsp.interfaces.ICrud;
+import org.aadsp.annotations.Funcao;
+import org.aadsp.annotations.Usuario;
+import org.aadsp.interfaces.ICRUD;
+import org.aadsp.utils.FactoryHibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-/**
- *
- * @author Felipe
- */
-public class BairroCRUD implements ICrud{
+
+public class FuncaoModel implements ICRUD
+{
+     private Session sessao;
     
-    private Session sessao;
-   
-    @Override
-    public void setSession(Session sessao) {
-        this.sessao = sessao;
+    public FuncaoModel()
+    {
+       this.sessao = FactoryHibernate.getSessionFactory().openSession();
     }
 
     @Override
@@ -44,17 +43,16 @@ public class BairroCRUD implements ICrud{
         sessao.close();
     }
     
-    public Bairro consultarPorID(Bairro bairro)throws Exception
+    public Funcao consultarPorID(Funcao funcao)throws Exception
     {
-        try{
-        Query consulta = sessao.createQuery("from Bairro where ID = :idParametro");
-        consulta.setInteger("idParametro", bairro.getID());
-        return (Bairro) consulta.uniqueResult();
+        try{   
+            Query consulta = sessao.createQuery("from Funcao where ID = :ID");
+            consulta.setInteger("ID", funcao.getID());
+            return (Funcao) consulta.uniqueResult();
         }catch(Exception e){
             throw e;
         }finally{
             sessao.close();
         }
     }
-    
 }

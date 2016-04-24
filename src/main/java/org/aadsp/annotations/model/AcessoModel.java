@@ -1,24 +1,26 @@
 
-package org.aadsp.annotations.crud;
+package org.aadsp.annotations.model;
 
 import java.util.List;
-import org.aadsp.annotations.Paginas;
-import org.aadsp.interfaces.ICrud;
+import org.aadsp.annotations.Acesso;
+import org.aadsp.annotations.Usuario;
+import org.aadsp.interfaces.ICRUD;
+import org.aadsp.utils.FactoryHibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 
-public class PaginasCRUD implements ICrud
+public class AcessoModel implements ICRUD
 {
     private Session sessao;
     
-    @Override
-    public void setSession(Session sessao) {
-        this.sessao = sessao;
+    public AcessoModel()
+    {
+        this.sessao = FactoryHibernate.getSessionFactory().openSession();
     }
-
-    @Override
+    
+     @Override
     public void salvar(Object obj) {
         Transaction transacao = sessao.beginTransaction();
         sessao.save(obj);
@@ -42,29 +44,21 @@ public class PaginasCRUD implements ICrud
         sessao.close();
     }
     
-    public Paginas consultarPorID(Paginas pagina)throws Exception
+    public List<Acesso> listar(Acesso acesso)throws Exception
     {
-        try{
-        Query consulta = sessao.createQuery("from Paginas where ID = :idParametro");
-        consulta.setInteger("idParametro", pagina.getID());
-        return (Paginas) consulta.uniqueResult();
-        }catch(Exception e){
-            throw e;
-        }finally{
-            sessao.close();
-        }
-    }
-    
-    public List<Paginas> listar()throws Exception
-    {
-        try{
-            Query consulta = sessao.createQuery("from Paginas");
+        try
+        {
+            Query consulta = sessao.createQuery("from Acesso where ID_funcao = :ID_funcao");
+            consulta.setInteger("ID_funcao", acesso.getID_funcao());
             return consulta.list();
-        }catch(Exception e){
+        }
+        catch(Exception e)
+        {
             throw e;
-        }finally{
+        }
+        finally
+        {
             sessao.close();
         }
     }
-    
 }

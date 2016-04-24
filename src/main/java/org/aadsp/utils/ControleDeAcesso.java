@@ -20,6 +20,7 @@ public class ControleDeAcesso implements Filter {
 	
     
     
+    @Override
     public void doFilter(ServletRequest request, ServletResponse response,FilterChain chain) throws IOException, ServletException 
     {
         HttpServletRequest req = (HttpServletRequest) request;
@@ -30,7 +31,7 @@ public class ControleDeAcesso implements Filter {
 
     private void controlarAcesso(HttpSession session, HttpServletRequest req, FilterChain chain, ServletRequest request, ServletResponse response) throws IOException, ServletException
     {
-        if ((session.getAttribute("autenticacao") != null)
+        if ((session.getAttribute("usuario") != null)
                 || (req.getRequestURI().endsWith("Index.xhtml"))
                 || (req.getRequestURI().endsWith("acessoNegado.xhtml"))
                 || (req.getRequestURI().endsWith("aadsp/"))
@@ -55,7 +56,7 @@ public class ControleDeAcesso implements Filter {
             {
                 List<String> paginaPermitida = new ArrayList<>();
                 paginaPermitida = (List<String>) session.getAttribute("paginasAcesso");
-                if(session.getAttribute("autenticacao") != null)
+                if(session.getAttribute("usuario") != null)
                 {
                     for(String pag: paginaPermitida){
                         if(req.getRequestURI().endsWith(pag))
@@ -67,7 +68,7 @@ public class ControleDeAcesso implements Filter {
         }
         else 
         {
-            redireciona("/aadsp/faces/Index.xhtml", response);
+            redireciona("/web/faces/Index.xhtml", response);
         }
     }
 

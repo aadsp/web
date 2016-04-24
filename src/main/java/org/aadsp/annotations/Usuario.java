@@ -3,27 +3,34 @@ package org.aadsp.annotations;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import org.aadsp.annotations.model.AcessoModel;
+import org.aadsp.annotations.model.FuncaoModel;
+import org.aadsp.annotations.model.UsuarioModel;
+import org.aadsp.interfaces.IUsuario;
 
 @Entity
-@Table(name="USUARIO.AADSP_USUARIO_CADASTRO")
-public class Usuario implements Serializable
+@Table(name="ACESSO.USUARIO")
+public class Usuario implements Serializable,IUsuario
 {
     @Id
     @GeneratedValue
     @Column(name="ID") private Integer ID;
     @Column(name="nome") private String nome;
     @Column(name="dataNascimento") private Date dataNascimento;
-    @Column(name="ID_usuarioTipo") private Integer id_usuarioTipo;
+    @Column(name="ID_funcao") private Integer id_funcao;
     @Column(name="cpf") private String cpf;
     @Column(name="rg") private String rg;
     @Column(name="email") private String email;
-    @Column(name="ID_enderecoLogradouro") private Integer id_enderecoLogradouro;
-    
+    @Column(name="login") private String login;
+    @Column(name="senha") private String senha;
+
     public Integer getID() {
         return ID;
     }
@@ -49,11 +56,11 @@ public class Usuario implements Serializable
     }
 
     public Integer getId_usuarioTipo() {
-        return id_usuarioTipo;
+        return id_funcao;
     }
 
     public void setId_usuarioTipo(Integer id_usuarioTipo) {
-        this.id_usuarioTipo = id_usuarioTipo;
+        this.id_funcao = id_usuarioTipo;
     }
 
     public String getCpf() {
@@ -80,11 +87,68 @@ public class Usuario implements Serializable
         this.email = email;
     }
 
-    public Integer getId_enderecoLogradouro() {
-        return id_enderecoLogradouro;
+   @Override
+   public String getLogin() {
+        return login;
     }
 
-    public void setId_enderecoLogradouro(Integer id_enderecoLogradouro) {
-        this.id_enderecoLogradouro = id_enderecoLogradouro;
+    @Override
+    public void setLogin(String login) {
+        this.login = login;
     }
+
+    @Override
+    public String getSenha() {
+        return senha;
+    }
+
+    @Override
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    @Override
+    public Usuario autenticar() 
+    {
+        UsuarioModel modelo = new UsuarioModel();
+        return modelo.autenticar(this);
+    }
+
+    @Override
+    public Usuario validarLogin() 
+    {
+       UsuarioModel modelo = new UsuarioModel();
+       return modelo.validarLogin(this);
+    }
+
+    @Override
+    public List<String> paginasAcesso() throws Exception
+    {
+        List<String> lista = new ArrayList<>();
+        Acesso obj = new Acesso();
+        obj.setID_funcao(this.id_funcao);
+        AcessoModel acessoModel = new AcessoModel();
+        List<Acesso> listaAcesso = acessoModel.listar(obj);
+        List<String> paginas = new ArrayList<>();
+        
+        for(Acesso acesso: listaAcesso){
+            Pagina pagina = new Pagina();
+            pagina.setID(acesso.getID_pagina());
+            paginas.add(pagina.consultarNomePagina(pagina));
+        }
+        return paginas;
+       
+    }
+
+    @Override
+    public String consultarFunacao() throws  Exception
+    {
+        FuncaoModel model = new FuncaoModel();
+        Funcao obj = new Funcao();
+        obj.setID(this.id_funcao);
+        obj = model.consultarPorID(obj);
+        return obj.getDescricao();
+    }
+    
+    
 }
