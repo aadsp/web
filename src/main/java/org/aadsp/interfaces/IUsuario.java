@@ -18,5 +18,6 @@ public interface IUsuario
    public Usuario validarLogin();
    public List<String> paginasAcesso()throws Exception;
    public String consultarFunacao() throws  Exception;
+   public List<Usuario> listar()  throws  Exception;
    
 }

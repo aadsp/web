@@ -7,6 +7,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <link href="../../bootstrap/css/bootstrap-general.css" rel="stylesheet"/>
+        <link rel="shortcut icon" href="../../img/favicon.ico"/>
         <script type="text/javascript" src="../../primefaces/js/showcase.js"></script>
     </h:head>
     <h:body>
@@ -43,22 +44,22 @@
                         <div>
                             <div class="table-responsive">
                            
-                                <p:dataTable id="tbl" style="text-align:center" var="usuarios" value="#{pessoalConsultar.usuarios}"
+                                <p:dataTable id="tbl" style="text-align:center" var="usuarios" value="#{pessoalConsultar.listarUsuarios}"
                                                 paginator="true" rows="10">
-                                       <p:column>
+                                    <p:column width="10">
                                            <f:facet name="header">
-                                               <h:outputText value="#" />
+                                               <h:outputText value="#"/>
                                            </f:facet>
                                            <h:outputText value="#{usuarios.ID}" />
                                        </p:column>
-                                       <p:column>
+                                    <p:column width="400">
                                            <f:facet name="header">
                                                <h:outputText value="Nome" />
                                            </f:facet>
                                            <h:outputText value="#{usuarios.nome}" />
                                        </p:column>
 
-                                       <p:column>
+                                    <p:column width="100">
                                            <f:facet name="header">
                                                <h:outputText value="Data Nascimento" />
                                            </f:facet>
@@ -66,7 +67,7 @@
                                        </p:column>
                                        
                                         <p:column style="width:30px" >
-                                            <p:commandButton icon="ui-icon ui-icon-search"  action="#{pessoalConsultar.editar(usuarios)}" />
+                                            <p:commandLink value="detalhar" action="#{pessoalConsultar.editar(usuarios)}" />
                                         </p:column>
                                     
                                    </p:dataTable>

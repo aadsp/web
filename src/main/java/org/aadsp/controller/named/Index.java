@@ -2,7 +2,6 @@ package org.aadsp.controller.named;
 
 import java.io.IOException;
 import java.util.List;
-import javax.faces.application.FacesMessage;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -11,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.aadsp.annotations.Usuario;
 import org.aadsp.interfaces.ABaseBean;
 import org.aadsp.interfaces.IUsuario;
+import org.aadsp.utils.Mensageiro;
 
 
 /**Classe principal do projeto, etapa de identificação do usuário por login e senha
@@ -64,17 +64,14 @@ public class Index extends ABaseBean {
             } else {
                 usuario = usuario.validarLogin();
                 if (usuario != null && usuario.getLogin() != null && usuario.getSenha() != null) {
-                    FacesContext context = FacesContext.getCurrentInstance();
-                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, " ACESSO NEGADO  ", "Senha incorreta!"));
+                    Mensageiro.mensagemError("Senha incorreta!!");
 
                 } else {
-                    FacesContext context = FacesContext.getCurrentInstance();
-                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, " ACESSO NEGADO  ", "Não foi possível autenticar o usuário com os dados informados!"));
+                    Mensageiro.mensagemError("Não foi possível autenticar o usuário com os dados informados!");
                 }
             }
         } catch (Exception e) {
-            FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, " ERRO!!  ", "Não foi possível realizar a autenticação no banco de dados!"));
+            Mensageiro.mensagemFatal("Não foi possível realizar a autenticação no banco de dados!");
         }
     }
 

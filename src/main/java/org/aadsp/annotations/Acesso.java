@@ -7,6 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/** Classe de Entidade ACESSO.ACESSO, Representa o acesso por meio da função com a página
+ * @author Felipe Coelho
+ * @version  24/04/2016
+ */
 @Entity
 @Table(name="ACESSO.ACESSO")
 public class Acesso 

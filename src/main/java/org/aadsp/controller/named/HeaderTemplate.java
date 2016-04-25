@@ -2,7 +2,6 @@
 package org.aadsp.controller.named;
 
 import java.io.IOException;
-import javax.faces.application.FacesMessage;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -11,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.aadsp.annotations.Usuario;
 import org.aadsp.interfaces.ABaseBean;
 import org.aadsp.interfaces.IUsuario;
+import org.aadsp.utils.Mensageiro;
 
 /** Classe principal do template, resposável por exibir informações do usuário autenticado
  * @author Felipe Coelho
@@ -41,8 +41,7 @@ public class HeaderTemplate extends ABaseBean
         try{
         return usuario.consultarFunacao();
         }catch(Exception e){
-            FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage( FacesMessage.SEVERITY_ERROR," ERRO!!  ",  "Não foi possível localizar os dados!"));
+            Mensageiro.mensagemError("Não foi possível localizar os dados!");
         }
         return "";
     }

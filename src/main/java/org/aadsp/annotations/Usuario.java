@@ -150,5 +150,11 @@ public class Usuario implements Serializable,IUsuario
         return obj.getDescricao();
     }
     
+    @Override
+    public List<Usuario> listar() throws  Exception
+    {
+        UsuarioModel model = new UsuarioModel();
+        return model.listar();
+    }
     
 }
