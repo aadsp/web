@@ -9,18 +9,19 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.aadsp.annotations.Usuario;
-import org.aadsp.annotations.model.UsuarioModel;
 import org.aadsp.interfaces.ABaseBean;
 import org.aadsp.interfaces.IUsuario;
-import org.aadsp.utils.FactoryHibernate;
 
-
+/** Classe principal do template, resposável por exibir informações do usuário autenticado
+ * @author Felipe Coelho
+ * @version 24/04/2016
+ */
 @SessionScoped
 @Named
 public class HeaderTemplate extends ABaseBean
-{
-    private IUsuario usuario;
-    
+{   
+    /** Busca o usuário na sessão para informar seus dados no painel principal
+     */
     public HeaderTemplate()
     {
         FacesContext facesContext = FacesContext.getCurrentInstance();
@@ -29,23 +30,26 @@ public class HeaderTemplate extends ABaseBean
         usuario = (Usuario) session.getAttribute("usuario");
     }
     
-    
-    
     public String getUsuarioNome(){
         return usuario.getNome();
     }
     
+    /** Metódo de consulta da função de um usuário no sistema
+     * @return retorna uma string com o nome da função de um usuário
+     */
     public String getUsuarioFuncao(){
         try{
         return usuario.consultarFunacao();
         }catch(Exception e){
-             FacesContext context = FacesContext.getCurrentInstance();
+            FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage( FacesMessage.SEVERITY_ERROR," ERRO!!  ",  "Não foi possível localizar os dados!"));
         }
         return "";
     }
     
-    
+    /** Metódo de encerramento de uma sessão do header, este metódo invalidará a sessão corrente matando o usuário da sessão
+     * @throws java.io.IOException
+     */
     public void closeSession() throws IOException
     {
         FacesContext fc = FacesContext.getCurrentInstance();
@@ -53,5 +57,6 @@ public class HeaderTemplate extends ABaseBean
         session.invalidate();
         FacesContext.getCurrentInstance().getExternalContext().redirect("../../../../web/faces/index.xhtml");
     }
-
+    
+    private IUsuario usuario;
 }

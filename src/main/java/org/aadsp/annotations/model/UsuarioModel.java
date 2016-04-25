@@ -12,7 +12,7 @@ import org.aadsp.utils.FactoryHibernate;
 
 public class UsuarioModel implements ICRUD
 {
-    private Session sessao;
+    private final Session sessao;
     
     public UsuarioModel()
     {
