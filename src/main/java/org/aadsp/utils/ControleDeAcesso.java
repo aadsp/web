@@ -28,7 +28,14 @@ public class ControleDeAcesso implements Filter {
         
         controlarAcesso(session, req, chain, request, response);
     }
-
+    
+    /**
+     Metódo que controla o acesso dos usuário no sistema, este utiliza a URL do sistema verificando a ultima 
+     * pagina e conforme a lista de páginas disponiveis ao usuário.
+     * @param session deve ser fornecido o HTTPSession
+     * @exception IOException exceção de entrada e saida
+     * @exception ServletException é resultado de uma exceção do servelet
+     */
     private void controlarAcesso(HttpSession session, HttpServletRequest req, FilterChain chain, ServletRequest request, ServletResponse response) throws IOException, ServletException
     {
         if ((session.getAttribute("usuario") != null)
@@ -59,7 +66,7 @@ public class ControleDeAcesso implements Filter {
                 if(session.getAttribute("usuario") != null)
                 {
                     for(String pag: paginaPermitida){
-                        if(req.getRequestURI().endsWith(pag))
+                        if(req.getRequestURI().endsWith(pag+".xhtml"))
                             chain.doFilter(request, response);    
                     }
                     redireciona("/web/faces/acessoNegado.xhtml", response);
@@ -76,11 +83,9 @@ public class ControleDeAcesso implements Filter {
 	
     }
 
-	
     public void destroy() {
     
     }
-
 	
     private void redireciona(String url, ServletResponse response)throws IOException 
     {
