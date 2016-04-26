@@ -44,7 +44,7 @@ private final Session sessao;
         sessao.close();
     }
     
-    public Pagina consultar(Pagina pagina)
+    public Pagina consultarPorID(Pagina pagina)
     {
         try
         { 

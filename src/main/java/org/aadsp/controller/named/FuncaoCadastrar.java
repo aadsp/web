@@ -4,7 +4,6 @@ package org.aadsp.controller.named;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import org.aadsp.annotations.Funcao;
-import org.aadsp.annotations.Pagina;
 import org.aadsp.interfaces.ABaseBean;
 import org.aadsp.utils.Mensageiro;
 

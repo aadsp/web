@@ -56,4 +56,9 @@ public class Funcao implements Serializable
         model.salvar(this);
     }
     
+    public Funcao consultarPorID() throws Exception
+    {
+        FuncaoModel model = new FuncaoModel();
+        return model.consultarPorID(this);
+    }
 }

@@ -7,6 +7,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <link href="../../bootstrap/css/bootstrap-general.css" rel="stylesheet"/>
+        <link rel="shortcut icon" href="../../img/favicon.ico"/>
         <script type="text/javascript" src="../../primefaces/js/showcase.js"></script>
     </h:head>
     <h:body>
@@ -22,9 +23,9 @@
             <div class="form-inline">
                 <div class="control-group">
                     <div>
-                        <h3>FUNCIONÁRIOS</h3>
+                        <h3>ACESSO</h3>
                          <div class="right">
-                             <a class="btn btn-inverse" href="FuncionarioCadastrar.xhtml">NOVO</a>
+                             <a class="btn btn-inverse" href="AcessoCadastrar.xhtml">NOVO</a>
                         </div>
                         <p><strong>CONSULTA</strong></p>
                     </div>
@@ -43,30 +44,30 @@
                         <div>
                             <div class="table-responsive">
                            
-                                <p:dataTable id="tbl" style="text-align:center" var="usuarios" value="#{funcionariosConsultarBean.usuarios}"
+                                <p:dataTable id="tbl" style="text-align:center" var="acessoFunacao" value="#{acessoConsultar.listarAcessoFuncao}"
                                                 paginator="true" rows="10">
-                                       <p:column>
+                                    <p:column width="10">
                                            <f:facet name="header">
-                                               <h:outputText value="#" />
+                                               <h:outputText value="#"/>
                                            </f:facet>
-                                           <h:outputText value="#{usuarios.ID}" />
+                                        <h:outputText value="#{acessoFunacao.id}" />
                                        </p:column>
-                                       <p:column>
+                                    <p:column width="250">
                                            <f:facet name="header">
-                                               <h:outputText value="Nome" />
+                                               <h:outputText value="Função" />
                                            </f:facet>
-                                           <h:outputText value="#{usuarios.nome}" />
+                                        <h:outputText value="#{acessoFunacao.funcao.descricao}" />
                                        </p:column>
 
-                                       <p:column>
+                                    <p:column width="200">
                                            <f:facet name="header">
-                                               <h:outputText value="Data Nascimento" />
+                                               <h:outputText value="Página" />
                                            </f:facet>
-                                           <h:outputText value="#{usuarios.dataNascimento}" />
+                                        <h:outputText value="#{acessoFunacao.pagina.nomeDaPagina}" />
                                        </p:column>
                                        
                                         <p:column style="width:30px" >
-                                            <p:commandButton icon="ui-icon ui-icon-search"  action="#{funcionariosConsultarBean.editar(usuarios)}" />
+                                            <p:commandLink value="detalhar" action="#{acessoFunacao.editar(acessoFunacao)}" />
                                         </p:column>
                                     
                                    </p:dataTable>

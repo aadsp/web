@@ -38,7 +38,7 @@ public class Pagina
     public String consultarNomePagina(Pagina pagina)
     {
         PaginaModel model = new PaginaModel();
-        return model.consultar(pagina).nomeDaPagina;
+        return model.consultarPorID(pagina).nomeDaPagina;
     }
     
     public List<Pagina> listar() throws Exception
@@ -51,5 +51,9 @@ public class Pagina
         PaginaModel model = new PaginaModel();
         model.salvar(this);
     }
-    
+    public Pagina consultarPorID() throws Exception
+    {
+        PaginaModel model = new PaginaModel();
+        return model.consultarPorID(this);
+    }
 }

@@ -3,6 +3,7 @@ package org.aadsp.annotations.model;
 
 import java.util.List;
 import org.aadsp.annotations.Acesso;
+import org.aadsp.annotations.Pagina;
 import org.aadsp.interfaces.ICRUD;
 import org.aadsp.utils.FactoryHibernate;
 import org.hibernate.Query;
@@ -41,6 +42,23 @@ public class AcessoModel implements ICRUD
         sessao.delete(obj);
         transacao.commit();
         sessao.close();
+    }
+    
+    public List<Acesso> listar()throws Exception
+    {
+        try
+        {
+            Query consulta = sessao.createQuery("from Acesso");
+            return consulta.list();
+        }
+        catch(Exception e)
+        {
+            throw e;
+        }
+        finally
+        {
+            sessao.close();
+        }
     }
     
     public List<Acesso> listar(Acesso acesso)throws Exception

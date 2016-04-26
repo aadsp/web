@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import org.aadsp.annotations.model.AcessoModel;
 
 /** Classe de Entidade ACESSO.ACESSO, Representa o acesso por meio da função com a página
  * @author Felipe Coelho
@@ -45,6 +46,11 @@ public class Acesso
         this.ID_pagina = ID_pagina;
     }
     
+    public void cadastrar()
+    {
+        AcessoModel model = new AcessoModel();
+        model.salvar(this);
+    }
     
     
 }
