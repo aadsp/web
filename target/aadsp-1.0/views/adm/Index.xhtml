@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        
+    </h:head>
+    <h:body>
+        <ui:composition template="template/template.xhtml">
+            <ui:define id="indexRecursosHumanos" name="content">
+                <h:form>
+                    <p:growl id="growl" showDetail="true" sticky="true" />
+                    <div class="container-fluid space-20">
+                    <div><h4>Administração do Software</h4></div>
+                    <div class="bs-docs-example">
+                    <div class="accordion" id="AccordionRecursosHumanos">
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle alert-info" data-toggle="collapse"
+                                data-parent="#AccordionAdmSoftware" href="#novidade1">
+                                <b>Informação:</b> Definição</a>
+                        </div>
+                        <div id="novidade1" class="accordion-body collapse in">
+                            <div class="accordion-inner">
+                                <div class="left">
+                                    <p>
+                                        O gerenciamento do software é uma atividade de controle de ações na ferramenta impedindo que 
+                                        sejam executadas operações inadequadas ao tipo de usuário cadastrado no sistema
+
+                                    </p>
+                                </div>
+                                <div class="clear"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-20"></div>
+                        <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle alert-info" data-toggle="collapse"
+                                data-parent="#AccordionAdmSoftware" href="#novidade2"><b>MAPA:</b> Fluxograma
+                            </a>
+                        </div>
+                        <div id="novidade2" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <p>
+                                   
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                    </div>
+                </h:form>    
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

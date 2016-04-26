@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+         
+    </h:head>
+    <h:body>
+        <ui:composition template="template/template.xhtml">
+            <ui:define id="index" name="content">
+                <h:form>
+                  <p:growl id="growl" showDetail="true" sticky="true" />
+                    <div class="space-20"></div>
+                    <div class="margin-right-left-20">
+                    <div class="accordion" id="AccordionRecursosHumanos">
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle alert-info" data-toggle="collapse"
+                                data-parent="#AccordionRecursosHumanos" href="#novidade1">
+                                <b>Módulos</b> </a>
+                        </div>
+                        <div id="novidade1" class="accordion-body collapse in">
+                            <div class="accordion-inner">
+                                <div style="width:100%; margin: 10px auto auto auto;">
+                        <div class="widget-painel">
+                            <div class="thumbnail">
+                                <div class="height-280">
+                                <i class="incon icon-th-large"></i>
+                                <h3>Projetos</h3>
+                                <p>    
+                                <ul>
+                                    <li> Desenvolvimento do Termo de Abetura do Projeto - TAP</li>
+                                    <li> Acompanhamento do Projeto em tempo de custos</li>
+                                    <li> Desenvolvimento de Diagramas do Projeto</li>
+                                    <li> Controle de Reuniões do Projeto</li>
+                                    </ul>
+                                    </p>
+                                </div>
+                                <div style="align:right">
+                                    <a class="btn btn-inverse" href="../projetos/Index.xhtml">Acessar</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget-painel">
+                            <div class="thumbnail">
+                                <div class="height-280">
+                                <i class="incon icon-th-large"></i>
+                                <h3>Requisitos</h3>
+                                <p>    
+                                <ul>
+                                    <li> Desenvolvimento do documento de requisitos do projeto</li>
+                                    <li> Rastreabilidade do Projeto</li>
+                                    <li> Histórico de mudança de requisitos no projeto</li>
+                                    <li> Controle de impactos e decisões</li>
+                                    </ul>
+                                    </p>
+                                </div>
+                                <div style="align:right">
+                                    <a class="btn btn-inverse" NavigateUrl="~/Imagens/favicon.ico" runat="server">Acessar</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget-painel">
+                            <div class="thumbnail">
+                                <div class="height-280">
+                                <i class="incon icon-th-large"></i>
+                                <h3>Config. e Mudança</h3>
+                                <p>
+                                    <ul>
+                                    <li> Desenvolvimento do documento de solicitação de mudança do projeto</li>
+                                    <li> Controle e gerenciamento de versão do Projeto</li>
+                                    <li> Cadastro de auditores para controle de configuração e Mudança no Projeto</li>
+                                    <li> Controle de dependência de requisitos do projeto</li>
+                                    </ul>
+                                </p>
+                                </div>
+                                <div style="align:right">
+                                    <a class="btn btn-inverse" NavigateUrl="~/Imagens/favicon.ico" runat="server">Acessar</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget-painel">
+                            <div class="thumbnail">
+                                <div class="height-280">
+                                <i class="incon icon-th-large"></i>
+                                <h3>Colaboradores</h3>
+                                <p>
+                                    <ul>
+                                    <li> Cadastro de Colaboradores</li>
+                                    <li> Controle de treinamento dos colaboradores</li>
+                                    <li> Controle de aprendizado baseado em componentes no projeto</li>
+                                    <li> Desenvolvimento de planos de melhorias do projeto</li>
+                                    <li> Custo de Colaboradores por Papeis</li>
+                                    </ul>
+                                </p>
+                                </div>
+                                <div style="align:right">
+                                    <a class="btn btn-inverse" href="../colaboradores/Index.xhtml">Acessar</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget-painel">
+                            <div class="thumbnail">
+                                <div class="height-280">
+                                <i class="incon icon-th-large"></i>
+                                <h3>Testes e Qualidade</h3>
+                                <p>
+                                    <ul>
+                                    <li> Desenvolvimento do plano de testes do projeto</li>
+                                    <li> Controle da equipe de testadores do projeto</li>
+                                    <li> Controle de testes automatizados do projeto</li>
+                                    <li> Cadastro de casos de testes do projeto</li>
+                                    <li> Gerenciamento de problemas do projeto BugTracking</li>
+                                    </ul>
+                                </p>
+                                </div>
+                                <div style="align:right">
+                                    <a class="btn btn-inverse" NavigateUrl="~/Imagens/favicon.ico" runat="server">Acessar</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget-painel">
+                            <div class="thumbnail">
+                                <div class="height-280">
+                                <i class="incon icon-th-large"></i> 
+                                <h3>Reutilização</h3>
+                                <p>
+                                    <ul>
+                                    <li> Desenvolvimento do modelo arquitetura do projeto</li>
+                                    <li> Controle de ativos reutilizáveis do projeto</li>
+                                    <li> Avaliação do Ativos reutilizaveis do projeto</li>
+                                    <li> Cadastro de auditores para controle de configuração e Mudança no Projeto</li>
+                                    <li> Controle de frameworks do projeto</li>
+                                    </ul>
+                                </p>
+                                </div>
+                                <div style="align:right">
+                                    <a class="btn btn-inverse" NavigateUrl="~/Imagens/favicon.ico" runat="server">Acessar</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget-painel">
+                            <div class="thumbnail">
+                                <div class="height-280">
+                                <i class="incon icon-th-large"></i>    
+                                <h3>Adm. Software</h3>
+                                <p>
+                                    <ul>
+                                    <li> Controle de Usuários</li>
+                                    <li> Relatórios de Acesso</li>
+                                    <li> Controle integrado de Perfis de Acesso</li>
+                                    </ul>
+                                </p>
+                                </div>
+                                <div style="align:right">
+                                    <a class="btn btn-inverse" href="../adm/Index.xhtml">Acessar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                <div class="clear"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-20"></div>
+                        <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle alert-info" data-toggle="collapse"
+                                data-parent="#AccordionRecursosHumanos" href="#novidade2"><b>Gráfico</b>
+                            </a>
+                        </div>
+                        <div id="novidade2" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <p>
+                                    <canvas id="GraficoRadar" style="width:100%;"></canvas>
+                                    
+                <script type="text/javascript">                         
+                                            
+                var options = {
+                    responsive:true
+                };
+
+                var data = {
+                    labels: ["Projetos", "Requisitos", "Configuração e Mudança", "Colaboradores", "Teste e Qualidade", "Reutilização"],
+                    datasets: [
+                        {
+                            label: "Dados Primários",
+                            fillColor: "rgba(220,220,220,0.2)",
+                            strokeColor: "#000",
+                            angleLineColor : "#000",
+                            scaleFontSize: 19,
+                            scaleFontColor: "#000",
+                            pointColor: "#000",
+                            pointStrokeColor: "#000",
+                            pointHighlightFill: "#000",
+                            pointHighlightStroke: "#000",
+                            data: [20, 35, 25, 20, 5, 15]
+                        },
+                    ]
+                };            
+                
+                window.onload = function(){
+
+                    var ctx = document.getElementById("GraficoRadar").getContext("2d");
+                    var RadarChart = new Chart(ctx).Radar(data, options);
+                }  
+            </script>    
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+                  <div class="clear"></div>
+                  <div class="space-50"></div>
+                </h:form>
+            </ui:define>
+            
+        </ui:composition>
+    </h:body>
+</html>
