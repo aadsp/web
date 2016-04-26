@@ -1,6 +1,8 @@
 
 package org.aadsp.annotations;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,6 +39,17 @@ public class Pagina
     {
         PaginaModel model = new PaginaModel();
         return model.consultar(pagina).nomeDaPagina;
+    }
+    
+    public List<Pagina> listar() throws Exception
+    {
+        PaginaModel  model = new PaginaModel();
+        return model.listar();
+    }
+    
+    public void cadastrar(){
+        PaginaModel model = new PaginaModel();
+        model.salvar(this);
     }
     
 }

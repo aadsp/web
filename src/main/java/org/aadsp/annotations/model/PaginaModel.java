@@ -1,7 +1,9 @@
 
 package org.aadsp.annotations.model;
 
+import java.util.List;
 import org.aadsp.annotations.Pagina;
+import org.aadsp.annotations.Usuario;
 import org.aadsp.interfaces.ICRUD;
 import org.aadsp.utils.FactoryHibernate;
 import org.hibernate.Query;
@@ -55,6 +57,23 @@ private final Session sessao;
             sessao.close();
         }
     
+    }
+    
+    public List<Pagina> listar()throws Exception
+    {
+        try
+        {
+            Query consulta = sessao.createQuery("from Pagina");
+            return consulta.list();
+        }
+        catch(Exception e)
+        {
+            throw e;
+        }
+        finally
+        {
+            sessao.close();
+        }
     }
     
 }

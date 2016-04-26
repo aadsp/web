@@ -1,6 +1,7 @@
 
 package org.aadsp.annotations.model;
 
+import java.util.List;
 import org.aadsp.annotations.Funcao;
 import org.aadsp.interfaces.ICRUD;
 import org.aadsp.utils.FactoryHibernate;
@@ -51,6 +52,23 @@ public class FuncaoModel implements ICRUD
         }catch(Exception e){
             throw e;
         }finally{
+            sessao.close();
+        }
+    }
+    
+    public List<Funcao> listar()throws Exception
+    {
+        try
+        {
+            Query consulta = sessao.createQuery("from Funcao");
+            return consulta.list();
+        }
+        catch(Exception e)
+        {
+            throw e;
+        }
+        finally
+        {
             sessao.close();
         }
     }

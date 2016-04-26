@@ -2,11 +2,13 @@
 package org.aadsp.annotations;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import org.aadsp.annotations.model.FuncaoModel;
 
 @Entity
 @Table(name="ACESSO.FUNCAO")
@@ -42,5 +44,16 @@ public class Funcao implements Serializable
         this.descricao = descricao;
     }
     
+    public List<Funcao> listar() throws Exception
+    {
+        FuncaoModel model = new FuncaoModel();
+        return model.listar();
+    }
+    
+    public void cadastrar()
+    {
+        FuncaoModel model = new FuncaoModel();
+        model.salvar(this);
+    }
     
 }
