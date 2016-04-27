@@ -2,10 +2,13 @@
 package org.aadsp.controller.named;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.mail.internet.ParseException;
-import org.aadsp.annotations.Pagina;
+import org.aadsp.annotations.Funcao;
 import org.aadsp.annotations.Usuario;
 import org.aadsp.interfaces.ABaseBean;
 import org.aadsp.utils.Mensageiro;
@@ -21,19 +24,55 @@ public class PessoalCadastrar extends ABaseBean
 {   
     public PessoalCadastrar()
     {
+        data = new Date(new Date().getTime());
+        this.funcoes = new HashMap<String, Integer>();
+        this.funcao = new Funcao();
         this.usuario = new Usuario();
-        this.data = new Date(new Date().getTime());
     }
    
     public void cadastrar()
     {
-      
+      try
+      {
+        this.usuario.setId_funcao(funcaoSelecionada);
+        this.usuario.cadastrar();
+        Mensageiro.mensagemInfo("Cadastro realizado com sucesso!!");
+      }catch(Exception e){
+          Mensageiro.mensagemError("Não foi possível realizar o cadastro deste usuário!!");
+      }
     }
     
-    public void setData(Date data) throws ParseException
+    public Map<String,Integer> getFuncoes(){
+       try{
+
+            List<Funcao> lista = funcao.listar();
+       for(Funcao obj: lista){
+           funcoes.put(obj.getDescricao(),obj.getID());
+       }
+       return funcoes;
+       }catch(Exception e){
+           Mensageiro.mensagemError("Não foi possível consultar as funções no banco de dados!");
+       }
+        return null;
+    }
+    
+     public Date getData()
+     {
+        return data;
+     }
+    
+    public void setData(Date date) throws ParseException
     {
-       java.sql.Date dataSql = new java.sql.Date(data.getTime());
+       java.sql.Date dataSql = new java.sql.Date(date.getTime());
        this.usuario.setDataNascimento(dataSql);
+    }
+    
+    public int getFuncaoSelecionada() {
+        return funcaoSelecionada;
+    }
+
+    public void setFuncaoSelecionada(int funcaoSelecionada) {
+        this.funcaoSelecionada = funcaoSelecionada;
     }
     
     public Usuario getUsuario() {
@@ -44,7 +83,9 @@ public class PessoalCadastrar extends ABaseBean
         this.usuario = usuario;
     }
   
-   
+    private Map<String,Integer> funcoes;
+    private int funcaoSelecionada;
+    private Funcao funcao;
     private Usuario usuario;
     private Date data;
 }

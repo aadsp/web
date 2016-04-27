@@ -3,6 +3,7 @@ org\aadsp\interfaces\IUsuario.class
 org\aadsp\controller\named\PaginaCadastrar.class
 org\aadsp\annotations\model\AcessoModel.class
 org\aadsp\annotations\model\FuncaoModel.class
+org\aadsp\controller\named\PessoalCadastrar.class
 org\aadsp\annotations\Pagina.class
 org\aadsp\annotations\model\PaginaModel.class
 org\aadsp\utils\Email.class

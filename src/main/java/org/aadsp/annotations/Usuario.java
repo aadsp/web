@@ -55,11 +55,11 @@ public class Usuario implements Serializable,IUsuario
         this.dataNascimento = dataNascimento;
     }
 
-    public Integer getId_usuarioTipo() {
+    public Integer getId_funcao() {
         return id_funcao;
     }
 
-    public void setId_usuarioTipo(Integer id_usuarioTipo) {
+    public void setId_funcao(Integer id_usuarioTipo) {
         this.id_funcao = id_usuarioTipo;
     }
 
@@ -157,4 +157,9 @@ public class Usuario implements Serializable,IUsuario
         return model.listar();
     }
     
+    public void cadastrar()throws Exception
+    {
+        UsuarioModel model = new UsuarioModel();
+        model.salvar(this);
+    }
 }

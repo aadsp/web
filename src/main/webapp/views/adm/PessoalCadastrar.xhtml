@@ -36,15 +36,28 @@
                         <p:inputText id="nome" maxlength="80" value="#{pessoalCadastrar.usuario.nome}"/>
                        
                         <p:outputLabel for="data" value="Data de Nascimento" />
-                        <p:calendar id="data" value="#{pessoalCadastrar.setData(data)}" pattern="dd/MM/yyyy" mask="true" />
+                        <p:calendar id="data" value="#{pessoalCadastrar.data}" pattern="dd/MM/yyyy" mask="true" />
                         
                         <p:outputLabel for="rg" value="RG:" />
-                        <p:inputText id="nome" maxlength="30" value="#{pessoalCadastrar.usuario.rg}"/>
+                        <p:inputText id="rg" maxlength="30" value="#{pessoalCadastrar.usuario.rg}"/>
                         
-                        <p:outputLabel for="rg" value="CPF:" />
-                        <p:inputText id="nome" maxlength="30" value="#{pessoalCadastrar.usuario.cpf}"/>
+                        <p:outputLabel for="cpf" value="CPF:" />
+                        <p:inputText id="cpf" maxlength="30" value="#{pessoalCadastrar.usuario.cpf}"/>
                         
+                        <p:outputLabel for="email" value="E-mail:" />
+                        <p:inputText id="email" maxlength="100" value="#{pessoalCadastrar.usuario.email}"/>
                         
+                        <p:outputLabel for="login" value="Login:" />
+                        <p:inputText id="login" maxlength="30" value="#{pessoalCadastrar.usuario.login}"/>
+                        
+                        <p:outputLabel for="senha" value="Senha:" />
+                        <p:password id="senha"  maxlength="10" value="#{pessoalCadastrar.usuario.senha}"/>
+                        
+                        <p:outputLabel for="funcao" value="Função: " />
+                        <p:selectOneMenu id="funcao"  value="#{pessoalCadastrar.funcaoSelecionada}" style="width:150px">
+                            <f:selectItem itemLabel="Selecionar Função" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{pessoalCadastrar.funcoes}" />
+                        </p:selectOneMenu>
                     </h:panelGrid>
                   </p:tab>
                 </p:tabView>
