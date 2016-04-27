@@ -14,17 +14,17 @@ and open the template in the editor.
     </h:head>
     <h:body>
         <ui:composition template="template/template.xhtml">
-            <ui:define id="indexRecursosHumanos" name="content">
+            <ui:define id="indexMenu" name="content">
                 <h:form>
                     <p:growl id="growl" showDetail="true" sticky="true" />
                     <div class="container-fluid space-20">
-                    <div><h4>Gerência de Colaboradores</h4></div>
+                    <div><h4>Administração do Software</h4></div>
                     <div class="bs-docs-example">
-                    <div class="accordion" id="AccordionRecursosHumanos">
+                    <div class="accordion" id="AccordionMenuIndex">
                     <div class="accordion-group">
                         <div class="accordion-heading">
                             <a class="accordion-toggle alert-info" data-toggle="collapse"
-                                data-parent="#AccordionRecursosHumanos" href="#novidade1">
+                                data-parent="#AccordionMenuIndex" href="#novidade1">
                                 <b>Informação:</b> Definição</a>
                         </div>
                         <div id="novidade1" class="accordion-body collapse in">
@@ -51,7 +51,7 @@ and open the template in the editor.
                         <div class="accordion-group">
                         <div class="accordion-heading">
                             <a class="accordion-toggle alert-info" data-toggle="collapse"
-                                data-parent="#AccordionRecursosHumanos" href="#novidade2"><b>MAPA:</b> Fluxograma
+                                data-parent="#AccordionMenuIndex" href="#novidade2"><b>MAPA:</b> Fluxograma
                             </a>
                         </div>
                         <div id="novidade2" class="accordion-body collapse">
