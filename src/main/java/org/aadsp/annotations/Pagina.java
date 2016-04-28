@@ -1,7 +1,7 @@
 
 package org.aadsp.annotations;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,13 +11,13 @@ import javax.persistence.Table;
 import org.aadsp.annotations.model.PaginaModel;
 
 @Entity
-@Table(name="ACESSO.PAGINA")
-public class Pagina 
+@Table(name="ACESSO.ACESSO_AADSP_PAGINA")
+public class Pagina implements Serializable
 {
     @Id
     @GeneratedValue
     @Column(name="ID") private Integer ID;
-    @Column(name="nomeDaPagina") private String nomeDaPagina;
+    @Column(name="nome") private String nome;
 
     public Integer getID() {
         return ID;
@@ -27,18 +27,18 @@ public class Pagina
         this.ID = ID;
     }
 
-    public String getNomeDaPagina() {
-        return nomeDaPagina;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomeDaPagina(String nomeDaPagina) {
-        this.nomeDaPagina = nomeDaPagina;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
     
     public String consultarNomePagina(Pagina pagina)
     {
         PaginaModel model = new PaginaModel();
-        return model.consultarPorID(pagina).nomeDaPagina;
+        return model.consultarPorID(pagina).nome;
     }
     
     public List<Pagina> listar() throws Exception

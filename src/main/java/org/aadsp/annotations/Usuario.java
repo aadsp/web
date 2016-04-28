@@ -16,7 +16,7 @@ import org.aadsp.annotations.model.UsuarioModel;
 import org.aadsp.interfaces.IUsuario;
 
 @Entity
-@Table(name="ACESSO.USUARIO")
+@Table(name="ACESSO.ACESSO_AADSP_USUARIO")
 public class Usuario implements Serializable,IUsuario
 {
     @Id

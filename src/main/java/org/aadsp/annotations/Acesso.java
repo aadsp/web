@@ -1,6 +1,7 @@
 
 package org.aadsp.annotations;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,8 +14,8 @@ import org.aadsp.annotations.model.AcessoModel;
  * @version  24/04/2016
  */
 @Entity
-@Table(name="ACESSO.ACESSO")
-public class Acesso 
+@Table(name="ACESSO.ACESSO_AADSP_ACESSO")
+public class Acesso implements Serializable
 {
     @Id
     @GeneratedValue

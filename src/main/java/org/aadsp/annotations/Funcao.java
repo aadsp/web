@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import org.aadsp.annotations.model.FuncaoModel;
 
 @Entity
-@Table(name="ACESSO.FUNCAO")
+@Table(name="ACESSO.ACESSO_AADSP_FUNCAO")
 public class Funcao implements Serializable
 {
     @Id

@@ -81,7 +81,7 @@ public class AcessoCadastrar extends ABaseNamed
 
             List<Pagina> lista = pagina.listar();
        for(Pagina obj: lista){
-           paginas.put(obj.getNomeDaPagina(),obj.getID());
+           paginas.put(obj.getNome(),obj.getID());
        }
        return paginas;
        }catch(Exception e){
