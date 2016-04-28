@@ -10,7 +10,7 @@ import javax.inject.Named;
 import javax.mail.internet.ParseException;
 import org.aadsp.annotations.Funcao;
 import org.aadsp.annotations.Usuario;
-import org.aadsp.interfaces.ABaseBean;
+import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.utils.Mensageiro;
 
 /**
@@ -20,7 +20,7 @@ import org.aadsp.utils.Mensageiro;
  */
 @ViewScoped
 @Named
-public class PessoalCadastrar extends ABaseBean
+public class PessoalCadastrar extends ABaseNamed
 {   
     public PessoalCadastrar()
     {

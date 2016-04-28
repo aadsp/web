@@ -4,7 +4,7 @@ package org.aadsp.controller.named;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import org.aadsp.annotations.Funcao;
-import org.aadsp.interfaces.ABaseBean;
+import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.utils.Mensageiro;
 
 /**
@@ -14,7 +14,7 @@ import org.aadsp.utils.Mensageiro;
  */
 @ViewScoped
 @Named
-public class FuncaoCadastrar extends ABaseBean
+public class FuncaoCadastrar extends ABaseNamed
 {
     
     public FuncaoCadastrar()

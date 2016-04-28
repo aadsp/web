@@ -8,7 +8,7 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.aadsp.annotations.Usuario;
-import org.aadsp.interfaces.ABaseBean;
+import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.interfaces.IUsuario;
 import org.aadsp.utils.Mensageiro;
 
@@ -19,7 +19,7 @@ import org.aadsp.utils.Mensageiro;
  */
 @SessionScoped
 @Named
-public class Index extends ABaseBean {
+public class Index extends ABaseNamed {
     
     /** Construtor base da classe com instancia de um usuário
      */

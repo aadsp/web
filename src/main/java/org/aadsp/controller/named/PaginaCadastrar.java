@@ -4,7 +4,7 @@ package org.aadsp.controller.named;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import org.aadsp.annotations.Pagina;
-import org.aadsp.interfaces.ABaseBean;
+import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.utils.Mensageiro;
 
 /**
@@ -14,7 +14,7 @@ import org.aadsp.utils.Mensageiro;
  */
 @ViewScoped
 @Named
-public class PaginaCadastrar extends ABaseBean
+public class PaginaCadastrar extends ABaseNamed
 {
     
     public PaginaCadastrar()

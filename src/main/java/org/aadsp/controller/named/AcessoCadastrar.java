@@ -9,7 +9,7 @@ import javax.inject.Named;
 import org.aadsp.annotations.Acesso;
 import org.aadsp.annotations.Funcao;
 import org.aadsp.annotations.Pagina;
-import org.aadsp.interfaces.ABaseBean;
+import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.utils.Mensageiro;
 
 /**
@@ -19,7 +19,7 @@ import org.aadsp.utils.Mensageiro;
  */
 @ViewScoped
 @Named
-public class AcessoCadastrar extends ABaseBean
+public class AcessoCadastrar extends ABaseNamed
 {
     
     public AcessoCadastrar()

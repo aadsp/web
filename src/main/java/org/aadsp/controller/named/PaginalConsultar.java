@@ -6,7 +6,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import org.aadsp.annotations.Pagina;
 import org.aadsp.annotations.Usuario;
-import org.aadsp.interfaces.ABaseBean;
+import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.interfaces.IUsuario;
 import org.aadsp.utils.Mensageiro;
 
@@ -17,7 +17,7 @@ import org.aadsp.utils.Mensageiro;
  */
 @ViewScoped
 @Named
-public class PaginalConsultar extends ABaseBean
+public class PaginalConsultar extends ABaseNamed
 {
     
    public PaginalConsultar()

@@ -5,7 +5,7 @@ import java.util.List;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import org.aadsp.annotations.Funcao;
-import org.aadsp.interfaces.ABaseBean;
+import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.utils.Mensageiro;
 
 /**
@@ -15,7 +15,7 @@ import org.aadsp.utils.Mensageiro;
  */
 @ViewScoped
 @Named
-public class FuncaoConsultar extends ABaseBean
+public class FuncaoConsultar extends ABaseNamed
 {
     
    public FuncaoConsultar()
