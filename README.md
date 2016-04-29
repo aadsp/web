@@ -10,7 +10,7 @@
   ágeis e o guia de conhecimento PMBOK da PMI (Project Management Institute) para gerenciamento de projetos, 
   sendo adaptativa aos diversos perfis de MPEs.
  </p>
- <p><strong>CONHEÇA MAIS SOBRE A ABORDAGEM AADSP:</strong><a href="#"> Site em construção</a></p>
+ <p><strong>CONHEÇA MAIS SOBRE A ABORDAGEM AADSP:</strong><a  target="_blank"  href="http://www.labrasoft.ifba.edu.br/aadsp"> Site do AADSP</a></p>
 <hr/> 
 <p><strong>OBSERVAÇÃO:</strong> Esta ferramenta está sendo desenvolvida como proposta de 
 trabalho de conclusão de curso (TCC) pelo estudante Felipe Pereira Coelho graduando do curso de Analise e Desenvolvimento de Sistemas do Instituto Federal da Bahia - IFBA e 
@@ -30,3 +30,4 @@ membro do <a target="_blank"  href="http://www.labrasoft.ifba.edu.br/">Grupo de 
   <li>Hibernate 4.3.6</li>
   <li>SQLServer 2008</li>
 </ul>
+
