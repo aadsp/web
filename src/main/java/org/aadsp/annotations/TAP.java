@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import org.aadsp.annotations.model.PaginaModel;
 import org.aadsp.annotations.model.TAPModel;
 
 /**
@@ -25,6 +24,7 @@ public class TAP implements Serializable
     @Column(name="ID") private Integer ID;
     @Column(name="nome") private String nome;
     @Column(name="justificativa") private String justificativa;
+    @Column(name="objetivo") private String objetivo;
     @Column(name="alinhamentoEstrategico") private String alinhamentoEstrategico;
     @Column(name="custo") private double custo;
     @Column(name="dataInicio") private Date dataInicio;
@@ -43,6 +43,14 @@ public class TAP implements Serializable
         this.ID = ID;
     }
 
+    public String getObjetivo() {
+        return objetivo;
+    }
+
+    public void setObjetivo(String objetivo) {
+        this.objetivo = objetivo;
+    }
+    
     public String getNome() {
         return nome;
     }
@@ -137,4 +145,9 @@ public class TAP implements Serializable
         return model.listar();
     }
     
+    public void cadastrar()
+    {
+        TAPModel model = new TAPModel();
+        model.salvar(this);
+    }
 }

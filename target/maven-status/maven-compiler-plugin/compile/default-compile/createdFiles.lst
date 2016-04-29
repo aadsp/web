@@ -1,4 +1,5 @@
 org\aadsp\controller\named\PessoalConsultar.class
+org\aadsp\controller\named\TAPCadastrar.class
 org\aadsp\controller\named\UsuariosVisualizar.class
 org\aadsp\interfaces\IUsuario.class
 org\aadsp\controller\named\PaginaCadastrar.class
