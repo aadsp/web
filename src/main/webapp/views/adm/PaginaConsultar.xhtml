@@ -56,11 +56,11 @@
                                            <f:facet name="header">
                                                <h:outputText value="Nome" />
                                            </f:facet>
-                                        <h:outputText value="#{pagina.nomeDaPagina}" />
+                                        <h:outputText value="#{pagina.nome}" />
                                        </p:column>
 
-                                        <p:column style="width:30px" >
-                                            <p:commandLink value="detalhar" action="#{paginalConsultar.editar(pagina)}" />
+                                        <p:column style="width:5px;text-align: center" >
+                                            <p:commandButton icon="ui-icon-search" action="#{paginalConsultar.editar(pagina)}" />
                                         </p:column>
                                     
                                    </p:dataTable>

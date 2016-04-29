@@ -6,10 +6,12 @@ org\aadsp\annotations\model\AcessoModel.class
 org\aadsp\annotations\model\FuncaoModel.class
 org\aadsp\controller\named\PessoalCadastrar.class
 org\aadsp\annotations\Pagina.class
+org\aadsp\annotations\model\TAPModel.class
 org\aadsp\annotations\model\PaginaModel.class
 org\aadsp\interfaces\ABaseNamed.class
 org\aadsp\utils\Email.class
 org\aadsp\controller\named\Index.class
+org\aadsp\annotations\TAP.class
 org\aadsp\annotations\association\AcessoFuncao.class
 org\aadsp\annotations\model\UsuarioModel.class
 org\aadsp\controller\named\HeaderTemplate.class
@@ -18,6 +20,7 @@ org\aadsp\interfaces\ICRUD.class
 org\aadsp\utils\Mensageiro.class
 org\aadsp\utils\ControleDeAcesso.class
 org\aadsp\controller\named\FuncaoCadastrar.class
+org\aadsp\controller\named\TAPConsultar.class
 org\aadsp\annotations\Acesso.class
 org\aadsp\annotations\Funcao.class
 org\aadsp\controller\named\AcessoCadastrar.class

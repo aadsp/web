@@ -26,6 +26,6 @@
     <mapping class="org.aadsp.annotations.Funcao" />
     <mapping class="org.aadsp.annotations.Acesso" />
     <mapping class="org.aadsp.annotations.Pagina" />
-    
+    <mapping class="org.aadsp.annotations.TAP" />
   </session-factory>
 </hibernate-configuration>
