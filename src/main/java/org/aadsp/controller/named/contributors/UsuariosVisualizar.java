@@ -1,5 +1,5 @@
 
-package org.aadsp.controller.named;
+package org.aadsp.controller.named.contributors;
 
 import java.util.HashMap;
 import java.util.Map;

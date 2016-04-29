@@ -1,5 +1,5 @@
 
-package org.aadsp.controller.named;
+package org.aadsp.controller.named.adm;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;

@@ -1,5 +1,5 @@
 
-package org.aadsp.controller.named;
+package org.aadsp.controller.named.adm;
 
 import java.io.IOException;
 import javax.inject.Named;

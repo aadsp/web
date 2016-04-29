@@ -1,5 +1,5 @@
 
-package org.aadsp.controller.named;
+package org.aadsp.controller.named.project;
 
 import java.util.Date;
 import javax.faces.view.ViewScoped;

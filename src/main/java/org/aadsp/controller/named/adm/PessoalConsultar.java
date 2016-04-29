@@ -1,10 +1,9 @@
 
-package org.aadsp.controller.named;
+package org.aadsp.controller.named.adm;
 
 import java.util.List;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import org.aadsp.annotations.Pagina;
 import org.aadsp.annotations.Usuario;
 import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.interfaces.IUsuario;
@@ -17,29 +16,29 @@ import org.aadsp.utils.Mensageiro;
  */
 @ViewScoped
 @Named
-public class PaginalConsultar extends ABaseNamed
+public class PessoalConsultar extends ABaseNamed
 {
     
-   public PaginalConsultar()
+   public PessoalConsultar()
    {
-       this.pagina = new Pagina();
+       this.usuario = new Usuario();
    }
    
-   public List<Pagina> getListarPaginas()
+   public List<Usuario> getListarUsuarios()
    {
        try{
-       return this.pagina.listar();
+       return this.usuario.listar();
        }catch(Exception e){
-           Mensageiro.mensagemError("Erro ao listar páginas!!");
+           Mensageiro.mensagemError("Erro ao listar usuário!!");
        }
        return null;
    }
    
-   public void editar(Pagina pagina)
+   public void editar(Usuario usuario)
    {
    
    }
    
-   private Pagina pagina;
+   private IUsuario usuario;
     
 }
