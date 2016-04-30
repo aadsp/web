@@ -50,6 +50,8 @@ public class Index extends ABaseNamed {
      */
     public void autenticar() throws IOException {
         try {
+            IUsuario copia;
+            copia = usuario;
             usuario = usuario.autenticar();
 
             if (usuario != null && usuario.getLogin() != null && usuario.getSenha() != null) {
@@ -62,16 +64,16 @@ public class Index extends ABaseNamed {
                 session.setAttribute("paginasAcesso", paginasPermitidas);
                 FacesContext.getCurrentInstance().getExternalContext().redirect("/web/faces/views/menu/Index.xhtml");
             } else {
-                usuario = usuario.validarLogin();
-                if (usuario != null && usuario.getLogin() != null && usuario.getSenha() != null) {
-                    Mensageiro.mensagemError("Senha incorreta!!");
+                copia = copia.validarLogin();
+                if (copia.getLogin() != null || copia.getLogin().equals("")) {
+                    Mensageiro.mensagemInfo("Senha incorreta!!");
 
                 } else {
-                    Mensageiro.mensagemError("Não foi possível autenticar o usuário com os dados informados!");
+                    Mensageiro.mensagemInfo("Não foi possível autenticar o usuário com os dados informados!");
                 }
             }
         } catch (Exception e) {
-            Mensageiro.mensagemFatal("Não foi possível realizar a autenticação no banco de dados!");
+            Mensageiro.mensagemInfo("Não foi possível realizar a autenticação do usuario!");
         }
     }
 
