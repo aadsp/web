@@ -65,7 +65,9 @@
                                            </f:facet>
                                         <h:outputText value="#{tap.dataCriacao}" />
                                        </p:column>
-                                       
+                                    <p:column style="width:5px;text-align: center" >   
+                                            <p:commandButton icon="ui-icon-print" />
+                                    </p:column>
                                         <p:column style="width:5px;text-align: center" >
                                             <p:commandButton icon="ui-icon-search" action="#{TAPConsultar.editar(tap)}" />
                                         </p:column>

@@ -2,12 +2,14 @@
 package org.aadsp.controller.named.project;
 
 import java.util.Date;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.mail.internet.ParseException;
 import org.aadsp.annotations.TAP;
 import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.utils.Mensageiro;
+import org.aadsp.utils.Response;
 
 /**
  * Classe que representa o objeto de tela TAP Cadastrar
@@ -20,11 +22,48 @@ public class TAPEditar extends ABaseNamed
 {   
     public TAPEditar()
     {
-        
         dataInicio = new Date(new Date().getTime());
         dataFim = new Date(new Date().getTime());
         this.tap = new TAP();
+        carregarDadosIniciais();        
     }
+    
+    private void carregarDadosIniciais()
+    {
+       try{
+        int TAPID = Integer.parseInt(Response.getParametroURL("TAP"));
+        tap.setID(TAPID);
+        tap = tap.consultar();
+        dataFim = tap.getDataFim();
+        dataInicio = tap.getDataInicio();
+       }catch(Exception e)
+       {
+           Mensageiro.mensagemError("Erro ao carregar dados iniciais!!");
+       }
+    }
+    
+    
+    public void addResponsavel()
+    {
+    
+    }
+    
+    public void addEscopo()
+    {
+    
+    }
+    
+    public void addPatrocinador()
+    {
+    
+    }
+    
+    
+    public void addStakeholder()
+    {
+    
+    }
+    
    
     public void editar()
     {

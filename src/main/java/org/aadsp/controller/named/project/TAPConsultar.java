@@ -38,7 +38,7 @@ public class TAPConsultar extends ABaseNamed
    {
        try
        {
-        Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP=10");
+        Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+tap.getID());
        }catch(Exception e)
        {
          Mensageiro.mensagemError("Erro ao selecionar TAP!!");

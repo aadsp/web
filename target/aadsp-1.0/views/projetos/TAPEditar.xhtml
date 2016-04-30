@@ -28,20 +28,30 @@
                     <div>
                 </div>
                 <div class="space-40"></div>
-                <div class="control-group">   
+                <div class="control-group"> 
+                    <p:toolbar>
+                        <f:facet name="right">
+                            <p:menuButton value="ADICIONAR INFORMAÇÕES">
+                                <p:menuitem value="Responsável" actionListener="#{TAPEditar.addResponsavel()}" icon="ui-icon-document" />
+                                <p:menuitem value="Stakeholders" actionListener="#{TAPEditar.addStakeholder()}" icon="ui-icon-document" />
+                                <p:menuitem value="Escopo" actionListener="#{TAPEditar.addEscopo()}" ajax="false" icon="ui-icon-document" />
+                                <p:menuitem value="Patrocinador" actionListener="#{TAPEditar.addPatrocinador()}" icon="ui-icon-document" />
+                            </p:menuButton>
+                        </f:facet>
+                    </p:toolbar>    
                 <p:tabView orientation="left">
                   <p:tab title="Pré-Projeto">
                       <h:panelGrid columns="3" cellpadding="5">
                         <p:outputLabel for="nomeProjeto" value="Nome do projeto:" />
-                        <p:inputTextarea id="nomeProjeto" rows="1" cols="400" required="true" value="#{TAPCadastrar.tap.nome}" counter="displayProjeto" maxlength="250" counterTemplate="{0} caracteres restantes." autoResize="false" />
+                        <p:inputTextarea id="nomeProjeto" rows="1" cols="400" required="true" value="#{TAPEditar.tap.nome}" counter="displayProjeto" maxlength="250" counterTemplate="{0} caracteres restantes." autoResize="false" />
                         <h:outputText id="displayProjeto" />
                         
                         <p:outputLabel for="justificativa" value="Justificativa:" />
-                        <p:inputTextarea id="justificativa" rows="1" cols="30" required="true" value="#{TAPCadastrar.tap.justificativa}" counter="displayJustificativa" maxlength="500" counterTemplate="{0} caracteres restantes."  autoResize="false"/>
+                        <p:inputTextarea id="justificativa" rows="1" cols="30" required="true" value="#{TAPEditar.tap.justificativa}" counter="displayJustificativa" maxlength="500" counterTemplate="{0} caracteres restantes."  autoResize="false"/>
                         <h:outputText id="displayJustificativa" />
                         
                         <p:outputLabel for="objetivo" value="Objetivo:" />
-                        <p:inputTextarea id="objetivo"  rows="1" cols="30" required="true" value="#{TAPCadastrar.tap.objetivo}" counter="displayObjetivo" maxlength="500" counterTemplate="{0} caracteres restantes."  autoResize="false"/>
+                        <p:inputTextarea id="objetivo"  rows="1" cols="30" required="true" value="#{TAPEditar.tap.objetivo}" counter="displayObjetivo" maxlength="500" counterTemplate="{0} caracteres restantes."  autoResize="false"/>
                         <h:outputText id="displayObjetivo" />
                         
                         
@@ -50,30 +60,30 @@
                     <p:tab title="Alinhamento">
                         <h:panelGrid columns="2" cellpadding="5">
                             <p:outputLabel for="alinhamentoEstrategico" value="Alinhamento estratégico:" />
-                            <p:inputTextarea id="alinhamentoEstrategico" rows="1" cols="100" value="#{TAPCadastrar.tap.alinhamentoEstrategico}" counter="displayAlinhamento" maxlength="500" counterTemplate="{0} caracteres restantes."  autoResize="false"/>
+                            <p:inputTextarea id="alinhamentoEstrategico" rows="1" cols="100" value="#{TAPEditar.tap.alinhamentoEstrategico}" counter="displayAlinhamento" maxlength="500" counterTemplate="{0} caracteres restantes."  autoResize="false"/>
                             <h:outputText id="displayAlinhamento" />
                         </h:panelGrid>
                     </p:tab> 
                     <p:tab title="Orçamento">
                       <h:panelGrid columns="2" cellpadding="5">
                         <p:outputLabel for="custo" value="Orçamento inícial:" />
-                        <p:inputText id="custo"  value="#{TAPCadastrar.tap.custo}"/>
+                        <p:inputText id="custo"  value="#{TAPEditar.tap.custo}"/>
                         </h:panelGrid>
                      </p:tab>   
                     <p:tab title="Cronograma">
                       <h:panelGrid columns="2" cellpadding="5">
                         <p:outputLabel for="dataInicio" value="Data de início" />
-                        <p:calendar id="dataInicio" value="#{TAPCadastrar.dataInicio}" pattern="dd/MM/yyyy" mask="true" />
+                        <p:calendar id="dataInicio" value="#{TAPEditar.dataInicio}" pattern="dd/MM/yyyy" mask="true" />
                         
                         <p:outputLabel for="dataTermino" value="Data de término" />
-                        <p:calendar id="dataTermino" value="#{TAPCadastrar.dataFim}" pattern="dd/MM/yyyy" mask="true" />
+                        <p:calendar id="dataTermino" value="#{TAPEditar.dataFim}" pattern="dd/MM/yyyy" mask="true" />
                       </h:panelGrid>
                     </p:tab>
                     
                     <p:tab title="Fundamentação">
                       <h:panelGrid columns="2" cellpadding="5">
                         <p:outputLabel for="premissas" value="Premissas:" />
-                        <p:inputTextarea id="premissas" rows="1" cols="400" value="#{TAPCadastrar.tap.premissas}" counter="displayPremissas" maxlength="250" counterTemplate="{0} caracteres restantes." autoResize="false"/>
+                        <p:inputTextarea id="premissas" rows="1" cols="400" value="#{TAPEditar.tap.premissas}" counter="displayPremissas" maxlength="250" counterTemplate="{0} caracteres restantes." autoResize="false"/>
                         <h:outputText id="displayPremissas" />
                     </h:panelGrid>
                     </p:tab>  
@@ -81,14 +91,14 @@
                     <p:tab title="Restrições">
                       <h:panelGrid columns="2" cellpadding="5">
                         <p:outputLabel for="restricoes" value="Restrições:" />
-                        <p:inputTextarea id="restricoes" rows="1" cols="30" value="#{TAPCadastrar.tap.restricoes}" counter="displayrestricoes" maxlength="250" counterTemplate="{0} caracteres restantes." autoResize="false"/>                      
+                        <p:inputTextarea id="restricoes" rows="1" cols="30" value="#{TAPEditar.tap.restricoes}" counter="displayrestricoes" maxlength="250" counterTemplate="{0} caracteres restantes." autoResize="false"/>                      
                         <h:outputText id="displayrestricoes" />
                       </h:panelGrid>
                   </p:tab>
                     <p:tab title="Levantamento dos Riscos">
                       <h:panelGrid columns="2" cellpadding="5">
                         <p:outputLabel for="riscosIniciais" value="Riscos Iniciais:" />
-                        <p:inputTextarea id="riscosIniciais" rows="1" cols="30" value="#{TAPCadastrar.tap.riscosIniciais}" counter="displayIniciais" maxlength="300" counterTemplate="{0} caracteres restantes." autoResize="false"/>
+                        <p:inputTextarea id="riscosIniciais" rows="1" cols="30" value="#{TAPEditar.tap.riscosIniciais}" counter="displayIniciais" maxlength="300" counterTemplate="{0} caracteres restantes." autoResize="false"/>
                         <h:outputText id="displayIniciais" />
 
                       </h:panelGrid>
@@ -96,8 +106,8 @@
                 </p:tabView>
                 </div>
                 <div class="space-20"></div>
-                <p:commandButton class="btn btn-warning" value="SALVAR" update="growl" actionListener="#{TAPCadastrar.cadastrar()}"/>
-                <p:commandButton class="btn btn-danger" value="EXCLUIR" update="growl" actionListener="#{TAPCadastrar.cadastrar()}"/>
+                <p:commandButton class="btn btn-success" value="SALVAR" update="growl" actionListener="#{TAPEditar.editar()}"/>
+                <p:commandButton class="btn btn-danger" value="EXCLUIR" update="growl" actionListener="#{TAPEditar.excluir()}"/>
                     </div>
                 </div>
                 <div class="space-50"></div>

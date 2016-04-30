@@ -14,4 +14,9 @@ public class Response
     {
         FacesContext.getCurrentInstance().getExternalContext().redirect(URL);
     }
+    
+    public static String getParametroURL(String atributo)
+    {
+        return FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get(atributo);
+    }
 }

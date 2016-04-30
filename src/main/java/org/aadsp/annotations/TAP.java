@@ -162,4 +162,10 @@ public class TAP implements Serializable
         TAPModel model = new TAPModel();
         model.atualizar(this);
     }
+    
+    public TAP consultar() throws Exception
+    {
+        TAPModel model = new TAPModel();
+        return model.consultarPorID(this);
+    }
 }
