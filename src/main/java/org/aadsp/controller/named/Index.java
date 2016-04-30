@@ -11,6 +11,7 @@ import org.aadsp.annotations.Usuario;
 import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.interfaces.IUsuario;
 import org.aadsp.utils.Mensageiro;
+import org.aadsp.utils.Response;
 
 
 /**Classe principal do projeto, etapa de identificação do usuário por login e senha
@@ -62,7 +63,7 @@ public class Index extends ABaseNamed {
                 HttpSession session = request.getSession();
                 session.setAttribute("usuario", usuario);
                 session.setAttribute("paginasAcesso", paginasPermitidas);
-                FacesContext.getCurrentInstance().getExternalContext().redirect("/web/faces/views/menu/Index.xhtml");
+                Response.redirect("/web/faces/views/menu/Index.xhtml");
             } else {
                 copia = copia.validarLogin();
                 if (copia.getLogin() != null || copia.getLogin().equals("")) {

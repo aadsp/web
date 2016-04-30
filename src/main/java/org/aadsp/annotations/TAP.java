@@ -150,4 +150,16 @@ public class TAP implements Serializable
         TAPModel model = new TAPModel();
         model.salvar(this);
     }
+    
+    public void deletar()
+    {
+        TAPModel model = new TAPModel();
+        model.excluir(this);
+    }
+    
+    public void atualizar()
+    {
+        TAPModel model = new TAPModel();
+        model.atualizar(this);
+    }
 }

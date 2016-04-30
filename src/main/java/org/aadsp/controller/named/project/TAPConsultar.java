@@ -4,10 +4,10 @@ package org.aadsp.controller.named.project;
 import java.util.List;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import org.aadsp.annotations.Pagina;
 import org.aadsp.annotations.TAP;
 import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.utils.Mensageiro;
+import org.aadsp.utils.Response;
 
 /**
  * Classe que representa o objeto de tela Pessoal Consulta
@@ -34,9 +34,15 @@ public class TAPConsultar extends ABaseNamed
        return null;
    }
    
-   public void editar(TAP tap)
+   public void editar(TAP tap) 
    {
-   
+       try
+       {
+        Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP=10");
+       }catch(Exception e)
+       {
+         Mensageiro.mensagemError("Erro ao selecionar TAP!!");
+       }
    }
    
    private TAP tap;

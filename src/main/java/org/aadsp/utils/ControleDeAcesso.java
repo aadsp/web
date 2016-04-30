@@ -66,7 +66,7 @@ public class ControleDeAcesso implements Filter {
                 if(session.getAttribute("usuario") != null)
                 {
                     for(String pag: paginaPermitida){
-                        if(req.getRequestURI().endsWith(pag+".xhtml"))
+                        if(req.getRequestURI().contains(pag+".xhtml"))
                             chain.doFilter(request, response);    
                     }
                     redireciona("/web/faces/acessoNegado.xhtml", response);
