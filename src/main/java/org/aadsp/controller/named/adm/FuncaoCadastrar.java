@@ -21,10 +21,9 @@ public class FuncaoCadastrar extends ABaseNamed
     {
         this.funcao = new Funcao();
     }
-   
-    public void cadastrar()
-    {
-      try
+    
+    public void cadastrar(){
+        try
       {
         funcao.cadastrar();
         Mensageiro.mensagemInfo("Função cadastrada com sucesso");
