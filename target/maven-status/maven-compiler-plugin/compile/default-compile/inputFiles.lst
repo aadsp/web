@@ -10,6 +10,7 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\PaginaModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\AcessoModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\FuncaoCadastrar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Acesso.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\AcessoEditar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\FuncaoEditar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\utils\Session.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\TAPModel.java

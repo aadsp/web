@@ -7,6 +7,7 @@ org\aadsp\controller\named\adm\AcessoConsultar.class
 org\aadsp\annotations\model\AcessoModel.class
 org\aadsp\controller\named\project\TAPConsultar.class
 org\aadsp\annotations\model\FuncaoModel.class
+org\aadsp\controller\named\adm\AcessoEditar.class
 org\aadsp\controller\named\adm\PaginaCadastrar.class
 org\aadsp\annotations\Pagina.class
 org\aadsp\controller\named\contributors\UsuariosVisualizar.class

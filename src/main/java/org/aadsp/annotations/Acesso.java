@@ -53,5 +53,32 @@ public class Acesso implements Serializable
         model.salvar(this);
     }
     
+    public Acesso consultar() throws Exception
+    {
+        AcessoModel model = new AcessoModel();
+        return model.consultar(this);
+    }
+    
+    public void excluir()
+    {
+        AcessoModel model = new AcessoModel();
+        model.excluir(this);
+    }
+    
+    public String consultarFuncao() throws Exception
+    {
+        Funcao funcao = new Funcao();
+        funcao.setID(this.getID_funcao());
+        funcao = funcao.consultarPorID();
+        return funcao.getDescricao();
+    }
+    
+    public String consultarPagina() throws Exception
+    {
+        Pagina pagina = new Pagina();
+        pagina.setID(this.getID_pagina());
+        pagina = pagina.consultarPorID();
+        return pagina.getNome();
+    }        
     
 }

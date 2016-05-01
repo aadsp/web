@@ -78,4 +78,17 @@ public class AcessoModel implements ICRUD
             sessao.close();
         }
     }
+    
+    public Acesso consultar(Acesso acesso)throws Exception
+    {
+        try{   
+            Query consulta = sessao.createQuery("from Acesso where ID = :ID");
+            consulta.setInteger("ID", acesso.getID());
+            return (Acesso) consulta.uniqueResult();
+        }catch(Exception e){
+            throw e;
+        }finally{
+            sessao.close();
+        }
+    }
 }

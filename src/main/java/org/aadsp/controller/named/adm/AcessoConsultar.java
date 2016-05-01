@@ -6,6 +6,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import org.aadsp.annotations.association.AcessoFuncao;
 import org.aadsp.interfaces.ABaseNamed;
+import org.aadsp.utils.Criptografia;
 import org.aadsp.utils.Mensageiro;
 import org.aadsp.utils.Response;
 
@@ -38,10 +39,10 @@ public class AcessoConsultar extends ABaseNamed
    {
        try
        {
-        Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+acessoFuncao.getId());
+            Response.redirect("/web/faces/views/adm/AcessoEditar.xhtml?Acesso="+ Criptografia.codificarParaBase64(Integer.toString(acessoFuncao.getID())));
        }catch(Exception e)
        {
-         Mensageiro.mensagemError("Erro ao selecionar TAP!!");
+            Mensageiro.mensagemError("Erro ao selecionar controle de acesso!!");
        }
    }
    

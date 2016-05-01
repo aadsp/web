@@ -15,7 +15,7 @@ import org.aadsp.annotations.model.AcessoModel;
  */
 public class AcessoFuncao
 {
-    private int  id;
+    private int  ID;
     private Funcao funcao;
     private Pagina pagina;
     
@@ -41,12 +41,12 @@ public class AcessoFuncao
         this.pagina = pagina;
     }
     
-    public int getId() {
-        return id;
+    public int getID() {
+        return ID;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setID(int ID) {
+        this.ID = ID;
     }
     
     
@@ -58,7 +58,7 @@ public class AcessoFuncao
         for(Acesso obj :acessoModel.listar())
         {
             AcessoFuncao acessoFuncao = new AcessoFuncao();
-            acessoFuncao.setId(obj.getID());
+            acessoFuncao.setID(obj.getID());
             Funcao funcao = new Funcao();
             Pagina pagina = new Pagina();
             funcao.setID(obj.getID_funcao());
