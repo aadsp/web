@@ -4,14 +4,12 @@ import java.io.IOException;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import org.aadsp.annotations.Usuario;
 import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.interfaces.IUsuario;
 import org.aadsp.utils.Mensageiro;
 import org.aadsp.utils.Response;
+import org.aadsp.utils.Session;
 
 
 /**Classe principal do projeto, etapa de identificação do usuário por login e senha
@@ -57,12 +55,10 @@ public class Index extends ABaseNamed {
 
             if (usuario != null && usuario.getLogin() != null && usuario.getSenha() != null) {
                 List<String> paginasPermitidas = usuario.paginasAcesso();
-
-                FacesContext facesContext = FacesContext.getCurrentInstance();
-                HttpServletRequest request = (HttpServletRequest) facesContext.getCurrentInstance().getExternalContext().getRequest();
-                HttpSession session = request.getSession();
-                session.setAttribute("usuario", usuario);
-                session.setAttribute("paginasAcesso", paginasPermitidas);
+                 
+                Session.setAttribute("usuario", usuario);
+                Session.setAttribute("paginasAcesso", paginasPermitidas);
+                
                 Response.redirect("/web/faces/views/menu/Index.xhtml");
             } else {
                 copia = copia.validarLogin();

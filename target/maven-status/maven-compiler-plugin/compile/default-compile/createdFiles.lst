@@ -1,5 +1,6 @@
 org\aadsp\controller\named\adm\PessoalConsultar.class
 org\aadsp\controller\named\adm\FuncaoCadastrar.class
+org\aadsp\utils\Session.class
 org\aadsp\interfaces\IUsuario.class
 org\aadsp\controller\named\adm\PessoalCadastrar.class
 org\aadsp\controller\named\adm\AcessoConsultar.class

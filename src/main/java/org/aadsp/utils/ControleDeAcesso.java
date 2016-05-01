@@ -69,6 +69,10 @@ public class ControleDeAcesso implements Filter {
                         if(req.getRequestURI().contains(pag+".xhtml"))
                             chain.doFilter(request, response);    
                     }
+                    
+                }
+                else
+                {
                     redireciona("/web/faces/acessoNegado.xhtml", response);
                 }
             }
