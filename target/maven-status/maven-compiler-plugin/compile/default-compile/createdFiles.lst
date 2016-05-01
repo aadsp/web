@@ -31,6 +31,7 @@ org\aadsp\annotations\Acesso.class
 org\aadsp\annotations\Funcao.class
 org\aadsp\utils\Response.class
 org\aadsp\annotations\Usuario.class
+org\aadsp\controller\named\adm\FuncaoEditar.class
 org\aadsp\controller\named\adm\HeaderTemplate.class
 org\aadsp\utils\Email$1.class
 org\aadsp\utils\FactoryHibernate.class

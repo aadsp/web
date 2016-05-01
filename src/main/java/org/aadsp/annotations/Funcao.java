@@ -61,4 +61,16 @@ public class Funcao implements Serializable
         FuncaoModel model = new FuncaoModel();
         return model.consultarPorID(this);
     }
+    
+    public void editar()
+    {
+        FuncaoModel model = new FuncaoModel();
+        model.atualizar(this);
+    }
+    
+    public void excluir()
+    {
+        FuncaoModel model = new FuncaoModel();
+        model.excluir(this);
+    }
 }

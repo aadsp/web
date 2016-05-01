@@ -27,6 +27,7 @@ public class FuncaoCadastrar extends ABaseNamed
       {
         funcao.cadastrar();
         Mensageiro.mensagemInfo("Função cadastrada com sucesso");
+        funcao = new Funcao();
       }catch(Exception e)
       {
           Mensageiro.mensagemError("Não foi possível cadastrar a função!");

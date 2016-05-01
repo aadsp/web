@@ -65,10 +65,14 @@ public class ControleDeAcesso implements Filter {
                 paginaPermitida = (List<String>) session.getAttribute("paginasAcesso");
                 if(session.getAttribute("usuario") != null)
                 {
+                    int count = paginaPermitida.size();
                     for(String pag: paginaPermitida){
                         if(req.getRequestURI().contains(pag+".xhtml"))
-                            chain.doFilter(request, response);    
+                            chain.doFilter(request, response);
+                        count --;
                     }
+                    if(count == 0)
+                         redireciona("/web/faces/acessoNegado.xhtml", response);
                     
                 }
                 else
