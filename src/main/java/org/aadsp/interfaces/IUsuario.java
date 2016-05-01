@@ -17,7 +17,7 @@ public interface IUsuario
    public Usuario autenticar();
    public Usuario validarLogin();
    public List<String> paginasAcesso()throws Exception;
-   public String consultarFunacao() throws  Exception;
+   public String consultarFuncao() throws  Exception;
    public List<Usuario> listar()  throws  Exception;
    
 }

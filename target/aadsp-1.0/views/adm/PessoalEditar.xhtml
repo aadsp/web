@@ -22,9 +22,9 @@
                     <div>
                         <h3>PESSOAL</h3>
                          <div class="right">
-                             <a class="btn btn" href="rh/consultarPessoal.xhtml">VOLTAR</a>
+                             <a class="btn btn" href="PessoalConsultar.xhtml">VOLTAR</a>
                         </div>
-                        <p><strong>EDITAR</strong></p>
+                        <p><strong>DETALHAMENTO</strong></p>
                     <div>
                 </div>
                 <div class="space-40"></div>
@@ -33,67 +33,38 @@
                   <p:tab title="Dados Gerais">
                    <h:panelGrid columns="2" cellpadding="5">
                         <p:outputLabel for="nome" value="Nome (completo):" />
-                        <p:inputText id="nome" maxlength="200" value="#{pessoalEditar.usuario.nome}"/>
+                        <p:inputText id="nome" maxlength="80" value="#{pessoalEditar.usuario.nome}"/>
                        
                         <p:outputLabel for="data" value="Data de Nascimento" />
                         <p:calendar id="data" value="#{pessoalEditar.data}" pattern="dd/MM/yyyy" mask="true" />
                         
-                    </h:panelGrid>
-                  </p:tab>
-                  <p:tab title="Endereço">
-                   <h:panelGrid columns="2" cellpadding="5">
-                        <p:outputLabel for="cep" value="Informe o CEP:" />
-                        <p:inputMask id="cep" maxlength="20" mask="9?999999999999999" value="#{pessoalEditar.endereco.logradouro.cep}"/>
-                        <p:commandButton class="btn" style="padding:0" update="enderecoPanel" value="consultar" actionListener="#{pessoalEditar.consultarCep()}"/>
-                    </h:panelGrid>
-                      <p:outputPanel id="enderecoPanel">
-                          <h:panelGrid columns="2" cellpadding="5">
-                            <p:outputLabel class="label label-info"  value="CEP:" />
-                            <p:outputLabel value="#{pessoalEditar.endereco.logradouro.cep}" />
-                            <p:outputLabel class="label label-info" value="Logradouro:" />
-                            <p:outputLabel value="#{pessoalEditar.endereco.logradouro.nome}" />
-                            <p:outputLabel class="label label-info" value="Bairro:" />
-                            <p:outputLabel value="#{pessoalEditar.endereco.bairro.nome}" />
-                            <p:outputLabel class="label label-info" value="Cidade" />
-                            <p:outputLabel value="#{pessoalEditar.endereco.cidade.nome}" />
-                            <p:outputLabel class="label label-info" value="Estado" />
-                            <p:outputLabel value="#{pessoalEditar.endereco.estado.nome}" />
-                            <p:outputLabel class="label label-info" value="UF" />
-                            <p:outputLabel value="#{pessoalEditar.endereco.estado.uf}" />
-                          </h:panelGrid>
-                      </p:outputPanel>
-                  </p:tab>  
-                  <p:tab title="Função">
-                    <h:panelGrid columns="2" cellpadding="5">  
-                        <p:outputLabel class="label label-success"  value="Função Atual: " />
-                        <p:outputLabel  value="#{pessoalEditar.funcaoAtual.descricao}" />
-                        <p:outputLabel class="label label-warning" for="funcao" value="Nova Função: " />
-                        <p:selectOneMenu id="funcao"  value="#{pessoalEditar.funcaoSelecionada}" style="width:150px">
-                            <f:selectItem itemLabel="Selecionar Função" itemValue="" noSelectionOption="true" />
-                            <f:selectItems value="#{pessoalEditar.funcoes}" />
-                        </p:selectOneMenu>
-                    </h:panelGrid>      
-                  </p:tab>
-                  <p:tab title="Redes Sociais">
-                  <h:panelGrid columns="2" cellpadding="5">  
-                        <p:outputLabel for="email" value="E-mail):" />
-                        <p:inputText id="email" maxlength="200" value="#{pessoalEditar.usuario.email}"/>
-                  </h:panelGrid>      
-                  </p:tab>
-                  <p:tab title="Documentos Pessoais">
-                    <h:panelGrid columns="2" cellpadding="5">  
                         <p:outputLabel for="rg" value="RG:" />
-                        <p:inputMask id="rg"  maxlength="20" mask="9?999999999999999" value="#{pessoalEditar.usuario.rg}"/>
+                        <p:inputText id="rg" maxlength="30" value="#{pessoalEditar.usuario.rg}"/>
                         
                         <p:outputLabel for="cpf" value="CPF:" />
-                        <p:inputMask id="cpf"  maxlength="20" mask="9?999999999999999" value="#{pessoalEditar.usuario.cpf}"/>
+                        <p:inputText id="cpf" maxlength="30" value="#{pessoalEditar.usuario.cpf}"/>
                         
+                        <p:outputLabel for="email" value="E-mail:" />
+                        <p:inputText id="email" maxlength="100" value="#{pessoalEditar.usuario.email}"/>
+                        
+                        <p:outputLabel for="login" value="Login:" />
+                        <p:inputText id="login" maxlength="30" value="#{pessoalEditar.usuario.login}"/>
+                        
+                        <p:outputLabel value="Senha:" />
+                        <p:commandButton class="btn btn-info" value="ALTERAR" actionListener="#{pessoalEditar.alterarSenha()}"/>
+                        
+                        <p:outputLabel for="funcao" value="Função: " />
+                        <p:selectOneMenu id="funcao"  value="#{pessoalEditar.funcaoSelecionada}" style="width:150px">
+                            <f:selectItem itemLabel="#{pessoalEditar.usuario.consultarFuncao()}" itemValue="#{pessoalEditar.usuario.id_funcao}" noSelectionOption="true" />
+                            <f:selectItems value="#{pessoalEditar.funcoes}" />
+                        </p:selectOneMenu>
                     </h:panelGrid>
-                   </p:tab>   
+                  </p:tab>
                 </p:tabView>
                 </div>
                 <div class="space-20"></div>
                 <p:commandButton class="btn btn-success" value="SALVAR" update="growl" actionListener="#{pessoalEditar.editar()}"/>
+                <p:commandButton class="btn btn-danger" value="EXCLUIR" update="growl" actionListener="#{pessoalEditar.excluir()}"/>
                     </div>
                 </div>
                 <div class="space-50"></div>

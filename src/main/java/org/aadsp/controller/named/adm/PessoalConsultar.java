@@ -7,7 +7,9 @@ import javax.inject.Named;
 import org.aadsp.annotations.Usuario;
 import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.interfaces.IUsuario;
+import org.aadsp.utils.Criptografia;
 import org.aadsp.utils.Mensageiro;
+import org.aadsp.utils.Response;
 
 /**
  * Classe que representa o objeto de tela Pessoal Consulta
@@ -36,7 +38,13 @@ public class PessoalConsultar extends ABaseNamed
    
    public void editar(Usuario usuario)
    {
-   
+       try
+       {
+        Response.redirect("/web/faces/views/adm/PessoalEditar.xhtml?Pessoal="+ Criptografia.codificarParaBase64(usuario.getID().toString()));
+       }catch(Exception e)
+       {
+         Mensageiro.mensagemError("Erro ao selecionar usuário!!");
+       }
    }
    
    private IUsuario usuario;

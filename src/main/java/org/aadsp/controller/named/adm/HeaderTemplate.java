@@ -39,7 +39,7 @@ public class HeaderTemplate extends ABaseNamed
      */
     public String getUsuarioFuncao(){
         try{
-        return usuario.consultarFunacao();
+        return usuario.consultarFuncao();
         }catch(Exception e){
             Mensageiro.mensagemError("Não foi possível localizar os dados!");
         }

@@ -154,7 +154,7 @@ public class Usuario implements Serializable,IUsuario
     }
 
     @Override
-    public String consultarFunacao() throws  Exception
+    public String consultarFuncao() throws  Exception
     {
         FuncaoModel model = new FuncaoModel();
         Funcao obj = new Funcao();
@@ -175,4 +175,22 @@ public class Usuario implements Serializable,IUsuario
         UsuarioModel model = new UsuarioModel();
         model.salvar(this);
     }
+    
+    public void editar(){
+        UsuarioModel model = new UsuarioModel();
+        model.atualizar(this);
+    }
+    
+    public void excluir()
+    {
+        UsuarioModel model = new UsuarioModel();
+        model.excluir(this);
+    }
+    
+    public Usuario consultar() throws Exception
+    {
+        UsuarioModel model = new UsuarioModel();
+        return model.consultarPorID(this);
+    }
+    
 }

@@ -46,9 +46,8 @@ public class UsuarioModel implements ICRUD
     public Usuario consultarPorID(Usuario usuario)throws Exception
     {
         try{   
-            Query consulta = sessao.createQuery("from Usuario where ID = :login and  senha = :senha");
-            consulta.setInteger("login", usuario.getID());
-            consulta.setInteger("senha", usuario.getID());
+            Query consulta = sessao.createQuery("from Usuario where ID = :id");
+            consulta.setInteger("id", usuario.getID());
             return (Usuario) consulta.uniqueResult();
         }catch(Exception e){
             throw e;
