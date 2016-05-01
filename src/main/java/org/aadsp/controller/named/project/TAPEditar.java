@@ -2,7 +2,6 @@
 package org.aadsp.controller.named.project;
 
 import java.util.Date;
-import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.mail.internet.ParseException;

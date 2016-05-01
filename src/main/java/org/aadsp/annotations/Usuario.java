@@ -2,9 +2,13 @@
 package org.aadsp.annotations;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +18,8 @@ import org.aadsp.annotations.model.AcessoModel;
 import org.aadsp.annotations.model.FuncaoModel;
 import org.aadsp.annotations.model.UsuarioModel;
 import org.aadsp.interfaces.IUsuario;
+import org.aadsp.utils.Criptografia;
+import org.aadsp.utils.Mensageiro;
 
 @Entity
 @Table(name="ACESSO.ACESSO_AADSP_USUARIO")
@@ -103,8 +109,15 @@ public class Usuario implements Serializable,IUsuario
     }
 
     @Override
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setSenha(String senha) 
+    {
+        try {
+            this.senha = Criptografia.codificarParaSSH(senha);
+        } catch (NoSuchAlgorithmException ex) {
+            Mensageiro.mensagemError("Não foi encontrado o algoritmo de criptografia!!");
+        } catch (UnsupportedEncodingException ex) {
+            Mensageiro.mensagemError("Não foi suportada a codificação de criptografia!!");
+        }
     }
 
     @Override

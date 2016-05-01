@@ -4,12 +4,10 @@ package org.aadsp.controller.named.adm;
 import java.util.List;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import org.aadsp.annotations.Pagina;
-import org.aadsp.annotations.Usuario;
 import org.aadsp.annotations.association.AcessoFuncao;
 import org.aadsp.interfaces.ABaseNamed;
-import org.aadsp.interfaces.IUsuario;
 import org.aadsp.utils.Mensageiro;
+import org.aadsp.utils.Response;
 
 /**
  * Classe que representa o objeto de tela Acesso Consulta
@@ -38,7 +36,13 @@ public class AcessoConsultar extends ABaseNamed
    
    public void editar(AcessoFuncao acessoFuncao)
    {
-   
+       try
+       {
+        Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+acessoFuncao.getId());
+       }catch(Exception e)
+       {
+         Mensageiro.mensagemError("Erro ao selecionar TAP!!");
+       }
    }
    
    private AcessoFuncao acessoFuncao;
