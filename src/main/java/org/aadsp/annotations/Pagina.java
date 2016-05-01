@@ -56,4 +56,14 @@ public class Pagina implements Serializable
         PaginaModel model = new PaginaModel();
         return model.consultarPorID(this);
     }
+    
+    public void excluir(){
+        PaginaModel model = new PaginaModel();
+        model.excluir(this);
+    }
+    
+    public void editar(){
+        PaginaModel model = new PaginaModel();
+        model.atualizar(this);
+    }
 }

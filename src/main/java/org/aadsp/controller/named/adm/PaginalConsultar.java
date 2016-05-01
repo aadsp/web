@@ -8,7 +8,9 @@ import org.aadsp.annotations.Pagina;
 import org.aadsp.annotations.Usuario;
 import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.interfaces.IUsuario;
+import org.aadsp.utils.Criptografia;
 import org.aadsp.utils.Mensageiro;
+import org.aadsp.utils.Response;
 
 /**
  * Classe que representa o objeto de tela Pessoal Consulta
@@ -37,7 +39,13 @@ public class PaginalConsultar extends ABaseNamed
    
    public void editar(Pagina pagina)
    {
-   
+       try
+       {
+        Response.redirect("/web/faces/views/adm/PaginaEditar.xhtml?Pagina="+ Criptografia.codificarParaBase64(pagina.getID().toString()));
+       }catch(Exception e)
+       {
+         Mensageiro.mensagemError("Erro ao selecionar Página!!");
+       }
    }
    
    private Pagina pagina;
