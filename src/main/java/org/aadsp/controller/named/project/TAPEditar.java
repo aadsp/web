@@ -7,6 +7,7 @@ import javax.inject.Named;
 import javax.mail.internet.ParseException;
 import org.aadsp.annotations.TAP;
 import org.aadsp.interfaces.ABaseNamed;
+import org.aadsp.utils.Criptografia;
 import org.aadsp.utils.Mensageiro;
 import org.aadsp.utils.Response;
 
@@ -30,7 +31,7 @@ public class TAPEditar extends ABaseNamed
     private void carregarDadosIniciais()
     {
        try{
-        int TAPID = Integer.parseInt(Response.getParametroURL("TAP"));
+        int TAPID = Integer.parseInt(Criptografia.decodificarBase64(Response.getParametroURL("TAP")));
         tap.setID(TAPID);
         tap = tap.consultar();
         dataFim = tap.getDataFim();

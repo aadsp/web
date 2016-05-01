@@ -4,6 +4,8 @@ package org.aadsp.utils;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import org.apache.commons.codec.binary.Base64;
+
 
 /**
  *
@@ -24,5 +26,15 @@ public class Criptografia
         }
         
         return hexString.toString();
+    }
+    
+    public static String codificarParaBase64(String texto)
+    {
+        return new Base64().encodeToString(texto.getBytes());
+    }
+    
+    public static String decodificarBase64(String texto)
+    {
+        return new String(new Base64().decode(texto));
     }
 }

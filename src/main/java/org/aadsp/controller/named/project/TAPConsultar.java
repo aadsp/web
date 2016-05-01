@@ -6,6 +6,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import org.aadsp.annotations.TAP;
 import org.aadsp.interfaces.ABaseNamed;
+import org.aadsp.utils.Criptografia;
 import org.aadsp.utils.Mensageiro;
 import org.aadsp.utils.Response;
 
@@ -38,7 +39,7 @@ public class TAPConsultar extends ABaseNamed
    {
        try
        {
-        Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+tap.getID());
+        Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.decodificarBase64(tap.getID().toString()));
        }catch(Exception e)
        {
          Mensageiro.mensagemError("Erro ao selecionar TAP!!");
