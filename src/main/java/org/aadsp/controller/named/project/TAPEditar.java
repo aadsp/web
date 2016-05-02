@@ -7,11 +7,11 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.mail.internet.ParseException;
-import javax.xml.ws.RequestWrapper;
+import org.aadsp.annotations.Equipe;
+import org.aadsp.annotations.Funcao;
 import org.aadsp.annotations.Responsavel;
 import org.aadsp.annotations.TAP;
 import org.aadsp.annotations.TAPEscopo;
@@ -78,6 +78,48 @@ public class TAPEditar extends ABaseNamed
     
     }
     
+    public List<Funcao> listarFuncoes() throws Exception
+    {
+        Equipe equipe = new Equipe();
+        Funcao funcao = new Funcao();
+        equipe.setID_tap(tap.getID());
+        List<Equipe> listaEquipe = equipe.listar();
+        List<Funcao> listaFuncoe = funcao.listar();
+        List<Funcao> listaFuncoesDisponiveis = new ArrayList<>();
+        
+        List<Integer> listaFuncoes = new ArrayList<>();
+        
+        for(Equipe ObjEquipe: listaEquipe){
+            listaFuncoes.add(ObjEquipe.getID_funcao());
+        }
+        for(Funcao ObjFuncao: listaFuncoe){
+           if(!listaFuncoes.contains(ObjFuncao.getID()))
+               listaFuncoesDisponiveis.add(ObjFuncao);
+        }
+        return listaFuncoesDisponiveis;
+    }
+    
+    public List<Equipe> listarEquipe() throws Exception
+    {
+        Equipe equipe = new Equipe();
+        equipe.setID_tap(tap.getID());
+        return equipe.listarPorTAP();
+    }
+    
+    public void removerEquipe(Equipe equipe) throws IOException
+    {
+        equipe.excluir();
+        Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
+    }
+    
+    public void addFuncoes(Funcao funcao) throws IOException
+    {
+      Equipe equipe = new Equipe();
+      equipe.setID_funcao(funcao.getID());
+      equipe.setID_tap(tap.getID());
+      equipe.cadastrar();
+      Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
+    }
    
     public void editar()
     {

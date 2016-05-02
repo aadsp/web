@@ -1,3 +1,4 @@
+org\aadsp\annotations\Equipe.class
 org\aadsp\controller\named\adm\PessoalConsultar.class
 org\aadsp\controller\named\adm\FuncaoCadastrar.class
 org\aadsp\utils\Session.class
@@ -19,6 +20,7 @@ org\aadsp\utils\Email.class
 org\aadsp\controller\named\Index.class
 org\aadsp\annotations\TAP.class
 org\aadsp\annotations\association\AcessoFuncao.class
+org\aadsp\annotations\model\EquipeModel.class
 org\aadsp\interfaces\ICRUD.class
 org\aadsp\controller\named\adm\AcessoCadastrar.class
 org\aadsp\controller\named\adm\PessoalEditar.class

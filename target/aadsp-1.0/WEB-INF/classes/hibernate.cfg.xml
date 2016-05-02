@@ -31,5 +31,6 @@
     <mapping class="org.aadsp.annotations.TAPEscopoArea" />
     <mapping class="org.aadsp.annotations.TAPEscopoTipo" />
     <mapping class="org.aadsp.annotations.TAPEscopo" />
+    <mapping class="org.aadsp.annotations.Equipe" />
   </session-factory>
 </hibernate-configuration>

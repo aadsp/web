@@ -43,6 +43,18 @@
     margin-top: 50px;
 }
 
+.space-100 {
+    margin-top: 100px;
+}
+
+.space-150 {
+    margin-top: 150px;
+}
+
+.space-200 {
+    margin-top: 200px;
+}
+
 .width-15 {
     width: 15%;
 }

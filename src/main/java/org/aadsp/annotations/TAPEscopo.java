@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import org.aadsp.annotations.model.TAPEscopoAreaModel;
 import org.aadsp.annotations.model.TAPEscopoModel;
 
 @Entity
