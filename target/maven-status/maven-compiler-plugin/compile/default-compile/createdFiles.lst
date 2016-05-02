@@ -27,6 +27,7 @@ org\aadsp\controller\named\adm\AcessoCadastrar.class
 org\aadsp\controller\named\adm\PaginalConsultar.class
 org\aadsp\controller\named\adm\PessoalEditar.class
 org\aadsp\controller\named\adm\FuncaoConsultar.class
+org\aadsp\controller\named\adm\AlterarSenha.class
 org\aadsp\utils\ControleDeAcesso.class
 org\aadsp\utils\Criptografia.class
 org\aadsp\annotations\Acesso.class

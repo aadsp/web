@@ -48,27 +48,33 @@
                                                 paginator="true" rows="10">
                                     <p:column width="10">
                                            <f:facet name="header">
-                                               <h:outputText value="#"/>
+                                               <h:outputText value="ID"/>
                                            </f:facet>
                                            <h:outputText value="#{tap.ID}" />
                                        </p:column>
-                                    <p:column width="400">
+                                    <p:column width="360">
                                            <f:facet name="header">
-                                               <h:outputText value="Nome Projeto" />
+                                               <h:outputText value="nome" />
                                            </f:facet>
                                         <h:outputText value="#{tap.nome}" />
                                        </p:column>
 
                                     <p:column width="100">
                                            <f:facet name="header">
-                                               <h:outputText value="Data Criação" />
+                                               <h:outputText value="data criação" />
                                            </f:facet>
                                         <h:outputText value="#{tap.dataCriacao}" />
                                        </p:column>
-                                    <p:column style="width:5px;text-align: center" >   
+                                    <p:column style="width:10px;text-align: center" > 
+                                            <f:facet name="header">
+                                               <h:outputText value="pdf" />
+                                            </f:facet>
                                             <p:commandButton icon="ui-icon-print" />
                                     </p:column>
-                                        <p:column style="width:5px;text-align: center" >
+                                        <p:column style="width:10px;text-align: center" >
+                                            <f:facet name="header">
+                                               <h:outputText value="detalhar" />
+                                           </f:facet>
                                             <p:commandButton icon="ui-icon-search" action="#{TAPConsultar.editar(tap)}" />
                                         </p:column>
                                     

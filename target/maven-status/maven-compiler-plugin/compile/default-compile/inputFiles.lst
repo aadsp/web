@@ -25,6 +25,7 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\TAPCadastrar
 G:\PROJETO TCC\web\src\main\java\org\aadsp\interfaces\IUsuario.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\utils\Response.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\PessoalCadastrar.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\AlterarSenha.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Usuario.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\Index.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\FuncaoModel.java
