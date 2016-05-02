@@ -4,7 +4,9 @@ package org.aadsp.controller.named.project;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -12,6 +14,9 @@ import javax.mail.internet.ParseException;
 import javax.xml.ws.RequestWrapper;
 import org.aadsp.annotations.Responsavel;
 import org.aadsp.annotations.TAP;
+import org.aadsp.annotations.TAPEscopo;
+import org.aadsp.annotations.TAPEscopoArea;
+import org.aadsp.annotations.TAPEscopoTipo;
 import org.aadsp.annotations.Usuario;
 import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.utils.Criptografia;
@@ -32,7 +37,10 @@ public class TAPEditar extends ABaseNamed
     {
         dataInicio = new Date(new Date().getTime());
         dataFim = new Date(new Date().getTime());
+        tapEscopo = new TAPEscopo();
         this.tap = new TAP();
+        tapAreas = new HashMap<>();
+        tapTipos = new HashMap<>();
         carregarDadosIniciais();
     }
     
@@ -50,9 +58,13 @@ public class TAPEditar extends ABaseNamed
        }
     }
     
-    public void addEscopo()
+    public void addEscopo() throws IOException
     {
-    
+        tapEscopo.setID_escopoArea(tapAreaSelecionado);
+        tapEscopo.setID_escopoTipo(tapTipoSelecionado);
+        tapEscopo.setID_tap(tap.getID());
+        tapEscopo.cadastrar();
+        Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
     }
     
     public void addPatrocinador()
@@ -184,7 +196,75 @@ public class TAPEditar extends ABaseNamed
        this.tap.setDataFim(dataSql);
     }
     
+     public Map<String,Integer> getTAPAreas(){
+       try{
+          TAPEscopoArea area = new TAPEscopoArea();
+          List<TAPEscopoArea> lista = area.listar();
+       for(TAPEscopoArea obj: lista){
+           tapAreas.put(obj.getDescricao(),obj.getID());
+       }
+       return tapAreas;
+       }catch(Exception e){
+           Mensageiro.mensagemError("Não foi possível consultar as funções no banco de dados!");
+       }
+        return null;
+    }
+    
+    public Map<String,Integer> getTAPTipos(){
+       try{
+           TAPEscopoTipo tipo = new TAPEscopoTipo();
+            List<TAPEscopoTipo> lista = tipo.listar();
+       for(TAPEscopoTipo obj: lista){
+           tapTipos.put(obj.getDescricao(),obj.getID());
+       }
+       return tapTipos;
+       }catch(Exception e){
+           Mensageiro.mensagemError("Não foi possível consultar as páginas no banco de dados!");
+       }
+        return null;
+    }
+
+    public TAPEscopo getTapEscopo() {
+        return tapEscopo;
+    }
+
+    public void setTapEscopo(TAPEscopo tapEscopo) {
+        this.tapEscopo = tapEscopo;
+    }
+
+    public int getTapAreaSelecionado() {
+        return tapAreaSelecionado;
+    }
+
+    public void setTapAreaSelecionado(int tapAreaSelecionado) {
+        this.tapAreaSelecionado = tapAreaSelecionado;
+    }
+
+    public int getTapTipoSelecionado() {
+        return tapTipoSelecionado;
+    }
+
+    public void setTapTipoSelecionado(int tapTipoSelecionado) {
+        this.tapTipoSelecionado = tapTipoSelecionado;
+    }
+    
+    public void removerEscopo(TAPEscopo escopo) throws IOException
+    {
+        escopo.excluir();
+        Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
+    }
+    
+    public List<TAPEscopo> listarEscopo() throws Exception
+    {
+        return tapEscopo.listar();
+    }
+        
     private TAP tap;
     private Date dataInicio;
     private Date dataFim;
+    private int tapAreaSelecionado;
+    private int tapTipoSelecionado;
+    private Map<String,Integer> tapAreas;
+    private Map<String,Integer> tapTipos;
+    private TAPEscopo tapEscopo;
 }

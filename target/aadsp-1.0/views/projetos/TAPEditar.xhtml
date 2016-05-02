@@ -32,9 +32,9 @@
                     <p:toolbar>
                         <f:facet name="right">
                             <p:menuButton value="ADICIONAR INFORMAÇÕES">
-                                <p:menuitem value="Responsável" actionListener="#{TAPEditar.listarUsuarios()}" onclick="PF('responsavelProjeto').show();" icon="ui-icon-document" />
+                                <p:menuitem value="Responsável" onclick="PF('responsavelProjeto').show();" icon="ui-icon-document" />
                                 <p:menuitem value="Stakeholders" actionListener="#{TAPEditar.addStakeholder()}" icon="ui-icon-document" />
-                                <p:menuitem value="Escopo" actionListener="#{TAPEditar.addEscopo()}" ajax="false" icon="ui-icon-document" />
+                                <p:menuitem value="Escopo" onclick="PF('escopoProjeto').show();" icon="ui-icon-document" />
                                 <p:menuitem value="Patrocinador" actionListener="#{TAPEditar.addPatrocinador()}" icon="ui-icon-document" />
                             </p:menuButton>
                         </f:facet>
@@ -88,7 +88,7 @@
                     </h:panelGrid>
                     </p:tab>  
                     
-                    <p:tab title="Restrições">
+                  <p:tab title="Restrições">
                       <h:panelGrid columns="2" cellpadding="5">
                         <p:outputLabel for="restricoes" value="Restrições:" />
                         <p:inputTextarea id="restricoes" rows="1" cols="30" value="#{TAPEditar.tap.restricoes}" counter="displayrestricoes" maxlength="250" counterTemplate="{0} caracteres restantes." autoResize="false"/>                      
@@ -103,7 +103,7 @@
 
                       </h:panelGrid>
                   </p:tab>
-                  <p:tab title="Responsável pelo Projeto">
+                  <p:tab title="Responsável">
                       <h:panelGrid columns="2" cellpadding="5">
                           <p:dataTable id="tblusuarios" style="text-align:center" var="usuarios" value="#{TAPEditar.listarResponsaveis()}"
                                     paginator="true" rows="5">
@@ -126,15 +126,55 @@
                        </p:dataTable>
 
                       </h:panelGrid>
+                  </p:tab>
+                  
+                  <p:tab title="Escopo">
+                      <h:panelGrid columns="2" cellpadding="5">
+                          <p:dataTable id="tblescopo" style="text-align:center" var="escopo" value="#{TAPEditar.listarEscopo()}"
+                                    paginator="true" rows="5">
+                       <p:column width="10">
+                           <f:facet name="header">
+                               <h:outputText value="ID"/>
+                           </f:facet>
+                           <h:outputText value="#{escopo.ID}" />
+                    </p:column>
+                    <p:column width="90">
+                           <f:facet name="header">
+                               <h:outputText value="descricao"/>
+                           </f:facet>
+                        <h:outputText value="#{escopo.descricao}" />
+                    </p:column>
+                    <p:column width="30">
+                           <f:facet name="header">
+                               <h:outputText value="área"/>
+                           </f:facet>
+                        <h:outputText value="#{escopo.descricaoArea()}" />
+                    </p:column>
+                    <p:column width="30">
+                           <f:facet name="header">
+                               <h:outputText value="tipo"/>
+                           </f:facet>
+                        <h:outputText value="#{escopo.descricaoTipo()}" />
+                    </p:column>          
+                              
+                    <p:column width="15">
+                        <p:commandButton icon="ui-icon-close" value="remover" actionListener="#{TAPEditar.removerEscopo(escopo)}"/>
+                    </p:column> 
+                       
+                       </p:dataTable>
+
+                      </h:panelGrid>
                   </p:tab>  
+                    
                 </p:tabView>
                 </div>
-                <div class="space-20"></div>
+                <div class="space-50"></div>
                 <p:commandButton class="btn btn-success" value="SALVAR" update="growl" actionListener="#{TAPEditar.editar()}"/>
                 <p:commandButton class="btn btn-danger" value="EXCLUIR" update="growl" actionListener="#{TAPEditar.excluir()}"/>
                     </div>
                 </div>
                 <div class="space-50"></div>
+                
                 <!--Modal região -->
                 <p:dialog header="Adicionar responsável ao projeto" widgetVar="responsavelProjeto" modal="true" width="600" height="300">
                     <p:dataTable id="tblusuarios" style="text-align:center" var="usuarios" value="#{TAPEditar.listarUsuarios()}"
@@ -161,7 +201,28 @@
                         <p:commandButton icon="ui-icon-disk" value="add" actionListener="#{TAPEditar.addResponsavel(usuarios)}"/>
                     </p:column>    
                     </p:dataTable>
-                    
+                </p:dialog>
+                
+                <p:dialog header="Adicionar escopo ao projeto" widgetVar="escopoProjeto" modal="true" width="500" height="300">
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <p:outputLabel for="descricaoEscopo" value="Descrição do Escopo:" />
+                        <p:inputTextarea id="descricaoEscopo" maxlength="100" value="#{TAPEditar.tapEscopo.descricao}" autoResize="false"/>
+                    </h:panelGrid>
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <p:outputLabel for="escopoArea" value="Área do Escopo: " />
+                        <p:selectOneMenu id="escopoArea"  value="#{TAPEditar.tapAreaSelecionado}" style="width:230px">
+                            <f:selectItem itemLabel="Selecionar Área" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{TAPEditar.TAPAreas}" />
+                        </p:selectOneMenu>
+                    </h:panelGrid>
+                      <h:panelGrid columns="2" cellpadding="5">
+                        <p:outputLabel for="escopoTipo" value="Tipo do Escopo: " />
+                        <p:selectOneMenu id="escopoTipo"  value="#{TAPEditar.tapTipoSelecionado}" style="width:230px">
+                            <f:selectItem itemLabel="Selecionar Tipo" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{TAPEditar.TAPTipos}" />
+                        </p:selectOneMenu>
+                    </h:panelGrid>
+                    <p:commandButton class="btn" value="ADICIONAR" actionListener="#{TAPEditar.addEscopo()}"/>
                 </p:dialog>
             </h:form>
             </ui:define>

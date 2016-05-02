@@ -28,5 +28,8 @@
     <mapping class="org.aadsp.annotations.Pagina" />
     <mapping class="org.aadsp.annotations.TAP" />
     <mapping class="org.aadsp.annotations.Responsavel" />
+    <mapping class="org.aadsp.annotations.TAPEscopoArea" />
+    <mapping class="org.aadsp.annotations.TAPEscopoTipo" />
+    <mapping class="org.aadsp.annotations.TAPEscopo" />
   </session-factory>
 </hibernate-configuration>
