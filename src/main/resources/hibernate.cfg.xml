@@ -27,5 +27,6 @@
     <mapping class="org.aadsp.annotations.Acesso" />
     <mapping class="org.aadsp.annotations.Pagina" />
     <mapping class="org.aadsp.annotations.TAP" />
+    <mapping class="org.aadsp.annotations.Responsavel" />
   </session-factory>
 </hibernate-configuration>

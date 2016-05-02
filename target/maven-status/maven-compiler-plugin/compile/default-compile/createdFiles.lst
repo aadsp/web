@@ -9,6 +9,7 @@ org\aadsp\controller\named\project\TAPConsultar.class
 org\aadsp\annotations\model\FuncaoModel.class
 org\aadsp\controller\named\adm\AcessoEditar.class
 org\aadsp\controller\named\adm\PaginaCadastrar.class
+org\aadsp\annotations\Responsavel.class
 org\aadsp\annotations\Pagina.class
 org\aadsp\controller\named\contributors\UsuariosVisualizar.class
 org\aadsp\controller\named\project\TAPEditar.class
@@ -16,6 +17,7 @@ org\aadsp\annotations\model\TAPModel.class
 org\aadsp\annotations\model\PaginaModel.class
 org\aadsp\controller\named\project\TAPCadastrar.class
 org\aadsp\interfaces\ABaseNamed.class
+org\aadsp\annotations\model\ResponsavelModel.class
 org\aadsp\utils\Email.class
 org\aadsp\controller\named\Index.class
 org\aadsp\annotations\TAP.class
