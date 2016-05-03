@@ -145,7 +145,7 @@ public class TAPEditar extends ABaseNamed
       try
       {
         tap.setDataCriacao(new java.sql.Date(new Date().getTime()));
-        tap.cadastrar();
+        tap.atualizar();
         Mensageiro.mensagemInfo("O TAP foi atualizado com sucesso!");
       }catch(Exception e)
       {

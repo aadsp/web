@@ -35,10 +35,15 @@
                                 <p:menuitem value="Responsável" onclick="PF('responsavelProjeto').show();" icon="ui-icon-document" />
                                 <p:menuitem value="Stakeholders" onclick="PF('stakeholdersProjeto').show();" icon="ui-icon-document" />
                                 <p:menuitem value="Equipe" onclick="PF('equipeProjeto').show();" icon="ui-icon-document" />
-                                <p:menuitem value="Escopo" onclick="PF('escopoProjeto').show();" icon="ui-icon-document" />
-                                <p:menuitem value="Patrocinador" actionListener="#{TAPEditar.addPatrocinador()}" icon="ui-icon-document" />
+                                <p:menuitem value="Escopo" onclick="PF('escopoProjeto').show();" icon="ui-icon-document" />     
                             </p:menuButton>
                         </f:facet>
+                        <f:facet name="right">
+                        <p:menuButton value="PATROCINADOR">
+                            <p:menuitem value="Empresa"  icon="ui-icon-document" />
+                            <p:menuitem value="Stakeholders" icon="ui-icon-document" />
+                        </p:menuButton>
+                        </f:facet>    
                     </p:toolbar>    
                 <p:tabView orientation="left">
                   <p:tab title="Pré-Projeto">
