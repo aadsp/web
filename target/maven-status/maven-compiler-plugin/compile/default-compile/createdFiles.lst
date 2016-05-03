@@ -36,6 +36,7 @@ org\aadsp\utils\Response.class
 org\aadsp\controller\named\adm\PaginaEditar.class
 org\aadsp\controller\named\project\EmpresaEditar.class
 org\aadsp\interfaces\IUsuario.class
+org\aadsp\annotations\model\StakeholderTAPModel.class
 org\aadsp\controller\named\adm\PessoalCadastrar.class
 org\aadsp\annotations\model\AcessoModel.class
 org\aadsp\controller\named\project\TAPConsultar.class
@@ -47,6 +48,7 @@ org\aadsp\controller\named\project\EmpresaCadastrar.class
 org\aadsp\annotations\Responsavel.class
 org\aadsp\annotations\model\TAPEscopoTipoModel.class
 org\aadsp\annotations\model\ResponsavelModel.class
+org\aadsp\annotations\StakeholderTAP.class
 org\aadsp\annotations\model\UsuarioModel.class
 org\aadsp\utils\Mensageiro.class
 org\aadsp\controller\named\adm\PaginalConsultar.class

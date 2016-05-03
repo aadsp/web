@@ -3,7 +3,6 @@ package org.aadsp.annotations.model;
 
 import java.util.List;
 import org.aadsp.annotations.Pagina;
-import org.aadsp.annotations.Usuario;
 import org.aadsp.interfaces.ICRUD;
 import org.aadsp.utils.FactoryHibernate;
 import org.hibernate.Query;

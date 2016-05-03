@@ -15,6 +15,7 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\AcessoConsultar.
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\TAP.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\interfaces\ICRUD.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\StakeholderModel.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\StakeholderTAPModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Responsavel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\TAPCadastrar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\interfaces\IUsuario.java
@@ -46,6 +47,7 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\PaginaCadastrar.
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\EquipeModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\PaginalConsultar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Empresa.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\StakeholderTAP.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\StakeholderConsultar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\EmpresaModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\TAPEscopoTipoModel.java

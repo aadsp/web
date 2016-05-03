@@ -13,6 +13,8 @@ import javax.mail.internet.ParseException;
 import org.aadsp.annotations.Equipe;
 import org.aadsp.annotations.Funcao;
 import org.aadsp.annotations.Responsavel;
+import org.aadsp.annotations.Stakeholder;
+import org.aadsp.annotations.StakeholderTAP;
 import org.aadsp.annotations.TAP;
 import org.aadsp.annotations.TAPEscopo;
 import org.aadsp.annotations.TAPEscopoArea;
@@ -73,9 +75,13 @@ public class TAPEditar extends ABaseNamed
     }
     
     
-    public void addStakeholder()
+    public void addStakeholder(Stakeholder stakeholder) throws IOException
     {
-    
+        StakeholderTAP stakeholderTap = new StakeholderTAP();
+        stakeholderTap.setID_stakeholder(stakeholder.getID());
+        stakeholderTap.setID_tap(tap.getID());
+        stakeholderTap.cadastrar();
+        Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
     }
     
     public List<Funcao> listarFuncoes() throws Exception
@@ -109,6 +115,19 @@ public class TAPEditar extends ABaseNamed
     public void removerEquipe(Equipe equipe) throws IOException
     {
         equipe.excluir();
+        Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
+    }
+    
+    public List<StakeholderTAP> listarStakeholderTAP() throws Exception
+    {
+        StakeholderTAP stakeholder = new StakeholderTAP();
+        stakeholder.setID_tap(tap.getID());
+        return stakeholder.listarPorIDTAP();
+    }
+    
+    public void removerStakeholderTAP(StakeholderTAP stakeholderTAP) throws IOException
+    {
+        stakeholderTAP.excluir();
         Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
     }
     
@@ -301,6 +320,30 @@ public class TAPEditar extends ABaseNamed
         return tapEscopo.listar();
     }
         
+    public List<Stakeholder> listarStakeholders() throws Exception 
+    {
+        Stakeholder usuario = new Stakeholder();
+        StakeholderTAP stakeholder = new StakeholderTAP();
+        stakeholder.setID_tap(tap.getID());
+        
+        List<Stakeholder> listaStakeholder = usuario.listar();
+        List<Stakeholder> listaStakeholderDisponivel = new ArrayList<>();
+
+        List<StakeholderTAP> listaStakeholderTAP = stakeholder.listarPorIDTAP();
+        
+        List<Integer> listaIDStakeholder = new ArrayList<>();
+        
+        for(StakeholderTAP obj: listaStakeholderTAP){
+            listaIDStakeholder.add(obj.getID_stakeholder());
+        }
+        for(Stakeholder obj: listaStakeholder){
+           if(!listaIDStakeholder.contains(obj.getID()))
+               listaStakeholderDisponivel.add(obj);
+        }
+         return listaStakeholderDisponivel;
+    }
+    
+    
     private TAP tap;
     private Date dataInicio;
     private Date dataFim;

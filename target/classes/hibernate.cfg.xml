@@ -34,5 +34,6 @@
     <mapping class="org.aadsp.annotations.Equipe" />
     <mapping class="org.aadsp.annotations.Empresa" />
     <mapping class="org.aadsp.annotations.Stakeholder" />
+    <mapping class="org.aadsp.annotations.StakeholderTAP" />
   </session-factory>
 </hibernate-configuration>

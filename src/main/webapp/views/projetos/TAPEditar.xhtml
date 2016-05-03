@@ -33,7 +33,7 @@
                         <f:facet name="right">
                             <p:menuButton value="ADICIONAR INFORMAÇÕES">
                                 <p:menuitem value="Responsável" onclick="PF('responsavelProjeto').show();" icon="ui-icon-document" />
-                                <p:menuitem value="Stakeholders" actionListener="#{TAPEditar.addStakeholder()}" icon="ui-icon-document" />
+                                <p:menuitem value="Stakeholders" onclick="PF('stakeholdersProjeto').show();" icon="ui-icon-document" />
                                 <p:menuitem value="Equipe" onclick="PF('equipeProjeto').show();" icon="ui-icon-document" />
                                 <p:menuitem value="Escopo" onclick="PF('escopoProjeto').show();" icon="ui-icon-document" />
                                 <p:menuitem value="Patrocinador" actionListener="#{TAPEditar.addPatrocinador()}" icon="ui-icon-document" />
@@ -58,6 +58,23 @@
                         
                         </h:panelGrid>
                    </p:tab>
+                   <p:tab title="Stakeholder">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:dataTable id="tblStakeholder" style="text-align:center" var="stakeholder" value="#{TAPEditar.listarStakeholderTAP()}"
+                                         paginator="true" rows="5">
+                            <p:column width="100">
+                                <f:facet name="header">
+                                   <h:outputText value="nome"/>
+                                </f:facet>
+                                <h:outputText value="#{stakeholder.consultarNomeStakeholder()}" />
+                            </p:column>
+                             <p:column width="10">
+                                 <p:commandButton icon="ui-icon-close" value="remover" actionListener="#{TAPEditar.removerStakeholderTAP(stakeholder)}"/>
+                            </p:column>
+                            </p:dataTable>
+                        </h:panelGrid>
+                    </p:tab>
+                    
                     <p:tab title="Alinhamento">
                         <h:panelGrid columns="2" cellpadding="5">
                             <p:outputLabel for="alinhamentoEstrategico" value="Alinhamento estratégico:" />
@@ -166,7 +183,7 @@
 
                       </h:panelGrid>
                     </p:tab> 
-                    <p:tab title="Funções">
+                  <p:tab title="Equipe">
                         <h:panelGrid columns="2" cellpadding="5">
                             <p:dataTable id="tblEquipe" style="text-align:center" var="funcao" value="#{TAPEditar.listarEquipe()}"
                                          paginator="true" rows="5">
@@ -177,14 +194,14 @@
                                 <h:outputText value="#{funcao.consultarNomeFuncao()}" />
                             </p:column>
                              <p:column width="10">
-                                <p:commandButton icon="ui-icon-close" value="remover" actionListener="#{TAPEditar.removerFuncoes(funcao)}"/>
+                                 <p:commandButton icon="ui-icon-close" value="remover" actionListener="#{TAPEditar.removerEquipe(funcao)}"/>
                             </p:column>
                             </p:dataTable>
                         </h:panelGrid>
                     </p:tab>
                 </p:tabView>
                 </div>
-                <div class="space-100"></div>
+                <div class="space-150"></div>
                 <div>
                 <p:commandButton class="btn btn-success" value="SALVAR" update="growl" actionListener="#{TAPEditar.editar()}"/>
                 <p:commandButton class="btn btn-danger" value="EXCLUIR" update="growl" actionListener="#{TAPEditar.excluir()}"/>
@@ -244,7 +261,7 @@
                     <p:commandButton class="btn" value="ADICIONAR" actionListener="#{TAPEditar.addEscopo()}"/>
                 </p:dialog>
                 
-                <p:dialog header="Adicionar funções ao projeto" showEffect="explode" widgetVar="equipeProjeto" modal="true" width="500" height="350">
+                <p:dialog header="Adicionar equipe ao projeto" showEffect="explode" widgetVar="equipeProjeto" modal="true" width="500" height="350">
                     <h:panelGrid columns="2" cellpadding="5">
                         <p:dataTable id="tblFuncoes" style="text-align:center" var="funcoes" value="#{TAPEditar.listarFuncoes()}"
                                      paginator="true" rows="5">
@@ -261,6 +278,22 @@
                     </h:panelGrid>
                 </p:dialog>
                 
+                <p:dialog header="Adicionar stakeholder ao projeto" showEffect="explode" widgetVar="stakeholdersProjeto" modal="true" width="500" height="350">
+                <h:panelGrid columns="2" cellpadding="5">
+                   <p:dataTable id="tblStakeholders" style="text-align:center" var="stakeholder" value="#{TAPEditar.listarStakeholders()}"
+                                     paginator="true" rows="5">
+                            <p:column width="100">
+                                <f:facet name="header">
+                                   <h:outputText value="nome"/>
+                                </f:facet>
+                                <h:outputText value="#{stakeholder.nome}" />
+                            </p:column>
+                             <p:column width="10">
+                                <p:commandButton icon="ui-icon-disk" value="add" actionListener="#{TAPEditar.addStakeholder(stakeholder)}"/>
+                            </p:column>
+                    </p:dataTable>
+                </h:panelGrid> 
+            </p:dialog> 
             </h:form>
             </ui:define>
         </ui:composition>
