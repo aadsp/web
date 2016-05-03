@@ -32,5 +32,7 @@
     <mapping class="org.aadsp.annotations.TAPEscopoTipo" />
     <mapping class="org.aadsp.annotations.TAPEscopo" />
     <mapping class="org.aadsp.annotations.Equipe" />
+    <mapping class="org.aadsp.annotations.Empresa" />
+    <mapping class="org.aadsp.annotations.Stakeholder" />
   </session-factory>
 </hibernate-configuration>
