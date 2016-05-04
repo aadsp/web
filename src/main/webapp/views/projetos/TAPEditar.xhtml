@@ -40,8 +40,8 @@
                         </f:facet>
                         <f:facet name="right">
                         <p:menuButton value="PATROCINADOR">
-                            <p:menuitem value="Empresa"  icon="ui-icon-document" />
-                            <p:menuitem value="Stakeholders" icon="ui-icon-document" />
+                            <p:menuitem value="Empresa"  onclick="PF('patrocinadorEmpresaProjeto').show();" icon="ui-icon-document" />
+                            <p:menuitem value="Stakeholders" onclick="PF('patrocinadorStakeholderProjeto').show();" icon="ui-icon-document" />
                         </p:menuButton>
                         </f:facet>    
                     </p:toolbar>    
@@ -127,6 +127,7 @@
                       </h:panelGrid>
                   </p:tab>
                   <p:tab title="Responsável">
+                      <a class="label label-info" style="color:#ffffff;font-size:14px">RESPONSÁVEL:</a>
                       <h:panelGrid columns="2" cellpadding="5">
                           <p:dataTable id="tblusuarios" style="text-align:center" var="usuarios" value="#{TAPEditar.listarResponsaveis()}"
                                     paginator="true" rows="5">
@@ -151,16 +152,48 @@
                       </h:panelGrid>
                   </p:tab>
                   
+                  <p:tab title="Patrocinador">
+                      
+                      <h:panelGrid columns="1" cellpadding="5">
+                          <a class="label label-info" style="color:#ffffff;font-size:14px">EMPRESAS</a>
+                          <p:dataTable id="tblEmpresasPatrocinadoras" style="text-align:center" var="empresas" value="#{TAPEditar.listarEmpresasPatrocinadoras()}"
+                                    paginator="true" rows="5">
+                       <p:column width="30">
+                           <f:facet name="header">
+                               <h:outputText value="razão social"/>
+                           </f:facet>
+                           <h:outputText value="#{empresas.consultarNomeEmpresa()}" />
+                    </p:column>
+                    
+                    <p:column width="10">
+                        <p:commandButton icon="ui-icon-close" value="remover" actionListener="#{TAPEditar.removerEmpresaPatrocinadora(empresas)}"/>
+                    </p:column> 
+                       
+                       </p:dataTable>
+ 
+                      <a class="label label-info" style="color:#ffffff;font-size:14px">STAKEHOLDERS</a>
+                          <p:dataTable id="tblStakeholderPatrocinadores" style="text-align:center" var="stakeholder" value="#{TAPEditar.listarStakeholderPatrocinadores()}"
+                                    paginator="true" rows="5">
+                       <p:column width="30">
+                           <f:facet name="header">
+                               <h:outputText value="nomel"/>
+                           </f:facet>
+                           <h:outputText value="#{stakeholder.consultarNomeStakeholder()}" />
+                    </p:column>
+                    <p:column width="10">
+                        <p:commandButton icon="ui-icon-close" value="remover" actionListener="#{TAPEditar.removerStakeholderPatrocinador(stakeholder)}"/>
+                    </p:column> 
+                       
+                       </p:dataTable>
+
+                      </h:panelGrid>
+                  </p:tab>  
+                    
                   <p:tab title="Escopo">
+                      <a class="label label-info" style="color:#ffffff;font-size:14px">ESCOPO:</a>
                       <h:panelGrid columns="2" cellpadding="5">
                           <p:dataTable id="tblescopo" style="text-align:center" var="escopo" value="#{TAPEditar.listarEscopo()}"
                                     paginator="true" rows="5">
-                       <p:column width="10">
-                           <f:facet name="header">
-                               <h:outputText value="ID"/>
-                           </f:facet>
-                           <h:outputText value="#{escopo.ID}" />
-                    </p:column>
                     <p:column width="90">
                            <f:facet name="header">
                                <h:outputText value="descricao"/>
@@ -189,6 +222,7 @@
                       </h:panelGrid>
                     </p:tab> 
                   <p:tab title="Equipe">
+                      <a class="label label-info" style="color:#ffffff;font-size:14px">EQUIPE:</a>
                         <h:panelGrid columns="2" cellpadding="5">
                             <p:dataTable id="tblEquipe" style="text-align:center" var="funcao" value="#{TAPEditar.listarEquipe()}"
                                          paginator="true" rows="5">
@@ -206,7 +240,7 @@
                     </p:tab>
                 </p:tabView>
                 </div>
-                <div class="space-150"></div>
+                <div class="space-200"></div>
                 <div>
                 <p:commandButton class="btn btn-success" value="SALVAR" update="growl" actionListener="#{TAPEditar.editar()}"/>
                 <p:commandButton class="btn btn-danger" value="EXCLUIR" update="growl" actionListener="#{TAPEditar.excluir()}"/>
@@ -298,7 +332,54 @@
                             </p:column>
                     </p:dataTable>
                 </h:panelGrid> 
-            </p:dialog> 
+            </p:dialog>
+            
+            <p:dialog header="Adicionar empresa patrocinadora do projeto" showEffect="explode" widgetVar="patrocinadorEmpresaProjeto" modal="true" width="600" height="350">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:dataTable id="tblEmpresaPatrocinador" style="text-align:center" var="empresa" value="#{TAPEditar.listarEmpresasPatrocinadora()}"
+                                     paginator="true" rows="5">
+                            <p:column width="50">
+                                <f:facet name="header">
+                                   <h:outputText value="nome"/>
+                                </f:facet>
+                                <h:outputText value="#{empresa.razaoSocial}" />
+                            </p:column>
+                            <p:column width="50">
+                                <f:facet name="header">
+                                   <h:outputText value="cnpj"/>
+                                </f:facet>
+                                <h:outputText value="#{empresa.cnpj}" />
+                            </p:column>
+                             <p:column width="10">
+                                 <p:commandButton icon="ui-icon-disk" value="add" actionListener="#{TAPEditar.addEmpresaPatrocinador(empresa)}"/>
+                            </p:column>
+                    </p:dataTable>
+                </h:panelGrid> 
+            </p:dialog>    
+            
+             <p:dialog header="Adicionar stakeholder patrocinador do projeto" showEffect="explode" widgetVar="patrocinadorStakeholderProjeto" modal="true" width="600" height="350">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:dataTable id="tblStakeholdersPatrocinador" style="text-align:center" var="stakeholder" value="#{TAPEditar.listarStakeholderPatrocinador()}"
+                                     paginator="true" rows="5">
+                            <p:column width="50">
+                                <f:facet name="header">
+                                   <h:outputText value="nome"/>
+                                </f:facet>
+                                <h:outputText value="#{stakeholder.nome}" />
+                            </p:column>
+                            <p:column width="50">
+                                <f:facet name="header">
+                                   <h:outputText value="cpf"/>
+                                </f:facet>
+                                <h:outputText value="#{stakeholder.cpf}" />
+                            </p:column>
+                             <p:column width="10">
+                                 <p:commandButton icon="ui-icon-disk" value="add" actionListener="#{TAPEditar.addStakeholderPatrocinador(stakeholder)}"/>
+                            </p:column>
+                    </p:dataTable>
+                </h:panelGrid> 
+            </p:dialog>
+                
             </h:form>
             </ui:define>
         </ui:composition>

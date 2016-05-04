@@ -10,8 +10,10 @@ import java.util.Map;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.mail.internet.ParseException;
+import org.aadsp.annotations.Empresa;
 import org.aadsp.annotations.Equipe;
 import org.aadsp.annotations.Funcao;
+import org.aadsp.annotations.Patrocinador;
 import org.aadsp.annotations.Responsavel;
 import org.aadsp.annotations.Stakeholder;
 import org.aadsp.annotations.StakeholderTAP;
@@ -341,6 +343,97 @@ public class TAPEditar extends ABaseNamed
                listaStakeholderDisponivel.add(obj);
         }
          return listaStakeholderDisponivel;
+    }
+    
+    public List<Empresa> listarEmpresasPatrocinadora() throws Exception 
+    {
+        Empresa empresa = new Empresa();
+        Patrocinador patrocniador = new Patrocinador();
+        patrocniador.setID_tap(tap.getID());
+        
+        List<Empresa> listaEmpresas = empresa.listar();
+        List<Empresa> listaEmpresaDisponivel = new ArrayList<>();
+
+        List<Patrocinador> listaPatrocinador = patrocniador.listarPorIDTAP();
+        
+        List<Integer> listaIDStakeholder = new ArrayList<>();
+        
+        for(Patrocinador obj: listaPatrocinador){
+            listaIDStakeholder.add(obj.getID_empresa());
+        }
+        for(Empresa obj: listaEmpresas){
+           if(!listaIDStakeholder.contains(obj.getID()))
+               listaEmpresaDisponivel.add(obj);
+        }
+         return listaEmpresaDisponivel;
+    }
+    
+    public List<Stakeholder> listarStakeholderPatrocinador() throws Exception 
+    {
+        Stakeholder stakeholder = new Stakeholder();
+        Patrocinador patrocniador = new Patrocinador();
+        patrocniador.setID_tap(tap.getID());
+        
+        List<Stakeholder> listaStakeholder = stakeholder.listar();
+        List<Stakeholder> listaStakeholderDisponivel = new ArrayList<>();
+
+        List<Patrocinador> listaPatrocinador = patrocniador.listarPorIDTAP();
+        
+        List<Integer> listaIDStakeholder = new ArrayList<>();
+        
+        for(Patrocinador obj: listaPatrocinador){
+            listaIDStakeholder.add(obj.getID_stakeholder());
+        }
+        for(Stakeholder obj: listaStakeholder){
+           if(!listaIDStakeholder.contains(obj.getID()))
+               listaStakeholderDisponivel.add(obj);
+        }
+         return listaStakeholderDisponivel;
+    }
+    
+    
+    public void addEmpresaPatrocinador(Empresa empresa) throws IOException
+    {
+        Patrocinador patrocinador = new Patrocinador();
+        patrocinador.setID_empresa(empresa.getID());
+        patrocinador.setID_tap(tap.getID());
+        patrocinador.cadastrar();
+        Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
+    }
+    
+    public void addStakeholderPatrocinador(Stakeholder stakeholder) throws IOException
+    {
+        Patrocinador patrocinador = new Patrocinador();
+        patrocinador.setID_stakeholder(stakeholder.getID());
+        patrocinador.setID_tap(tap.getID());
+        patrocinador.cadastrar();
+        Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
+    }
+    
+    public List<Patrocinador> listarEmpresasPatrocinadoras() throws Exception
+    {
+        Patrocinador patrocinador = new Patrocinador();
+        patrocinador.setID_tap(tap.getID());
+        return patrocinador.listarPorEmpresas();
+    }
+    
+    public List<Patrocinador> listarStakeholderPatrocinadores() throws Exception
+    {
+        Patrocinador patrocinador = new Patrocinador();
+        patrocinador.setID_tap(tap.getID());
+        return patrocinador.listarPorStakeholder();
+    }
+    
+    public void removerEmpresaPatrocinadora(Patrocinador patrocinador) throws IOException, Exception
+    {
+        patrocinador.excluir();
+        Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
+    }
+    
+    public void removerStakeholderPatrocinador(Patrocinador patrocinador) throws IOException, Exception
+    {
+        patrocinador.excluir();
+        Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
     }
     
     

@@ -3,6 +3,7 @@ org\aadsp\controller\named\project\EmpresaConsultar.class
 org\aadsp\controller\named\adm\PessoalConsultar.class
 org\aadsp\controller\named\adm\FuncaoCadastrar.class
 org\aadsp\utils\Session.class
+org\aadsp\annotations\Patrocinador.class
 org\aadsp\controller\named\project\StakeholderConsultar.class
 org\aadsp\annotations\TAPEscopoTipo.class
 org\aadsp\annotations\model\TAPEscopoAreaModel.class
@@ -38,6 +39,7 @@ org\aadsp\controller\named\project\EmpresaEditar.class
 org\aadsp\interfaces\IUsuario.class
 org\aadsp\annotations\model\StakeholderTAPModel.class
 org\aadsp\controller\named\adm\PessoalCadastrar.class
+org\aadsp\annotations\model\PatrocinadorModel.class
 org\aadsp\annotations\model\AcessoModel.class
 org\aadsp\controller\named\project\TAPConsultar.class
 org\aadsp\annotations\Empresa.class

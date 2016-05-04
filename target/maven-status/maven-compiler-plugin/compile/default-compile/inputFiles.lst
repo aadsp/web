@@ -2,6 +2,7 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Funcao.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\EmpresaConsultar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\utils\ControleDeAcesso.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\utils\Email.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\PatrocinadorModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Pagina.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\FuncaoConsultar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\PaginaModel.java
@@ -22,6 +23,7 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\interfaces\IUsuario.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\utils\Response.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\TAPEscopoArea.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Usuario.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Patrocinador.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\Index.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\FuncaoModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\TAPEscopo.java
