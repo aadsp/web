@@ -95,9 +95,14 @@ public class ControleDeAcesso implements Filter {
     
     }
 	
-    private void redireciona(String url, ServletResponse response)throws IOException 
+    private void redireciona(String url, ServletResponse response) 
     {
+        try{
         HttpServletResponse res = (HttpServletResponse) response;
         res.sendRedirect(url);
+        }catch(Exception e)
+        {
+        
+        }
     }
 }
