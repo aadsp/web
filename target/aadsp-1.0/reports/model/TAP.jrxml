@@ -2,13 +2,17 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2f3837a3-d734-4d32-8268-55725bc3ef06">
 	<property name="ireport.zoom" value="1.4641000000000008"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="177"/>
+	<property name="ireport.y" value="574"/>
 	<parameter name="ID_tap" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["G:\\PROJETO TCC\\web\\src\\main\\webapp\\reports\\model\\"]]></defaultValueExpression>
+	</parameter>
 	<queryString>
-		<![CDATA[SELECT nome,justificativa,objetivo,dataInicio,alinhamentoEstrategico,dataFim,dataCriacao,dataHomologacao,custo FROM TAP.TAP_AADSP_TAP WHERE ID = $P{ID_tap}]]>
+		<![CDATA[SELECT ID,nome,justificativa,objetivo,dataInicio,alinhamentoEstrategico,dataFim,dataCriacao,dataHomologacao,custo FROM TAP.TAP_AADSP_TAP WHERE ID = $P{ID_tap}]]>
 	</queryString>
+	<field name="ID" class="java.lang.Integer"/>
 	<field name="nome" class="java.lang.String"/>
 	<field name="justificativa" class="java.lang.String"/>
 	<field name="objetivo" class="java.lang.String"/>
@@ -62,7 +66,7 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band height="308">
+		<band height="493">
 			<rectangle>
 				<reportElement x="413" y="133" width="142" height="41" uuid="587459f4-46ad-439b-908e-f76e0a0a3928"/>
 			</rectangle>
@@ -245,6 +249,24 @@
 				<reportElement x="136" y="206" width="157" height="20" uuid="a2e3b395-90eb-4eaa-ab61-82439c35402d"/>
 				<textFieldExpression><![CDATA[$F{custo}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="-1" y="314" width="125" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="cc2283ce-e285-40f1-b934-595597089ae0"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Stakeholders]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="327" width="555" height="111" uuid="b54fd8dd-cf16-4438-952a-acd0ea12787e"/>
+			</rectangle>
+			<subreport>
+				<reportElement x="0" y="327" width="555" height="111" uuid="faf5afeb-188a-4f25-b5ab-0322ce692aad"/>
+				<subreportParameter name="ID_tap">
+					<subreportParameterExpression><![CDATA[$F{ID}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "TAP_Stakeholders.jasper"]]></subreportExpression>
+			</subreport>
 		</band>
 	</pageHeader>
 	<pageFooter>
