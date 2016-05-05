@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TAP_Escopo" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="9476ec48-deca-45cf-8d8a-690974e4a49f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT E.descricao atividade,EA.descricao area,ET.descricao tipo FROM TAP.TAP_AADSP_ESCOPO E
+INNER JOIN TAP.TAP_AADSP_ESCOPO_AREA EA
+ON E.ID_escopoArea = EA.ID
+INNER JOIN TAP.TAP_AADSP_ESCOPO_TIPO ET
+ON E.ID_escopoTipo = ET.ID
+WHERE E.ID_tap = 7
+GROUP BY E.descricao,EA.descricao,ET.descricao,ET.ID
+ORDER BY ET.ID]]>
+	</queryString>
+	<field name="atividade" class="java.lang.String"/>
+	<field name="area" class="java.lang.String"/>
+	<field name="tipo" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<rectangle>
+				<reportElement x="1" y="1" width="554" height="20" uuid="95dabe6d-e24b-49f6-a269-97df71b96b25"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="2" width="155" height="20" uuid="37e977f3-f01f-4ba6-9c2d-0d9687330143"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Área]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="155" y="2" width="174" height="20" uuid="ea24de50-03e0-42ca-b747-c795e23a41e1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Subárea]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="329" y="2" width="226" height="20" uuid="3de1be34-a3db-486b-8e74-2ccdd5a236ff"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Atividade]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="31" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="2" width="555" height="27" uuid="8399bae9-0c99-4638-98aa-5ef82d0a8570"/>
+			</rectangle>
+			<textField>
+				<reportElement x="0" y="2" width="155" height="27" uuid="ab790d7d-cdd6-4e5c-baeb-29e73014bf4d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{area}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="329" y="2" width="226" height="27" uuid="925797c1-359d-455b-8ee2-25a0a513e31f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{atividade}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="155" y="0" width="174" height="29" uuid="b81ced1a-4df7-417e-8087-8b95ea1b2cff"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
