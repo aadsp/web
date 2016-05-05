@@ -55,6 +55,7 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\StakeholderC
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\EmpresaModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\TAPEscopoTipoModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\EmpresaCadastrar.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\utils\ConexaoSQLServer.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\PessoalCadastrar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\AlterarSenha.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\TAPEscopoModel.java

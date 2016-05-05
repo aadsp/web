@@ -2,6 +2,7 @@
 package org.aadsp.controller.named.project;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import javax.faces.view.ViewScoped;
@@ -50,11 +51,12 @@ public class TAPConsultar extends ABaseNamed
        }
    }
    
-   public void gerarPDF(TAP tap) throws JRException, IOException
+   public void gerarPDF(TAP tap) throws JRException, IOException, SQLException
    {
        RelatorioIReport report = new RelatorioIReport();
        HashMap map = new HashMap();
-       report.gerarPDF("prueba1", map);
+       map.put("ID_tap", tap.getID());
+       report.gerarPDF("TAP", map);
    }
    
    private TAP tap;

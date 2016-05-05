@@ -3,16 +3,11 @@ package org.aadsp.utils;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
+import java.sql.SQLException;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.faces.context.FacesContext;
-import javax.swing.ImageIcon;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -25,7 +20,7 @@ import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
 public class RelatorioIReport 
 {
-    public void gerarPDF(String nomeRelatorio,Map parameters) throws JRException, IOException
+    public void gerarPDF(String nomeRelatorio,Map parameters) throws JRException, IOException, SQLException
     {
          String caminhoServidor = FacesContext.getCurrentInstance().getExternalContext().getRealPath("");
        
@@ -33,7 +28,7 @@ public class RelatorioIReport
          
          JasperDesign jasperDesign = JRXmlLoader.load(inputStream);
          JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
-         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters);
+         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,ConexaoSQLServer.conexao());
          JasperExportManager.exportReportToPdfFile(jasperPrint, caminhoServidor+"/reports/tmp/"+nomeRelatorio+".pdf");
          
          Response.redirect("../../reports/tmp/"+nomeRelatorio+".pdf");
