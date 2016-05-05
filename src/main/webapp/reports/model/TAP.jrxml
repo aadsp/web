@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2f3837a3-d734-4d32-8268-55725bc3ef06">
 	<property name="ireport.zoom" value="1.4641000000000008"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="606"/>
+	<property name="ireport.y" value="483"/>
 	<parameter name="ID_tap" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -66,7 +66,7 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band height="563">
+		<band height="610">
 			<rectangle>
 				<reportElement x="413" y="133" width="142" height="41" uuid="587459f4-46ad-439b-908e-f76e0a0a3928"/>
 			</rectangle>
@@ -250,14 +250,14 @@
 				<textFieldExpression><![CDATA[$F{custo}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Opaque" x="-1" y="314" width="125" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="cc2283ce-e285-40f1-b934-595597089ae0"/>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="310" width="125" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="cc2283ce-e285-40f1-b934-595597089ae0"/>
 				<textElement textAlignment="Center">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Stakeholders]]></text>
 			</staticText>
 			<subreport>
-				<reportElement x="0" y="327" width="556" height="42" uuid="c2f68567-be7f-4c09-94dc-0ce9665eaeb0"/>
+				<reportElement positionType="Float" x="0" y="323" width="555" height="60" uuid="c2f68567-be7f-4c09-94dc-0ce9665eaeb0"/>
 				<subreportParameter name="ID_tap">
 					<subreportParameterExpression><![CDATA[$F{ID}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -265,14 +265,14 @@
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "TAP_Stakeholder.jasper"]]></subreportExpression>
 			</subreport>
 			<staticText>
-				<reportElement mode="Opaque" x="-1" y="376" width="125" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="97c92b23-b203-4550-ad1b-e467772c4eb2"/>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="393" width="125" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="97c92b23-b203-4550-ad1b-e467772c4eb2"/>
 				<textElement textAlignment="Center">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Escopo]]></text>
 			</staticText>
 			<subreport>
-				<reportElement x="-1" y="389" width="556" height="32" uuid="c5a9dd88-7559-4739-922e-9e2144626d8d"/>
+				<reportElement positionType="Float" x="0" y="406" width="555" height="74" uuid="c5a9dd88-7559-4739-922e-9e2144626d8d"/>
 				<subreportParameter name="ID_tap">
 					<subreportParameterExpression><![CDATA[$F{ID}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -280,14 +280,14 @@
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "TAP_Escopo.jasper"]]></subreportExpression>
 			</subreport>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="434" width="125" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="39d03801-811c-4a62-9e39-3e68e225add2"/>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="491" width="125" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="39d03801-811c-4a62-9e39-3e68e225add2"/>
 				<textElement textAlignment="Center">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Equipe]]></text>
 			</staticText>
 			<subreport>
-				<reportElement x="-1" y="447" width="556" height="39" uuid="c741398d-451d-4f2f-acde-ee2fa967a6ec"/>
+				<reportElement positionType="Float" x="0" y="503" width="555" height="64" uuid="c741398d-451d-4f2f-acde-ee2fa967a6ec"/>
 				<subreportParameter name="ID_tap">
 					<subreportParameterExpression><![CDATA[$F{ID}]]></subreportParameterExpression>
 				</subreportParameter>
