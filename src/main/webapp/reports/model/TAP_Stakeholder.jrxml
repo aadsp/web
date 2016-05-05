@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TAP_Stakeholder" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="d1364523-59ec-4e04-8b5f-e32bd30e4126">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="ID_tap" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT S.nome, S.cpf, S.email FROM TAP.TAP_AADSP_STAKEHOLDER S
+INNER JOIN TAP.TAP_AADSP_STAKEHOLDER_TAP ST
+ON S.ID = ST.ID_stakeholder
+WHERE ST.ID_tap = $P{ID_tap}]]>
+	</queryString>
+	<field name="nome" class="java.lang.String"/>
+	<field name="cpf" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="22" uuid="600184ff-5008-4a51-8325-075c0ac7368f"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="9" y="1" width="163" height="20" uuid="7681a371-93d3-42e7-92c7-1c4973397c15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="172" y="2" width="167" height="20" uuid="1ea836e5-a753-4879-9e7b-7164b7815158"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[cpf]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="338" y="1" width="205" height="20" uuid="338ed30d-0895-4a06-ba96-0e07f37994aa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[e-mail]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="-2" width="555" height="23" uuid="53a4f5c8-fc0b-403f-b017-6cc4ba3a5357"/>
+			</rectangle>
+			<textField>
+				<reportElement x="9" y="0" width="163" height="22" uuid="e4e3d983-743a-4496-b26a-f43f6f835920"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="172" y="0" width="167" height="22" uuid="0304e229-3411-4d61-b7f1-1b138b3fcce5"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cpf}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="338" y="1" width="205" height="20" uuid="ed445593-1ba7-457e-a694-8574c148090a"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
