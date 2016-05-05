@@ -67,9 +67,9 @@
                                        </p:column>
                                     <p:column style="width:10px;text-align: center" > 
                                             <f:facet name="header">
-                                               <h:outputText value="pdf" />
+                                               <h:outputText value="relatório" />
                                             </f:facet>
-                                            <p:commandButton icon="ui-icon-print" />
+                                            <h:commandLink value="pdf" action="#{TAPConsultar.gerarPDF(tap)}"  target="_blank" />
                                     </p:column>
                                         <p:column style="width:10px;text-align: center" >
                                             <f:facet name="header">

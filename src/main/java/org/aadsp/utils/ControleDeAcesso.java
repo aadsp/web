@@ -42,7 +42,8 @@ public class ControleDeAcesso implements Filter {
                 || (req.getRequestURI().endsWith("Index.xhtml"))
                 || (req.getRequestURI().endsWith("acessoNegado.xhtml"))
                 || (req.getRequestURI().endsWith("aadsp/"))
-                || (req.getRequestURI().contains("bootstrap/"))
+                || (req.getRequestURI().contains("reports/"))
+                || (req.getRequestURI().contains("bootstrap/"))        
                 || (req.getRequestURI().contains("chart/"))
                 || (req.getRequestURI().contains("img/"))
                 || (req.getRequestURI().contains("primefaces/"))
@@ -51,6 +52,7 @@ public class ControleDeAcesso implements Filter {
             if ((req.getRequestURI().endsWith("Index.xhtml"))
                     || (req.getRequestURI().endsWith("acessoNegado.xhtml"))
                     || (req.getRequestURI().endsWith("aadsp/"))
+                    || (req.getRequestURI().contains("reports/"))
                     || (req.getRequestURI().contains("bootstrap/"))
                     || (req.getRequestURI().contains("chart/"))
                     || (req.getRequestURI().contains("img/"))
@@ -67,7 +69,7 @@ public class ControleDeAcesso implements Filter {
                 {
                     int count = paginaPermitida.size();
                     for(String pag: paginaPermitida){
-                        if(req.getRequestURI().contains(pag+".xhtml"))
+                        if(req.getRequestURI().contains(pag+".xhtml") || req.getRequestURI().contains(".jrxml"))
                             chain.doFilter(request, response);
                         count --;
                     }

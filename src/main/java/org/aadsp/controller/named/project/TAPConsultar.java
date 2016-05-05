@@ -1,13 +1,17 @@
 
 package org.aadsp.controller.named.project;
 
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import net.sf.jasperreports.engine.JRException;
 import org.aadsp.annotations.TAP;
 import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.utils.Criptografia;
 import org.aadsp.utils.Mensageiro;
+import org.aadsp.utils.RelatorioIReport;
 import org.aadsp.utils.Response;
 
 /**
@@ -44,6 +48,13 @@ public class TAPConsultar extends ABaseNamed
        {
          Mensageiro.mensagemError("Erro ao selecionar TAP!!");
        }
+   }
+   
+   public void gerarPDF(TAP tap) throws JRException, IOException
+   {
+       RelatorioIReport report = new RelatorioIReport();
+       HashMap map = new HashMap();
+       report.gerarPDF("prueba1", map);
    }
    
    private TAP tap;
