@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TAP_subreport1" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="6ed483d0-3e4e-48be-bc9a-e20447e85ced">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="ID_tap" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT F.descricao FROM TAP.TAP_AADSP_EQUIPE E
+INNER JOIN ACESSO.ACESSO_AADSP_FUNCAO F
+ON E.ID_funcao = F.ID
+INNER JOIN TAP.TAP_AADSP_TAP T
+ON T.ID = E.ID_tap
+WHERE T.ID = $P{ID_tap}]]>
+	</queryString>
+	<field name="descricao" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<rectangle>
+				<reportElement x="2" y="2" width="553" height="20" uuid="ca33ee61-e41f-44ef-be08-28d6195652fd"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="20" uuid="421cab31-b2d0-47b7-bc5a-abdc66ea02ed"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Função]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="2" y="0" width="553" height="20" uuid="97e73095-722f-4d10-9519-bd9afb72c483"/>
+			</rectangle>
+			<textField>
+				<reportElement x="0" y="0" width="555" height="20" uuid="3dc81701-5397-4315-b9b8-9ee7e7e00f20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
