@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import javax.mail.internet.ParseException;
 import org.aadsp.annotations.Funcao;
 import org.aadsp.annotations.Usuario;
 import org.aadsp.interfaces.ABaseNamed;
@@ -102,10 +101,10 @@ public class PessoalEditar extends ABaseNamed
         return data;
      }
     
-    public void setData(Date date) throws ParseException
+    public void setData(Date date) 
     {
-       java.sql.Date dataSql = new java.sql.Date(date.getTime());
-       this.usuario.setDataNascimento(dataSql);
+        java.sql.Date dataSql = new java.sql.Date(date.getTime());
+        this.usuario.setDataNascimento(dataSql);
     }
     
     public int getFuncaoSelecionada() {

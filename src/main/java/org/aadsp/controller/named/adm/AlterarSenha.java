@@ -6,7 +6,6 @@ import javax.inject.Named;
 import org.aadsp.annotations.Usuario;
 import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.utils.Mensageiro;
-import static org.aadsp.utils.Mensageiro.mensagemInfo;
 import org.aadsp.utils.Session;
 
 /**

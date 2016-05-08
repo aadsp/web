@@ -49,12 +49,19 @@ public class HeaderTemplate extends ABaseNamed
     /** Metódo de encerramento de uma sessão do header, este metódo invalidará a sessão corrente matando o usuário da sessão
      * @throws java.io.IOException
      */
-    public void closeSession() throws IOException
+    public void closeSession()
     {
-        FacesContext fc = FacesContext.getCurrentInstance();
-        HttpSession session = (HttpSession)fc.getExternalContext().getSession(false);
-        session.invalidate();
-        FacesContext.getCurrentInstance().getExternalContext().redirect("../../../../web/faces/index.xhtml");
+        try
+        {
+            FacesContext fc = FacesContext.getCurrentInstance();
+            HttpSession session = (HttpSession)fc.getExternalContext().getSession(false);
+            session.invalidate();
+            FacesContext.getCurrentInstance().getExternalContext().redirect("../../../../web/faces/index.xhtml");
+        }
+        catch(IOException e)
+        {
+            Mensageiro.mensagemError("O ocerreu o seguinte erro ao executar esta operação:"+e.getMessage());
+        }
     }
     
     private IUsuario usuario;

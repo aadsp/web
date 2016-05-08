@@ -47,7 +47,7 @@ public class Index extends ABaseNamed {
     /**Metódo principal de autenticação do projeto, valida os dados de login e senha informados e encaminha o usuário autenticado
      * para a página principal de menu do projeto
      */
-    public void autenticar() throws IOException {
+    public void autenticar(){
         try {
             IUsuario copia;
             copia = usuario;

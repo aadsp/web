@@ -10,10 +10,6 @@ import org.aadsp.annotations.Funcao;
 import org.aadsp.annotations.Usuario;
 import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.utils.Mensageiro;
-import org.primefaces.model.chart.Axis;
-import org.primefaces.model.chart.AxisType;
-import org.primefaces.model.chart.ChartSeries;
-import org.primefaces.model.chart.HorizontalBarChartModel;
 import org.primefaces.model.chart.PieChartModel;
 
 /**
@@ -69,8 +65,10 @@ public class UsuariosVisualizar extends ABaseNamed
        }
     }
     
-    public void calculandoQuantidadeUsuarioPorFuncaoPizza1() throws Exception
+    public void calculandoQuantidadeUsuarioPorFuncaoPizza1()
     {
+        try
+        {
         Funcao funcao = new Funcao();
         Map<String,Integer> listaFuncoes = new HashMap<>();
         
@@ -97,11 +95,16 @@ public class UsuariosVisualizar extends ABaseNamed
             Integer qtdFuncao = pizzaMap.getValue();
             pizzaModel1.set(nomeFuncao, qtdFuncao);
         }
+        }catch(Exception e)
+        {
+            Mensageiro.mensagemError("Não possível executar esta operação erro:"+e.getMessage());
+        }
 
     }
     
-    public void calculandoQuantidadeUsuarioPorFuncaoPizza2() throws Exception
+    public void calculandoQuantidadeUsuarioPorFuncaoPizza2() 
     {
+        try{
         pizzaModel2 = new PieChartModel();
         
         Funcao funcao = new Funcao();
@@ -133,7 +136,10 @@ public class UsuariosVisualizar extends ABaseNamed
             pizzaModel2.setFill(false);
             pizzaModel2.setShowDataLabels(true);
         }
-        
+        }catch(Exception e)
+        {
+            Mensageiro.mensagemError("Não possível executar esta operação erro:"+e.getMessage());
+        }
         
     }
 }

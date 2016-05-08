@@ -53,10 +53,16 @@ public class TAPConsultar extends ABaseNamed
    
    public void gerarPDF(TAP tap) throws JRException, IOException, SQLException
    {
-       RelatorioIReport report = new RelatorioIReport();
-       HashMap map = new HashMap();
-       map.put("ID_tap", tap.getID());
-       report.gerarPDF("TAP", map);
+       try
+       {
+        RelatorioIReport report = new RelatorioIReport();
+        HashMap map = new HashMap();
+        map.put("ID_tap", tap.getID());
+        report.gerarPDF("TAP", map);
+       }catch(JRException | IOException | SQLException e)
+       {
+          Mensageiro.mensagemError("Não possível gerar o relatório em PDF exception:"+ e.getMessage()); 
+       }
    }
    
    private TAP tap;

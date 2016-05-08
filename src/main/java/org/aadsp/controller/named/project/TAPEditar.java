@@ -77,24 +77,29 @@ public class TAPEditar extends ABaseNamed
     }
     
     
-    public void addStakeholder(Stakeholder stakeholder) throws IOException
+    public void addStakeholder(Stakeholder stakeholder)
     {
+        try{
         StakeholderTAP stakeholderTap = new StakeholderTAP();
         stakeholderTap.setID_stakeholder(stakeholder.getID());
         stakeholderTap.setID_tap(tap.getID());
         stakeholderTap.cadastrar();
         Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
+        }catch(IOException e)
+        {
+            Mensageiro.mensagemError("Não possível executar está operação exception:"+ e.getMessage());
+        }
     }
     
-    public List<Funcao> listarFuncoes() throws Exception
+    public List<Funcao> listarFuncoes()
     {
+        List<Funcao> listaFuncoesDisponiveis = new ArrayList<>();
+        try{
         Equipe equipe = new Equipe();
         Funcao funcao = new Funcao();
         equipe.setID_tap(tap.getID());
         List<Equipe> listaEquipe = equipe.listar();
         List<Funcao> listaFuncoe = funcao.listar();
-        List<Funcao> listaFuncoesDisponiveis = new ArrayList<>();
-        
         List<Integer> listaFuncoes = new ArrayList<>();
         
         for(Equipe ObjEquipe: listaEquipe){
@@ -104,42 +109,78 @@ public class TAPEditar extends ABaseNamed
            if(!listaFuncoes.contains(ObjFuncao.getID()))
                listaFuncoesDisponiveis.add(ObjFuncao);
         }
+        
+        }catch(Exception e)
+        {
+            Mensageiro.mensagemError("Não possível executar está operação exception:"+ e.getMessage());
+        }
         return listaFuncoesDisponiveis;
     }
     
-    public List<Equipe> listarEquipe() throws Exception
+    public List<Equipe> listarEquipe()
     {
         Equipe equipe = new Equipe();
-        equipe.setID_tap(tap.getID());
-        return equipe.listarPorTAP();
+        try{
+            equipe.setID_tap(tap.getID());
+            return equipe.listarPorTAP();
+        }catch(Exception e)
+        {
+            Mensageiro.mensagemError("Não possível executar está operação exception:"+ e.getMessage());
+        }
+        return new ArrayList<>();
     }
     
-    public void removerEquipe(Equipe equipe) throws IOException
+    public void removerEquipe(Equipe equipe) 
     {
-        equipe.excluir();
-        Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
+        try
+        {
+            equipe.excluir();
+            Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
+        }catch(IOException e)
+        {
+            Mensageiro.mensagemError("Não possível executar está operação exception:"+ e.getMessage());
+        }
     }
     
-    public List<StakeholderTAP> listarStakeholderTAP() throws Exception
+    public List<StakeholderTAP> listarStakeholderTAP()
     {
-        StakeholderTAP stakeholder = new StakeholderTAP();
-        stakeholder.setID_tap(tap.getID());
-        return stakeholder.listarPorIDTAP();
+        try
+        {
+            StakeholderTAP stakeholder = new StakeholderTAP();
+            stakeholder.setID_tap(tap.getID());
+            return stakeholder.listarPorIDTAP();
+        }
+        catch(Exception e)
+        {
+            Mensageiro.mensagemError("Não possível executar está operação exception:"+ e.getMessage());
+        }
+        return new ArrayList<>();
     }
     
-    public void removerStakeholderTAP(StakeholderTAP stakeholderTAP) throws IOException
+    public void removerStakeholderTAP(StakeholderTAP stakeholderTAP)
     {
-        stakeholderTAP.excluir();
-        Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
+        try
+        {
+            stakeholderTAP.excluir();
+            Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
+        }catch(IOException e)
+        {
+            Mensageiro.mensagemError("Não possível executar está operação exception:"+ e.getMessage());
+        }
     }
     
     public void addFuncoes(Funcao funcao) throws IOException
     {
-      Equipe equipe = new Equipe();
-      equipe.setID_funcao(funcao.getID());
-      equipe.setID_tap(tap.getID());
-      equipe.cadastrar();
-      Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
+        try{
+          Equipe equipe = new Equipe();
+          equipe.setID_funcao(funcao.getID());
+          equipe.setID_tap(tap.getID());
+          equipe.cadastrar();
+          Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
+        }catch(IOException e)
+        {
+            Mensageiro.mensagemError("Não possível executar está operação exception:"+ e.getMessage());
+        }
     }
    
     public void editar()
@@ -191,11 +232,13 @@ public class TAPEditar extends ABaseNamed
     
     public List<Usuario> listarResponsaveis() throws Exception
     {
+       List<Usuario> listaUsuariosDisponivel = new ArrayList<>();
+       try{
         Usuario usuario = new Usuario();
         Responsavel reponsavel = new Responsavel();
         reponsavel.setID_tap(tap.getID());
         List<Usuario> listaUsuarios = usuario.listar();
-        List<Usuario> listaUsuariosDisponivel = new ArrayList<>();
+        
 
         List<Responsavel> listaResponsavel = reponsavel.listarPorIDTAP();
         
@@ -208,26 +251,44 @@ public class TAPEditar extends ABaseNamed
            if(listaIDUsuriosResponsavel.contains(ObjUsuario.getID()))
                listaUsuariosDisponivel.add(ObjUsuario);
         }
-         return listaUsuariosDisponivel;
+        
+       }
+       catch(Exception e)
+       {
+           Mensageiro.mensagemError("Não possível executar está operação exception:"+ e.getMessage());
+       }
+        return listaUsuariosDisponivel;
     }        
     
-    public void removerResponsavel(Usuario usuario) throws IOException, Exception
+    public void removerResponsavel(Usuario usuario)
     {
-        Responsavel responsavel = new Responsavel();
-        responsavel.setID_usuario(usuario.getID());
-        responsavel.setID_tap(tap.getID());
-        responsavel = responsavel.consultarReposanvelPorIDUsuario();
-        responsavel.excluir();
-        Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
+        try
+        {
+            Responsavel responsavel = new Responsavel();
+            responsavel.setID_usuario(usuario.getID());
+            responsavel.setID_tap(tap.getID());
+            responsavel = responsavel.consultarReposanvelPorIDUsuario();
+            responsavel.excluir();
+            Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
+        }
+        catch(Exception  e)
+        {
+           Mensageiro.mensagemError("Não possível executar está operação exception:"+ e.getMessage());
+        }
     }
             
-    public void addResponsavel(Usuario usuario) throws IOException
+    public void addResponsavel(Usuario usuario)
     {
+        try{
         Responsavel resposavel = new Responsavel();
         resposavel.setID_usuario(usuario.getID());
         resposavel.setID_tap(tap.getID());
         resposavel.cadastrar();
         Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
+        }catch(IOException  e)
+        {
+           Mensageiro.mensagemError("Não possível executar está operação exception:"+ e.getMessage());
+        }
     }
     
     public Date getDataInicio()
@@ -268,7 +329,7 @@ public class TAPEditar extends ABaseNamed
        }
        return tapAreas;
        }catch(Exception e){
-           Mensageiro.mensagemError("Não foi possível consultar as funções no banco de dados!");
+           Mensageiro.mensagemError("Não foi possível executar esta operação exception: " + e.getMessage());
        }
         return null;
     }
@@ -282,7 +343,7 @@ public class TAPEditar extends ABaseNamed
        }
        return tapTipos;
        }catch(Exception e){
-           Mensageiro.mensagemError("Não foi possível consultar as páginas no banco de dados!");
+           Mensageiro.mensagemError("Não foi possível executar esta operação exception: " + e.getMessage());
        }
         return null;
     }
@@ -311,25 +372,40 @@ public class TAPEditar extends ABaseNamed
         this.tapTipoSelecionado = tapTipoSelecionado;
     }
     
-    public void removerEscopo(TAPEscopo escopo) throws IOException
+    public void removerEscopo(TAPEscopo escopo) 
     {
+        try{
         escopo.excluir();
         Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
-    }
+        }catch(IOException e) 
+        {
+            Mensageiro.mensagemError("Não foi possível executar esta operação exception: " + e.getMessage());
+        }
+   }
     
     public List<TAPEscopo> listarEscopo() throws Exception
     {
-        return tapEscopo.listar();
+        try 
+        {
+            return tapEscopo.listar();
+        } catch (Exception e) 
+        {
+            Mensageiro.mensagemError("Não foi possível executar esta operação exception: " + e.getMessage());
+        }
+        return new ArrayList<>();
     }
         
-    public List<Stakeholder> listarStakeholders() throws Exception 
+    public List<Stakeholder> listarStakeholders()
     {
+        List<Stakeholder> listaStakeholderDisponivel = new ArrayList<>();
+        
+        try{
         Stakeholder usuario = new Stakeholder();
         StakeholderTAP stakeholder = new StakeholderTAP();
         stakeholder.setID_tap(tap.getID());
         
         List<Stakeholder> listaStakeholder = usuario.listar();
-        List<Stakeholder> listaStakeholderDisponivel = new ArrayList<>();
+      
 
         List<StakeholderTAP> listaStakeholderTAP = stakeholder.listarPorIDTAP();
         
@@ -342,17 +418,25 @@ public class TAPEditar extends ABaseNamed
            if(!listaIDStakeholder.contains(obj.getID()))
                listaStakeholderDisponivel.add(obj);
         }
+        
+        }catch(Exception e)
+        {
+           Mensageiro.mensagemError("Não foi possível executar esta operação exception: " + e.getMessage());
+        }
          return listaStakeholderDisponivel;
     }
     
-    public List<Empresa> listarEmpresasPatrocinadora() throws Exception 
+    public List<Empresa> listarEmpresasPatrocinadora()
     {
+        List<Empresa> listaEmpresaDisponivel = new ArrayList<>();
+        try
+        {
         Empresa empresa = new Empresa();
         Patrocinador patrocniador = new Patrocinador();
         patrocniador.setID_tap(tap.getID());
         
         List<Empresa> listaEmpresas = empresa.listar();
-        List<Empresa> listaEmpresaDisponivel = new ArrayList<>();
+        
 
         List<Patrocinador> listaPatrocinador = patrocniador.listarPorIDTAP();
         
@@ -365,18 +449,25 @@ public class TAPEditar extends ABaseNamed
            if(!listaIDStakeholder.contains(obj.getID()))
                listaEmpresaDisponivel.add(obj);
         }
+        
+        }catch(Exception e)
+        {
+           Mensageiro.mensagemError("Não foi possível executar esta operação exception: " + e.getMessage());
+        }
          return listaEmpresaDisponivel;
     }
     
     public List<Stakeholder> listarStakeholderPatrocinador() throws Exception 
     {
+        List<Stakeholder> listaStakeholderDisponivel = new ArrayList<>();
+        try
+        {
         Stakeholder stakeholder = new Stakeholder();
         Patrocinador patrocniador = new Patrocinador();
         patrocniador.setID_tap(tap.getID());
         
         List<Stakeholder> listaStakeholder = stakeholder.listar();
-        List<Stakeholder> listaStakeholderDisponivel = new ArrayList<>();
-
+      
         List<Patrocinador> listaPatrocinador = patrocniador.listarPorIDTAP();
         
         List<Integer> listaIDStakeholder = new ArrayList<>();
@@ -388,52 +479,92 @@ public class TAPEditar extends ABaseNamed
            if(!listaIDStakeholder.contains(obj.getID()))
                listaStakeholderDisponivel.add(obj);
         }
+        }catch(Exception e)
+        {
+           Mensageiro.mensagemError("Não foi possível executar esta operação exception: " + e.getMessage());
+        }
          return listaStakeholderDisponivel;
     }
     
     
-    public void addEmpresaPatrocinador(Empresa empresa) throws IOException
+    public void addEmpresaPatrocinador(Empresa empresa)
     {
-        Patrocinador patrocinador = new Patrocinador();
-        patrocinador.setID_empresa(empresa.getID());
-        patrocinador.setID_tap(tap.getID());
-        patrocinador.cadastrar();
-        Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
+        try{
+            Patrocinador patrocinador = new Patrocinador();
+            patrocinador.setID_empresa(empresa.getID());
+            patrocinador.setID_tap(tap.getID());
+            patrocinador.cadastrar();
+            Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
+        }catch(IOException e)
+        {
+           Mensageiro.mensagemError("Não foi possível executar esta operação exception: " + e.getMessage());
+        }
     }
     
-    public void addStakeholderPatrocinador(Stakeholder stakeholder) throws IOException
+    public void addStakeholderPatrocinador(Stakeholder stakeholder)
     {
+        try
+        {
         Patrocinador patrocinador = new Patrocinador();
         patrocinador.setID_stakeholder(stakeholder.getID());
         patrocinador.setID_tap(tap.getID());
         patrocinador.cadastrar();
         Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
+        }catch(IOException e)
+        {
+           Mensageiro.mensagemError("Não foi possível executar esta operação exception: " + e.getMessage());
+        }
     }
     
-    public List<Patrocinador> listarEmpresasPatrocinadoras() throws Exception
+    public List<Patrocinador> listarEmpresasPatrocinadoras()
     {
-        Patrocinador patrocinador = new Patrocinador();
-        patrocinador.setID_tap(tap.getID());
-        return patrocinador.listarPorEmpresas();
+        try
+        {
+            Patrocinador patrocinador = new Patrocinador();
+            patrocinador.setID_tap(tap.getID());
+            return patrocinador.listarPorEmpresas();
+        }catch(Exception e)
+        {
+           Mensageiro.mensagemError("Não foi possível executar esta operação exception: " + e.getMessage());
+        }
+        return new ArrayList<>();
     }
     
-    public List<Patrocinador> listarStakeholderPatrocinadores() throws Exception
+    public List<Patrocinador> listarStakeholderPatrocinadores()
     {
-        Patrocinador patrocinador = new Patrocinador();
-        patrocinador.setID_tap(tap.getID());
-        return patrocinador.listarPorStakeholder();
+        try{
+            Patrocinador patrocinador = new Patrocinador();
+            patrocinador.setID_tap(tap.getID());
+            return patrocinador.listarPorStakeholder();
+        }catch(Exception e)
+        {
+           Mensageiro.mensagemError("Não foi possível executar esta operação exception: " + e.getMessage());
+        }
+        return new ArrayList<>();
     }
     
-    public void removerEmpresaPatrocinadora(Patrocinador patrocinador) throws IOException, Exception
+    public void removerEmpresaPatrocinadora(Patrocinador patrocinador)
     {
-        patrocinador.excluir();
-        Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
+        try
+        {
+            patrocinador.excluir();
+            Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
+        }catch(Exception e)
+        {
+           Mensageiro.mensagemError("Não foi possível executar esta operação exception: " + e.getMessage());
+        }
     }
     
     public void removerStakeholderPatrocinador(Patrocinador patrocinador) throws IOException, Exception
     {
-        patrocinador.excluir();
-        Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
+        try
+        {
+            patrocinador.excluir();
+            Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
+        }catch(Exception e)
+        {
+           Mensageiro.mensagemError("Não foi possível executar esta operação exception: " + e.getMessage());
+        }
     }
     
     
