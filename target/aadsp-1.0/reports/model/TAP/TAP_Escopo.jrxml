@@ -24,9 +24,6 @@ ORDER BY ET.ID]]>
 	</background>
 	<columnHeader>
 		<band height="22" splitType="Stretch">
-			<rectangle>
-				<reportElement x="1" y="1" width="554" height="20" uuid="95dabe6d-e24b-49f6-a269-97df71b96b25"/>
-			</rectangle>
 			<staticText>
 				<reportElement x="0" y="2" width="155" height="20" uuid="37e977f3-f01f-4ba6-9c2d-0d9687330143"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -52,9 +49,6 @@ ORDER BY ET.ID]]>
 	</columnHeader>
 	<detail>
 		<band height="31" splitType="Stretch">
-			<rectangle>
-				<reportElement x="0" y="2" width="555" height="27" uuid="8399bae9-0c99-4638-98aa-5ef82d0a8570"/>
-			</rectangle>
 			<textField>
 				<reportElement x="0" y="2" width="155" height="27" uuid="ab790d7d-cdd6-4e5c-baeb-29e73014bf4d"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>

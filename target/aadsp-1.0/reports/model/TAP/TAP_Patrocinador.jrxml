@@ -28,10 +28,7 @@ WHERE T.ID = $P{ID_tap}]]>
 		<band splitType="Stretch"/>
 	</background>
 	<columnHeader>
-		<band height="24" splitType="Stretch">
-			<rectangle>
-				<reportElement x="1" y="4" width="554" height="20" uuid="7a4a541c-06b1-4eb2-be6f-e4da8f5c179c"/>
-			</rectangle>
+		<band height="26" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="0" width="250" height="20" uuid="74958725-cff6-43b9-a1e0-927686286a74"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -57,9 +54,6 @@ WHERE T.ID = $P{ID_tap}]]>
 	</columnHeader>
 	<detail>
 		<band height="34" splitType="Stretch">
-			<rectangle>
-				<reportElement x="1" y="2" width="554" height="32" uuid="14e1d94a-df5f-4aa0-8320-76ed67cf9e41"/>
-			</rectangle>
 			<textField>
 				<reportElement x="0" y="0" width="250" height="34" uuid="b2f8b06c-eb6a-4e38-9989-22dbddb07857"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
