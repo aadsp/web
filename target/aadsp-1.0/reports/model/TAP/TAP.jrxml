@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2f3837a3-d734-4d32-8268-55725bc3ef06">
+	<property name="ireport.zoom" value="1.4641000000000008"/>
+	<property name="ireport.x" value="20"/>
+	<property name="ireport.y" value="13"/>
+	<parameter name="ID_tap" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["G:\\PROJETO TCC\\web\\src\\main\\webapp\\reports\\model\\TAP\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT ID,nome,
+justificativa,
+objetivo,
+dataInicio,
+alinhamentoEstrategico,
+dataFim,
+dataCriacao,
+dataHomologacao,
+custo,
+riscosIniciais,
+restricoes
+FROM TAP.TAP_AADSP_TAP WHERE ID = $P{ID_tap}]]>
+	</queryString>
+	<field name="ID" class="java.lang.Integer"/>
+	<field name="nome" class="java.lang.String"/>
+	<field name="justificativa" class="java.lang.String"/>
+	<field name="objetivo" class="java.lang.String"/>
+	<field name="dataInicio" class="java.sql.Timestamp"/>
+	<field name="alinhamentoEstrategico" class="java.lang.String"/>
+	<field name="dataFim" class="java.sql.Timestamp"/>
+	<field name="dataCriacao" class="java.sql.Timestamp"/>
+	<field name="dataHomologacao" class="java.sql.Timestamp"/>
+	<field name="custo" class="java.math.BigDecimal"/>
+	<field name="riscosIniciais" class="java.lang.String"/>
+	<field name="restricoes" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="449" splitType="Stretch">
+			<rectangle>
+				<reportElement positionType="Float" x="0" y="371" width="109" height="30" uuid="e09befbd-6e33-4080-ad11-157154c6ea68"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="110" y="402" width="444" height="39" uuid="ccb51834-04a2-4df5-8795-2c12a5008425"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="402" width="109" height="39" uuid="59ea8fa6-808c-4c49-a1ce-9cbf4b379b62"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="109" y="20" width="446" height="70" uuid="3451743d-e93c-496b-b9ab-c6cb1293e8ce"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="110" y="20" width="446" height="70" isRemoveLineWhenBlank="true" uuid="c0f54fe0-46a4-4301-957e-a98898a5157f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Termo de Abertura de Projeto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="109" height="56" forecolor="#FFFFFF" backcolor="#000000" uuid="3673e2ef-ef1b-4f7e-aa3e-1ca87b3b6465"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AADSP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="109" y="0" width="446" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="0916a90d-e06c-4718-9250-ec84e6af2a75"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[  TAP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="56" width="109" height="34" forecolor="#FFFFFF" backcolor="#000000" uuid="81df9621-e131-4302-ae25-67f599d7d2ac"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Abordagem Adaptativa para implantação do Processo de Software]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="446" y="0" width="100" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="324f0ce7-c8f9-460c-bb8b-a7af67440991"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="0" y="256" width="109" height="29" uuid="25c33f67-2272-4ec3-91be-64b2676ba495"/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="243" width="109" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="5d94cef2-4ffb-4cf4-9a7b-f8b5eb6ba1b4"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Controle]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="110" y="371" width="444" height="31" uuid="be04a2fd-3154-47a9-a776-fb28029ef088"/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="109" y="256" width="446" height="29" uuid="424b0746-66e9-4d0f-8a94-61c7867154f4"/>
+			</rectangle>
+			<textField>
+				<reportElement x="125" y="256" width="429" height="31" uuid="e0f67e11-3f74-4e02-87ba-e2b9c3a3cb0a"/>
+				<textFieldExpression><![CDATA[$F{riscosIniciais}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="123" y="370" width="431" height="29" uuid="6769d68b-1d6d-4323-85fa-a43bd4a44ea3"/>
+				<textFieldExpression><![CDATA[$F{restricoes}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="123" y="401" width="431" height="38" uuid="231c5dd3-0f39-4f7c-a055-8ecc302ccf5e"/>
+				<textFieldExpression><![CDATA[$F{alinhamentoEstrategico}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="124" y="154" width="169" height="25" uuid="ef791a7c-0085-4ce1-bac5-0d1e787b2906"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="293" y="154" width="120" height="25" uuid="7e51255f-bf38-4855-a652-d718ffd5e33c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="413" y="136" width="142" height="25" uuid="9c4403d1-4a1a-434d-a080-689adad6b211"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="293" y="154" width="120" height="25" uuid="12a1c678-81d5-436b-814c-f3263f8e4b7c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Calculado:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="136" y="159" width="157" height="20" uuid="a2e3b395-90eb-4eaa-ab61-82439c35402d"/>
+				<textFieldExpression><![CDATA[$F{custo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="357" width="109" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="d5a10b54-9b71-4437-97a2-987fcb482627"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Alinhamento]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="293" y="308" width="120" height="41" uuid="497dde55-19ab-4bfd-bd1a-76eb8a670ff4"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="109" y="133" width="446" height="97" uuid="d8b8f16b-7e50-4217-a2a5-bf0f2796d78f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="133" width="109" height="97" uuid="1d477d9e-92da-4443-8fa0-be557ab977c8"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="133" width="109" height="20" uuid="0a7514b8-3976-4eea-90f6-0d28eee16c4c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Titulo:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="126" y="133" width="429" height="20" uuid="4a63a59a-31c2-4d4a-b41e-d07ba6bd431f"/>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="156" width="109" height="38" uuid="c2622bb9-815a-4fc3-9eec-a5c6f7cdded7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Justificativa: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="126" y="160" width="429" height="33" uuid="02bee40d-4468-4525-9e6c-71f85e4e15b7"/>
+				<textFieldExpression><![CDATA[$F{justificativa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="125" y="198" width="430" height="32" uuid="85b06b7b-391f-48bb-ab95-bc929c78a17a"/>
+				<textFieldExpression><![CDATA[$F{objetivo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="194" width="109" height="32" uuid="445cd236-86e3-4481-99d5-45260d0a3b04"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Objetivo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="120" width="109" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="785a6bf2-4cf7-4479-8dda-577d90e443a8"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pré-Projeto]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="152" width="555" height="1" uuid="dbe8f5bf-ce93-426a-945d-67ddea974c88"/>
+			</line>
+			<line>
+				<reportElement x="0" y="195" width="555" height="1" uuid="605e0415-112f-44cc-a563-233a607ad88d"/>
+			</line>
+			<rectangle>
+				<reportElement x="0" y="308" width="109" height="40" uuid="039ab143-eac9-43c6-b5ff-bf331da70892"/>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="295" width="109" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="b2d22e2c-1cd8-47e3-8dd6-319eaba0fb03"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cronograma]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="328" width="109" height="20" uuid="f265ad7f-b146-4f42-9501-e7cb73a5d8b8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data Término:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="109" y="308" width="183" height="41" uuid="d52f49e8-e82c-4d6b-a733-b3981c9a19a6"/>
+			</rectangle>
+			<textField>
+				<reportElement x="125" y="307" width="169" height="20" uuid="f9fc5e1c-4839-4844-a992-75523541d5a5"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{dataInicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="124" y="325" width="169" height="20" uuid="64b4d13b-bca3-4ac1-ba22-5c993be31a39"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{dataFim}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="294" y="328" width="120" height="20" uuid="f9721e6e-ddf4-4fb6-a64b-b47b6aa205b8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data Homologação:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="294" y="309" width="120" height="20" uuid="13bf7af0-bad9-435f-8300-44ee57051502"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data Criação:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="413" y="308" width="141" height="41" uuid="587459f4-46ad-439b-908e-f76e0a0a3928"/>
+			</rectangle>
+			<textField>
+				<reportElement x="414" y="308" width="140" height="21" uuid="5467a7f4-1398-4d61-8d4a-3a948412d520"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{dataCriacao}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="414" y="329" width="141" height="20" uuid="f71c0257-5021-4285-92e7-00da84520209"/>
+				<textFieldExpression><![CDATA[$F{dataHomologacao}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="309" width="109" height="20" uuid="d041ba9c-b6c3-4fd5-8663-af0551698619"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data Início:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="256" width="109" height="20" uuid="2271b1e9-0a33-4637-9a09-d529559aeda9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Riscos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="371" width="109" height="28" uuid="f19ba79d-4b31-471d-8b8c-6489c9b57cd3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Restrições]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="401" width="109" height="38" uuid="559fefa2-c944-4f85-8fea-0d79ed391b49"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estratégico]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="230" splitType="Stretch">
+			<subreport>
+				<reportElement positionType="Float" x="0" y="74" width="555" height="35" uuid="c5a9dd88-7559-4739-922e-9e2144626d8d"/>
+				<subreportParameter name="ID_tap">
+					<subreportParameterExpression><![CDATA[$F{ID}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "TAP_Escopo.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="-2" y="61" width="111" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="97c92b23-b203-4550-ad1b-e467772c4eb2"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Escopo]]></text>
+			</staticText>
+			<subreport>
+				<reportElement positionType="Float" x="0" y="132" width="555" height="34" uuid="c741398d-451d-4f2f-acde-ee2fa967a6ec"/>
+				<subreportParameter name="ID_tap">
+					<subreportParameterExpression><![CDATA[$F{ID}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "TAP_Equipe.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="120" width="109" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="39d03801-811c-4a62-9e39-3e68e225add2"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Equipe]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="181" width="109" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="d9baef42-d51c-4f8e-8607-3d52df4abd85"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Patrocinador]]></text>
+			</staticText>
+			<subreport>
+				<reportElement positionType="Float" x="0" y="194" width="555" height="25" uuid="e4707500-a5d2-4ee5-b297-be96fd38f898"/>
+				<subreportParameter name="ID_tap">
+					<subreportParameterExpression><![CDATA[$F{ID}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "TAP_Patrocinador.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement positionType="Float" x="0" y="17" width="555" height="33" uuid="c2f68567-be7f-4c09-94dc-0ce9665eaeb0"/>
+				<subreportParameter name="ID_tap">
+					<subreportParameterExpression><![CDATA[$F{ID}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "TAP_Stakeholder.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="4" width="109" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="cc2283ce-e285-40f1-b934-595597089ae0"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Stakeholders]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="80" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="48" width="178" height="1" uuid="5eac6c81-ef2e-47dc-953a-7ca6ea4dd207"/>
+			</line>
+			<staticText>
+				<reportElement x="202" y="49" width="173" height="20" uuid="cd7eee81-e36d-4403-bc12-1828b91254bb"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Stakeholder]]></text>
+			</staticText>
+			<line>
+				<reportElement x="202" y="48" width="173" height="1" uuid="fd5441e2-5713-4fd9-8a77-f0a2c946c530"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="49" width="178" height="20" uuid="9bb19872-a0cc-4809-8117-553480192d87"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Responsável pelo Projeto]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="7" width="202" height="20" uuid="6d9ed89e-d8cf-45c5-a863-8cedbe31aeef"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="451" y="57" width="100" height="20" uuid="eff597d1-e205-41a8-a73c-22ee8e79c605"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>
