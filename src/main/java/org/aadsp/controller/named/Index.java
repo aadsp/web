@@ -1,15 +1,16 @@
 package org.aadsp.controller.named;
 
-import java.io.IOException;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.mail.MessagingException;
 import org.aadsp.annotations.Usuario;
 import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.interfaces.IUsuario;
 import org.aadsp.utils.Mensageiro;
 import org.aadsp.utils.Response;
 import org.aadsp.utils.Session;
+import org.apache.commons.mail.EmailException;
 
 
 /**Classe principal do projeto, etapa de identificação do usuário por login e senha
@@ -47,7 +48,7 @@ public class Index extends ABaseNamed {
     /**Metódo principal de autenticação do projeto, valida os dados de login e senha informados e encaminha o usuário autenticado
      * para a página principal de menu do projeto
      */
-    public void autenticar(){
+    public void autenticar() throws MessagingException, EmailException{
         try {
             IUsuario copia;
             copia = usuario;

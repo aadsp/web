@@ -3,6 +3,9 @@ package org.aadsp.utils;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -14,6 +17,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.aadsp.annotations.Usuario;
 
 @WebFilter(servletNames = { "Faces Servlet" })
 public class ControleDeAcesso implements Filter {
@@ -21,12 +25,13 @@ public class ControleDeAcesso implements Filter {
     
     
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response,FilterChain chain) throws IOException, ServletException 
+    public void doFilter(ServletRequest request, ServletResponse response,FilterChain chain) throws IOException, ServletException
     {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpSession session = req.getSession();        
         
         controlarAcesso(session, req, chain, request, response);
+
     }
     
     /**
@@ -65,6 +70,7 @@ public class ControleDeAcesso implements Filter {
             {
                 List<String> paginaPermitida = new ArrayList<>();
                 paginaPermitida = (List<String>) session.getAttribute("paginasAcesso");
+                Usuario usuario = (Usuario) session.getAttribute("usuario");
                 if(session.getAttribute("usuario") != null)
                 {
                     int count = paginaPermitida.size();
@@ -74,8 +80,9 @@ public class ControleDeAcesso implements Filter {
                         count --;
                     }
                     if(count == 0)
+                         Email.enviarEmailAcessoIndevido(req.getRequestURI(),usuario.getNome(),usuario.getLogin(),usuario.getEmail());
                          redireciona("/web/faces/acessoNegado.xhtml", response);
-                    
+                         
                 }
                 else
                 {

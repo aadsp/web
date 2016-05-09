@@ -66,5 +66,4 @@ org\aadsp\controller\named\contributors\EmpresaConsultar.class
 org\aadsp\annotations\Usuario.class
 org\aadsp\controller\named\adm\FuncaoEditar.class
 org\aadsp\controller\named\adm\HeaderTemplate.class
-org\aadsp\utils\Email$1.class
 org\aadsp\utils\FactoryHibernate.class

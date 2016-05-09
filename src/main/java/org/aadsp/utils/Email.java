@@ -1,15 +1,12 @@
 
 package org.aadsp.utils;
 
-import java.util.Properties;
-import javax.mail.Address;
-import javax.mail.Message;
 import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import org.aadsp.annotations.Usuario;
+import org.apache.commons.mail.DefaultAuthenticator;
+import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail.HtmlEmail;
+import org.apache.commons.mail.SimpleEmail;
 
 /**Classe para envio de email
  *
@@ -18,46 +15,51 @@ import javax.mail.internet.MimeMessage;
  */
 public class Email
 {
-    public static void enviarEmailErro(String mensagem)
+    public static void enviarEmail(String mensagem)
     {
-        Properties props = new Properties();
-        /** Parâmetros de conexão com servidor Gmail */
-        props.put("mail.smtp.host", "smtp.gmail.com"); 
-        props.put("mail.smtp.auth", "true"); 
-        props.put("mail.smtp.port", "465"); 
-        props.put("mail.smtp.starttls.enable", "true"); 
-        props.put("mail.smtp.socketFactory.port", "465"); 
-        props.put("mail.smtp.socketFactory.fallback", "false"); 
-        props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-
         
-        Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator(){
-             protected PasswordAuthentication getPasswordAuthentication() 
-             {
-                   return new PasswordAuthentication("aadsp.labrasoft@gmail.com", "7895312945");
-             }
-        }); 
-        
-        /** Ativa Debug para sessão */
-            session.setDebug(true);
-
-            try {
-
-                  Message message = new MimeMessage(session);
-                  message.setFrom(new InternetAddress("aadsp.labrasoft@gmail.com")); //Remetente
-
-                  Address[] toUser = InternetAddress //Destinatário(s)
-                             .parse("aadsp.labrasoft@gmail.com");  
-
-                  message.setRecipients(Message.RecipientType.TO, toUser);
-                  message.setSubject("ERRO AADSP");//Assunto
-                  message.setText(mensagem);
-                  /**Método para enviar a mensagem criada*/
-                  Transport.send(message);
-
-             } catch (MessagingException e) {
-                  throw new RuntimeException(e);
-            }
     }
     
+    public static void enviarEmailErro(String mensagem) throws MessagingException, EmailException
+    {
+        SimpleEmail email = new SimpleEmail();
+        email.setDebug(true);
+        email.setHostName("smtp.gmail.com"); // o servidor SMTP para envio do e-mail
+        email.setSmtpPort(587);
+        email.setAuthenticator(new DefaultAuthenticator("aadsp.labrasoft@gmail.com", "00000000"));
+        email.setTLS(true);
+        email.addTo("aadsp.labrasoft@gmail.com", "AADSP"); //destinatário
+        email.setFrom("aadsp.labrasoft@gmail.com", "AADSP - ERRO"); // remetente
+        email.setSubject("AADSP - ERRO"); // assunto do e-mail
+        email.setMsg("Teste de Email utilizando commons-email"); //conteudo do e-mail
+        email.send(); //envia o e-mail
+    }
+    
+    public static void enviarEmailAcessoIndevido(String pagina,String nomeUsuario, String loginUsuario, String emailUsuario)
+    {
+        try{
+        HtmlEmail email = new HtmlEmail();
+        email.setDebug(true);
+        email.setHostName("smtp.gmail.com"); // o servidor SMTP para envio do e-mail
+        email.setSmtpPort(587);
+        email.setAuthenticator(new DefaultAuthenticator("aadsp.labrasoft@gmail.com", "00000000"));
+        email.setTLS(true);
+        email.addTo("aadsp.labrasoft@gmail.com", "AADSP"); //destinatário
+        email.setFrom("aadsp.labrasoft@gmail.com", "AADSP - ACESSO"); // remetente
+        email.setSubject("AADSP - ACESSO INDEVIDO"); // assunto do e-mail
+        email.setHtmlMsg("<html> "
+                + "<table>"
+                + "<tr><td><strong>Usuário:</strong></td><td>"+nomeUsuario+"</td></tr>"
+                + "<tr><td><strong>Login:</strong></td><td>"+loginUsuario+"</td></tr>"
+                + "<tr><td><strong>E-mail:</strong></td><td>"+emailUsuario+"</td></tr>"
+                + "<tr><td><strong>Página:</strong></td><td>"+pagina+"</td></tr>"
+                + "</table> "
+                + "</html>");
+        email.send(); //envia o e-mail
+        }
+        catch(EmailException e)
+        {
+            Mensageiro.mensagemError("Erro ao executar operação de envio de email:" +e.getMessage());
+        }
+    }
 }
