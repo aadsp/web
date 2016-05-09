@@ -21,6 +21,11 @@ public class StakeholderCadastrar extends ABaseNamed
     {
         this.stakeholder = new Stakeholder();
     }
+    
+    public boolean controleDeCadastro()
+    {
+        return this.stakeholder.getNome() != null;
+    }
    
     public void cadastrar()
     {

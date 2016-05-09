@@ -29,6 +29,11 @@ public class PessoalCadastrar extends ABaseNamed
         this.funcao = new Funcao();
         this.usuario = new Usuario();
     }
+    
+    public boolean controleDeCadastro()
+    {
+        return this.usuario.getNome() != null;
+    }
    
     public void cadastrar()
     {

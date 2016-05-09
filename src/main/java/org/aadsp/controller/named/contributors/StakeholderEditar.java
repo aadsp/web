@@ -43,7 +43,7 @@ public class StakeholderEditar extends ABaseNamed
       try
       {
         stakeholder.excluir();
-        Response.redirect("/web/faces/views/projetos/StakeholderConsultar.xhtml");
+        Response.redirect("/web/faces/views/colaboradores/StakeholderConsultar.xhtml");
       }catch(Exception e)
       {
           Mensageiro.mensagemError("Não foi possível excluir os dados deste stakeholder!");

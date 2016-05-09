@@ -50,8 +50,11 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\TAPModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\TAPEditar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\PaginaCadastrar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\EquipeModel.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Colaborador.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\PaginalConsultar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Empresa.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\contributors\ColaboradorConsultar.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\ColaboradorModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\StakeholderTAP.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\EmpresaModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\TAPEscopoTipoModel.java

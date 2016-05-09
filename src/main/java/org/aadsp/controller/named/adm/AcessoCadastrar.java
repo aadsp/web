@@ -31,6 +31,11 @@ public class AcessoCadastrar extends ABaseNamed
       this.paginas = new HashMap<String, Integer>();
     }
    
+    public boolean controleDeCadastro()
+    {
+        return this.acesso.getID_funcao() != null;
+    }
+    
     public void cadastrar()
     {
       try

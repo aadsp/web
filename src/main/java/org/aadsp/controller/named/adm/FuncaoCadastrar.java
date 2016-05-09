@@ -22,12 +22,16 @@ public class FuncaoCadastrar extends ABaseNamed
         this.funcao = new Funcao();
     }
     
+    public boolean controleDeCadastro()
+    {
+        return this.funcao.getSigla() != null;
+    }
+    
     public void cadastrar(){
         try
       {
         funcao.cadastrar();
         Mensageiro.mensagemInfo("Função cadastrada com sucesso");
-        funcao = new Funcao();
       }catch(Exception e)
       {
           Mensageiro.mensagemError("Não foi possível cadastrar a função!");

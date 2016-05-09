@@ -37,6 +37,11 @@ public class AlterarSenha extends ABaseNamed
           Mensageiro.mensagemError("Não foi possível alterar a senha!");
       }
     }
+    
+    public boolean controleDeCadastro()
+    {
+        return this.senha != null;
+    }
 
     public String getSenha() {
         return senha;

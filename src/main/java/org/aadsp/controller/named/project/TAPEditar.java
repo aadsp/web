@@ -201,7 +201,7 @@ public class TAPEditar extends ABaseNamed
       try
       {
         tap.deletar();
-        Mensageiro.mensagemInfo("O TAP foi excluido com sucesso!");
+        Response.redirect("/web/faces/views/projetos/TAPConsultar.xhtml");
       }catch(Exception e)
       {
           Mensageiro.mensagemError("Não foi possível excluir o TAP!");

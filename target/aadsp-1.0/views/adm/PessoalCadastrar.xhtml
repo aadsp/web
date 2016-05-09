@@ -63,7 +63,7 @@
                 </p:tabView>
                 </div>
                 <div class="space-20"></div>
-                <p:commandButton class="btn btn-success" value="CADASTRAR" update="growl" actionListener="#{pessoalCadastrar.cadastrar()}"/>
+                <p:commandButton class="btn btn-success" ajax="false" disabled="#{pessoalCadastrar.controleDeCadastro()}" value="CADASTRAR" update="growl" actionListener="#{pessoalCadastrar.cadastrar()}"/>
                     </div>
                 </div>
                 <div class="space-50"></div>

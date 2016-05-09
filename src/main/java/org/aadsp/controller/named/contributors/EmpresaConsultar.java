@@ -39,7 +39,7 @@ public class EmpresaConsultar extends ABaseNamed
    {
        try
        {
-        Response.redirect("/web/faces/views/projetos/EmpresaEditar.xhtml?empresa="+ Criptografia.codificarParaBase64(empresa.getID().toString()));
+        Response.redirect("/web/faces/views/colaboradores/EmpresaEditar.xhtml?empresa="+ Criptografia.codificarParaBase64(empresa.getID().toString()));
        }catch(Exception e)
        {
          Mensageiro.mensagemError("Erro ao selecionar empresa!!");

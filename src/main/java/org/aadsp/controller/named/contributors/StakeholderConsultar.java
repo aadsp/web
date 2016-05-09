@@ -39,7 +39,7 @@ public class StakeholderConsultar extends ABaseNamed
    {
        try
        {
-        Response.redirect("/web/faces/views/projetos/StakeholderEditar.xhtml?Stakeholder="+ Criptografia.codificarParaBase64(stakeholder.getID().toString()));
+        Response.redirect("/web/faces/views/colaboradores/StakeholderEditar.xhtml?Stakeholder="+ Criptografia.codificarParaBase64(stakeholder.getID().toString()));
        }catch(Exception e)
        {
          Mensageiro.mensagemError("Erro ao selecionar Página!!");

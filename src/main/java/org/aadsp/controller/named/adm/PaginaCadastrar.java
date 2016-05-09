@@ -8,7 +8,7 @@ import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.utils.Mensageiro;
 
 /**
- * Classe que representa o objeto de tela Pessoal Consulta
+ * 
  * @author Felipe Coelho
  * @version  25/04/2016
  */
@@ -21,7 +21,12 @@ public class PaginaCadastrar extends ABaseNamed
     {
         this.pagina = new Pagina();
     }
-   
+    
+    public boolean controleDeCadastro()
+    {
+        return this.pagina.getNome() != null;
+    }
+    
     public void cadastrar()
     {
       try

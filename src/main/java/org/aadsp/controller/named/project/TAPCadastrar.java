@@ -25,6 +25,11 @@ public class TAPCadastrar extends ABaseNamed
         this.tap = new TAP();
     }
    
+    public boolean controleDeCadastro()
+    {
+        return this.tap.getNome() != null;
+    }
+    
     public void cadastrar()
     {
       try

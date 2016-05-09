@@ -17,6 +17,11 @@ public class EmpresaCadastrar extends ABaseNamed
         this.empresa = new Empresa();
     }
    
+    public boolean controleDeCadastro()
+    {
+        return this.empresa.getRazaoSocial()!= null;
+    }
+    
     public void cadastrar()
     {
       try
