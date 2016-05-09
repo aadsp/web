@@ -26,7 +26,7 @@ public class Email
         email.setDebug(true);
         email.setHostName("smtp.gmail.com"); // o servidor SMTP para envio do e-mail
         email.setSmtpPort(587);
-        email.setAuthenticator(new DefaultAuthenticator("aadsp.labrasoft@gmail.com", "00000000"));
+        email.setAuthenticator(new DefaultAuthenticator(DadosEmail.email, DadosEmail.senha));
         email.setTLS(true);
         email.addTo("aadsp.labrasoft@gmail.com", "AADSP"); //destinatário
         email.setFrom("aadsp.labrasoft@gmail.com", "AADSP - ERRO"); // remetente
@@ -42,7 +42,7 @@ public class Email
         email.setDebug(true);
         email.setHostName("smtp.gmail.com"); // o servidor SMTP para envio do e-mail
         email.setSmtpPort(587);
-        email.setAuthenticator(new DefaultAuthenticator("aadsp.labrasoft@gmail.com", "00000000"));
+        email.setAuthenticator(new DefaultAuthenticator(DadosEmail.email, DadosEmail.senha));
         email.setTLS(true);
         email.addTo("aadsp.labrasoft@gmail.com", "AADSP"); //destinatário
         email.setFrom("aadsp.labrasoft@gmail.com", "AADSP - ACESSO"); // remetente
