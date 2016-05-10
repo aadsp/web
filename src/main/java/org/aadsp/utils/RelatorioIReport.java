@@ -1,6 +1,7 @@
 
 package org.aadsp.utils;
 
+import org.aadsp.utils.settings.ConexaoSQLServer;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;

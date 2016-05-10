@@ -3,9 +3,13 @@ package org.aadsp.controller.named.adm;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import javax.mail.MessagingException;
 import org.aadsp.annotations.Pagina;
+import org.aadsp.annotations.Usuario;
 import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.utils.Mensageiro;
+import org.aadsp.utils.Session;
+import org.apache.commons.mail.EmailException;
 
 /**
  * 
@@ -27,7 +31,7 @@ public class PaginaCadastrar extends ABaseNamed
         return this.pagina.getNome() != null;
     }
     
-    public void cadastrar()
+    public void cadastrar() throws MessagingException, EmailException
     {
       try
       {
@@ -35,7 +39,7 @@ public class PaginaCadastrar extends ABaseNamed
         Mensageiro.mensagemInfo("Página cadastrada com sucesso");
       }catch(Exception e)
       {
-          Mensageiro.mensagemError("Não foi possível cadastrar a página!");
+          Mensageiro.mensagemError("Não foi possível cadastrar a página!",(Usuario)Session.getAttribute("usuario"),e);
       }
     }
   

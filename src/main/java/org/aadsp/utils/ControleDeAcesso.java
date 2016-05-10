@@ -3,9 +3,6 @@ package org.aadsp.utils;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.mail.MessagingException;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -80,9 +77,7 @@ public class ControleDeAcesso implements Filter {
                         count --;
                     }
                     if(count == 0)
-                         Email.enviarEmailAcessoIndevido(req.getRequestURI(),usuario.getNome(),usuario.getLogin(),usuario.getEmail());
                          redireciona("/web/faces/acessoNegado.xhtml", response);
-                         
                 }
                 else
                 {

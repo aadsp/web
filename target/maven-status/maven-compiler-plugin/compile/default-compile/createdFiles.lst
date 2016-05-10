@@ -7,9 +7,11 @@ org\aadsp\controller\named\contributors\StakeholderCadastrar.class
 org\aadsp\annotations\TAPEscopoTipo.class
 org\aadsp\annotations\model\TAPEscopoAreaModel.class
 org\aadsp\controller\named\adm\AcessoConsultar.class
+org\aadsp\utils\TemplateEmail.class
 org\aadsp\annotations\model\FuncaoModel.class
 org\aadsp\annotations\model\ColaboradorModel.class
 org\aadsp\annotations\Stakeholder.class
+org\aadsp\utils\settings\DadosEmail.class
 org\aadsp\annotations\Pagina.class
 org\aadsp\controller\named\project\TAPEditar.class
 org\aadsp\annotations\model\TAPModel.class
@@ -21,6 +23,7 @@ org\aadsp\controller\named\project\TAPCadastrar.class
 org\aadsp\interfaces\ABaseNamed.class
 org\aadsp\annotations\TAPEscopo.class
 org\aadsp\annotations\Colaborador.class
+org\aadsp\utils\settings\ConexaoSQLServer.class
 org\aadsp\utils\Email.class
 org\aadsp\controller\named\Index.class
 org\aadsp\annotations\model\StakeholderModel.class
@@ -48,7 +51,6 @@ org\aadsp\controller\named\project\TAPConsultar.class
 org\aadsp\annotations\Empresa.class
 org\aadsp\controller\named\adm\AcessoEditar.class
 org\aadsp\controller\named\adm\PaginaCadastrar.class
-org\aadsp\utils\ConexaoSQLServer.class
 org\aadsp\annotations\Responsavel.class
 org\aadsp\annotations\model\TAPEscopoTipoModel.class
 org\aadsp\utils\RelatorioIReport.class

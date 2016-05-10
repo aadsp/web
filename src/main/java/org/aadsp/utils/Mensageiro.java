@@ -7,6 +7,9 @@ package org.aadsp.utils;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.mail.MessagingException;
+import org.aadsp.annotations.Usuario;
+import org.apache.commons.mail.EmailException;
 
 /**
  * Classe que controla as mensagens exibidas ao usuário, são definidas de acordo com os metodos e severidades
@@ -33,6 +36,14 @@ public class Mensageiro
     {
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"- ERRO -",subtitulo));
+    }
+    
+    public static void mensagemError(String subtitulo,Usuario usuario,Exception e) throws MessagingException, EmailException
+    {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"- ERRO NOTIFICADO -",subtitulo));
+        StackTraceElement[] element = e.getStackTrace();
+        Email.enviarEmailErro(subtitulo, usuario.getNome(), usuario.getEmail(), e.getMessage(), element[0].getMethodName());
     }
     
     /** Metódo para informar mensagens de ATENÇÃO, este tipo é considerado com 1 - Nível de severidade
