@@ -55,6 +55,7 @@ org\aadsp\annotations\Responsavel.class
 org\aadsp\annotations\model\TAPEscopoTipoModel.class
 org\aadsp\utils\RelatorioIReport.class
 org\aadsp\annotations\model\ResponsavelModel.class
+org\aadsp\utils\GeradorDeSenha.class
 org\aadsp\annotations\StakeholderTAP.class
 org\aadsp\annotations\model\UsuarioModel.class
 org\aadsp\utils\Mensageiro.class

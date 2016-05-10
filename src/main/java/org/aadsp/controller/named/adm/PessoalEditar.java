@@ -11,8 +11,11 @@ import org.aadsp.annotations.Funcao;
 import org.aadsp.annotations.Usuario;
 import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.utils.Criptografia;
+import org.aadsp.utils.Email;
+import org.aadsp.utils.GeradorDeSenha;
 import org.aadsp.utils.Mensageiro;
 import org.aadsp.utils.Response;
+import org.apache.commons.mail.EmailException;
 
 /**
  * Classe que representa o objeto de tela Pessoal detalhamento
@@ -74,10 +77,19 @@ public class PessoalEditar extends ABaseNamed
     {
        try
        {
-        Response.redirect("/web/faces/views/adm/PessoalAterarSenha.xhtml?Pessoal="+ Criptografia.codificarParaBase64(usuario.getID().toString()));
-       }catch(Exception e)
+          String novaSenha = GeradorDeSenha.gerarCombinacaoNumerica();
+          Email.enviarEmailAlteracaoSenha(usuario.getNome(), usuario.getLogin(), novaSenha, usuario.getEmail());
+          usuario.setSenha(novaSenha);
+          usuario.editar();
+          Mensageiro.mensagemInfo("Nova senha enviada para o e-mail do usuário!!");
+       }
+       catch(EmailException e)
        {
-         Mensageiro.mensagemError("Erro ao selecionar usuário!!");
+         Mensageiro.mensagemError("Não possível realizar o envio da senha por email, a operação foi abortada!!");
+       }
+       catch(Exception e)
+       {
+         Mensageiro.mensagemError("Não foi possivel realizar a alteração da senha!!");
        }
     }
     

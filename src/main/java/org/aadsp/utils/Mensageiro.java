@@ -43,7 +43,7 @@ public class Mensageiro
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"- ERRO NOTIFICADO -",subtitulo));
         StackTraceElement[] element = e.getStackTrace();
-        Email.enviarEmailErro(subtitulo, usuario.getNome(), usuario.getEmail(), e.getMessage(), element[0].getMethodName());
+        Email.enviarEmailErroExcecao(subtitulo, usuario.getNome(), usuario.getEmail(), e.getMessage(), element[0].getMethodName());
     }
     
     /** Metódo para informar mensagens de ATENÇÃO, este tipo é considerado com 1 - Nível de severidade

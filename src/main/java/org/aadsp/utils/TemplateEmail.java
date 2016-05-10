@@ -19,7 +19,7 @@ public class TemplateEmail
     }
     
     /**
-     * Metódo par estruturação em formato HTML de um email de erro
+     * Metódo para estruturação em formato HTML de um email de erro
      * @param nomeUsuario nome do usuário em sessão 
      * @param loginUsuario login do usuário em sessão
      * @param emailUsuario email do usuário em sessão
@@ -36,6 +36,22 @@ public class TemplateEmail
                 + "<tr><td><strong>E-mail:</strong></td><td>"+emailUsuario+"</td></tr>"
                 + "<tr><td><strong>Mensagem de Erro:</strong></td><td>"+mensagem+"</td></tr>"
                 + "<tr><td><strong>Pilha do erro:</strong></td><td>"+pilha+"</td></tr>"
+                + "</table> "
+                + "</html>";
+    }
+    
+    /**
+     * Metódo para estruturação em formato HTML de um email de alteração de senha
+     * @param nomeUsuario nome do usuário que a senha foi alterada
+     * @param loginUsuario login do usuário que a senha foi alterada
+     * @param senha nova senha definida ao usuário
+     */
+    public static String alteracaoSenha (String nomeUsuario,String loginUsuario,String senha){
+        return "<html> "
+                + "<table>"
+                + "<tr><td><strong>Usuário:</strong></td><td>"+nomeUsuario+"</td></tr>"
+                + "<tr><td><strong>Login:</strong></td><td>"+loginUsuario+"</td></tr>"
+                + "<tr><td><strong>Nova Senha:</strong></td><td>"+senha+"</td></tr>"
                 + "</table> "
                 + "</html>";
     }

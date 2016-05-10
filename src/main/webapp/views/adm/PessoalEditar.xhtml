@@ -50,9 +50,6 @@
                         <p:outputLabel for="login" value="Login:" />
                         <p:inputText id="login" maxlength="30" value="#{pessoalEditar.usuario.login}"/>
                         
-                        <p:outputLabel value="Senha:" />
-                        <p:commandButton class="btn btn-info" value="ALTERAR" actionListener="#{pessoalEditar.alterarSenha()}"/>
-                        
                         <p:outputLabel for="funcao" value="Função: " />
                         <p:selectOneMenu id="funcao"  value="#{pessoalEditar.funcaoSelecionada}" style="width:150px">
                             <f:selectItem itemLabel="#{pessoalEditar.usuario.consultarFuncao()}" itemValue="#{pessoalEditar.usuario.id_funcao}" noSelectionOption="true" />
@@ -63,7 +60,9 @@
                 </p:tabView>
                 </div>
                 <div class="space-20"></div>
+                
                 <p:commandButton class="btn btn-success" value="SALVAR" update="growl" actionListener="#{pessoalEditar.editar()}"/>
+                <p:commandButton class="btn btn-warning" value="ALTERAR SENHA" update="growl" actionListener="#{pessoalEditar.alterarSenha()}"/>
                 <p:commandButton class="btn btn-danger" value="EXCLUIR" update="growl" actionListener="#{pessoalEditar.excluir()}"/>
                     </div>
                 </div>
