@@ -80,6 +80,12 @@ public class Colaborador implements Serializable
         return model.consultarPorID().getDescricao();
     }
     
+    public Colaborador consultar() throws Exception
+    {
+        ColaboradorModel model = new ColaboradorModel();
+        return model.consultarPorID(this);
+    }
+    
     public List<Colaborador> listar() throws Exception
     {
         ColaboradorModel  model = new ColaboradorModel();

@@ -42,6 +42,7 @@ org\aadsp\controller\named\contributors\ColaboradorCadastrar.class
 org\aadsp\utils\Response.class
 org\aadsp\controller\named\adm\PaginaEditar.class
 org\aadsp\controller\named\contributors\StakeholderEditar.class
+org\aadsp\controller\named\contributors\ColaboradorEditar.class
 org\aadsp\controller\named\contributors\StakeholderConsultar.class
 org\aadsp\interfaces\IUsuario.class
 org\aadsp\annotations\model\StakeholderTAPModel.class

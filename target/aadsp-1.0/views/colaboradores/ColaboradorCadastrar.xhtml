@@ -41,8 +41,8 @@
                    <h:panelGrid columns="2" cellpadding="5">
                        <p:outputLabel for="data" value="Data admissão:" />
                         <p:calendar id="data" value="#{colaboradorCadastrar.data}" pattern="dd/MM/yyyy" mask="true" />
-                        <p:outputLabel for="nome" value="Número do PIS:" />
-                        <p:inputText id="nome" maxlength="60" value="#{colaboradorCadastrar.colaborador.numeroPIS}"/>
+                        <p:outputLabel for="numPis" value="Número do PIS:" />
+                        <p:inputText id="numPis" maxlength="60" value="#{colaboradorCadastrar.colaborador.numeroPIS}"/>
                         <p:outputLabel for="valorBruto" value="Valor Bruto:" />
                         <p:inputText id="valorBruto"  value="#{colaboradorCadastrar.colaborador.valorBruto}"/>
                     </h:panelGrid>

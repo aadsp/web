@@ -44,12 +44,12 @@ private final Session sessao;
         sessao.close();
     }
     
-    public Colaborador consultarPorID(Pagina pagina)
+    public Colaborador consultarPorID(Colaborador colaborador)
     {
         try
         { 
             Query consulta = sessao.createQuery("from Colaborador where ID = :ID");
-            consulta.setInteger("ID", pagina.getID());
+            consulta.setInteger("ID", colaborador.getID());
             return (Colaborador) consulta.uniqueResult();
         }catch(Exception e){
             throw e;

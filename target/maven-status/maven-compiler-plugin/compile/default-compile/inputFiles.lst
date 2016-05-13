@@ -65,6 +65,7 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\StakeholderTAP.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\EmpresaModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\TAPEscopoTipoModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\PessoalCadastrar.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\contributors\ColaboradorEditar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\AlterarSenha.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\TAPEscopoModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\AcessoCadastrar.java

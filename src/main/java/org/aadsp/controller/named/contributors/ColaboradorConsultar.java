@@ -39,7 +39,7 @@ public class ColaboradorConsultar extends ABaseNamed
    {
        try
        {
-        Response.redirect("/web/faces/views/colaboradores/ColaboradorEditar.xhtml?empresa="+ Criptografia.codificarParaBase64(colaborador.getID().toString()));
+        Response.redirect("/web/faces/views/colaboradores/ColaboradorEditar.xhtml?colaborador="+ Criptografia.codificarParaBase64(colaborador.getID().toString()));
        }catch(Exception e)
        {
          Mensageiro.mensagemError("Erro ao selecionar colaborador!!");

@@ -1,6 +1,7 @@
 
 package org.aadsp.controller.named.contributors;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -51,10 +52,17 @@ public class ColaboradorCadastrar extends ABaseNamed implements ICadastro
     public Map<String,Integer> getUsuarios(){
        try{
 
-            List<Usuario> lista = usuario.listar();
-            List<Colaborador> listaColaborador = colaborador.listar();
+        List<Usuario> lista = usuario.listar();
+        List<Colaborador> listaColaborador = colaborador.listar();
+        List<Integer> listaIDColaborador = new ArrayList<Integer>();
+        
+        for(Colaborador obj:listaColaborador)
+        {
+            listaIDColaborador.add(obj.getID());
+        }
+            
        for(Usuario obj: lista){
-           if(!listaColaborador.contains(obj.getID()))
+           if(!listaIDColaborador.contains(obj.getID()))
               usuarios.put(obj.getNome(),obj.getID());
        }
        return usuarios;
