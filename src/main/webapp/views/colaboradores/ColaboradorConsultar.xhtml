@@ -46,23 +46,18 @@
                            
                                 <p:dataTable id="tbl" style="text-align:center" var="colaborador" value="#{colaboradorConsultar.listarColaboradores}"
                                                 paginator="true" rows="10">
-                                    <p:column width="10">
-                                           <f:facet name="header">
-                                               <h:outputText value="ID"/>
-                                           </f:facet>
-                                        <h:outputText value="#{colaborador.ID}" />
-                                       </p:column>
+              
                                     <p:column width="100">
                                            <f:facet name="header">
                                                <h:outputText value="nome" />
                                            </f:facet>
-                                        <h:outputText value="#{colaborador.consultarNomeColaborador}" />
+                                        <h:outputText value="#{colaborador.consultarNomeColaborador()}" />
                                     </p:column>
-                                    <p:column width="100">
+                                    <p:column width="60">
                                            <f:facet name="header">
                                                <h:outputText value="função" />
                                            </f:facet>
-                                        <h:outputText value="#{colaborador.consultarFuncaoColaborador}" />
+                                        <h:outputText value="#{colaborador.consultarFuncaoColaborador()}" />
                                     </p:column>
 
                                         <p:column style="width:5px;text-align: center" >

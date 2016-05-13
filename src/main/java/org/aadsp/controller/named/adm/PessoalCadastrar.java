@@ -11,6 +11,7 @@ import javax.mail.internet.ParseException;
 import org.aadsp.annotations.Funcao;
 import org.aadsp.annotations.Usuario;
 import org.aadsp.interfaces.ABaseNamed;
+import org.aadsp.interfaces.ICadastro;
 import org.aadsp.utils.Mensageiro;
 
 /**
@@ -20,7 +21,7 @@ import org.aadsp.utils.Mensageiro;
  */
 @ViewScoped
 @Named
-public class PessoalCadastrar extends ABaseNamed
+public class PessoalCadastrar extends ABaseNamed implements ICadastro
 {   
     public PessoalCadastrar()
     {

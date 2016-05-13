@@ -7,6 +7,7 @@ import javax.mail.MessagingException;
 import org.aadsp.annotations.Pagina;
 import org.aadsp.annotations.Usuario;
 import org.aadsp.interfaces.ABaseNamed;
+import org.aadsp.interfaces.ICadastro;
 import org.aadsp.utils.Mensageiro;
 import org.aadsp.utils.Session;
 import org.apache.commons.mail.EmailException;
@@ -18,7 +19,7 @@ import org.apache.commons.mail.EmailException;
  */
 @ViewScoped
 @Named
-public class PaginaCadastrar extends ABaseNamed
+public class PaginaCadastrar extends ABaseNamed implements ICadastro 
 {
     
     public PaginaCadastrar()

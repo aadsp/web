@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link href="../../bootstrap/css/bootstrap-general.css" rel="stylesheet"/>
+        <script type="text/javascript" src="../../primefaces/js/showcase.js"></script>
+    </h:head>
+    <h:body>
+        <ui:composition template="template/template.xhtml">
+            <ui:define name="content">
+            <h:form id="form">
+                <p:growl id="growl" showDetail="true" sticky="true" /> 
+                <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+                <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                    <img src="../../img/loading.gif" alt=""/>
+                </p:dialog>
+                <div class="margin-right-left-20">
+                    <div>
+                        <h3>COLABORADOR</h3>
+                         <div class="right">
+                             <a class="btn btn" href="ColaboradorConsultar.xhtml">VOLTAR</a>
+                        </div>
+                        <p><strong>CADASTRO</strong></p>
+                    <div>
+                </div>
+                <div class="space-40"></div>
+                <div class="control-group">   
+                <p:tabView dynamic="true" cache="true">
+                  <p:tab title="Dados Gerais">
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <p:outputLabel for="usuario" value="Usuário: " />
+                        <p:selectOneMenu id="usuario"  value="#{colaboradorCadastrar.usuarioSelecionado}" style="width:150px">
+                            <f:selectItem itemLabel="Selecionar Usuário" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{colaboradorCadastrar.usuarios}" />
+                        </p:selectOneMenu>
+                   </h:panelGrid>
+                   <h:panelGrid columns="2" cellpadding="5">
+                       <p:outputLabel for="data" value="Data admissão:" />
+                        <p:calendar id="data" value="#{colaboradorCadastrar.data}" pattern="dd/MM/yyyy" mask="true" />
+                        <p:outputLabel for="nome" value="Número do PIS:" />
+                        <p:inputText id="nome" maxlength="60" value="#{colaboradorCadastrar.colaborador.numeroPIS}"/>
+                        <p:outputLabel for="valorBruto" value="Valor Bruto:" />
+                        <p:inputText id="valorBruto"  value="#{colaboradorCadastrar.colaborador.valorBruto}"/>
+                    </h:panelGrid>
+                  </p:tab>
+                </p:tabView>
+                </div>
+                <div class="space-20"></div>
+                <p:commandButton class="btn btn-success" value="CADASTRAR" ajax="false" disabled="#{colaboradorCadastrar.controleDeCadastro()}" update="growl" actionListener="#{colaboradorCadastrar.cadastrar()}"/>
+                    </div>
+                </div>
+                <div class="space-50"></div>
+            </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

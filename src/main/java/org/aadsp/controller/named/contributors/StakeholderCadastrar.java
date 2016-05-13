@@ -5,6 +5,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import org.aadsp.annotations.Stakeholder;
 import org.aadsp.interfaces.ABaseNamed;
+import org.aadsp.interfaces.ICadastro;
 import org.aadsp.utils.Mensageiro;
 
 /**
@@ -14,7 +15,7 @@ import org.aadsp.utils.Mensageiro;
  */
 @ViewScoped
 @Named
-public class StakeholderCadastrar extends ABaseNamed
+public class StakeholderCadastrar extends ABaseNamed implements ICadastro
 {
     
     public StakeholderCadastrar()

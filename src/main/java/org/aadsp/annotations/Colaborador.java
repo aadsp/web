@@ -2,6 +2,7 @@
 package org.aadsp.annotations;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,9 +19,8 @@ public class Colaborador implements Serializable
     @GeneratedValue
     @Column(name="ID") private Integer ID;
     @Column(name="ID_usuario") private Integer ID_usuario;
-    @Column(name="ID_funcao") private Integer ID_funcao;
     @Column(name="numeroPIS") private String numeroPIS;
-    @Column(name="dataContrato") private String dataContrato;
+    @Column(name="dataContrato") private Date dataContrato;
     @Column(name="valorBruto") private double valorBruto;
 
     public Integer getID() {
@@ -39,14 +39,6 @@ public class Colaborador implements Serializable
         this.ID_usuario = ID_usuario;
     }
 
-    public Integer getID_funcao() {
-        return ID_funcao;
-    }
-
-    public void setID_funcao(Integer ID_funcao) {
-        this.ID_funcao = ID_funcao;
-    }
-
     public String getNumeroPIS() {
         return numeroPIS;
     }
@@ -55,11 +47,11 @@ public class Colaborador implements Serializable
         this.numeroPIS = numeroPIS;
     }
 
-    public String getDataContrato() {
+    public Date getDataContrato() {
         return dataContrato;
     }
 
-    public void setDataContrato(String dataContrato) {
+    public void setDataContrato(Date dataContrato) {
         this.dataContrato = dataContrato;
     }
 
@@ -80,8 +72,11 @@ public class Colaborador implements Serializable
     
     public String consultarFuncaoColaborador() throws Exception
     {
+        Usuario modelUsuario = new Usuario();
+        modelUsuario.setID(this.ID_usuario);
+        modelUsuario = modelUsuario.consultar();
         Funcao model = new Funcao();
-        model.setID(this.ID_funcao);
+        model.setID(modelUsuario.getId_funcao());
         return model.consultarPorID().getDescricao();
     }
     

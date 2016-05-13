@@ -38,6 +38,7 @@ org\aadsp\controller\named\adm\UsuariosVisualizar.class
 org\aadsp\controller\named\adm\AlterarSenha.class
 org\aadsp\annotations\Funcao.class
 org\aadsp\controller\named\contributors\EmpresaCadastrar.class
+org\aadsp\controller\named\contributors\ColaboradorCadastrar.class
 org\aadsp\utils\Response.class
 org\aadsp\controller\named\adm\PaginaEditar.class
 org\aadsp\controller\named\contributors\StakeholderEditar.class
@@ -55,6 +56,7 @@ org\aadsp\annotations\Responsavel.class
 org\aadsp\annotations\model\TAPEscopoTipoModel.class
 org\aadsp\utils\RelatorioIReport.class
 org\aadsp\annotations\model\ResponsavelModel.class
+org\aadsp\interfaces\ICadastro.class
 org\aadsp\utils\GeradorDeSenha.class
 org\aadsp\annotations\StakeholderTAP.class
 org\aadsp\annotations\model\UsuarioModel.class

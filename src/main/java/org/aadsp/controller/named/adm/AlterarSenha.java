@@ -5,6 +5,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import org.aadsp.annotations.Usuario;
 import org.aadsp.interfaces.ABaseNamed;
+import org.aadsp.interfaces.ICadastro;
 import org.aadsp.utils.Mensageiro;
 import org.aadsp.utils.Session;
 
@@ -15,7 +16,7 @@ import org.aadsp.utils.Session;
  */
 @ViewScoped
 @Named
-public class AlterarSenha extends ABaseNamed
+public class AlterarSenha extends ABaseNamed implements ICadastro
 {   
     public void alterar()
     {

@@ -7,6 +7,7 @@ import javax.inject.Named;
 import javax.mail.internet.ParseException;
 import org.aadsp.annotations.TAP;
 import org.aadsp.interfaces.ABaseNamed;
+import org.aadsp.interfaces.ICadastro;
 import org.aadsp.utils.Mensageiro;
 
 /**
@@ -16,7 +17,7 @@ import org.aadsp.utils.Mensageiro;
  */
 @ViewScoped
 @Named
-public class TAPCadastrar extends ABaseNamed
+public class TAPCadastrar extends ABaseNamed implements ICadastro
 {   
     public TAPCadastrar()
     {
