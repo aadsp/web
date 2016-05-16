@@ -78,6 +78,12 @@ public class Projeto implements Serializable
         return tap.consultar();
     }
     
+    public Projeto consultar()
+    {
+       ProjetoModel  model = new ProjetoModel();
+       return model.consultarPorID(this);
+    }
+    
     public List<Projeto> listar() throws Exception
     {
         ProjetoModel  model = new ProjetoModel();

@@ -2,6 +2,7 @@
 package org.aadsp.annotations;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -79,6 +80,18 @@ public class Acesso implements Serializable
         pagina.setID(this.getID_pagina());
         pagina = pagina.consultarPorID();
         return pagina.getNome();
-    }        
+    }
+    
+    public List<Acesso> listarPorFuncao() throws Exception
+    {
+         AcessoModel model = new AcessoModel();
+         return model.listar(this);
+    }
+    
+    public boolean registrada() throws Exception
+    {
+         AcessoModel model = new AcessoModel();
+         return model.registrada(this) != null;
+    }
     
 }

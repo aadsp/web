@@ -61,6 +61,7 @@ public class AcessoModel implements ICRUD
         }
     }
     
+    
     public List<Acesso> listar(Acesso acesso)throws Exception
     {
         try
@@ -84,6 +85,20 @@ public class AcessoModel implements ICRUD
         try{   
             Query consulta = sessao.createQuery("from Acesso where ID = :ID");
             consulta.setInteger("ID", acesso.getID());
+            return (Acesso) consulta.uniqueResult();
+        }catch(Exception e){
+            throw e;
+        }finally{
+            sessao.close();
+        }
+    }
+    
+    public Acesso registrada(Acesso acesso)throws Exception
+    {
+        try{   
+            Query consulta = sessao.createQuery("from Acesso where ID_funcao = :ID_funcao and ID_pagina = :ID_pagina");
+            consulta.setInteger("ID_funcao", acesso.getID_funcao());
+            consulta.setInteger("ID_pagina", acesso.getID_pagina());
             return (Acesso) consulta.uniqueResult();
         }catch(Exception e){
             throw e;

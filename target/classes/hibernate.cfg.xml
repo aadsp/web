@@ -38,5 +38,6 @@
     <mapping class="org.aadsp.annotations.Patrocinador" />
     <mapping class="org.aadsp.annotations.Colaborador" />
     <mapping class="org.aadsp.annotations.Projeto" />
+    <mapping class="org.aadsp.annotations.ReuniaoAta" />
   </session-factory>
 </hibernate-configuration>

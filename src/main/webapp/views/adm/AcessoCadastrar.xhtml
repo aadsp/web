@@ -34,6 +34,7 @@
                    <h:panelGrid columns="2" cellpadding="5">
                         <p:outputLabel for="funcao" value="Função: " />
                         <p:selectOneMenu id="funcao"  value="#{acessoCadastrar.funcaoSelecionada}" style="width:150px">
+                            <p:ajax listener="#{acessoCadastrar.onFuncaoSelecionada}" update="pagina" />
                             <f:selectItem itemLabel="Selecionar Função" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{acessoCadastrar.funcoes}" />
                         </p:selectOneMenu>
@@ -49,7 +50,7 @@
                 </p:tabView>
                 </div>
                 <div class="space-20"></div>
-                <p:commandButton class="btn btn-success" ajax="false" disabled="#{acessoCadastrar.controleDeCadastro()}"  value="CADASTRAR" update="growl" actionListener="#{acessoCadastrar.cadastrar()}"/>
+                <p:commandButton class="btn btn-success"  value="CADASTRAR" update="growl" actionListener="#{acessoCadastrar.cadastrar()}"/>
                     </div>
                 </div>
                 <div class="space-50"></div>

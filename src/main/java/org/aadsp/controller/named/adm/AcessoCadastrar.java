@@ -1,9 +1,12 @@
 
 package org.aadsp.controller.named.adm;
 
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import org.aadsp.annotations.Acesso;
@@ -25,6 +28,13 @@ public class AcessoCadastrar extends ABaseNamed implements ICadastro
     
     public AcessoCadastrar()
     {
+      
+      
+    }
+    
+    @PostConstruct
+    public void init()
+    {
       this.acesso = new Acesso();
       this.funcao = new Funcao();
       this.pagina = new Pagina();
@@ -43,14 +53,24 @@ public class AcessoCadastrar extends ABaseNamed implements ICadastro
       {
         acesso.setID_funcao(funcaoSelecionada);
         acesso.setID_pagina(paginaSelecionada);
-        acesso.cadastrar();
-        Mensageiro.mensagemInfo("Cadastro realizado com sucesso!!");
+        if(!acesso.registrada()){
+            acesso.cadastrar();
+            Mensageiro.mensagemInfo("Cadastro realizado com sucesso!!");
+        }else
+            Mensageiro.mensagemError("Esta página já foi cadastrada para esta função!!");
       }catch(Exception e)
       {
-          Mensageiro.mensagemError("Não foi possível cadastrar está função à página!!");
+          Mensageiro.mensagemError("Esta função já foi adicionada à esta página!!");
       }   
     }
     
+    public void onFuncaoSelecionada(){
+        if(funcaoSelecionada != 0){
+            this.paginas = new HashMap<String, Integer>();
+            this.acesso.setID_funcao(funcaoSelecionada);
+        }
+            
+    }
   
     public int getFuncaoSelecionada() {
         return funcaoSelecionada;
@@ -72,9 +92,9 @@ public class AcessoCadastrar extends ABaseNamed implements ICadastro
        try{
 
             List<Funcao> lista = funcao.listar();
-       for(Funcao obj: lista){
-           funcoes.put(obj.getDescricao(),obj.getID());
-       }
+        for(Funcao obj: lista){
+            funcoes.put(obj.getDescricao(),obj.getID());
+        }
        return funcoes;
        }catch(Exception e){
            Mensageiro.mensagemError("Não foi possível consultar as funções no banco de dados!");
@@ -84,12 +104,23 @@ public class AcessoCadastrar extends ABaseNamed implements ICadastro
     
     public Map<String,Integer> getPaginas(){
        try{
+            if(funcaoSelecionada != 0)
+            {
+                List<Pagina> lista = pagina.listar();
+                List<Acesso> acessoFuncao = acesso.listarPorFuncao();
+                List<Integer> paginasID = new ArrayList<>();
 
-            List<Pagina> lista = pagina.listar();
-       for(Pagina obj: lista){
-           paginas.put(obj.getNome(),obj.getID());
-       }
+                for(Acesso obj: acessoFuncao){
+                    paginasID.add(obj.getID_pagina());
+                }
+
+                for(Pagina obj: lista){
+                    if(!paginasID.contains(obj.getID()))
+                    paginas.put(obj.getNome(),obj.getID());
+            }
+        }
        return paginas;
+       
        }catch(Exception e){
            Mensageiro.mensagemError("Não foi possível consultar as páginas no banco de dados!");
        }

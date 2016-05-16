@@ -44,7 +44,7 @@ private final Session sessao;
         sessao.close();
     }
     
-    public Projeto consultarPorID(Pagina projeto)
+    public Projeto consultarPorID(Projeto projeto)
     {
         try
         { 

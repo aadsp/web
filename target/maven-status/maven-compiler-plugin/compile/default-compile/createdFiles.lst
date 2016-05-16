@@ -32,6 +32,7 @@ org\aadsp\annotations\TAP.class
 org\aadsp\annotations\association\AcessoFuncao.class
 org\aadsp\annotations\model\EquipeModel.class
 org\aadsp\interfaces\ICRUD.class
+org\aadsp\annotations\ReuniaoAta.class
 org\aadsp\controller\named\adm\AcessoCadastrar.class
 org\aadsp\controller\named\adm\PessoalEditar.class
 org\aadsp\controller\named\adm\FuncaoConsultar.class
@@ -51,6 +52,7 @@ org\aadsp\annotations\model\StakeholderTAPModel.class
 org\aadsp\controller\named\project\ProjetoConsultar.class
 org\aadsp\controller\named\adm\PessoalCadastrar.class
 org\aadsp\annotations\model\PatrocinadorModel.class
+org\aadsp\controller\named\project\ATAConsultar.class
 org\aadsp\annotations\model\AcessoModel.class
 org\aadsp\controller\named\project\TAPConsultar.class
 org\aadsp\annotations\Empresa.class
@@ -61,6 +63,8 @@ org\aadsp\annotations\model\TAPEscopoTipoModel.class
 org\aadsp\utils\RelatorioIReport.class
 org\aadsp\annotations\model\ResponsavelModel.class
 org\aadsp\interfaces\ICadastro.class
+org\aadsp\annotations\model\ReuniaoAtaModel.class
+org\aadsp\controller\named\project\ReunioesConsultar.class
 org\aadsp\utils\GeradorDeSenha.class
 org\aadsp\annotations\StakeholderTAP.class
 org\aadsp\annotations\model\UsuarioModel.class
