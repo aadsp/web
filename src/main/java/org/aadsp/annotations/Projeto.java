@@ -20,7 +20,7 @@ public class Projeto implements Serializable
     @Column(name="ID") private Integer ID;
     @Column(name="ID_tap") private Integer ID_tap;
     @Column(name="dataInicio") private Date dataInicio;
-    @Column(name="vigencia") private Date vigencia;
+    @Column(name="dataTermino") private Date dataTermino;
     @Column(name="dataCadastro") private Date dataCadastro;
     @Column(name="investimento") private double investimento;
 
@@ -48,12 +48,12 @@ public class Projeto implements Serializable
         this.dataInicio = dataInicio;
     }
 
-    public Date getVigencia() {
-        return vigencia;
+    public Date getDataTermino() {
+        return dataTermino;
     }
 
-    public void setVigencia(Date vigencia) {
-        this.vigencia = vigencia;
+    public void setDataTermino(Date dataTermino) {
+        this.dataTermino = dataTermino;
     }
 
     public Date getDataCadastro() {

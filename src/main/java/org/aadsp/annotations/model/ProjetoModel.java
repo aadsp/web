@@ -20,7 +20,7 @@ private final Session sessao;
         this.sessao = FactoryHibernate.getSessionFactory().openSession();
     }
     
-     @Override
+    @Override
     public void salvar(Object obj) {
         Transaction transacao = sessao.beginTransaction();
         sessao.save(obj);

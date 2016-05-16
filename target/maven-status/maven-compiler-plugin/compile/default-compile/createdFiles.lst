@@ -13,6 +13,7 @@ org\aadsp\annotations\model\ColaboradorModel.class
 org\aadsp\annotations\Stakeholder.class
 org\aadsp\utils\settings\DadosEmail.class
 org\aadsp\annotations\Pagina.class
+org\aadsp\annotations\Projeto.class
 org\aadsp\controller\named\project\TAPEditar.class
 org\aadsp\annotations\model\TAPModel.class
 org\aadsp\annotations\TAPEscopoArea.class
@@ -36,6 +37,7 @@ org\aadsp\controller\named\adm\PessoalEditar.class
 org\aadsp\controller\named\adm\FuncaoConsultar.class
 org\aadsp\controller\named\adm\UsuariosVisualizar.class
 org\aadsp\controller\named\adm\AlterarSenha.class
+org\aadsp\controller\named\project\ProjetoCadastrar.class
 org\aadsp\annotations\Funcao.class
 org\aadsp\controller\named\contributors\EmpresaCadastrar.class
 org\aadsp\controller\named\contributors\ColaboradorCadastrar.class
@@ -46,6 +48,7 @@ org\aadsp\controller\named\contributors\ColaboradorEditar.class
 org\aadsp\controller\named\contributors\StakeholderConsultar.class
 org\aadsp\interfaces\IUsuario.class
 org\aadsp\annotations\model\StakeholderTAPModel.class
+org\aadsp\controller\named\project\ProjetoConsultar.class
 org\aadsp\controller\named\adm\PessoalCadastrar.class
 org\aadsp\annotations\model\PatrocinadorModel.class
 org\aadsp\annotations\model\AcessoModel.class
@@ -69,6 +72,7 @@ org\aadsp\annotations\Acesso.class
 org\aadsp\annotations\model\EmpresaModel.class
 org\aadsp\controller\named\contributors\ColaboradorConsultar.class
 org\aadsp\controller\named\contributors\EmpresaConsultar.class
+org\aadsp\annotations\model\ProjetoModel.class
 org\aadsp\annotations\Usuario.class
 org\aadsp\controller\named\adm\FuncaoEditar.class
 org\aadsp\controller\named\adm\HeaderTemplate.class
