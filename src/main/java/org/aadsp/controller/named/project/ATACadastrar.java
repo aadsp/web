@@ -53,6 +53,7 @@ public class ATACadastrar extends ABaseNamed implements ICadastro
     {
       try
       {
+        reuniaoAta.setDataCadastro(new java.sql.Date(new Date().getTime()));
         reuniaoAta.cadastrar();
         Mensageiro.mensagemInfo("ATA cadastrada com sucesso");
       }catch(Exception e)

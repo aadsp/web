@@ -34,7 +34,7 @@
                   <p:tab title="Dados Gerais">
                    <h:panelGrid columns="2" cellpadding="5">
                      <p:outputLabel for="dataRealizacao" value="Data realização" />
-                     <p:calendar id="dataRealizacao" value="#{ATACadastrar.dataRealizacao}" pattern="dd/MM/yyyy" mask="true" />
+                     <p:calendar id="dataRealizacao" value="#{ATACadastrar.dataRealizacao}" pattern="dd/MM/yyyy HH:mm:ss" mask="true" />
                    </h:panelGrid>
                   </p:tab>
                   <p:tab title="Dados iniciais">
@@ -55,7 +55,7 @@
                 </p:tabView>
                 </div>
                 <div class="space-20"></div>
-                <p:commandButton class="btn btn-success" ajax="false" disabled="#{projetoCadastrar.controleDeCadastro()}" value="CADASTRAR" update="growl" actionListener="#{projetoCadastrar.cadastrar()}"/>
+                <p:commandButton class="btn btn-success" ajax="false" disabled="#{ATACadastrar.controleDeCadastro()}" value="CADASTRAR" update="growl" actionListener="#{ATACadastrar.cadastrar()}"/>
                     </div>
                 </div>
                 <div class="space-50"></div>
