@@ -33,7 +33,7 @@ public class ATAConsultar extends ABaseNamed
    public void carregarDadosIniciais()
     {
        try{
-        int IDProjeto = Integer.parseInt(Criptografia.decodificarBase64(Response.getParametroURL("Projeto")));
+        IDProjeto = Integer.parseInt(Criptografia.decodificarBase64(Response.getParametroURL("Projeto")));
         reuniaoAta.setID_projeto(IDProjeto);
        }catch(Exception e)
        {
@@ -67,6 +67,18 @@ public class ATAConsultar extends ABaseNamed
       
    }
    
+   public void novo()
+   {
+       try
+       {
+        Response.redirect("/web/faces/views/projetos/ATACadastrar.xhtml?Projeto="+ Criptografia.codificarParaBase64(Integer.toString(IDProjeto)));
+       }catch(Exception e)
+       {
+         Mensageiro.mensagemError("Erro ao selecionar Ata do Projeto!!");
+       }
+   }
+   
    private ReuniaoAta reuniaoAta;
+   private int IDProjeto;
     
 }

@@ -65,6 +65,7 @@ org\aadsp\annotations\model\ResponsavelModel.class
 org\aadsp\interfaces\ICadastro.class
 org\aadsp\annotations\model\ReuniaoAtaModel.class
 org\aadsp\controller\named\project\ReunioesConsultar.class
+org\aadsp\controller\named\project\ATACadastrar.class
 org\aadsp\utils\GeradorDeSenha.class
 org\aadsp\annotations\StakeholderTAP.class
 org\aadsp\annotations\model\UsuarioModel.class

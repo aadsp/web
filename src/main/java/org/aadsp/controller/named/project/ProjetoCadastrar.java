@@ -19,7 +19,6 @@ import org.aadsp.interfaces.ICadastro;
 import org.aadsp.utils.Mensageiro;
 import org.aadsp.utils.Session;
 import org.apache.commons.mail.EmailException;
-import org.jfree.util.HashNMap;
 
 /**
  * 

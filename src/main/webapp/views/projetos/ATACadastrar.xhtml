@@ -22,7 +22,8 @@
                     <div>
                         <h3>ATA DE REUNIÃO</h3>
                          <div class="right">
-                             <p:commandButton class="btn btn" value="VOLTAR" actionListener="#{projetoCadastrar.voltar()}"/>
+                             
+                             <p:commandButton class="btn btn" value="VOLTAR" actionListener="#{ATACadastrar.voltar()}"/>
                         </div>
                         <p><strong>CADASTRO</strong></p>
                     <div>
@@ -31,24 +32,25 @@
                 <div class="control-group">   
                 <p:tabView dynamic="true" cache="true">
                   <p:tab title="Dados Gerais">
-                    <h:panelGrid columns="2" cellpadding="5">
-                        <p:outputLabel for="funcao" value="Termo de Abertura do Projeto:" />
-                        <p:selectOneMenu id="funcao"  value="#{projetoCadastrar.tapSelecionado}" style="width:150px">
-                            <f:selectItem itemLabel="Selecionar TAP" itemValue="" noSelectionOption="true" />
-                            <f:selectItems value="#{projetoCadastrar.getTAPs()}" />
-                        </p:selectOneMenu>
-                    </h:panelGrid>
                    <h:panelGrid columns="2" cellpadding="5">
-                        <p:outputLabel for="valor" value="Valor do Projeto:" />
-                        <p:inputText id="valor" maxlength="60" value="#{projetoCadastrar.projeto.investimento}"/>
-                        
-                        <p:outputLabel for="dataInicio" value="Data de início" />
-                        <p:calendar id="dataInicio" value="#{projetoCadastrar.dataInicio}" pattern="dd/MM/yyyy" mask="true" />
-                        
-                        <p:outputLabel for="dataTermino" value="Data de término" />
-                        <p:calendar id="dataTermino" value="#{projetoCadastrar.dataFim}" pattern="dd/MM/yyyy" mask="true" />
-                        
+                     <p:outputLabel for="dataRealizacao" value="Data realização" />
+                     <p:calendar id="dataRealizacao" value="#{ATACadastrar.dataRealizacao}" pattern="dd/MM/yyyy" mask="true" />
                    </h:panelGrid>
+                  </p:tab>
+                  <p:tab title="Dados iniciais">
+                      <h:panelGrid columns="1" cellpadding="5">
+                          <p:outputLabel for="dadosIniciais" value="Informações iniciais:" />
+                          <p:inputTextarea id="dadosIniciais" rows="1" cols="1000" required="true" value="#{ATACadastrar.reuniaoAta.informacoesIniciais}" counter="displaydadosIniciais" maxlength="800" counterTemplate="{0} caracteres restantes." autoResize="false" />
+                      <h:outputText id="displaydadosIniciais" />
+                          
+                      </h:panelGrid>
+                  </p:tab>
+                  <p:tab title="Discussões">
+                      <h:panelGrid columns="1" cellpadding="5">
+                          <p:outputLabel for="discussao" value="Discussão geral:" />
+                          <p:inputTextarea id="discussao" rows="1" cols="7000" required="true" value="#{ATACadastrar.reuniaoAta.discussao}" counter="displaydiscussao" maxlength="7000" counterTemplate="{0} caracteres restantes." autoResize="false" />
+                      <h:outputText id="displaydiscussao" />
+                      </h:panelGrid>
                   </p:tab>
                 </p:tabView>
                 </div>
