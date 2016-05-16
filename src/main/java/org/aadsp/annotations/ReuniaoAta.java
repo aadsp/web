@@ -19,11 +19,12 @@ public class ReuniaoAta implements Serializable
     @GeneratedValue
     @Column(name="ID") private Integer ID;
     @Column(name="ID_projeto") private Integer ID_projeto;
-    @Column(name="informacoesIniciais") private String informacoesIniciais;
-    @Column(name="discussao") private String discussao;
+    @Column(name="ID_colaborador") private Integer ID_colaborador;
+    @Column(name="titulo") private String titulo;
+    @Column(name="pauta") private String pauta;
+    @Column(name="assuntosTratados") private String assuntosTratados;
     @Column(name="dataCadastro") private Date dataCadastro;
     @Column(name="dataRealizacao") private Date dataRealizacao;
-    
 
     public Integer getID() {
         return ID;
@@ -41,20 +42,36 @@ public class ReuniaoAta implements Serializable
         this.ID_projeto = ID_projeto;
     }
 
-    public String getInformacoesIniciais() {
-        return informacoesIniciais;
+    public Integer getID_colaborador() {
+        return ID_colaborador;
     }
 
-    public void setInformacoesIniciais(String informacoesIniciais) {
-        this.informacoesIniciais = informacoesIniciais;
+    public void setID_colaborador(Integer ID_colaborador) {
+        this.ID_colaborador = ID_colaborador;
     }
 
-    public String getDiscussao() {
-        return discussao;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setDiscussao(String discussao) {
-        this.discussao = discussao;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getPauta() {
+        return pauta;
+    }
+
+    public void setPauta(String pauta) {
+        this.pauta = pauta;
+    }
+
+    public String getAssuntosTratados() {
+        return assuntosTratados;
+    }
+
+    public void setAssuntosTratados(String assuntosTratados) {
+        this.assuntosTratados = assuntosTratados;
     }
 
     public Date getDataCadastro() {

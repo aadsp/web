@@ -2,9 +2,13 @@
 package org.aadsp.controller.named.project;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.mail.MessagingException;
+import org.aadsp.annotations.Colaborador;
 import org.aadsp.annotations.ReuniaoAta;
 import org.aadsp.annotations.Usuario;
 import org.aadsp.interfaces.ABaseNamed;
@@ -46,7 +50,7 @@ public class ATACadastrar extends ABaseNamed implements ICadastro
     @Override
     public boolean controleDeCadastro()
     {
-        return this.reuniaoAta.getInformacoesIniciais() != null;
+        return this.reuniaoAta.getPauta() != null;
     }
     
     public void cadastrar() throws MessagingException, EmailException
@@ -54,6 +58,7 @@ public class ATACadastrar extends ABaseNamed implements ICadastro
       try
       {
         reuniaoAta.setDataCadastro(new java.sql.Date(new Date().getTime()));
+        reuniaoAta.setID_colaborador(organizadorSelecionado);
         reuniaoAta.cadastrar();
         Mensageiro.mensagemInfo("ATA cadastrada com sucesso");
       }catch(Exception e)
@@ -96,7 +101,37 @@ public class ATACadastrar extends ABaseNamed implements ICadastro
        this.reuniaoAta.setDataRealizacao(dataSql);
     }
     
+    public Map<String,Integer> getOrganizadores(){
+       try{
+           Colaborador colaborador = new Colaborador();
+           List<Colaborador> lista = colaborador.listar();
+           
+           
+           Map<String,Integer> tapMap = new HashMap<String, Integer>();
+       
+        for(Colaborador obj: lista)
+        {
+            tapMap.put(obj.consultarNomeColaborador(), obj.getID());
+        }
+       return tapMap;
+       }catch(Exception e){
+           Mensageiro.mensagemError("Não foi possível consultar os projetos utilizados!");
+       }
+        return null;
+    }
+
+    public int getOrganizadorSelecionado() {
+        return organizadorSelecionado;
+    }
+
+    public void setOrganizadorSelecionado(int organizadorSelecionado) {
+        this.organizadorSelecionado = organizadorSelecionado;
+    }
+    
+    
+    
     private ReuniaoAta reuniaoAta;
     private int IDProjeto;
+    private int organizadorSelecionado;
     private Date dataRealizacao;
 }

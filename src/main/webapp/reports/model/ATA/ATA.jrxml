@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4e3a48c2-57ca-4248-ac81-51adf18f3ba6">
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="184" splitType="Stretch">
+			<rectangle>
+				<reportElement x="109" y="20" width="446" height="70" uuid="b91bcc34-ffa3-44a6-ad43-c54a39e6981d"/>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="109" height="56" forecolor="#FFFFFF" backcolor="#000000" uuid="7eb2f9e2-0bd8-481b-aa5b-de556332ee61"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AADSP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="56" width="109" height="34" forecolor="#FFFFFF" backcolor="#000000" uuid="f5621d7f-d96e-4505-8c5e-64caceb49f36"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Abordagem Adaptativa para implantação do Processo de Software]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="109" y="0" width="446" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="f746d29e-09d9-471f-aaba-860083d11bcf"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ATA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="20" width="446" height="70" isRemoveLineWhenBlank="true" uuid="a92726b7-07db-4a0b-a13f-58c89067b1f9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Black" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ATA DE REUNIÃO]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="446" y="0" width="100" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="3bd705f6-76bf-4477-861d-1cc08b925d21"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

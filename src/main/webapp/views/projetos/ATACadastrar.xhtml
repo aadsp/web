@@ -33,22 +33,30 @@
                 <p:tabView dynamic="true" cache="true">
                   <p:tab title="Dados Gerais">
                    <h:panelGrid columns="2" cellpadding="5">
+                     <p:outputLabel for="titulo" value="Título:" />  
+                     <p:inputText id="titulo" maxlength="250" value="#{ATACadastrar.reuniaoAta.titulo}"/>
                      <p:outputLabel for="dataRealizacao" value="Data realização" />
                      <p:calendar id="dataRealizacao" value="#{ATACadastrar.dataRealizacao}" pattern="dd/MM/yyyy HH:mm:ss" mask="true" />
+                     
+                      <p:outputLabel for="organizador" value="Organizador:" />
+                        <p:selectOneMenu id="organizador"  value="#{ATACadastrar.organizadorSelecionado}" style="width:150px">
+                            <f:selectItem itemLabel="Selecionar Organizador" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{ATACadastrar.getOrganizadores()}" />
+                        </p:selectOneMenu>
                    </h:panelGrid>
                   </p:tab>
                   <p:tab title="Dados iniciais">
                       <h:panelGrid columns="1" cellpadding="5">
-                          <p:outputLabel for="dadosIniciais" value="Informações iniciais:" />
-                          <p:inputTextarea id="dadosIniciais" rows="1" cols="1000" required="true" value="#{ATACadastrar.reuniaoAta.informacoesIniciais}" counter="displaydadosIniciais" maxlength="800" counterTemplate="{0} caracteres restantes." autoResize="false" />
+                          <p:outputLabel for="dadosIniciais" value="Pauta:" />
+                          <p:inputTextarea id="dadosIniciais" rows="1" cols="1000" required="true" value="#{ATACadastrar.reuniaoAta.pauta}" counter="displaydadosIniciais" maxlength="800" counterTemplate="{0} caracteres restantes." autoResize="false" />
                       <h:outputText id="displaydadosIniciais" />
                           
                       </h:panelGrid>
                   </p:tab>
                   <p:tab title="Discussões">
                       <h:panelGrid columns="1" cellpadding="5">
-                          <p:outputLabel for="discussao" value="Discussão geral:" />
-                          <p:inputTextarea id="discussao" rows="1" cols="7000" required="true" value="#{ATACadastrar.reuniaoAta.discussao}" counter="displaydiscussao" maxlength="7000" counterTemplate="{0} caracteres restantes." autoResize="false" />
+                          <p:outputLabel for="discussao" value="Assuntos tratados:" />
+                          <p:inputTextarea id="discussao" rows="1" cols="7000" required="true" value="#{ATACadastrar.reuniaoAta.assuntosTratados}" counter="displaydiscussao" maxlength="7000" counterTemplate="{0} caracteres restantes." autoResize="false" />
                       <h:outputText id="displaydiscussao" />
                       </h:panelGrid>
                   </p:tab>

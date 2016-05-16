@@ -318,7 +318,7 @@ FROM TAP.TAP_AADSP_TAP WHERE ID = $P{ID_tap}]]>
 			</line>
 		</band>
 	</detail>
-	<columnFooter>
+	<pageFooter>
 		<band height="80" splitType="Stretch">
 			<line>
 				<reportElement x="0" y="48" width="178" height="1" uuid="5eac6c81-ef2e-47dc-953a-7ca6ea4dd207"/>
@@ -350,8 +350,5 @@ FROM TAP.TAP_AADSP_TAP WHERE ID = $P{ID_tap}]]>
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 		</band>
-	</columnFooter>
-	<pageFooter>
-		<band splitType="Stretch"/>
 	</pageFooter>
 </jasperReport>
