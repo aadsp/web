@@ -191,4 +191,9 @@ public class Usuario implements Serializable,IUsuario
         return model.consultarPorID(this);
     }
     
+    public Usuario consultarPorEmail() throws Exception{
+        UsuarioModel model = new UsuarioModel();
+        return model.consultarPorEmail(this);
+    }
+    
 }

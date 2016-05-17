@@ -56,6 +56,19 @@ public class UsuarioModel implements ICRUD
         }
     }
     
+    public Usuario consultarPorEmail(Usuario usuario)throws Exception
+    {
+        try{   
+            Query consulta = sessao.createQuery("from Usuario where email = :email");
+            consulta.setString("email", usuario.getEmail());
+            return (Usuario) consulta.uniqueResult();
+        }catch(Exception e){
+            throw e;
+        }finally{
+            sessao.close();
+        }
+    }
+    
     public Usuario autenticar(Usuario usuario)
     {
         try

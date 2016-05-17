@@ -7,6 +7,8 @@ import javax.mail.MessagingException;
 import org.aadsp.annotations.Usuario;
 import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.interfaces.IUsuario;
+import org.aadsp.utils.Email;
+import org.aadsp.utils.GeradorDeSenha;
 import org.aadsp.utils.Mensageiro;
 import org.aadsp.utils.Response;
 import org.aadsp.utils.Session;
@@ -74,7 +76,41 @@ public class Index extends ABaseNamed {
             Mensageiro.mensagemInfo("Não foi possível realizar a autenticação do usuario!");
         }
     }
+    
+    public void solicitarNovaSenha()
+    {
+        try
+        {
+            Usuario usuario = new Usuario();
+            usuario.setEmail(emailNovaSenha);
+            usuario = usuario.consultarPorEmail();
+            if(usuario.getNome() != null)
+            {
+                String novaSenha = GeradorDeSenha.gerarCombinacaoNumerica();
+                Email.enviarEmailAlteracaoSenha(usuario.getNome(), usuario.getLogin(), novaSenha, usuario.getEmail());
+                usuario.setSenha(novaSenha);
+                usuario.editar();
+                Mensageiro.mensagemInfo("Nova senha enviada para o e-mail do usuário!!");
+            }else
+                Mensageiro.mensagemInfo("Não foi possível localizar o usuário!!");
+                
+        }
+        catch(Exception e)
+        {
+           Mensageiro.mensagemInfo("Não foi possível realizar o envio de uma nova senha para este e-mail, porfavor tente novamente mais tarde!!"); 
+        }
+        
+    }
 
+    public String getEmailNovaSenha() {
+        return emailNovaSenha;
+    }
+
+    public void setEmailNovaSenha(String emailNovaSenha) {
+        this.emailNovaSenha = emailNovaSenha;
+    }
+    
     private static final long serialVersionUID = 5585493974059809141L;
     private IUsuario usuario;
+    private String emailNovaSenha;
 }
