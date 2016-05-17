@@ -44,7 +44,10 @@
                         <p:outputLabel for="numPis" value="Número do PIS:" />
                         <p:inputText id="numPis" maxlength="60" value="#{colaboradorCadastrar.colaborador.numeroPIS}"/>
                         <p:outputLabel for="valorBruto" value="Valor Bruto:" />
-                        <p:inputText id="valorBruto"  value="#{colaboradorCadastrar.colaborador.valorBruto}"/>
+                        <p:inputText id="valorBruto"  value="#{colaboradorCadastrar.colaborador.valorBruto}">
+                            <f:convertNumber pattern="#,##0.00"></f:convertNumber>
+                            <p:ajax update="valorBruto" process="valorBruto" event="change" />
+                        </p:inputText>
                     </h:panelGrid>
                   </p:tab>
                 </p:tabView>

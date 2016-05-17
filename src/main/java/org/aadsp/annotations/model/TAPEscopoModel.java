@@ -76,4 +76,22 @@ private final Session sessao;
         }
     }
     
+    public List<TAPEscopo> listarIDTap(TAPEscopo tap)throws Exception
+    {
+        try
+        {
+            Query consulta = sessao.createQuery("from TAPEscopo where ID_tap = :ID_tap");
+            consulta.setInteger("ID_tap", tap.getID_tap());
+            return consulta.list();
+        }
+        catch(Exception e)
+        {
+            throw e;
+        }
+        finally
+        {
+            sessao.close();
+        }
+    }
+    
 }

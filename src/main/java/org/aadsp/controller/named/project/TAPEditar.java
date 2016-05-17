@@ -387,7 +387,8 @@ public class TAPEditar extends ABaseNamed
     {
         try 
         {
-            return tapEscopo.listar();
+            tapEscopo.setID_tap(tap.getID());
+            return tapEscopo.listarIDTap();
         } catch (Exception e) 
         {
             Mensageiro.mensagemError("Não foi possível executar esta operação exception: " + e.getMessage());

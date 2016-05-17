@@ -83,6 +83,12 @@ public class TAPEscopo implements Serializable
         return model.listar();
     }
     
+    public List<TAPEscopo> listarIDTap() throws Exception
+    {
+        TAPEscopoModel model = new TAPEscopoModel();
+        return model.listarIDTap(this);
+    }
+    
     public String descricaoArea()
     {
         TAPEscopoArea area = new TAPEscopoArea();
