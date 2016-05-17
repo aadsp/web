@@ -13,14 +13,14 @@
         <ui:composition template="template/template.xhtml">
             <ui:define name="content">
             <h:form id="form">
-                <p:growl id="growl" showDetail="true" sticky="true" /> 
+                <p:growl id="growl" showDetail="true" sticky="false" /> 
                 <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
                 <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
                     <img src="../../img/loading.gif" alt=""/>
                 </p:dialog>
                 <div class="margin-right-left-20">
                     <div>
-                        <h3>TAP - Termo de Abertura de Projeto de Software</h3>
+                        <h3>TAP - TERMO DE ABERTURA DE PROJETO DE SOFTWARE</h3>
                          <div class="right">
                              <a class="btn btn" href="TAPConsultar.xhtml">VOLTAR</a>
                         </div>
@@ -56,16 +56,20 @@
                     </p:tab> 
                     <p:tab title="Orçamento">
                       <h:panelGrid columns="2" cellpadding="5">
-                        <p:outputLabel for="custo" value="Orçamento inícial:" />
-                        <p:inputText id="custo"  value="#{TAPCadastrar.tap.custo}"/>
+                        <p:outputLabel for="custo" value="Orçamento inícial  R$:" />
+                        <p:inputText id="custo"  value="#{TAPCadastrar.tap.custo}">
+                            <f:convertNumber pattern="#,##0.00"></f:convertNumber>
+                            <p:ajax update="custo" process="custo" event="change" />
+                        </p:inputText>
+                                     
                         </h:panelGrid>
                      </p:tab>   
                     <p:tab title="Cronograma">
                       <h:panelGrid columns="2" cellpadding="5">
-                        <p:outputLabel for="dataInicio" value="Data de início" />
+                        <p:outputLabel for="dataInicio" value="Data de início:" />
                         <p:calendar id="dataInicio" value="#{TAPCadastrar.dataInicio}" pattern="dd/MM/yyyy" mask="true" />
                         
-                        <p:outputLabel for="dataTermino" value="Data de término" />
+                        <p:outputLabel for="dataTermino" value="Data de término:" />
                         <p:calendar id="dataTermino" value="#{TAPCadastrar.dataFim}" pattern="dd/MM/yyyy" mask="true" />
                       </h:panelGrid>
                     </p:tab>

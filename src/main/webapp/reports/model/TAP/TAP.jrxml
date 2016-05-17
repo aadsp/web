@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2f3837a3-d734-4d32-8268-55725bc3ef06">
 	<property name="ireport.zoom" value="1.4641000000000008"/>
-	<property name="ireport.x" value="157"/>
-	<property name="ireport.y" value="1179"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="476"/>
 	<parameter name="ID_tap" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -84,7 +84,7 @@ FROM TAP.TAP_AADSP_TAP WHERE ID = $P{ID_tap}]]>
 				<text><![CDATA[Controle]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="14" y="364" width="540" height="39" uuid="e0f67e11-3f74-4e02-87ba-e2b9c3a3cb0a"/>
+				<reportElement x="14" y="363" width="540" height="40" uuid="e0f67e11-3f74-4e02-87ba-e2b9c3a3cb0a"/>
 				<textFieldExpression><![CDATA[$F{riscosIniciais}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -95,8 +95,9 @@ FROM TAP.TAP_AADSP_TAP WHERE ID = $P{ID_tap}]]>
 				<reportElement x="14" y="619" width="540" height="50" uuid="231c5dd3-0f39-4f7c-a055-8ecc302ccf5e"/>
 				<textFieldExpression><![CDATA[$F{alinhamentoEstrategico}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="14" y="324" width="540" height="20" uuid="a2e3b395-90eb-4eaa-ab61-82439c35402d"/>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="14" y="321" width="540" height="20" uuid="a2e3b395-90eb-4eaa-ab61-82439c35402d"/>
+				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{custo}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -156,12 +157,12 @@ FROM TAP.TAP_AADSP_TAP WHERE ID = $P{ID_tap}]]>
 				</textElement>
 				<text><![CDATA[Data Término:]]></text>
 			</staticText>
-			<textField>
+			<textField pattern="dd/MM/yyyy">
 				<reportElement x="14" y="441" width="169" height="20" uuid="f9fc5e1c-4839-4844-a992-75523541d5a5"/>
 				<textElement textAlignment="Justified" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{dataInicio}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="dd/MM/yyyy">
 				<reportElement x="14" y="484" width="169" height="20" uuid="64b4d13b-bca3-4ac1-ba22-5c993be31a39"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{dataFim}]]></textFieldExpression>
@@ -180,12 +181,12 @@ FROM TAP.TAP_AADSP_TAP WHERE ID = $P{ID_tap}]]>
 				</textElement>
 				<text><![CDATA[Data Criação:]]></text>
 			</staticText>
-			<textField>
+			<textField pattern="dd/MM/yyyy">
 				<reportElement x="277" y="441" width="140" height="21" uuid="5467a7f4-1398-4d61-8d4a-3a948412d520"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{dataCriacao}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
 				<reportElement x="277" y="484" width="141" height="20" uuid="f71c0257-5021-4285-92e7-00da84520209"/>
 				<textFieldExpression><![CDATA[$F{dataHomologacao}]]></textFieldExpression>
 			</textField>
@@ -225,7 +226,7 @@ FROM TAP.TAP_AADSP_TAP WHERE ID = $P{ID_tap}]]>
 				<text><![CDATA[Objetivos:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="14" y="307" width="92" height="17" uuid="4b1f9a06-9d0a-4e9e-87a3-7f3e13155a69"/>
+				<reportElement positionType="Float" x="14" y="308" width="92" height="13" uuid="4b1f9a06-9d0a-4e9e-87a3-7f3e13155a69"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>

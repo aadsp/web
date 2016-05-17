@@ -20,7 +20,7 @@
                 </p:dialog>
                 <div class="margin-right-left-20">
                     <div>
-                        <h3>TAP - Termo de Abertura de Projeto de Software</h3>
+                        <h3>TAP - TERMO DE ABERTURA DE PROJETO DE SOFTWARE</h3>
                          <div class="right">
                              <a class="btn btn" href="TAPConsultar.xhtml">VOLTAR</a>
                         </div>
@@ -90,7 +90,11 @@
                     <p:tab title="Orçamento">
                       <h:panelGrid columns="2" cellpadding="5">
                         <p:outputLabel for="custo" value="Orçamento inícial:" />
-                        <p:inputText id="custo"  value="#{TAPEditar.tap.custo}"/>
+                        <p:inputText id="custo" value="#{TAPEditar.tap.custo}">
+                            <f:convertNumber pattern="#,##0.00"></f:convertNumber>
+                            <p:ajax update="custo" process="custo" event="change" />
+                        </p:inputText>
+                        
                         </h:panelGrid>
                      </p:tab>   
                     <p:tab title="Cronograma">

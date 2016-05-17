@@ -566,8 +566,7 @@ public class TAPEditar extends ABaseNamed
            Mensageiro.mensagemError("Não foi possível executar esta operação exception: " + e.getMessage());
         }
     }
-    
-    
+
     private TAP tap;
     private Date dataInicio;
     private Date dataFim;

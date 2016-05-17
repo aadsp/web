@@ -33,10 +33,10 @@
                   <p:tab title="Dados Gerais">
                    <h:panelGrid columns="2" cellpadding="5">
                         <p:outputLabel for="novaSenha" value="Nova senha:" />
-                        <p:password  id="novaSenha" maxlength="60" value="#{alterarSenha.senha}"/>
+                        <p:password  id="novaSenha" maxlength="60" value="#{alterarSenha.senha}" feedback="true" inline="true" />
                         
                         <p:outputLabel for="novaSenhaRep" value="Repetir nova senha:" />
-                        <p:password id="novaSenhaRep" maxlength="60" value="#{alterarSenha.repetirSenha}"/>
+                        <p:password id="novaSenhaRep" maxlength="60" value="#{alterarSenha.repetirSenha}" feedback="true" inline="true" />
                     </h:panelGrid>
                   </p:tab>
                 </p:tabView>

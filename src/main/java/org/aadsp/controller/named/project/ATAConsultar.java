@@ -3,6 +3,7 @@ package org.aadsp.controller.named.project;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -12,6 +13,7 @@ import org.aadsp.annotations.ReuniaoAta;
 import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.utils.Criptografia;
 import org.aadsp.utils.Mensageiro;
+import org.aadsp.utils.RelatorioIReport;
 import org.aadsp.utils.Response;
 
 /**
@@ -64,7 +66,16 @@ public class ATAConsultar extends ABaseNamed
    
    public void gerarPDF(ReuniaoAta reuniaoAta) throws JRException, IOException, SQLException
    {
-      
+       try
+       {
+        RelatorioIReport report = new RelatorioIReport();
+        HashMap map = new HashMap();
+        map.put("ID_ata", reuniaoAta.getID());
+        report.gerarPDF("ATA", map);
+       }catch(JRException | IOException | SQLException e)
+       {
+          Mensageiro.mensagemError("Não possível gerar o relatório em PDF exception:"+ e.getMessage()); 
+       }
    }
    
    public void novo()

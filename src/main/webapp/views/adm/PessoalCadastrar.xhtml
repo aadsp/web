@@ -51,7 +51,7 @@
                         <p:inputText id="login" maxlength="30" value="#{pessoalCadastrar.usuario.login}"/>
                         
                         <p:outputLabel for="senha" value="Senha:" />
-                        <p:password id="senha"  maxlength="10" value="#{pessoalCadastrar.usuario.senha}"/>
+                        <p:password id="senha"  maxlength="10" value="#{pessoalCadastrar.usuario.senha}" feedback="true" inline="true" />
                         
                         <p:outputLabel for="funcao" value="Função: " />
                         <p:selectOneMenu id="funcao"  value="#{pessoalCadastrar.funcaoSelecionada}" style="width:150px">
