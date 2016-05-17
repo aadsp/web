@@ -63,7 +63,9 @@
                                            <f:facet name="header">
                                                <h:outputText value="data nascimento" />
                                            </f:facet>
-                                           <h:outputText value="#{usuarios.dataNascimento}" />
+                                        <h:outputText value="#{usuarios.dataNascimento}" >
+                                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                        </h:outputText>
                                        </p:column>
                                        
                                         <p:column style="width:12px;text-align: center" >
