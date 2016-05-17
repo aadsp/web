@@ -62,7 +62,9 @@
                                            <f:facet name="header">
                                                <h:outputText value="data criação" />
                                            </f:facet>
-                                        <h:outputText value="#{projeto.dataCadastro}" />
+                                        <h:outputText value="#{projeto.dataCadastro}">
+                                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                        </h:outputText>
                                        </p:column>
                                     <p:column style="width:10px;text-align: center" > 
                                             <f:facet name="header">

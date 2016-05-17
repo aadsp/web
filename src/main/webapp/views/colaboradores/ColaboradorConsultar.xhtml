@@ -59,6 +59,14 @@
                                            </f:facet>
                                         <h:outputText value="#{colaborador.consultarFuncaoColaborador()}" />
                                     </p:column>
+                                    <p:column width="30">
+                                           <f:facet name="header">
+                                               <h:outputText value="Data admissão" />
+                                           </f:facet>
+                                        <h:outputText value="#{colaborador.dataContrato}" >
+                                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                        </h:outputText>
+                                    </p:column>
 
                                         <p:column style="width:5px;text-align: center" >
                                             <f:facet name="header">

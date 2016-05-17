@@ -63,7 +63,9 @@
                                            <f:facet name="header">
                                                <h:outputText value="data criação" />
                                            </f:facet>
-                                        <h:outputText value="#{tap.dataCriacao}" />
+                                        <h:outputText value="#{tap.dataCriacao}" >
+                                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                        </h:outputText>
                                        </p:column>
                                     <p:column style="width:10px;text-align: center" > 
                                             <f:facet name="header">
