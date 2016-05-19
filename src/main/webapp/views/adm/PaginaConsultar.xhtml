@@ -13,67 +13,83 @@
     <h:body>
         <ui:composition template="template/template.xhtml">
             <ui:define name="content">
-            <h:form id="form">
-            <p:growl id="growl" showDetail="true" sticky="true" /> 
-            <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
-            <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
-                <img src="../../img/loading.gif" alt=""/>
-            </p:dialog>
-            <div class="margin-right-left-20">
-            <div class="form-inline">
-                <div class="control-group">
-                    <div>
-                        <h3>PÁGINA</h3>
-                         <div class="right">
-                             <a class="btn btn-inverse" href="PaginaCadastrar.xhtml">NOVO</a>
-                        </div>
-                        <p><strong>CONSULTA</strong></p>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <div class="space-10"></div>
+                <h:form id="form">
+                    <p:growl id="growl" showDetail="true" sticky="true" /> 
+                    <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+                    <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                        <img src="../../img/loading.gif" alt=""/>
+                    </p:dialog>
+                    <div class="margin-right-left-20">
+                        <div class="form-inline">
+                            <div class="control-group">
+                                <div>
+                                    <h3>PÁGINA</h3>
+                                    <div class="right">
+                                        <a class="btn btn-inverse" href="PaginaCadastrar.xhtml">NOVO</a>
+                                    </div>
+                                    <p><strong>CONSULTA</strong></p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="space-10"></div>
 
-                    <div class="space-10"></div>
-                        <div>
-                            <div class="form-search">
-                                <a class="label label-info">Filtrar por:</a>
+                                <div class="space-10"></div>
+               
+                                    <h:panelGrid columns="6" cellpadding="6">
+                                        <div class="form-search">
+                                            <a class="label label-info">Filtrar por:</a>
+                                            <p:selectOneMenu id="operadorCondicional"  value="#{paginalConsultar.filtro.operadorCondicionalSelecionada}">
+                                                <f:selectItems value="#{paginalConsultar.filtro.operadorCondicional}" />
+                                            </p:selectOneMenu>
+                                            <p:selectOneMenu id="atributo"  value="#{paginalConsultar.filtro.atributoSelecionado}">
+                                                <p:ajax listener="#{paginalConsultar.filtro.onAtributoSelecionado}" update="operadorLogico,filtro" />
+                                                <f:selectItem itemLabel="FILTRAR POR" itemValue="" noSelectionOption="true" />
+                                                <f:selectItems value="#{paginalConsultar.filtro.atributo}" />
+                                            </p:selectOneMenu>
+                                            <p:selectOneMenu id="operadorLogico"  value="#{paginalConsultar.filtro.operadorLogicoSelecionado}">
+                                                <p:ajax listener="#{paginalConsultar.filtro.onOperadorLogicoSelecionado}" update="atributoFiltro,filtro" />
+                                                <f:selectItem itemLabel="CONDIÇÃO" itemValue="" noSelectionOption="true" />
+                                                <f:selectItems value="#{paginalConsultar.filtro.operadorLogico}" />
+                                            </p:selectOneMenu>
+                                           <p:inputText id="atributoFiltro" value="#{paginalConsultar.filtro.atributoFiltro}"/>
+                                         <p:commandButton disabled="#{paginalConsultar.filtro.onAtributoSelecionado()}" value="FILTRAR" update="filtro" actionListener="#{paginalConsultar.filtro.filtrar()}"/>
+                                         </div>
+                                    </h:panelGrid>
+                                    <a class="label label-info">
+                                        <p:commandLink id="filtro" value="#{paginalConsultar.filtro.filtro}"/>
+                                    </a>
+                                         
+                                
+                 
+                                
+                                <div class="space-30"></div>
+                                <div>
+                                    <div class="table-responsive">
 
+                                        <p:dataTable id="tbl" style="text-align:center" var="pagina" value="#{paginalConsultar.listarPaginas}"
+                                                     paginator="true" rows="10">
+                                            <p:column width="400">
+                                                <f:facet name="header">
+                                                    <h:outputText value="nome" />
+                                                </f:facet>
+                                                <h:outputText value="#{pagina.nome}" />
+                                            </p:column>
+
+                                            <p:column style="width:5px;text-align: center" >
+                                                <f:facet name="header">
+                                                    <h:outputText value="detalhar" />
+                                                </f:facet>
+                                                <p:commandButton icon="ui-icon-search" action="#{paginalConsultar.editar(pagina)}" />
+                                            </p:column>
+
+                                        </p:dataTable>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="space-30"></div>
-                        <div>
-                            <div class="table-responsive">
-                           
-                                <p:dataTable id="tbl" style="text-align:center" var="pagina" value="#{paginalConsultar.listarPaginas}"
-                                                paginator="true" rows="10">
-                                    <p:column width="10">
-                                           <f:facet name="header">
-                                               <h:outputText value="ID"/>
-                                           </f:facet>
-                                        <h:outputText value="#{pagina.ID}" />
-                                       </p:column>
-                                    <p:column width="400">
-                                           <f:facet name="header">
-                                               <h:outputText value="nome" />
-                                           </f:facet>
-                                        <h:outputText value="#{pagina.nome}" />
-                                       </p:column>
+                    </div>
 
-                                        <p:column style="width:5px;text-align: center" >
-                                            <f:facet name="header">
-                                               <h:outputText value="detalhar" />
-                                           </f:facet>
-                                            <p:commandButton icon="ui-icon-search" action="#{paginalConsultar.editar(pagina)}" />
-                                        </p:column>
-                                    
-                                   </p:dataTable>
-                            
-                        </div>
-                 </div>
-            </div>
-            </div>
-            </div>
-            
                 </h:form>
             </ui:define>
         </ui:composition>

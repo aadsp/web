@@ -57,6 +57,7 @@ org\aadsp\annotations\model\AcessoModel.class
 org\aadsp\controller\named\project\TAPConsultar.class
 org\aadsp\annotations\Empresa.class
 org\aadsp\controller\named\adm\AcessoEditar.class
+org\aadsp\utils\Filtro.class
 org\aadsp\controller\named\adm\PaginaCadastrar.class
 org\aadsp\annotations\Responsavel.class
 org\aadsp\annotations\model\TAPEscopoTipoModel.class
