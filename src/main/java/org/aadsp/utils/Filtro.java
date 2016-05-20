@@ -60,11 +60,11 @@ public class Filtro {
 
             if (filtro == null) {
                 filtro = "( " + atributoSelecionado + " ";
-            } else if (!filtro.endsWith(")") && !atributoSelecionado.equals("FILTRAR POR")) {
+            } else if (!filtro.endsWith(")") && !atributoSelecionado.equals("FILTRAR POR") && !atributoSelecionado.endsWith(" ")) {
                 filtro = filtro + " ";
             }else if(!filtro.endsWith(") ") && !atributoSelecionado.equals("FILTRAR POR"))
             {
-                filtro = filtro + " " + operadorCondicionalSelecionada + " ( " + atributoSelecionado + " ";
+                filtro = filtro + " " + operadorCondicionalSelecionada + " ( " + atributoSelecionado + " " +operadorLogicoSelecionado;
             }
         }else
         {
@@ -82,7 +82,10 @@ public class Filtro {
     public void onOperadorLogicoSelecionado() {
         if (operadorLogicoSelecionado != null) {
             if (filtro != null) {
-                if (filtro.endsWith(" ")) {
+                if (filtro.endsWith(" ") && !filtro.endsWith("= ") 
+                    && !filtro.endsWith(">= ") && !filtro.endsWith("<= ")
+                    && !filtro.endsWith("> ")&& !filtro.endsWith("< ")
+                    && !filtro.endsWith("<> ")&& !filtro.endsWith("LIKE ")) {
                         filtro = filtro + operadorLogicoSelecionado;
                 }
             }
@@ -149,11 +152,20 @@ public class Filtro {
     public boolean getOnAtributoSelecionado() {
         return atributoSelecionado != null;
     }
-
+    
+    public void removerFiltro(){
+        filtro = null;
+    }
+    
     public void filtrar() {
         if (operadorLogicoSelecionado != null) {
-            if (filtro != null) {
-                if (filtro.endsWith(" ")) {
+            if (filtro != null && atributoFiltro != null && operadorLogicoSelecionado != null) {
+                if (filtro.endsWith(" ") && filtro.startsWith("(") 
+                        && !atributoFiltro.equals(" ") && !atributoFiltro.equals("")
+                    && !filtro.endsWith("= ") && !filtro.endsWith(")")
+                    && !filtro.endsWith(">= ") && !filtro.endsWith("<= ")
+                    && !filtro.endsWith("> ")&& !filtro.endsWith("< ")
+                    && !filtro.endsWith("<> ")&& !filtro.endsWith("LIKE ")) {
                         filtro = filtro +" "+atributoFiltro+")";
                 }
             }

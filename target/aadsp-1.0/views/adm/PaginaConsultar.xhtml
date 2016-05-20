@@ -56,7 +56,7 @@
                                          </div>
                                     </h:panelGrid>
                                     <a class="label label-info">
-                                        <p:commandLink id="filtro" value="#{paginalConsultar.filtro.filtro}"/>
+                                        <p:commandLink id="filtro" value="#{paginalConsultar.filtro.filtro}" update="filtro" actionListener="#{paginalConsultar.filtro.removerFiltro()}"/>
                                     </a>
                                          
                                 
