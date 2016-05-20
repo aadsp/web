@@ -66,4 +66,11 @@ public class Pagina implements Serializable
         PaginaModel model = new PaginaModel();
         model.atualizar(this);
     }
+    
+    public List<Pagina> listarPorFiltro(String filtro) throws Exception
+    {
+        PaginaModel model = new PaginaModel();
+        return model.listarPorFiltro(filtro);
+    }
+    
 }

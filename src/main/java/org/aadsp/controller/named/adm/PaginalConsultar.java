@@ -21,32 +21,32 @@ import org.aadsp.utils.Response;
 @ViewScoped
 @Named
 public class PaginalConsultar extends ABaseNamed {
-
-    public PaginalConsultar() {
-        this.pagina = new Pagina();
-        this.filtro = new Filtro();
-        criarFiltro();
-    }
     
-    private void criarFiltro()
-    {
-        Map<String,String> atributo = new HashMap<>();
-        Map<String,String> atributoClasse = new HashMap<>();
-        
-        atributo.put("Nome", "nome");
-        atributoClasse.put("nome", "Pagina");
-        filtro.setAtributo(atributo,atributoClasse);
-    }
-
-    public List<Pagina> getListarPaginas() {
+    public PaginalConsultar() {
         try {
-            return this.pagina.listar();
+            this.pagina = new Pagina();
+            this.filtro = new Filtro();
+            listaPaginas = this.pagina.listar();
+            criarFiltro();
         } catch (Exception e) {
             Mensageiro.mensagemError("Erro ao listar páginas!!");
         }
-        return null;
     }
-
+    
+    private void criarFiltro() {
+        Map<String, String> atributo = new HashMap<>();
+        Map<String, String> atributoClasse = new HashMap<>();
+        
+        atributo.put("Nome", "nome");
+        atributoClasse.put("nome", "Pagina");
+        filtro.setAtributo(atributo, atributoClasse);
+    }
+    
+    public List<Pagina> getListarPaginas() {
+        
+        return listaPaginas;
+    }
+    
     public void editar(Pagina pagina) {
         try {
             Response.redirect("/web/faces/views/adm/PaginaEditar.xhtml?Pagina=" + Criptografia.codificarParaBase64(pagina.getID().toString()));
@@ -54,16 +54,27 @@ public class PaginalConsultar extends ABaseNamed {
             Mensageiro.mensagemError("Erro ao selecionar Página!!");
         }
     }
-
+    
     public Filtro getFiltro() {
         return filtro;
     }
-
+    
     public void setFiltro(Filtro filtro) {
         this.filtro = filtro;
     }
     
+    public void filtroConsulta() {
+        try {
+            if (this.filtro.filtro.endsWith(")")) {
+                listaPaginas = this.pagina.listarPorFiltro(filtro.filtro);
+            }
+        } catch (Exception e) {
+            Mensageiro.mensagemError("Não foi possível consultar pelo filtro gerado!!");
+        }
+    }
+    
+    List<Pagina> listaPaginas;
     private Pagina pagina;
     private Filtro filtro;
-
+    
 }

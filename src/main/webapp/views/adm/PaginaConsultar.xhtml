@@ -52,12 +52,14 @@
                                                 <f:selectItems value="#{paginalConsultar.filtro.operadorLogico}" />
                                             </p:selectOneMenu>
                                            <p:inputText id="atributoFiltro" value="#{paginalConsultar.filtro.atributoFiltro}"/>
-                                           <p:commandButton value="FILTRAR" ajax="true" update="filtro" actionListener="#{paginalConsultar.filtro.filtrar()}"/>
+                                           <p:commandButton value="GERAR" style="color: #ffffff; background: #3399ff" ajax="true" update="filtro" actionListener="#{paginalConsultar.filtro.filtrar()}"/>
                                          </div>
                                     </h:panelGrid>
                                     <div class="label label-info">
-                                        <p:commandLink id="filtro" style="color: #ffffff" value="#{paginalConsultar.filtro.filtro}" update="filtro" actionListener="#{paginalConsultar.filtro.removerFiltro()}"/>
-                                        <i class="icon-remove icon-white"></i>
+                                        <p:commandLink id="filtro" style="color: #ffffff" value="#{paginalConsultar.filtro.filtro}" update="tbl" actionListener="#{paginalConsultar.filtroConsulta()}"/>
+                                        <p:commandLink id="filtroLipar" update="filtro" actionListener="#{paginalConsultar.filtro.removerFiltro()}">
+                                            <i class="icon-remove icon-white"></i>
+                                        </p:commandLink>
                                     </div>
                                          
                                 
