@@ -60,8 +60,6 @@ public class Filtro {
 
             if (filtro == null) {
                 filtro = "( " + atributoSelecionado + " ";
-            } else if (!filtro.endsWith(")") && !atributoSelecionado.equals("FILTRAR POR") && !atributoSelecionado.endsWith(" ")) {
-                filtro = filtro + " ";
             }else if(!filtro.endsWith(") ") && !atributoSelecionado.equals("FILTRAR POR"))
             {
                 filtro = filtro + " " + operadorCondicionalSelecionada + " ( " + atributoSelecionado + " " +operadorLogicoSelecionado;
@@ -86,7 +84,7 @@ public class Filtro {
                     && !filtro.endsWith(">= ") && !filtro.endsWith("<= ")
                     && !filtro.endsWith("> ")&& !filtro.endsWith("< ")
                     && !filtro.endsWith("<> ")&& !filtro.endsWith("LIKE ")) {
-                        filtro = filtro + operadorLogicoSelecionado;
+                        filtro = filtro + operadorLogicoSelecionado+" ";
                 }
             }
         }
@@ -160,12 +158,12 @@ public class Filtro {
     public void filtrar() {
         if (operadorLogicoSelecionado != null) {
             if (filtro != null && atributoFiltro != null && operadorLogicoSelecionado != null) {
-                if (filtro.endsWith(" ") && filtro.startsWith("(") 
+                if (filtro.startsWith("(") && !filtro.endsWith(")")
                         && !atributoFiltro.equals(" ") && !atributoFiltro.equals("")
-                    && !filtro.endsWith("= ") && !filtro.endsWith(")")
-                    && !filtro.endsWith(">= ") && !filtro.endsWith("<= ")
-                    && !filtro.endsWith("> ")&& !filtro.endsWith("< ")
-                    && !filtro.endsWith("<> ")&& !filtro.endsWith("LIKE ")) {
+                    && (filtro.endsWith("=") || filtro.endsWith(")")
+                    || filtro.endsWith(">=") || filtro.endsWith("<=")
+                    || filtro.endsWith(">")||filtro.endsWith("<")
+                    || filtro.endsWith("<>")|| !filtro.endsWith("LIKE "))) {
                         filtro = filtro +" "+atributoFiltro+")";
                 }
             }
