@@ -67,7 +67,8 @@ public class PaginalConsultar extends ABaseNamed {
         try {
             if (this.filtro.filtro.endsWith(")")) {
                 listaPaginas = this.pagina.listarPorFiltro(filtro.filtro);
-            }
+            }else
+                listaPaginas = this.pagina.listar();
         } catch (Exception e) {
             Mensageiro.mensagemError("Não foi possível consultar pelo filtro gerado!!");
         }

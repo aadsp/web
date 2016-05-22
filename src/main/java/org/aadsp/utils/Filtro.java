@@ -3,7 +3,6 @@ package org.aadsp.utils;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 
 /**
  *
@@ -13,7 +12,6 @@ public class Filtro {
 
     public Filtro() {
         addOperadorCondicional();
-        addOperadorLogico();
         this.atributo = new HashMap<>();
         this.atributoClasse = new HashMap<>();
     }
@@ -59,7 +57,7 @@ public class Filtro {
             }
 
             if (filtro == null) {
-                filtro = "( " + atributoSelecionado + " ";
+                filtro = "( " + atributoSelecionado;
             }else if(!filtro.endsWith(") ") && !atributoSelecionado.equals("FILTRAR POR"))
             {
                 filtro = filtro + " " + operadorCondicionalSelecionada + " ( " + atributoSelecionado + " " +operadorLogicoSelecionado;
@@ -80,11 +78,11 @@ public class Filtro {
     public void onOperadorLogicoSelecionado() {
         if (operadorLogicoSelecionado != null) {
             if (filtro != null) {
-                if (filtro.endsWith(" ") && !filtro.endsWith("= ") 
-                    && !filtro.endsWith(">= ") && !filtro.endsWith("<= ")
-                    && !filtro.endsWith("> ")&& !filtro.endsWith("< ")
-                    && !filtro.endsWith("<> ")&& !filtro.endsWith("LIKE ")) {
-                        filtro = filtro + operadorLogicoSelecionado+" ";
+                if (!filtro.endsWith("=") 
+                    && !filtro.endsWith(">=") && !filtro.endsWith("<=")
+                    && !filtro.endsWith(">")&& !filtro.endsWith("<")
+                    && !filtro.endsWith("<>")&& !filtro.endsWith("LIKE")) {
+                        filtro = filtro +" "+operadorLogicoSelecionado;
                 }
             }
         }

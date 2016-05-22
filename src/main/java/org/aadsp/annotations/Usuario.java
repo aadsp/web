@@ -196,4 +196,9 @@ public class Usuario implements Serializable,IUsuario
         return model.consultarPorEmail(this);
     }
     
+   public List<Usuario> listarPorFiltro(String filtro) throws Exception
+    {
+        UsuarioModel model = new UsuarioModel();
+        return model.listarPorFiltro(filtro);
+    }
 }

@@ -116,4 +116,21 @@ public class UsuarioModel implements ICRUD
         }
     }
     
+    public List<Usuario> listarPorFiltro(String filtro)throws Exception
+    {
+        try
+        {
+            Query consulta = sessao.createQuery("from Usuario where " + filtro);
+            return consulta.list();
+        }
+        catch(Exception e)
+        {
+            throw e;
+        }
+        finally
+        {
+            sessao.close();
+        }
+    }
+    
 }
