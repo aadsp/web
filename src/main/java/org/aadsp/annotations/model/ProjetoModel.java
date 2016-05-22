@@ -2,7 +2,6 @@
 package org.aadsp.annotations.model;
 
 import java.util.List;
-import org.aadsp.annotations.Pagina;
 import org.aadsp.annotations.Projeto;
 import org.aadsp.interfaces.ICRUD;
 import org.aadsp.utils.FactoryHibernate;
@@ -64,6 +63,23 @@ private final Session sessao;
         try
         {
             Query consulta = sessao.createQuery("from Projeto");
+            return consulta.list();
+        }
+        catch(Exception e)
+        {
+            throw e;
+        }
+        finally
+        {
+            sessao.close();
+        }
+    }
+    
+    public List<Projeto> listarPorFiltro(String filtro)throws Exception
+    {
+        try
+        {
+            Query consulta = sessao.createQuery("from Projeto inner join TAP on tap.ID = Projeto.ID_tap  where " + filtro);
             return consulta.list();
         }
         catch(Exception e)

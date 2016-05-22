@@ -104,4 +104,10 @@ public class Projeto implements Serializable
         ProjetoModel model = new ProjetoModel();
         model.atualizar(this);
     }
+    
+    public List<Projeto> listarPorFiltro(String filtro) throws Exception
+    {
+        ProjetoModel model = new ProjetoModel();
+        return model.listarPorFiltro(filtro);
+    }
 }

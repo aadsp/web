@@ -72,4 +72,21 @@ public class TAPModel implements ICRUD
             sessao.close();
         }
     }
+    
+     public List<TAP> listarPorFiltro(String filtro)throws Exception
+    {
+        try
+        {
+            Query consulta = sessao.createQuery("from TAP where " + filtro);
+            return consulta.list();
+        }
+        catch(Exception e)
+        {
+            throw e;
+        }
+        finally
+        {
+            sessao.close();
+        }
+    }
 }

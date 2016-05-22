@@ -168,4 +168,10 @@ public class TAP implements Serializable
         TAPModel model = new TAPModel();
         return model.consultarPorID(this);
     }
+    
+    public List<TAP> listarPorFiltro(String filtro) throws Exception
+    {
+        TAPModel model = new TAPModel();
+        return model.listarPorFiltro(filtro);
+    }
 }
