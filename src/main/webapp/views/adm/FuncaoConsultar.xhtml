@@ -34,24 +34,40 @@
                     <div class="space-10"></div>
 
                     <div class="space-10"></div>
-                        <div>
-                            <div class="form-search">
-                                <a class="label label-info">Filtrar por:</a>
-
+                        <div id="Filtros" > <!-- Div de construção de filtros -->
+                                    <h:panelGrid columns="6" cellpadding="6">
+                                        <div class="form-search">
+                                            <a class="label label-info">Filtrar por:</a>
+                                            <p:selectOneMenu id="operadorCondicional"  value="#{funcaoConsultar.filtro.operadorCondicionalSelecionada}">
+                                                <f:selectItems value="#{funcaoConsultar.filtro.operadorCondicional}" />
+                                            </p:selectOneMenu>
+                                            <p:selectOneMenu id="atributo"  value="#{funcaoConsultar.filtro.atributoSelecionado}">
+                                                <p:ajax listener="#{funcaoConsultar.filtro.onAtributoSelecionado}" update="operadorLogico,filtro" />
+                                                <f:selectItem itemLabel="FILTRAR POR" itemValue="" noSelectionOption="true" />
+                                                <f:selectItems value="#{funcaoConsultar.filtro.atributo}" />
+                                            </p:selectOneMenu>
+                                            <p:selectOneMenu id="operadorLogico"  value="#{funcaoConsultar.filtro.operadorLogicoSelecionado}">
+                                                <p:ajax listener="#{funcaoConsultar.filtro.onOperadorLogicoSelecionado}" update="atributoFiltro,filtro" />
+                                                <f:selectItem itemLabel="CONDIÇÃO" itemValue="" noSelectionOption="true" />
+                                                <f:selectItems value="#{funcaoConsultar.filtro.operadorLogico}" />
+                                            </p:selectOneMenu>
+                                           <p:inputText id="atributoFiltro" value="#{funcaoConsultar.filtro.atributoFiltro}"/>
+                                           <p:commandButton value="GERAR" style="color: #ffffff; background: #3399ff" ajax="true" update="filtro" actionListener="#{funcaoConsultar.filtro.filtrar()}"/>
+                                         </div>
+                                    </h:panelGrid>
+                                    <div class="label label-info">
+                                        <p:commandLink id="filtro" style="color: #ffffff" value="#{funcaoConsultar.filtro.filtro}" update="tbl" actionListener="#{funcaoConsultar.filtroConsulta()}"/>
+                                        <p:commandLink id="filtroLipar" update="filtro" actionListener="#{funcaoConsultar.filtro.removerFiltro()}">
+                                            <i class="icon-remove icon-white"></i>
+                                        </p:commandLink>
+                                    </div>
                             </div>
-                        </div>
                         <div class="space-30"></div>
                         <div>
                             <div class="table-responsive">
                            
                                 <p:dataTable id="tbl" style="text-align:center" var="funcoes" value="#{funcaoConsultar.listarFuncoes}"
                                                 paginator="true" rows="10">
-                                    <p:column width="10">
-                                           <f:facet name="header">
-                                               <h:outputText value="ID"/>
-                                           </f:facet>
-                                        <h:outputText value="#{funcoes.ID}" />
-                                       </p:column>
                                     
                                     <p:column width="100">
                                            <f:facet name="header">

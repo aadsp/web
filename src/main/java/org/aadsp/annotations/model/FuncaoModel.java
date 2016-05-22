@@ -72,4 +72,22 @@ public class FuncaoModel implements ICRUD
             sessao.close();
         }
     }
+    
+    public List<Funcao> listarPorFiltro(String filtro)throws Exception
+    {
+        try
+        {
+            Query consulta = sessao.createQuery("from Funcao where " + filtro);
+            return consulta.list();
+        }
+        catch(Exception e)
+        {
+            throw e;
+        }
+        finally
+        {
+            sessao.close();
+        }
+    }
+    
 }

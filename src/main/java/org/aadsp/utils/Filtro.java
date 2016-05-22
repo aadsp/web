@@ -161,10 +161,8 @@ public class Filtro {
                     && (filtro.endsWith("=") || filtro.endsWith(")")
                     || filtro.endsWith(">=") || filtro.endsWith("<=")
                     || filtro.endsWith(">")||filtro.endsWith("<")
-                    || filtro.endsWith("<>")|| !filtro.endsWith("LIKE "))) {
-                       
-                    
-                    
+                    || filtro.endsWith("<>")|| filtro.endsWith("LIKE"))) {
+                        
                     String nomeClasseAtributo = atributoClasse.get(atributoSelecionado);
                     String tipoAtributo = "";
                     for (Field atributoClasse : Class.forName("org.aadsp.annotations." + nomeClasseAtributo).getDeclaredFields()) {
@@ -175,7 +173,10 @@ public class Filtro {
                     }
                     tipoAtributo = tipoAtributo.replace("java.lang.", "");
                     if(tipoAtributo.equals("String"))
-                        filtro = filtro +" '"+atributoFiltro+"')";
+                        if(filtro.endsWith("LIKE"))
+                            filtro = filtro +" '%"+atributoFiltro+"%')";
+                        else
+                            filtro = filtro +" '"+atributoFiltro+"')";
                     else
                        filtro = filtro +" "+atributoFiltro+")";
                 }

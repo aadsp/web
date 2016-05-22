@@ -73,4 +73,10 @@ public class Funcao implements Serializable
         FuncaoModel model = new FuncaoModel();
         model.excluir(this);
     }
+    
+    public List<Funcao> listarPorFiltro(String filtro) throws Exception
+    {
+        FuncaoModel model = new FuncaoModel();
+        return model.listarPorFiltro(filtro);
+    }
 }
