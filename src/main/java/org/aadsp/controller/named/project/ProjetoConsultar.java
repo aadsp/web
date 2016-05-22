@@ -40,8 +40,8 @@ public class ProjetoConsultar extends ABaseNamed {
         Map<String, String> atributo = new HashMap<>();
         Map<String, String> atributoClasse = new HashMap<>();
         
-        atributo.put("Nome", "nome");
-        atributoClasse.put("nome", "TAP");
+        atributo.put("Nome", "t.nome");
+        atributoClasse.put("t.nome", "TAP");
         filtro.setAtributo(atributo, atributoClasse);
     }
 

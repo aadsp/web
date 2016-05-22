@@ -1,8 +1,6 @@
 
 package org.aadsp.controller.named.project;
 
-import com.bea.xml.stream.samples.Parse;
-import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -48,7 +46,6 @@ public class ProjetoCadastrar extends ABaseNamed implements ICadastro
       try
       {
         if(!dataFim.equals(dataInicio)){
-            projeto.setID_tap(tapSelecionado);
             projeto.setDataCadastro(new java.sql.Date(new Date().getTime()));
             projeto.cadastrar();
             Mensageiro.mensagemInfo("Projeto cadastrado com sucesso");
@@ -100,7 +97,7 @@ public class ProjetoCadastrar extends ABaseNamed implements ICadastro
            Map<String,Integer> tapMap = new HashMap<String, Integer>();
        
        for(Projeto obj: listaProjetos){
-           listIDProjetoUtilizados.add(obj.getID_tap());
+           listIDProjetoUtilizados.add(obj.getTap().getID());
        }
            
         for(TAP obj: lista){
@@ -115,11 +112,13 @@ public class ProjetoCadastrar extends ABaseNamed implements ICadastro
     }
 
     public int getTapSelecionado() {
-        return tapSelecionado;
+        return projeto.getTap().getID();
     }
 
     public void setTapSelecionado(int tapSelecionado) {
-        this.tapSelecionado = tapSelecionado;
+        TAP tap = new TAP();
+        tap.setID(tapSelecionado);
+        projeto.setTap(tap);
     }
     
     

@@ -21,7 +21,7 @@ public class TAP implements Serializable
 {
     @Id
     @GeneratedValue
-    @Column(name="ID") private Integer ID;
+    @Column(name="ID_tap") private Integer ID;
     @Column(name="nome") private String nome;
     @Column(name="justificativa") private String justificativa;
     @Column(name="objetivo") private String objetivo;

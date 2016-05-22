@@ -36,10 +36,16 @@ public class Filtro {
     public void onAtributoSelecionado() throws ClassNotFoundException {
         addOperadorLogico();
         if (atributoSelecionado != null) {
+            String atributoAnotacao = atributoSelecionado;
+            if(atributoSelecionado.contains(".")){
+                String objMapeamento = Character.toString(atributoAnotacao.charAt(0));
+                atributoAnotacao = atributoAnotacao.replace(objMapeamento+".", "");
+            }
+            
             String nomeClasseAtributo = atributoClasse.get(atributoSelecionado);
             String tipoAtributo = "";
             for (Field atributoClasse : Class.forName("org.aadsp.annotations." + nomeClasseAtributo).getDeclaredFields()) {
-                if (atributoClasse.getName().equals(atributoSelecionado)) {
+                if (atributoClasse.getName().equals(atributoAnotacao)) {
                     tipoAtributo = atributoClasse.getType().getName();
 
                 }
@@ -162,11 +168,17 @@ public class Filtro {
                     || filtro.endsWith(">=") || filtro.endsWith("<=")
                     || filtro.endsWith(">")||filtro.endsWith("<")
                     || filtro.endsWith("<>")|| filtro.endsWith("LIKE"))) {
-                        
+                    
+                    String atributoAnotacao = atributoSelecionado;
+                    if(atributoSelecionado.contains(".")){
+                        String objMapeamento = Character.toString(atributoAnotacao.charAt(0));
+                        atributoAnotacao = atributoAnotacao.replace(objMapeamento+".", "");
+                    }
+                    
                     String nomeClasseAtributo = atributoClasse.get(atributoSelecionado);
                     String tipoAtributo = "";
                     for (Field atributoClasse : Class.forName("org.aadsp.annotations." + nomeClasseAtributo).getDeclaredFields()) {
-                        if (atributoClasse.getName().equals(atributoSelecionado)) {
+                        if (atributoClasse.getName().equals(atributoAnotacao)) {
                             tipoAtributo = atributoClasse.getType().getName();
 
                         }

@@ -79,7 +79,8 @@ private final Session sessao;
     {
         try
         {
-            Query consulta = sessao.createQuery("from Projeto inner join TAP on tap.ID = Projeto.ID_tap  where " + filtro);
+            Query consulta = sessao.createQuery("Select p from Projeto p "
+                    + "join p.tap t where " + filtro);
             return consulta.list();
         }
         catch(Exception e)
