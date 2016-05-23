@@ -66,7 +66,7 @@ public class Filtro {
                 filtro = "( " + atributoSelecionado;
             }else if(!filtro.endsWith(") ") && !atributoSelecionado.equals("FILTRAR POR"))
             {
-                filtro = filtro + " " + operadorCondicionalSelecionada + " ( " + atributoSelecionado + " " +operadorLogicoSelecionado;
+                filtro = filtro + " " + operadorCondicionalSelecionada + " ( " + atributoSelecionado;
             }
         }else
         {

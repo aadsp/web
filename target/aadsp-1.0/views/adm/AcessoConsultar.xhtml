@@ -68,12 +68,6 @@
                            
                                 <p:dataTable id="tbl" style="text-align:center" var="acessoFuncao" value="#{acessoConsultar.listarAcessoFuncao}"
                                                 paginator="true" rows="10">
-                                    <p:column width="10">
-                                           <f:facet name="header">
-                                               <h:outputText value="#"/>
-                                           </f:facet>
-                                        <h:outputText value="#{acessoFuncao.ID}" />
-                                       </p:column>
                                     <p:column width="250">
                                            <f:facet name="header">
                                                <h:outputText value="Função" />
