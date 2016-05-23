@@ -8,6 +8,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.aadsp.annotations.model.ColaboradorModel;
 
@@ -17,11 +19,14 @@ public class Colaborador implements Serializable
 {
     @Id
     @GeneratedValue
-    @Column(name="ID") private Integer ID;
-    @Column(name="ID_usuario") private Integer ID_usuario;
+    @Column(name="ID_colaborador") private Integer ID;
     @Column(name="numeroPIS") private String numeroPIS;
     @Column(name="dataContrato") private Date dataContrato;
     @Column(name="valorBruto") private double valorBruto;
+    
+    @OneToOne
+    @JoinColumn(name="ID_usuario") private Usuario usuario;
+    
 
     public Integer getID() {
         return ID;
@@ -31,14 +36,14 @@ public class Colaborador implements Serializable
         this.ID = ID;
     }
 
-    public Integer getID_usuario() {
-        return ID_usuario;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setID_usuario(Integer ID_usuario) {
-        this.ID_usuario = ID_usuario;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
-
+    
     public String getNumeroPIS() {
         return numeroPIS;
     }
@@ -66,14 +71,14 @@ public class Colaborador implements Serializable
     public String consultarNomeColaborador() throws Exception
     {
         Usuario model = new Usuario();
-        model.setID(this.ID_usuario);
+        model.setID(this.usuario.getID());
         return model.consultar().getNome();
     }
     
     public String consultarFuncaoColaborador() throws Exception
     {
         Usuario modelUsuario = new Usuario();
-        modelUsuario.setID(this.ID_usuario);
+        modelUsuario.setID(this.usuario.getID());
         modelUsuario = modelUsuario.consultar();
         Funcao model = new Funcao();
         model.setID(modelUsuario.getFuncao().getID());

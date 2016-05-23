@@ -41,7 +41,9 @@ public class ColaboradorCadastrar extends ABaseNamed implements ICadastro
     {
       try
       {
-        this.colaborador.setID_usuario(usuarioSelecionado);
+        Usuario usuario = new Usuario();
+        usuario.setID(usuarioSelecionado);
+        this.colaborador.setUsuario(usuario);
         this.colaborador.cadastrar();
         Mensageiro.mensagemInfo("Cadastro realizado com sucesso!!");
       }catch(Exception e){
