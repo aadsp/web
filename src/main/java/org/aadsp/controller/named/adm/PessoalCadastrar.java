@@ -40,7 +40,9 @@ public class PessoalCadastrar extends ABaseNamed implements ICadastro
     {
       try
       {
-        this.usuario.setId_funcao(funcaoSelecionada);
+        Funcao funcao = new Funcao();
+        funcao.setID(funcaoSelecionada);
+        this.usuario.setFuncao(funcao);
         this.usuario.cadastrar();
         Mensageiro.mensagemInfo("Cadastro realizado com sucesso!!");
       }catch(Exception e){

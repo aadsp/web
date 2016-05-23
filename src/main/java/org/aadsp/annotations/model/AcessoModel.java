@@ -67,7 +67,7 @@ public class AcessoModel implements ICRUD
         try
         {
             Query consulta = sessao.createQuery("from Acesso where ID_funcao = :ID_funcao");
-            consulta.setInteger("ID_funcao", acesso.getID_funcao());
+            consulta.setInteger("ID_funcao", acesso.getFuncao().getID());
             return consulta.list();
         }
         catch(Exception e)
@@ -97,12 +97,29 @@ public class AcessoModel implements ICRUD
     {
         try{   
             Query consulta = sessao.createQuery("from Acesso where ID_funcao = :ID_funcao and ID_pagina = :ID_pagina");
-            consulta.setInteger("ID_funcao", acesso.getID_funcao());
-            consulta.setInteger("ID_pagina", acesso.getID_pagina());
+            consulta.setInteger("ID_funcao", acesso.getFuncao().getID());
+            consulta.setInteger("ID_pagina", acesso.getPagina().getID());
             return (Acesso) consulta.uniqueResult();
         }catch(Exception e){
             throw e;
         }finally{
+            sessao.close();
+        }
+    }
+    
+    public List<Acesso> listarPorFiltro(String filtro)throws Exception
+    {
+        try
+        {
+            Query consulta = sessao.createQuery("Select a from Acesso a join a.funcao f join a.pagina p where " + filtro);
+            return consulta.list();
+        }
+        catch(Exception e)
+        {
+            throw e;
+        }
+        finally
+        {
             sessao.close();
         }
     }

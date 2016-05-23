@@ -16,7 +16,7 @@ public class Funcao implements Serializable
 {
     @Id
     @GeneratedValue
-    @Column(name="ID") private Integer ID;
+    @Column(name="ID_funcao") private Integer ID;
     @Column(name="sigla") private String sigla;
     @Column(name="descricao") private String descricao;
 

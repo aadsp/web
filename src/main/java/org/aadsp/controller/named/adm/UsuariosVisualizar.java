@@ -81,7 +81,7 @@ public class UsuariosVisualizar extends ABaseNamed
         Usuario usuario = new Usuario();
         for(Usuario obj: usuario.listar())
         {
-            funcao.setID(obj.getId_funcao());
+            funcao.setID(obj.getFuncao().getID());
             funcao = funcao.consultarPorID();
             if(listaFuncoes.containsKey(funcao.getDescricao())){
                 int qtd = listaFuncoes.get(funcao.getDescricao());
@@ -119,7 +119,7 @@ public class UsuariosVisualizar extends ABaseNamed
         Usuario usuario = new Usuario();
         for(Usuario obj: usuario.listar())
         {
-            funcao.setID(obj.getId_funcao());
+            funcao.setID(obj.getFuncao().getID());
             funcao = funcao.consultarPorID();
             if(listaFuncoes.containsKey(funcao.getDescricao())){
                 int qtd = listaFuncoes.get(funcao.getDescricao());

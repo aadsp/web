@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.aadsp.annotations.model.AcessoModel;
 
@@ -20,9 +22,11 @@ public class Acesso implements Serializable
 {
     @Id
     @GeneratedValue
-    @Column(name="ID") private Integer ID;
-    @Column(name="ID_funcao") private Integer ID_funcao;
-    @Column(name="ID_pagina") private Integer ID_pagina;
+    @Column(name="ID_acesso") private Integer ID;
+    @OneToOne
+    @JoinColumn(name="ID_funcao") private Funcao funcao;
+    @OneToOne
+    @JoinColumn(name="ID_pagina") private Pagina pagina;
 
     public Integer getID() {
         return ID;
@@ -32,22 +36,22 @@ public class Acesso implements Serializable
         this.ID = ID;
     }
 
-    public Integer getID_funcao() {
-        return ID_funcao;
+    public Funcao getFuncao() {
+        return funcao;
     }
 
-    public void setID_funcao(Integer ID_funcao) {
-        this.ID_funcao = ID_funcao;
+    public void setFuncao(Funcao funcao) {
+        this.funcao = funcao;
     }
 
-    public Integer getID_pagina() {
-        return ID_pagina;
+    public Pagina getPagina() {
+        return pagina;
     }
 
-    public void setID_pagina(Integer ID_pagina) {
-        this.ID_pagina = ID_pagina;
+    public void setPagina(Pagina pagina) {
+        this.pagina = pagina;
     }
-    
+
     public void cadastrar()
     {
         AcessoModel model = new AcessoModel();
@@ -69,7 +73,7 @@ public class Acesso implements Serializable
     public String consultarFuncao() throws Exception
     {
         Funcao funcao = new Funcao();
-        funcao.setID(this.getID_funcao());
+        funcao.setID(this.getFuncao().getID());
         funcao = funcao.consultarPorID();
         return funcao.getDescricao();
     }
@@ -77,7 +81,7 @@ public class Acesso implements Serializable
     public String consultarPagina() throws Exception
     {
         Pagina pagina = new Pagina();
-        pagina.setID(this.getID_pagina());
+        pagina.setID(this.getPagina().getID());
         pagina = pagina.consultarPorID();
         return pagina.getNome();
     }
@@ -94,4 +98,15 @@ public class Acesso implements Serializable
          return model.registrada(this) != null;
     }
     
+    public  List<Acesso> listar() throws Exception
+    {
+        AcessoModel model = new AcessoModel();
+        return model.listar();
+    }
+    
+    public List<Acesso> listarPorFiltro(String filtro) throws Exception
+    {
+        AcessoModel model = new AcessoModel();
+        return model.listarPorFiltro(filtro);
+    }
 }

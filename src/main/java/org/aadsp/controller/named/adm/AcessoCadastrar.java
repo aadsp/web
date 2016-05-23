@@ -44,15 +44,19 @@ public class AcessoCadastrar extends ABaseNamed implements ICadastro
    
     public boolean controleDeCadastro()
     {
-        return this.acesso.getID_funcao() != null;
+        return this.acesso.getFuncao().getID() != null;
     }
     
     public void cadastrar()
     {
       try
       {
-        acesso.setID_funcao(funcaoSelecionada);
-        acesso.setID_pagina(paginaSelecionada);
+        Funcao funcao = new Funcao();
+        Pagina pagina = new Pagina();
+        funcao.setID(funcaoSelecionada);
+        pagina.setID(paginaSelecionada);
+        acesso.setFuncao(funcao);
+        acesso.setPagina(pagina);
         if(!acesso.registrada()){
             acesso.cadastrar();
             Mensageiro.mensagemInfo("Cadastro realizado com sucesso!!");
@@ -67,7 +71,9 @@ public class AcessoCadastrar extends ABaseNamed implements ICadastro
     public void onFuncaoSelecionada(){
         if(funcaoSelecionada != 0){
             this.paginas = new HashMap<String, Integer>();
-            this.acesso.setID_funcao(funcaoSelecionada);
+            Funcao funcao = new Funcao();
+            funcao.setID(funcaoSelecionada);
+            this.acesso.setFuncao(funcao);
         }
             
     }
@@ -111,7 +117,7 @@ public class AcessoCadastrar extends ABaseNamed implements ICadastro
                 List<Integer> paginasID = new ArrayList<>();
 
                 for(Acesso obj: acessoFuncao){
-                    paginasID.add(obj.getID_pagina());
+                    paginasID.add(obj.getPagina().getID());
                 }
 
                 for(Pagina obj: lista){

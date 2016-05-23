@@ -11,6 +11,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.aadsp.annotations.model.AcessoModel;
 import org.aadsp.annotations.model.FuncaoModel;
@@ -25,15 +27,18 @@ public class Usuario implements Serializable,IUsuario
 {
     @Id
     @GeneratedValue
-    @Column(name="ID") private Integer ID;
+    @Column(name="ID_usuario") private Integer ID;
     @Column(name="nome") private String nome;
     @Column(name="dataNascimento") private Date dataNascimento;
-    @Column(name="ID_funcao") private Integer id_funcao;
     @Column(name="cpf") private String cpf;
     @Column(name="rg") private String rg;
     @Column(name="email") private String email;
     @Column(name="login") private String login;
     @Column(name="senha") private String senha;
+    
+    @OneToOne
+    @JoinColumn(name="ID_funcao") private Funcao funcao;
+    
 
     public Integer getID() {
         return ID;
@@ -59,12 +64,12 @@ public class Usuario implements Serializable,IUsuario
         this.dataNascimento = dataNascimento;
     }
 
-    public Integer getId_funcao() {
-        return id_funcao;
+    public Funcao getFuncao() {
+        return funcao;
     }
 
-    public void setId_funcao(Integer id_usuarioTipo) {
-        this.id_funcao = id_usuarioTipo;
+    public void setFuncao(Funcao funcao) {
+        this.funcao = funcao;
     }
 
     public String getCpf() {
@@ -137,14 +142,14 @@ public class Usuario implements Serializable,IUsuario
     {
         List<String> lista = new ArrayList<>();
         Acesso obj = new Acesso();
-        obj.setID_funcao(this.id_funcao);
+        obj.setFuncao(this.funcao);
         AcessoModel acessoModel = new AcessoModel();
         List<Acesso> listaAcesso = acessoModel.listar(obj);
         List<String> paginas = new ArrayList<>();
         
         for(Acesso acesso: listaAcesso){
             Pagina pagina = new Pagina();
-            pagina.setID(acesso.getID_pagina());
+            pagina.setID(acesso.getPagina().getID());
             paginas.add(pagina.consultarNomePagina(pagina));
         }
         return paginas;
@@ -156,7 +161,7 @@ public class Usuario implements Serializable,IUsuario
     {
         FuncaoModel model = new FuncaoModel();
         Funcao obj = new Funcao();
-        obj.setID(this.id_funcao);
+        obj.setID(this.funcao.getID());
         obj = model.consultarPorID(obj);
         return obj.getDescricao();
     }

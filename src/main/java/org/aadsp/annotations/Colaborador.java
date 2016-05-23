@@ -76,7 +76,7 @@ public class Colaborador implements Serializable
         modelUsuario.setID(this.ID_usuario);
         modelUsuario = modelUsuario.consultar();
         Funcao model = new Funcao();
-        model.setID(modelUsuario.getId_funcao());
+        model.setID(modelUsuario.getFuncao().getID());
         return model.consultarPorID().getDescricao();
     }
     

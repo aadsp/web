@@ -16,7 +16,7 @@ public class Pagina implements Serializable
 {
     @Id
     @GeneratedValue
-    @Column(name="ID") private Integer ID;
+    @Column(name="ID_pagina") private Integer ID;
     @Column(name="nome") private String nome;
 
     public Integer getID() {

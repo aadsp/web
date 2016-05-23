@@ -54,7 +54,9 @@ public class PessoalEditar extends ABaseNamed
     {
       try
       {
-        this.usuario.setId_funcao(funcaoSelecionada);
+        Funcao funcao = new Funcao();
+        funcao.setID(funcaoSelecionada);
+        this.usuario.setFuncao(funcao);
         this.usuario.editar();
         Mensageiro.mensagemInfo("Dados do usuário foram atualizados com sucesso!!");
       }catch(Exception e){
@@ -98,7 +100,7 @@ public class PessoalEditar extends ABaseNamed
 
             List<Funcao> lista = funcao.listar();
        for(Funcao obj: lista){
-           if(!obj.getID().equals(usuario.getId_funcao()))
+           if(!obj.getID().equals(usuario.getFuncao().getID()))
                 funcoes.put(obj.getDescricao(),obj.getID());
        }
        return funcoes;
