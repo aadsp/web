@@ -16,7 +16,7 @@ public class Stakeholder implements Serializable
 {
     @Id
     @GeneratedValue
-    @Column(name="ID") private Integer ID;
+    @Column(name="ID_stakeholder") private Integer ID;
     @Column(name="nome") private String nome;
     @Column(name="rg") private String rg;
     @Column(name="cpf") private String cpf;

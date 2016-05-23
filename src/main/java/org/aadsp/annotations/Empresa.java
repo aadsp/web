@@ -16,7 +16,7 @@ public class Empresa implements Serializable
 {
     @Id
     @GeneratedValue
-    @Column(name="ID") private Integer ID;
+    @Column(name="ID_empresa") private Integer ID;
     @Column(name="razaoSocial") private String razaoSocial;
     @Column(name="cnpj") private String cnpj;
     @Column(name="cpf") private String cpf;
@@ -96,4 +96,11 @@ public class Empresa implements Serializable
         EmpresaModel model = new EmpresaModel();
         model.atualizar(this);
     }
+    
+    public List<Empresa> listarPorFiltro(String filtro) throws Exception
+    {
+        EmpresaModel model = new EmpresaModel();
+        return model.listarPorFiltro(filtro);
+    }
+    
 }
