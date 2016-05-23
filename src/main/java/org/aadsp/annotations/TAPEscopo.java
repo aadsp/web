@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.aadsp.annotations.model.TAPEscopoModel;
 
@@ -16,11 +18,17 @@ public class TAPEscopo implements Serializable
 {
     @Id
     @GeneratedValue
-    @Column(name="ID") private Integer ID;
-    @Column(name="ID_tap") private Integer ID_tap;
-    @Column(name="ID_escopoArea") private Integer ID_escopoArea;
-    @Column(name="ID_escopoTipo") private Integer ID_escopoTipo;
+    @Column(name="ID_escopo") private Integer ID;
     @Column(name="descricao") private String descricao;
+    
+    @OneToOne
+    @JoinColumn(name="ID_tap") private TAP tap;
+    @OneToOne
+    @JoinColumn(name="ID_escopoArea") private TAPEscopoArea escopoArea;
+    @OneToOne
+    @JoinColumn(name="ID_escopoTipo") private TAPEscopoTipo escopoTipo;
+    
+    
 
     public Integer getID() {
         return ID;
@@ -38,28 +46,28 @@ public class TAPEscopo implements Serializable
         this.descricao = descricao;
     }
 
-    public Integer getID_tap() {
-        return ID_tap;
+    public TAPEscopoArea getEscopoArea() {
+        return escopoArea;
     }
 
-    public void setID_tap(Integer ID_tap) {
-        this.ID_tap = ID_tap;
+    public void setEscopoArea(TAPEscopoArea escopoArea) {
+        this.escopoArea = escopoArea;
     }
 
-    public Integer getID_escopoArea() {
-        return ID_escopoArea;
+    public TAPEscopoTipo getEscopoTipo() {
+        return escopoTipo;
     }
 
-    public void setID_escopoArea(Integer ID_escopoArea) {
-        this.ID_escopoArea = ID_escopoArea;
+    public void setEscopoTipo(TAPEscopoTipo escopoTipo) {
+        this.escopoTipo = escopoTipo;
     }
 
-    public Integer getID_escopoTipo() {
-        return ID_escopoTipo;
+    public TAP getTap() {
+        return tap;
     }
 
-    public void setID_escopoTipo(Integer ID_escopoTipo) {
-        this.ID_escopoTipo = ID_escopoTipo;
+    public void setTap(TAP tap) {
+        this.tap = tap;
     }
     
     public void cadastrar(){
@@ -92,7 +100,7 @@ public class TAPEscopo implements Serializable
     public String descricaoArea()
     {
         TAPEscopoArea area = new TAPEscopoArea();
-        area.setID(this.ID_escopoArea);
+        area.setID(this.escopoArea.getID());
         area = area.consultar();
         return area.getDescricao();
     }
@@ -100,7 +108,7 @@ public class TAPEscopo implements Serializable
     public String descricaoTipo()
     {
         TAPEscopoTipo tipo = new TAPEscopoTipo();
-        tipo.setID(this.ID_escopoTipo);
+        tipo.setID(this.getEscopoTipo().getID());
         tipo = tipo.consultar();
         return tipo.getDescricao();
     }

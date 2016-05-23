@@ -9,17 +9,17 @@
 	<queryString>
 		<![CDATA[SELECT E.razaoSocial, e.cnpj cpfCnpj,'EMPRESA'TIPO  FROM TAP.TAP_AADSP_PATROCINADOR P
 INNER JOIN TAP.TAP_AADSP_TAP T
-ON P.ID_tap = T.ID
+ON P.ID_tap = T.ID_tap
 INNER JOIN TAP.TAP_AADSP_EMPRESA E
-ON E.ID = P.ID_empresa
-WHERE T.ID = $P{ID_tap}
+ON E.ID_empresa = P.ID_empresa
+WHERE T.ID_tap = $P{ID_tap}
 UNION
 SELECT S.nome, s.cpf cpfCnpj,'STAKEHOLDER'TIPO FROM TAP.TAP_AADSP_PATROCINADOR P
 INNER JOIN TAP.TAP_AADSP_TAP T
-ON P.ID_tap = T.ID
+ON P.ID_tap = T.ID_tap
 INNER JOIN TAP.TAP_AADSP_STAKEHOLDER S
-ON P.ID_stakeholder = S.ID
-WHERE T.ID = $P{ID_tap}]]>
+ON P.ID_stakeholder = S.ID_stakeholder
+WHERE T.ID_tap = $P{ID_tap}]]>
 	</queryString>
 	<field name="razaoSocial" class="java.lang.String"/>
 	<field name="cpfCnpj" class="java.lang.String"/>

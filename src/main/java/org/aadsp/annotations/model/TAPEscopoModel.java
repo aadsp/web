@@ -80,8 +80,8 @@ private final Session sessao;
     {
         try
         {
-            Query consulta = sessao.createQuery("from TAPEscopo where ID_tap = :ID_tap");
-            consulta.setInteger("ID_tap", tap.getID_tap());
+            Query consulta = sessao.createQuery("select t from TAPEscopo t join T.tap where t.ID = :ID_tap");
+            consulta.setInteger("ID_tap", tap.getID());
             return consulta.list();
         }
         catch(Exception e)

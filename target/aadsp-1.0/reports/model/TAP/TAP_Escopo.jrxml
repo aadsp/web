@@ -9,12 +9,12 @@
 	<queryString>
 		<![CDATA[SELECT E.descricao atividade,EA.descricao area,ET.descricao tipo FROM TAP.TAP_AADSP_ESCOPO E
 INNER JOIN TAP.TAP_AADSP_ESCOPO_AREA EA
-ON E.ID_escopoArea = EA.ID
+ON E.ID_escopoArea = EA.ID_escopoArea
 INNER JOIN TAP.TAP_AADSP_ESCOPO_TIPO ET
-ON E.ID_escopoTipo = ET.ID
+ON E.ID_escopoTipo = ET.ID_escopoTipo
 WHERE E.ID_tap = $P{ID_tap}
-GROUP BY E.descricao,EA.descricao,ET.descricao,ET.ID
-ORDER BY ET.ID]]>
+GROUP BY E.descricao,EA.descricao,ET.descricao,ET.ID_escopoTipo
+ORDER BY ET.ID_escopoTipo]]>
 	</queryString>
 	<field name="atividade" class="java.lang.String"/>
 	<field name="area" class="java.lang.String"/>

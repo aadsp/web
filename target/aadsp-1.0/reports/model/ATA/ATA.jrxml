@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4e3a48c2-57ca-4248-ac81-51adf18f3ba6">
 	<property name="ireport.zoom" value="1.4641000000000006"/>
-	<property name="ireport.x" value="157"/>
-	<property name="ireport.y" value="556"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="71"/>
 	<parameter name="ID_ata" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -16,10 +16,10 @@ cast(a.pauta as varchar(1000)) pauta,
 cast(a.assuntosTratados as varchar(8000))assuntosTratados
 FROM PROJETO.PROJETO_AADSP_ATA A
 INNER JOIN COLABORADOR.COLABORADOR_AADSP_COLABORADOR C
-ON A.ID_colaborador = C.ID
+ON A.ID_colaborador = C.ID_colaborador
 INNER JOIN ACESSO.ACESSO_AADSP_USUARIO U
-ON U.ID = C.ID_usuario
-WHERE A.ID = $P{ID_ata}]]>
+ON U.ID_usuario = C.ID_usuario
+WHERE A.ID_ata = $P{ID_ata}]]>
 	</queryString>
 	<field name="titulo" class="java.lang.String"/>
 	<field name="dataRealizacao" class="java.sql.Timestamp"/>

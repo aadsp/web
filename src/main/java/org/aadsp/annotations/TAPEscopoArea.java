@@ -17,7 +17,7 @@ public class TAPEscopoArea implements Serializable
 {
     @Id
     @GeneratedValue
-    @Column(name="ID") private Integer ID;
+    @Column(name="ID_escopoArea") private Integer ID;
     @Column(name="descricao") private String descricao;
 
     public Integer getID() {

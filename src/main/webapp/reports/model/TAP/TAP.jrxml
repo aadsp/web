@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2f3837a3-d734-4d32-8268-55725bc3ef06">
 	<property name="ireport.zoom" value="1.4641000000000008"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="476"/>
+	<property name="ireport.y" value="982"/>
 	<parameter name="ID_tap" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -10,7 +10,7 @@
 		<defaultValueExpression><![CDATA["G:\\PROJETO TCC\\web\\src\\main\\webapp\\reports\\model\\TAP\\"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT ID,nome,
+		<![CDATA[SELECT ID_tap,nome,
 justificativa,
 objetivo,
 dataInicio,
@@ -21,9 +21,9 @@ dataHomologacao,
 custo,
 riscosIniciais,
 restricoes
-FROM TAP.TAP_AADSP_TAP WHERE ID = $P{ID_tap}]]>
+FROM TAP.TAP_AADSP_TAP WHERE ID_tap = $P{ID_tap}]]>
 	</queryString>
-	<field name="ID" class="java.lang.Integer"/>
+	<field name="ID_tap" class="java.lang.Integer"/>
 	<field name="nome" class="java.lang.String"/>
 	<field name="justificativa" class="java.lang.String"/>
 	<field name="objetivo" class="java.lang.String"/>
@@ -248,7 +248,7 @@ FROM TAP.TAP_AADSP_TAP WHERE ID = $P{ID_tap}]]>
 			<subreport>
 				<reportElement positionType="Float" x="0" y="76" width="555" height="35" uuid="c5a9dd88-7559-4739-922e-9e2144626d8d"/>
 				<subreportParameter name="ID_tap">
-					<subreportParameterExpression><![CDATA[$F{ID}]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[$F{ID_tap}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "TAP_Escopo.jasper"]]></subreportExpression>
@@ -263,7 +263,7 @@ FROM TAP.TAP_AADSP_TAP WHERE ID = $P{ID_tap}]]>
 			<subreport>
 				<reportElement positionType="Float" x="0" y="137" width="555" height="34" uuid="c741398d-451d-4f2f-acde-ee2fa967a6ec"/>
 				<subreportParameter name="ID_tap">
-					<subreportParameterExpression><![CDATA[$F{ID}]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[$F{ID_tap}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "TAP_Equipe.jasper"]]></subreportExpression>
@@ -285,7 +285,7 @@ FROM TAP.TAP_AADSP_TAP WHERE ID = $P{ID_tap}]]>
 			<subreport>
 				<reportElement positionType="Float" x="0" y="198" width="555" height="25" uuid="e4707500-a5d2-4ee5-b297-be96fd38f898"/>
 				<subreportParameter name="ID_tap">
-					<subreportParameterExpression><![CDATA[$F{ID}]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[$F{ID_tap}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "TAP_Patrocinador.jasper"]]></subreportExpression>
@@ -293,7 +293,7 @@ FROM TAP.TAP_AADSP_TAP WHERE ID = $P{ID_tap}]]>
 			<subreport>
 				<reportElement positionType="Float" x="0" y="20" width="555" height="33" uuid="c2f68567-be7f-4c09-94dc-0ce9665eaeb0"/>
 				<subreportParameter name="ID_tap">
-					<subreportParameterExpression><![CDATA[$F{ID}]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[$F{ID_tap}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "TAP_Stakeholder.jasper"]]></subreportExpression>

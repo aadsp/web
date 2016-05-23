@@ -64,9 +64,14 @@ public class TAPEditar extends ABaseNamed
     
     public void addEscopo() throws IOException
     {
-        tapEscopo.setID_escopoArea(tapAreaSelecionado);
-        tapEscopo.setID_escopoTipo(tapTipoSelecionado);
-        tapEscopo.setID_tap(tap.getID());
+        TAPEscopoArea escopoArea = new TAPEscopoArea();
+        TAPEscopoTipo escopoTipo =  new TAPEscopoTipo();
+        escopoArea.setID(tapAreaSelecionado);
+        escopoTipo.setID(tapTipoSelecionado);
+        
+        tapEscopo.setEscopoArea(escopoArea);
+        tapEscopo.setEscopoTipo(escopoTipo);
+        tapEscopo.setTap(tap);
         tapEscopo.cadastrar();
         Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
     }
@@ -387,7 +392,7 @@ public class TAPEditar extends ABaseNamed
     {
         try 
         {
-            tapEscopo.setID_tap(tap.getID());
+            tapEscopo.setTap(tap);
             return tapEscopo.listarIDTap();
         } catch (Exception e) 
         {
