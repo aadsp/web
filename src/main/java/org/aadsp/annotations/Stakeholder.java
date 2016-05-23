@@ -87,4 +87,11 @@ public class Stakeholder implements Serializable
         StakeholderModel model = new StakeholderModel();
         model.atualizar(this);
     }
+    
+    public List<Stakeholder> listarPorFiltro(String filtro) throws Exception
+    {
+        StakeholderModel model = new StakeholderModel();
+        return model.listarPorFiltro(filtro);
+    }
+    
 }

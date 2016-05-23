@@ -76,4 +76,21 @@ private final Session sessao;
         }
     }
     
+    public List<Colaborador> listarPorFiltro(String filtro)throws Exception
+    {
+        try
+        {
+            Query consulta = sessao.createQuery("Select c from Colaborador c join c.usuario.funcao f join c.usuario u where " + filtro);
+            return consulta.list();
+        }
+        catch(Exception e)
+        {
+            throw e;
+        }
+        finally
+        {
+            sessao.close();
+        }
+    }
+    
 }

@@ -111,4 +111,10 @@ public class Colaborador implements Serializable
         ColaboradorModel model = new ColaboradorModel();
         model.atualizar(this);
     }
+    
+    public List<Colaborador> listarPorFiltro(String filtro) throws Exception
+    {
+        ColaboradorModel model = new ColaboradorModel();
+        return model.listarPorFiltro(filtro);
+    }
 }

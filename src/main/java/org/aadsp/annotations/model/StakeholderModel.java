@@ -75,4 +75,21 @@ private final Session sessao;
         }
     }
     
+    public List<Stakeholder> listarPorFiltro(String filtro)throws Exception
+    {
+        try
+        {
+            Query consulta = sessao.createQuery("from Stakeholder  where " + filtro);
+            return consulta.list();
+        }
+        catch(Exception e)
+        {
+            throw e;
+        }
+        finally
+        {
+            sessao.close();
+        }
+    }
+    
 }
