@@ -14,6 +14,7 @@ public class Filtro {
         addOperadorCondicional();
         this.atributo = new HashMap<>();
         this.atributoClasse = new HashMap<>();
+        this.filtro = "TODOS";
     }
 
     private void addOperadorCondicional() {
@@ -23,6 +24,7 @@ public class Filtro {
     }
 
     private void addOperadorLogico() {
+        this.filtro = null;
         this.operadorLogico = new HashMap<>();
         operadorLogico.put("IGUAL", "=");
         operadorLogico.put("DIFERENTE", "<>");
@@ -156,7 +158,7 @@ public class Filtro {
     }
     
     public void removerFiltro(){
-        filtro = null;
+        this.filtro = "TODOS";
     }
     
     public void filtrar() throws ClassNotFoundException {

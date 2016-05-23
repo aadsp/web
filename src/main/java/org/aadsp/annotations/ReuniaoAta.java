@@ -8,6 +8,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.aadsp.annotations.model.ReuniaoAtaModel;
 
@@ -17,14 +19,18 @@ public class ReuniaoAta implements Serializable
 {
     @Id
     @GeneratedValue
-    @Column(name="ID") private Integer ID;
-    @Column(name="ID_projeto") private Integer ID_projeto;
-    @Column(name="ID_colaborador") private Integer ID_colaborador;
+    @Column(name="ID_ata") private Integer ID;
     @Column(name="titulo") private String titulo;
     @Column(name="pauta") private String pauta;
     @Column(name="assuntosTratados") private String assuntosTratados;
     @Column(name="dataCadastro") private Date dataCadastro;
     @Column(name="dataRealizacao") private Date dataRealizacao;
+    
+    @OneToOne
+    @JoinColumn(name="ID_projeto") private Projeto projeto;
+    @OneToOne
+    @JoinColumn(name="ID_colaborador") private Colaborador colaborador;
+    
 
     public Integer getID() {
         return ID;
@@ -32,22 +38,6 @@ public class ReuniaoAta implements Serializable
 
     public void setID(Integer ID) {
         this.ID = ID;
-    }
-
-    public Integer getID_projeto() {
-        return ID_projeto;
-    }
-
-    public void setID_projeto(Integer ID_projeto) {
-        this.ID_projeto = ID_projeto;
-    }
-
-    public Integer getID_colaborador() {
-        return ID_colaborador;
-    }
-
-    public void setID_colaborador(Integer ID_colaborador) {
-        this.ID_colaborador = ID_colaborador;
     }
 
     public String getTitulo() {
@@ -89,11 +79,27 @@ public class ReuniaoAta implements Serializable
     public void setDataRealizacao(Date dataRealizacao) {
         this.dataRealizacao = dataRealizacao;
     }
+
+    public Projeto getProjeto() {
+        return projeto;
+    }
+
+    public void setProjeto(Projeto projeto) {
+        this.projeto = projeto;
+    }
+
+    public Colaborador getColaborador() {
+        return colaborador;
+    }
+
+    public void setColaborador(Colaborador colaborador) {
+        this.colaborador = colaborador;
+    }
     
     public Projeto consultarProjeto()
     {
         Projeto projeto = new Projeto();
-        projeto.setID(this.ID_projeto);
+        projeto.setID(this.projeto.getID());
         return projeto.consultar();
     }
     
@@ -131,5 +137,11 @@ public class ReuniaoAta implements Serializable
     {
         ReuniaoAtaModel model = new ReuniaoAtaModel();
         model.excluir(this);
+    }
+    
+    public List<ReuniaoAta> listarPorFiltro(String filtro) throws Exception
+    {
+        ReuniaoAtaModel model = new ReuniaoAtaModel();
+        return model.listarPorFiltro(filtro);
     }
 }

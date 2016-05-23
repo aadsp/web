@@ -9,6 +9,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.mail.MessagingException;
 import org.aadsp.annotations.Colaborador;
+import org.aadsp.annotations.Projeto;
 import org.aadsp.annotations.ReuniaoAta;
 import org.aadsp.annotations.Usuario;
 import org.aadsp.interfaces.ABaseNamed;
@@ -40,7 +41,9 @@ public class ATACadastrar extends ABaseNamed implements ICadastro
     {
        try{
         IDProjeto = Integer.parseInt(Criptografia.decodificarBase64(Response.getParametroURL("Projeto")));
-        reuniaoAta.setID_projeto(IDProjeto);
+        Projeto projeto = new Projeto();
+        projeto.setID(IDProjeto);
+        reuniaoAta.setProjeto(projeto);
        }catch(Exception e)
        {
            Mensageiro.mensagemError("Erro ao carregar dados iniciais!!");
@@ -58,7 +61,9 @@ public class ATACadastrar extends ABaseNamed implements ICadastro
       try
       {
         reuniaoAta.setDataCadastro(new java.sql.Date(new Date().getTime()));
-        reuniaoAta.setID_colaborador(organizadorSelecionado);
+        Colaborador colaborador = new Colaborador();
+        colaborador.setID(organizadorSelecionado);
+        reuniaoAta.setColaborador(colaborador);
         reuniaoAta.cadastrar();
         Mensageiro.mensagemInfo("ATA cadastrada com sucesso");
       }catch(Exception e)

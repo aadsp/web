@@ -77,8 +77,25 @@ public class ReuniaoAtaModel implements ICRUD
     {
         try
         {
-            Query consulta = sessao.createQuery("from ReuniaoAta where ID_projeto = :ID_projeto");
-            consulta.setInteger("ID_projeto", reuniaoAta.getID_projeto());
+            Query consulta = sessao.createQuery("Select r from ReuniaoAta r join r.projeto p where p.ID = :ID");
+            consulta.setInteger("ID", reuniaoAta.getProjeto().getID());
+            return consulta.list();
+        }
+        catch(Exception e)
+        {
+            throw e;
+        }
+        finally
+        {
+            sessao.close();
+        }
+    }
+    
+    public List<ReuniaoAta> listarPorFiltro(String filtro)throws Exception
+    {
+        try
+        {
+            Query consulta = sessao.createQuery("Select r from ReuniaoAta r join r.projeto p join r.colaborador c where " + filtro);
             return consulta.list();
         }
         catch(Exception e)
