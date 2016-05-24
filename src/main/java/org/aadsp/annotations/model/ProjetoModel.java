@@ -47,7 +47,7 @@ private final Session sessao;
     {
         try
         { 
-            Query consulta = sessao.createQuery("from Projeto where ID = :ID");
+            Query consulta = sessao.createQuery("Select p from Projeto p join p.tap t where p.ID = :ID");
             consulta.setInteger("ID", projeto.getID());
             return (Projeto) consulta.uniqueResult();
         }catch(Exception e){

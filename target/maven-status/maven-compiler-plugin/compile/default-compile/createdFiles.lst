@@ -29,6 +29,7 @@ org\aadsp\utils\Email.class
 org\aadsp\controller\named\Index.class
 org\aadsp\annotations\model\StakeholderModel.class
 org\aadsp\annotations\TAP.class
+org\aadsp\controller\named\project\ProjetoEditar.class
 org\aadsp\annotations\model\EquipeModel.class
 org\aadsp\interfaces\ICRUD.class
 org\aadsp\annotations\ReuniaoAta.class

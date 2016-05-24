@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link href="../../bootstrap/css/bootstrap-general.css" rel="stylesheet"/>
+        <script type="text/javascript" src="../../primefaces/js/showcase.js"></script>
+    </h:head>
+    <h:body>
+        <ui:composition template="template/template.xhtml">
+            <ui:define name="content">
+                <h:form id="form">
+                    <p:growl id="growl" showDetail="true" sticky="true" /> 
+                    <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+                    <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                        <img src="../../img/loading.gif" alt=""/>
+                    </p:dialog>
+                    <div class="margin-right-left-20">
+                        <div>
+                            <h3>PROJETO</h3>
+                            <div class="right">
+                                <a class="btn btn" href="ProjetoConsultar.xhtml">VOLTAR</a>
+                            </div>
+                            <p><strong>DETALHAMENTO</strong></p>
+                            <div>
+                            </div>
+                            <div class="space-40"></div>
+                            <div class="control-group"> 
+                                <p:menubar>
+                                    <p:submenu label="ADICIONAR INFORMAÇÕES" style="float: right">
+                                        <p:menuitem value="Diagramas UML" onclick="PF('diagramasUML').show();" icon="ui-icon-document" />
+                                    </p:submenu>
+                                </p:menubar>    
+                                <p:tabView scrollable="true">
+                                    <p:tab title="Dados gerais">
+                                       <h:panelGrid columns="2" cellpadding="5">
+                                            <p:outputLabel for="titulo" value="Título:" />
+                                            <h:outputText id="titulo"  value="#{projetoEditar.projeto.tap.nome}"/>
+                                            <p:outputLabel for="justificativa" value="Justificativa" />
+                                            <h:outputText id="justificativa"  value="#{projetoEditar.projeto.tap.justificativa}"/> 
+                                        </h:panelGrid>
+                                    </p:tab>
+                                    <p:tab title="Cronograma">
+
+                                    </p:tab>
+                                    <p:tab title="Custo">
+
+                                    </p:tab>
+                                    <p:tab title="Diagramas UML">
+
+                                    </p:tab>
+
+                                </p:tabView>
+                            </div>
+                            <div class="space-20"></div>
+                            <div>
+                                <p:commandButton class="btn btn-success" value="SALVAR" update="growl" />
+                                <p:commandButton class="btn btn-danger" value="EXCLUIR" update="growl" />
+                            </div>  
+
+                        </div>
+                    </div>
+                    <div class="space-50"></div>
+
+                    <!--Modal região -->
+                    <p:dialog header="DIAGRAMAS UML DO PROJETO" showEffect="explode" widgetVar="diagramasUML" modal="true" width="600" height="300">
+                       
+                    </p:dialog>
+
+                    
+
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
