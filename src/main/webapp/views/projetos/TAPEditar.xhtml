@@ -29,23 +29,19 @@
                 </div>
                 <div class="space-40"></div>
                 <div class="control-group"> 
-                    <p:toolbar>
-                        <f:facet name="right">
-                            <p:menuButton value="ADICIONAR INFORMAÇÕES">
-                                <p:menuitem value="Responsável" onclick="PF('responsavelProjeto').show();" icon="ui-icon-document" />
-                                <p:menuitem value="Stakeholders" onclick="PF('stakeholdersProjeto').show();" icon="ui-icon-document" />
-                                <p:menuitem value="Equipe" onclick="PF('equipeProjeto').show();" icon="ui-icon-document" />
-                                <p:menuitem value="Escopo" onclick="PF('escopoProjeto').show();" icon="ui-icon-document" />     
-                            </p:menuButton>
-                        </f:facet>
-                        <f:facet name="right">
-                        <p:menuButton value="PATROCINADOR">
-                            <p:menuitem value="Empresa"  onclick="PF('patrocinadorEmpresaProjeto').show();" icon="ui-icon-document" />
-                            <p:menuitem value="Stakeholders" onclick="PF('patrocinadorStakeholderProjeto').show();" icon="ui-icon-document" />
-                        </p:menuButton>
-                        </f:facet>    
-                    </p:toolbar>    
-                <p:tabView orientation="left">
+                    <p:menubar>
+                        <p:submenu label="ADICIONAR INFORMAÇÕES" style="float: right">
+                            <p:menuitem value="Responsável" onclick="PF('responsavelProjeto').show();" icon="ui-icon-document" />
+                            <p:menuitem value="Stakeholders" onclick="PF('stakeholdersProjeto').show();" icon="ui-icon-document" />
+                            <p:menuitem value="Equipe" onclick="PF('equipeProjeto').show();" icon="ui-icon-document" />
+                            <p:menuitem value="Escopo" onclick="PF('escopoProjeto').show();" icon="ui-icon-document" /> 
+                            <p:submenu label="Patrocinador" icon="ui-icon-contact">
+                                <p:menuitem value="Empresa"  onclick="PF('patrocinadorEmpresaProjeto').show();" icon="ui-icon-document" />
+                                <p:menuitem value="Stakeholders" onclick="PF('patrocinadorStakeholderProjeto').show();" icon="ui-icon-document" />
+                            </p:submenu>
+                        </p:submenu>
+                    </p:menubar>    
+                <p:tabView scrollable="true">
                   <p:tab title="Pré-Projeto">
                       <h:panelGrid columns="3" cellpadding="5">
                         <p:outputLabel for="nomeProjeto" value="Nome do projeto:" />
@@ -244,7 +240,7 @@
                     </p:tab>
                 </p:tabView>
                 </div>
-                <div class="space-200"></div>
+                <div class="space-20"></div>
                 <div>
                 <p:commandButton class="btn btn-success" value="SALVAR" update="growl" actionListener="#{TAPEditar.editar()}"/>
                 <p:commandButton class="btn btn-danger" value="EXCLUIR" update="growl" actionListener="#{TAPEditar.excluir()}"/>
