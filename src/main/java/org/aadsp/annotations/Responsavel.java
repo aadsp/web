@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.aadsp.annotations.model.ResponsavelModel;
 
@@ -16,9 +18,11 @@ public class Responsavel implements Serializable
 {
     @Id
     @GeneratedValue
-    @Column(name="ID") private Integer ID;
-    @Column(name="ID_usuario") private Integer ID_usuario;
-    @Column(name="ID_tap") private Integer ID_tap;
+    @Column(name="ID_responsavel") private Integer ID;
+    @OneToOne
+    @JoinColumn(name="ID_usuario") private Usuario usuario;
+    @OneToOne
+    @JoinColumn(name="ID_tap") private TAP tap;
 
     public Integer getID() {
         return ID;
@@ -28,20 +32,20 @@ public class Responsavel implements Serializable
         this.ID = ID;
     }
 
-    public Integer getID_usuario() {
-        return ID_usuario;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setID_usuario(Integer ID_usuario) {
-        this.ID_usuario = ID_usuario;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
-    public Integer getID_tap() {
-        return ID_tap;
+    public TAP getTap() {
+        return tap;
     }
 
-    public void setID_tap(Integer ID_tap) {
-        this.ID_tap = ID_tap;
+    public void setTap(TAP tap) {
+        this.tap = tap;
     }
     
     public List<Responsavel> listarPorIDTAP() throws Exception

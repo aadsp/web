@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import org.aadsp.annotations.model.TAPEscopoAreaModel;
-import org.aadsp.annotations.model.TAPEscopoTipoModel;
 
 @Entity
 @Table(name="TAP.TAP_AADSP_ESCOPO_AREA")

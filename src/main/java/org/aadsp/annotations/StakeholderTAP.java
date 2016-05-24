@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.aadsp.annotations.model.StakeholderTAPModel;
 
@@ -16,9 +18,11 @@ public class StakeholderTAP implements Serializable
 {
     @Id
     @GeneratedValue
-    @Column(name="ID") private Integer ID;
-    @Column(name="ID_stakeholder") private Integer ID_stakeholder;
-    @Column(name="ID_tap") private Integer ID_tap;
+    @Column(name="ID_stakeholderTap") private Integer ID;
+    @OneToOne
+    @JoinColumn(name="ID_stakeholder") private Stakeholder stakeholder;
+    @OneToOne
+    @JoinColumn(name="ID_tap") private TAP tap;
 
     public Integer getID() {
         return ID;
@@ -28,26 +32,27 @@ public class StakeholderTAP implements Serializable
         this.ID = ID;
     }
 
-    public Integer getID_stakeholder() {
-        return ID_stakeholder;
+    public Stakeholder getStakeholder() {
+        return stakeholder;
     }
 
-    public void setID_stakeholder(Integer ID_stakeholder) {
-        this.ID_stakeholder = ID_stakeholder;
+    public void setStakeholder(Stakeholder stakeholder) {
+        this.stakeholder = stakeholder;
     }
 
-    public Integer getID_tap() {
-        return ID_tap;
+    public TAP getTap() {
+        return tap;
     }
 
-    public void setID_tap(Integer ID_tap) {
-        this.ID_tap = ID_tap;
+    public void setTap(TAP tap) {
+        this.tap = tap;
     }
 
+   
     public String consultarNomeStakeholder() throws Exception
     {
         Stakeholder model = new Stakeholder();
-        model.setID(this.ID_stakeholder);
+        model.setID(this.getStakeholder().getID());
         return model.consultarPorID().getNome();
     }
     

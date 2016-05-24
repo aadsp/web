@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.aadsp.annotations.model.EquipeModel;
 
@@ -16,9 +18,11 @@ public class Equipe implements Serializable
 {
     @Id
     @GeneratedValue
-    @Column(name="ID") private Integer ID;
-    @Column(name="ID_funcao") private Integer ID_funcao;
-    @Column(name="ID_tap") private Integer ID_tap;
+    @Column(name="ID_equipe") private Integer ID;
+    @OneToOne
+    @JoinColumn(name="ID_funcao") private Funcao funcao;
+    @OneToOne
+    @JoinColumn(name="ID_tap") private TAP tap;
 
     public Integer getID() {
         return ID;
@@ -28,26 +32,26 @@ public class Equipe implements Serializable
         this.ID = ID;
     }
 
-    public Integer getID_funcao() {
-        return ID_funcao;
+    public Funcao getFuncao() {
+        return funcao;
     }
 
-    public void setID_funcao(Integer ID_funcao) {
-        this.ID_funcao = ID_funcao;
+    public void setFuncao(Funcao funcao) {
+        this.funcao = funcao;
     }
 
-    public Integer getID_tap() {
-        return ID_tap;
+    public TAP getTap() {
+        return tap;
     }
 
-    public void setID_tap(Integer ID_tap) {
-        this.ID_tap = ID_tap;
+    public void setTap(TAP tap) {
+        this.tap = tap;
     }
-
+    
     public String consultarNomeFuncao() throws Exception
     {
        Funcao model = new Funcao();
-       model.setID(this.getID_funcao());
+       model.setID(this.getFuncao().getID());
        return model.consultarPorID().getDescricao();
     }
     

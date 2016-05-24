@@ -73,7 +73,7 @@ public class Index extends ABaseNamed {
                 }
             }
         } catch (Exception e) {
-            Mensageiro.mensagemInfo("Não foi possível realizar a autenticação do usuario!");
+            Mensageiro.mensagemInfo("Não foi possível realizar a autenticação do usuário!");
         }
     }
     

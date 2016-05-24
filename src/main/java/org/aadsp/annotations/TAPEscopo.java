@@ -100,7 +100,7 @@ public class TAPEscopo implements Serializable
     public String descricaoArea()
     {
         TAPEscopoArea area = new TAPEscopoArea();
-        area.setID(this.escopoArea.getID());
+        area.setID(this.getEscopoArea().getID());
         area = area.consultar();
         return area.getDescricao();
     }

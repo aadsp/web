@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.aadsp.annotations.model.PatrocinadorModel;
 
@@ -16,10 +18,14 @@ public class Patrocinador implements Serializable
 {
     @Id
     @GeneratedValue
-    @Column(name="ID") private Integer ID;
-    @Column(name="ID_tap") private Integer ID_tap;
-    @Column(name="ID_stakeholder") private Integer ID_stakeholder;
-    @Column(name="ID_empresa") private Integer ID_empresa;
+    @Column(name="ID_patrocinador") private Integer ID;
+    
+    @OneToOne
+    @JoinColumn(name="ID_tap") private TAP tap;
+    @OneToOne
+    @JoinColumn(name="ID_stakeholder") private Stakeholder stakeholder;
+    @OneToOne
+    @JoinColumn(name="ID_empresa") private Empresa empresa;
 
     public Integer getID() {
         return ID;
@@ -29,41 +35,41 @@ public class Patrocinador implements Serializable
         this.ID = ID;
     }
 
-    public Integer getID_tap() {
-        return ID_tap;
+    public TAP getTap() {
+        return tap;
     }
 
-    public void setID_tap(Integer ID_tap) {
-        this.ID_tap = ID_tap;
+    public void setTap(TAP tap) {
+        this.tap = tap;
     }
 
-    public Integer getID_stakeholder() {
-        return ID_stakeholder;
+    public Stakeholder getStakeholder() {
+        return stakeholder;
     }
 
-    public void setID_stakeholder(Integer ID_stakeholder) {
-        this.ID_stakeholder = ID_stakeholder;
+    public void setStakeholder(Stakeholder stakeholder) {
+        this.stakeholder = stakeholder;
     }
 
-    public Integer getID_empresa() {
-        return ID_empresa;
+    public Empresa getEmpresa() {
+        return empresa;
     }
 
-    public void setID_empresa(Integer ID_empresa) {
-        this.ID_empresa = ID_empresa;
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
-    
+
     public String consultarNomeEmpresa() throws Exception
     {
         Empresa empresa = new Empresa();
-        empresa.setID(this.ID_empresa);
+        empresa.setID(this.getEmpresa().getID());
         return empresa.consultarPorID().getRazaoSocial();
     }
     
     public String consultarNomeStakeholder() throws Exception
     {
         Stakeholder stakeholder = new Stakeholder();
-        stakeholder.setID(this.ID_stakeholder);
+        stakeholder.setID(this.getStakeholder().getID());
         return stakeholder.consultarPorID().getNome();
     }
     

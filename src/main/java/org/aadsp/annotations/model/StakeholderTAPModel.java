@@ -94,8 +94,8 @@ private final Session sessao;
     {
         try
         {
-            Query consulta = sessao.createQuery("from StakeholderTAP where ID_tap = :ID_tap");
-            consulta.setInteger("ID_tap",stakeholder.getID_tap());
+            Query consulta = sessao.createQuery("Select st from StakeholderTAP st JOIN st.stakeholder s join st.tap where st.tap.ID  = :ID_tap");
+            consulta.setInteger("ID_tap",stakeholder.getTap().getID());
             return consulta.list();
         }
         catch(Exception e)

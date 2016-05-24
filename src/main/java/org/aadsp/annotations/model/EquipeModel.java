@@ -80,7 +80,7 @@ private final Session sessao;
         try
         {
             Query consulta = sessao.createQuery("from Equipe where ID_tap = :ID_tap");
-            consulta.setInteger("ID_tap", equipe.getID_tap());
+            consulta.setInteger("ID_tap", equipe.getTap().getID());
             return consulta.list();
         }
         catch(Exception e)

@@ -93,8 +93,8 @@ private final Session sessao;
     {
         try
         {
-            Query consulta = sessao.createQuery("from Patrocinador where ID_tap = :ID_tap");
-            consulta.setInteger("ID_tap",patrocinador.getID_tap());
+            Query consulta = sessao.createQuery("select p from Patrocinador p join p.empresa e join p.stakeholder s JOIN p.tap t where t.ID = :ID_tap");
+            consulta.setInteger("ID_tap",patrocinador.getTap().getID());
             return consulta.list();
         }
         catch(Exception e)
@@ -112,7 +112,7 @@ private final Session sessao;
         try
         {
             Query consulta = sessao.createQuery("from Patrocinador where ID_tap = :ID_tap and ID_empresa != NULL");
-            consulta.setInteger("ID_tap",patrocinador.getID_tap());
+            consulta.setInteger("ID_tap",patrocinador.getTap().getID());
             return consulta.list();
         }
         catch(Exception e)
@@ -130,7 +130,7 @@ private final Session sessao;
         try
         {
             Query consulta = sessao.createQuery("from Patrocinador where ID_tap = :ID_tap and ID_stakeholder != NULL");
-            consulta.setInteger("ID_tap",patrocinador.getID_tap());
+            consulta.setInteger("ID_tap",patrocinador.getTap().getID());
             return consulta.list();
         }
         catch(Exception e)

@@ -63,7 +63,7 @@ private final Session sessao;
         try
         {
             Query consulta = sessao.createQuery("from Responsavel where ID_tap = :ID_tap");
-            consulta.setInteger("ID_tap",responsavel.getID_tap());
+            consulta.setInteger("ID_tap",responsavel.getTap().getID());
             return consulta.list();
         }
         catch(Exception e)
@@ -81,8 +81,8 @@ private final Session sessao;
         try
         {
             Query consulta = sessao.createQuery("from Responsavel where ID_tap = :ID_tap and ID_usuario = :ID_usuario");
-            consulta.setInteger("ID_tap",responsavel.getID_tap());
-            consulta.setInteger("ID_usuario",responsavel.getID_usuario());
+            consulta.setInteger("ID_tap",responsavel.getTap().getID());
+            consulta.setInteger("ID_usuario",responsavel.getUsuario().getID());
             return (Responsavel) consulta.uniqueResult();
         }
         catch(Exception e)

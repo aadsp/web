@@ -86,8 +86,8 @@ public class TAPEditar extends ABaseNamed
     {
         try{
         StakeholderTAP stakeholderTap = new StakeholderTAP();
-        stakeholderTap.setID_stakeholder(stakeholder.getID());
-        stakeholderTap.setID_tap(tap.getID());
+        stakeholderTap.setStakeholder(stakeholder);
+        stakeholderTap.setTap(tap);
         stakeholderTap.cadastrar();
         Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
         }catch(IOException e)
@@ -102,13 +102,13 @@ public class TAPEditar extends ABaseNamed
         try{
         Equipe equipe = new Equipe();
         Funcao funcao = new Funcao();
-        equipe.setID_tap(tap.getID());
+        equipe.setTap(tap);
         List<Equipe> listaEquipe = equipe.listar();
         List<Funcao> listaFuncoe = funcao.listar();
         List<Integer> listaFuncoes = new ArrayList<>();
         
         for(Equipe ObjEquipe: listaEquipe){
-            listaFuncoes.add(ObjEquipe.getID_funcao());
+            listaFuncoes.add(ObjEquipe.getFuncao().getID());
         }
         for(Funcao ObjFuncao: listaFuncoe){
            if(!listaFuncoes.contains(ObjFuncao.getID()))
@@ -126,7 +126,7 @@ public class TAPEditar extends ABaseNamed
     {
         Equipe equipe = new Equipe();
         try{
-            equipe.setID_tap(tap.getID());
+            equipe.setTap(tap);
             return equipe.listarPorTAP();
         }catch(Exception e)
         {
@@ -151,9 +151,9 @@ public class TAPEditar extends ABaseNamed
     {
         try
         {
-            StakeholderTAP stakeholder = new StakeholderTAP();
-            stakeholder.setID_tap(tap.getID());
-            return stakeholder.listarPorIDTAP();
+            StakeholderTAP stakeholderTap = new StakeholderTAP();
+            stakeholderTap.setTap(tap);
+            return stakeholderTap.listarPorIDTAP();
         }
         catch(Exception e)
         {
@@ -178,8 +178,8 @@ public class TAPEditar extends ABaseNamed
     {
         try{
           Equipe equipe = new Equipe();
-          equipe.setID_funcao(funcao.getID());
-          equipe.setID_tap(tap.getID());
+          equipe.setFuncao(funcao);
+          equipe.setTap(tap);
           equipe.cadastrar();
           Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
         }catch(IOException e)
@@ -217,7 +217,7 @@ public class TAPEditar extends ABaseNamed
     {
         Usuario usuario = new Usuario();
         Responsavel reponsavel = new Responsavel();
-        reponsavel.setID_tap(tap.getID());
+        reponsavel.setTap(tap);
         List<Usuario> listaUsuarios = usuario.listar();
         List<Usuario> listaUsuariosDisponivel = new ArrayList<>();
 
@@ -226,7 +226,7 @@ public class TAPEditar extends ABaseNamed
         List<Integer> listaIDUsuriosResponsavel = new ArrayList<>();
         
         for(Responsavel ObjResponsavel: listaResponsavel){
-            listaIDUsuriosResponsavel.add(ObjResponsavel.getID_usuario());
+            listaIDUsuriosResponsavel.add(ObjResponsavel.getUsuario().getID());
         }
         for(Usuario ObjUsuario: listaUsuarios){
            if(!listaIDUsuriosResponsavel.contains(ObjUsuario.getID()))
@@ -241,7 +241,7 @@ public class TAPEditar extends ABaseNamed
        try{
         Usuario usuario = new Usuario();
         Responsavel reponsavel = new Responsavel();
-        reponsavel.setID_tap(tap.getID());
+        reponsavel.setTap(tap);
         List<Usuario> listaUsuarios = usuario.listar();
         
 
@@ -250,7 +250,7 @@ public class TAPEditar extends ABaseNamed
         List<Integer> listaIDUsuriosResponsavel = new ArrayList<>();
         
         for(Responsavel ObjResponsavel: listaResponsavel){
-            listaIDUsuriosResponsavel.add(ObjResponsavel.getID_usuario());
+            listaIDUsuriosResponsavel.add(ObjResponsavel.getUsuario().getID());
         }
         for(Usuario ObjUsuario: listaUsuarios){
            if(listaIDUsuriosResponsavel.contains(ObjUsuario.getID()))
@@ -270,8 +270,8 @@ public class TAPEditar extends ABaseNamed
         try
         {
             Responsavel responsavel = new Responsavel();
-            responsavel.setID_usuario(usuario.getID());
-            responsavel.setID_tap(tap.getID());
+            responsavel.setUsuario(usuario);
+            responsavel.setTap(tap);
             responsavel = responsavel.consultarReposanvelPorIDUsuario();
             responsavel.excluir();
             Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
@@ -286,8 +286,8 @@ public class TAPEditar extends ABaseNamed
     {
         try{
         Responsavel resposavel = new Responsavel();
-        resposavel.setID_usuario(usuario.getID());
-        resposavel.setID_tap(tap.getID());
+        resposavel.setUsuario(usuario);
+        resposavel.setTap(tap);
         resposavel.cadastrar();
         Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
         }catch(IOException  e)
@@ -408,7 +408,7 @@ public class TAPEditar extends ABaseNamed
         try{
         Stakeholder usuario = new Stakeholder();
         StakeholderTAP stakeholder = new StakeholderTAP();
-        stakeholder.setID_tap(tap.getID());
+        stakeholder.setTap(tap);
         
         List<Stakeholder> listaStakeholder = usuario.listar();
       
@@ -418,7 +418,7 @@ public class TAPEditar extends ABaseNamed
         List<Integer> listaIDStakeholder = new ArrayList<>();
         
         for(StakeholderTAP obj: listaStakeholderTAP){
-            listaIDStakeholder.add(obj.getID_stakeholder());
+            listaIDStakeholder.add(obj.getStakeholder().getID());
         }
         for(Stakeholder obj: listaStakeholder){
            if(!listaIDStakeholder.contains(obj.getID()))
@@ -439,7 +439,7 @@ public class TAPEditar extends ABaseNamed
         {
         Empresa empresa = new Empresa();
         Patrocinador patrocniador = new Patrocinador();
-        patrocniador.setID_tap(tap.getID());
+        patrocniador.setTap(tap);
         
         List<Empresa> listaEmpresas = empresa.listar();
         
@@ -449,7 +449,7 @@ public class TAPEditar extends ABaseNamed
         List<Integer> listaIDStakeholder = new ArrayList<>();
         
         for(Patrocinador obj: listaPatrocinador){
-            listaIDStakeholder.add(obj.getID_empresa());
+            listaIDStakeholder.add(obj.getEmpresa().getID());
         }
         for(Empresa obj: listaEmpresas){
            if(!listaIDStakeholder.contains(obj.getID()))
@@ -470,7 +470,7 @@ public class TAPEditar extends ABaseNamed
         {
         Stakeholder stakeholder = new Stakeholder();
         Patrocinador patrocniador = new Patrocinador();
-        patrocniador.setID_tap(tap.getID());
+        patrocniador.setTap(tap);
         
         List<Stakeholder> listaStakeholder = stakeholder.listar();
       
@@ -479,7 +479,7 @@ public class TAPEditar extends ABaseNamed
         List<Integer> listaIDStakeholder = new ArrayList<>();
         
         for(Patrocinador obj: listaPatrocinador){
-            listaIDStakeholder.add(obj.getID_stakeholder());
+            listaIDStakeholder.add(obj.getStakeholder().getID());
         }
         for(Stakeholder obj: listaStakeholder){
            if(!listaIDStakeholder.contains(obj.getID()))
@@ -497,8 +497,8 @@ public class TAPEditar extends ABaseNamed
     {
         try{
             Patrocinador patrocinador = new Patrocinador();
-            patrocinador.setID_empresa(empresa.getID());
-            patrocinador.setID_tap(tap.getID());
+            patrocinador.setEmpresa(empresa);
+            patrocinador.setTap(tap);
             patrocinador.cadastrar();
             Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
         }catch(IOException e)
@@ -512,8 +512,8 @@ public class TAPEditar extends ABaseNamed
         try
         {
         Patrocinador patrocinador = new Patrocinador();
-        patrocinador.setID_stakeholder(stakeholder.getID());
-        patrocinador.setID_tap(tap.getID());
+        patrocinador.setStakeholder(stakeholder);
+        patrocinador.setTap(tap);
         patrocinador.cadastrar();
         Response.redirect("/web/faces/views/projetos/TAPEditar.xhtml?TAP="+ Criptografia.codificarParaBase64(tap.getID().toString()));
         }catch(IOException e)
@@ -527,7 +527,7 @@ public class TAPEditar extends ABaseNamed
         try
         {
             Patrocinador patrocinador = new Patrocinador();
-            patrocinador.setID_tap(tap.getID());
+            patrocinador.setTap(tap);
             return patrocinador.listarPorEmpresas();
         }catch(Exception e)
         {
@@ -540,7 +540,7 @@ public class TAPEditar extends ABaseNamed
     {
         try{
             Patrocinador patrocinador = new Patrocinador();
-            patrocinador.setID_tap(tap.getID());
+            patrocinador.setTap(tap);
             return patrocinador.listarPorStakeholder();
         }catch(Exception e)
         {
