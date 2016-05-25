@@ -35,6 +35,7 @@ public class Usuario implements Serializable,IUsuario
     @Column(name="email") private String email;
     @Column(name="login") private String login;
     @Column(name="senha") private String senha;
+    @Column(name="imagem") private String imagem;
     
     @OneToOne
     @JoinColumn(name="ID_funcao") private Funcao funcao;
@@ -95,6 +96,15 @@ public class Usuario implements Serializable,IUsuario
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
+    }
+    
 
    @Override
    public String getLogin() {

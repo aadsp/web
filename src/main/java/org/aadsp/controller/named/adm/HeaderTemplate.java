@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.aadsp.annotations.Usuario;
 import org.aadsp.interfaces.ABaseNamed;
-import org.aadsp.interfaces.IUsuario;
 import org.aadsp.utils.Mensageiro;
 
 /** Classe principal do template, resposável por exibir informações do usuário autenticado
@@ -32,6 +31,13 @@ public class HeaderTemplate extends ABaseNamed
     
     public String getUsuarioNome(){
         return usuario.getNome();
+    }
+    
+    public String getImagemUsuario(){
+        if(usuario.getImagem() != null )
+            return "../../../img/user/"+usuario.getImagem();
+        else
+            return "../../../img/user/usuario.jpg";
     }
     
     /** Metódo de consulta da função de um usuário no sistema
@@ -63,6 +69,6 @@ public class HeaderTemplate extends ABaseNamed
             Mensageiro.mensagemError("O ocerreu o seguinte erro ao executar esta operação:"+e.getMessage());
         }
     }
-    
-    private IUsuario usuario;
+
+    private Usuario usuario;
 }

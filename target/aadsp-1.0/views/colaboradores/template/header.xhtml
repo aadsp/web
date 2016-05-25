@@ -10,22 +10,22 @@
         <link href="../../bootstrap/css/bootstrap-master.css" rel="stylesheet"/>
         <link href="../../bootstrap/css/bootstrap.css" rel="stylesheet"/>
         <link href="../../bootstrap/css/bootstrap-general.css" rel="stylesheet"/>
-        
+
         <script type="text/javascript" src="../../../bootstrap/js/bootstrap.js"></script>
     </h:head>
     <body>
         <div>
             <h:form>
-            <p:growl id="growl" showDetail="true" sticky="true" />    
-            <div class="menu-top">
-                <div class="container-fluid">
-                    <a class="brand" href="../../../faces/views/menu/Index.xhtml">
-                    <div class="left" style="color:#FFF">
-                        <h1>AADSP</h1>
-                        <p>Abordagem Adaptativa para implantação do Processo de Software</p>
-                    </div>
-                    </a>
-                     <div class="right menu-top-info">
+                <p:growl id="growl" showDetail="true" sticky="true" />    
+                <div class="menu-top">
+                    <div class="container-fluid">
+                        <a class="brand" href="../../../faces/views/menu/Index.xhtml">
+                            <div class="left" style="color:#FFF">
+                                <h1>AADSP</h1>
+                                <p>Abordagem Adaptativa para implantação do Processo de Software</p>
+                            </div>
+                        </a>
+                        <div class="right menu-top-info">
                             <div class="control-group">
                                 <i class="icon icon-user icon-white"></i>
                                 <strong>Login:</strong>
@@ -42,82 +42,87 @@
                             <div class="control-group pull-right">
                                 <i class="icon icon-off icon-white"></i>
                                 <p:commandButton class="btn btn-transparent" style="color:#FFF" value="SAIR" actionListener="#{headerTemplate.closeSession()}"/>    
-                                
+
                             </div>
                             <div class="clear">
                             </div>
                         </div>
+                        <div class="right">
+                            <div class="space-10"></div>
+                            <img src="#{headerTemplate.imagemUsuario}" height="50" width="50" class="img-circle"/>
+                            <div class="space-10"></div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="navbar navbar-static-top" id="nav-contratos">
-            <div class="navbar-inner">
-            <a class="brand" href="../../faces/views/colaboradores/Index.xhtml">
-                    <span style="margin-left: 5px;"><i class="icon icon-home"></i>
-                        <span style="margin-left: 5px;"/>Página inicial</span>
-            </a>
-            <ul class="nav">
-                <li class="divider-vertical"></li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Colaboradores<b class="caret"></b></a>
-                    <ul class="dropdown-menu">
+                <div class="navbar navbar-static-top" id="nav-contratos">
+                    <div class="navbar-inner">
+                        <a class="brand" href="../../faces/views/colaboradores/Index.xhtml">
+                            <span style="margin-left: 5px;"><i class="icon icon-home"></i>
+                                <span style="margin-left: 5px;"/>Página inicial</span>
+                        </a>
+                        <ul class="nav">
+                            <li class="divider-vertical"></li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Colaboradores<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
 
-                        <li>
-                            <a href="../../views/colaboradores/ColaboradorConsultar.xhtml">Consultar</a></li>
-                        <li>
-                            <a href="../../views/colaboradores/ColaboradorCadastrar.xhtml">Cadastrar</a></li>
-                        <li class="dropdown-submenu">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Visualização<b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                 <li>
-                                    <a href="../../views/colaboradores/ColaboradoresVisualizar.xhtml">Colaboradores</a></li>
-                            </ul>
-                            
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-            
-             <ul class="nav">
-                <li class="divider-vertical"></li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Stakeholders<b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="../../views/colaboradores/StakeholderConsultar.xhtml">Consultar</a>
-                            <a href="../../views/colaboradores/StakeholderCadastrar.xhtml">Cadastrar</a>
-                        </li>
-                    </ul>
-                </li>
-                
-            </ul>
-            <ul class="nav">
-                <li class="divider-vertical"></li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Empresas<b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="../../views/colaboradores/EmpresaConsultar.xhtml">Consultar</a>
-                            <a href="../../views/colaboradores/EmpresaCadastrar.xhtml">Cadastrar</a>
-                        </li>
-                    </ul>
-                </li>
-                
-            </ul>      
-            <ul class="nav pull-right">
-                <li class="divider-vertical"></li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">SERVIÇOS<b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="../../views/adm/AlterarSenha.xhtml">Alterar Senha</a>
-                        </li>
-                    </ul>
-                </li>
-                
-            </ul>
-        </div>
-    </div>
-    <div class="clear"></div>    
+                                    <li>
+                                        <a href="../../views/colaboradores/ColaboradorConsultar.xhtml">Consultar</a></li>
+                                    <li>
+                                        <a href="../../views/colaboradores/ColaboradorCadastrar.xhtml">Cadastrar</a></li>
+                                    <li class="dropdown-submenu">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Visualização<b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a href="../../views/colaboradores/ColaboradoresVisualizar.xhtml">Colaboradores</a></li>
+                                        </ul>
+
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <ul class="nav">
+                            <li class="divider-vertical"></li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Stakeholders<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="../../views/colaboradores/StakeholderConsultar.xhtml">Consultar</a>
+                                        <a href="../../views/colaboradores/StakeholderCadastrar.xhtml">Cadastrar</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                        <ul class="nav">
+                            <li class="divider-vertical"></li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Empresas<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="../../views/colaboradores/EmpresaConsultar.xhtml">Consultar</a>
+                                        <a href="../../views/colaboradores/EmpresaCadastrar.xhtml">Cadastrar</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>      
+                        <ul class="nav pull-right">
+                            <li class="divider-vertical"></li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">SERVIÇOS<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="../../views/adm/AlterarSenha.xhtml">Alterar Senha</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="clear"></div>    
             </h:form>
         </div>
     </body>
