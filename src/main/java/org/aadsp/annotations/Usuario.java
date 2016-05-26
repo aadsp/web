@@ -17,7 +17,6 @@ import org.aadsp.annotations.model.AcessoModel;
 import org.aadsp.annotations.model.FuncaoModel;
 import org.aadsp.annotations.model.UsuarioModel;
 import org.aadsp.interfaces.IAnnotations;
-import org.aadsp.interfaces.IUsuario;
 import org.aadsp.utils.Criptografia;
 import org.aadsp.utils.Mensageiro;
 

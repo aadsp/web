@@ -1,5 +1,6 @@
 org\aadsp\annotations\Equipe.class
 org\aadsp\controller\named\adm\PessoalConsultar.class
+org\aadsp\interfaces\IAnnotations.class
 org\aadsp\controller\named\adm\FuncaoCadastrar.class
 org\aadsp\utils\Session.class
 org\aadsp\annotations\Patrocinador.class
@@ -18,6 +19,8 @@ org\aadsp\controller\named\project\TAPEditar.class
 org\aadsp\annotations\model\TAPModel.class
 org\aadsp\annotations\TAPEscopoArea.class
 org\aadsp\annotations\model\PaginaModel.class
+org\aadsp\annotations\model\DiagramaUMLTipoModel.class
+org\aadsp\annotations\DiagramaUMLTipo.class
 org\aadsp\annotations\model\TAPEscopoModel.class
 org\aadsp\controller\named\contributors\EmpresaEditar.class
 org\aadsp\controller\named\project\TAPCadastrar.class
@@ -47,7 +50,6 @@ org\aadsp\controller\named\adm\PaginaEditar.class
 org\aadsp\controller\named\contributors\StakeholderEditar.class
 org\aadsp\controller\named\contributors\ColaboradorEditar.class
 org\aadsp\controller\named\contributors\StakeholderConsultar.class
-org\aadsp\interfaces\IUsuario.class
 org\aadsp\annotations\model\StakeholderTAPModel.class
 org\aadsp\controller\named\project\ProjetoConsultar.class
 org\aadsp\controller\named\adm\PessoalCadastrar.class

@@ -1,4 +1,5 @@
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Funcao.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\DiagramaUMLTipoModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\utils\ControleDeAcesso.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\utils\Email.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\PatrocinadorModel.java
@@ -29,7 +30,6 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\StakeholderModel.ja
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\StakeholderTAPModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Responsavel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\TAPCadastrar.java
-G:\PROJETO TCC\web\src\main\java\org\aadsp\interfaces\IUsuario.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\utils\Response.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\TAPEscopoArea.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Usuario.java
@@ -61,6 +61,7 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\TAPEditar.ja
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\PaginaCadastrar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\EquipeModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Colaborador.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\DiagramaUMLTipo.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\PaginalConsultar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\utils\settings\ConexaoSQLServer.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Empresa.java
@@ -81,5 +82,6 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\TAPEscopoModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\AcessoCadastrar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\utils\FactoryHibernate.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\TAPEscopoTipo.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\interfaces\IAnnotations.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\utils\Criptografia.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\TAPConsultar.java
