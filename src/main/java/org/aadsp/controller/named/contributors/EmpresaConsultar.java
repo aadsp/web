@@ -12,37 +12,37 @@ import org.aadsp.utils.Filtro;
 import org.aadsp.utils.Mensageiro;
 import org.aadsp.utils.Response;
 
-/**
- * Classe que representa o objeto de tela Pessoal Consulta
- *
- * @author Felipe Coelho
- * @version 02/05/2016
- */
+
 @ViewScoped
 @Named
-public class EmpresaConsultar extends ABaseNamed {
+public class EmpresaConsultar extends ABaseNamed
+{
 
-    public EmpresaConsultar() {
-        try {
+    public EmpresaConsultar()
+    {
+        try
+        {
             this.empresa = new Empresa();
             this.listaEmpresa = this.empresa.listar();
             this.filtro = new Filtro();
             criarFiltro();
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             Mensageiro.mensagemError("Erro ao listar empresas cadastradas!!");
         }
 
     }
-    
-    private void criarFiltro() {
+
+    private void criarFiltro()
+    {
         Map<String, String> atributo = new HashMap<>();
         Map<String, String> atributoClasse = new HashMap<>();
-        
+
         atributo.put("Razão Social", "razaoSocial");
         atributo.put("CNPJ", "cnpj");
         atributo.put("CPF", "cpf");
         atributo.put("E-mail", "email");
-        
+
         atributoClasse.put("razaoSocial", "Empresa");
         atributoClasse.put("cnpj", "Empresa");
         atributoClasse.put("cpf", "Empresa");
@@ -50,35 +50,45 @@ public class EmpresaConsultar extends ABaseNamed {
         filtro.setAtributo(atributo, atributoClasse);
     }
 
-   
-    public List<Empresa> getListarEmpresas() {
+    public List<Empresa> getListarEmpresas()
+    {
         return this.listaEmpresa;
     }
 
-    public void editar(Empresa empresa) {
-        try {
+    public void editar(Empresa empresa)
+    {
+        try
+        {
             Response.redirect("/web/faces/views/colaboradores/EmpresaEditar.xhtml?empresa=" + Criptografia.codificarParaBase64(empresa.getID().toString()));
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             Mensageiro.mensagemError("Erro ao selecionar empresa!!");
         }
     }
 
-    public Filtro getFiltro() {
+    public Filtro getFiltro()
+    {
         return filtro;
     }
 
-    public void setFiltro(Filtro filtro) {
+    public void setFiltro(Filtro filtro)
+    {
         this.filtro = filtro;
     }
 
-    public void filtroConsulta() {
-        try {
-            if (this.filtro.filtro.endsWith(")")) {
+    public void filtroConsulta()
+    {
+        try
+        {
+            if (this.filtro.filtro.endsWith(")"))
+            {
                 listaEmpresa = this.empresa.listarPorFiltro(filtro.filtro);
-            } else {
+            } else
+            {
                 listaEmpresa = this.empresa.listar();
             }
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             Mensageiro.mensagemError("Não foi possível consultar pelo filtro gerado!!");
         }
     }

@@ -6,7 +6,6 @@ import javax.enterprise.context.SessionScoped;
 import javax.mail.MessagingException;
 import org.aadsp.annotations.Usuario;
 import org.aadsp.interfaces.ABaseNamed;
-import org.aadsp.interfaces.IUsuario;
 import org.aadsp.utils.Email;
 import org.aadsp.utils.GeradorDeSenha;
 import org.aadsp.utils.Mensageiro;
@@ -14,28 +13,37 @@ import org.aadsp.utils.Response;
 import org.aadsp.utils.Session;
 import org.apache.commons.mail.EmailException;
 
-
-/**Classe principal do projeto, etapa de identificação do usuário por login e senha
+/**
+ * Classe principal do projeto, etapa de identificação do usuário por login e
+ * senha
+ *
  * @author Felipe Coelho
  * @version 24/04/2016
  */
 @SessionScoped
 @Named
-public class Index extends ABaseNamed {
-    
-    /** Construtor base da classe com instancia de um usuário
+public class Index extends ABaseNamed
+{
+
+    /**
+     * Construtor base da classe com instancia de um usuário
      */
-    public Index() {
+    public Index()
+    {
         usuario = new Usuario();
         usuario.setLogin("");
         usuario.setSenha("");
     }
-    
-    /** Metódo de busca de um usuário para a pagina xhtml
-     * @return  retorna um usuário em branco, caso não encontrado
+
+    /**
+     * Metódo de busca de um usuário para a pagina xhtml
+     *
+     * @return retorna um usuário em branco, caso não encontrado
      */
-    public IUsuario getUsuario() {
-        if (usuario == null) {
+    public Usuario getUsuario()
+    {
+        if (usuario == null)
+        {
             usuario = new Usuario();
             usuario.setLogin("");
             usuario.setSenha("");
@@ -43,40 +51,50 @@ public class Index extends ABaseNamed {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(Usuario usuario)
+    {
         this.usuario = usuario;
     }
-    
-    /**Metódo principal de autenticação do projeto, valida os dados de login e senha informados e encaminha o usuário autenticado
-     * para a página principal de menu do projeto
+
+    /**
+     * Metódo principal de autenticação do projeto, valida os dados de login e
+     * senha informados e encaminha o usuário autenticado para a página
+     * principal de menu do projeto
      */
-    public void autenticar() throws MessagingException, EmailException{
-        try {
-            IUsuario copia;
+    public void autenticar() throws MessagingException, EmailException
+    {
+        try
+        {
+            Usuario copia;
             copia = usuario;
             usuario = usuario.autenticar();
 
-            if (usuario != null && usuario.getLogin() != null && usuario.getSenha() != null) {
+            if (usuario != null && usuario.getLogin() != null && usuario.getSenha() != null)
+            {
                 List<String> paginasPermitidas = usuario.paginasAcesso();
-                 
+
                 Session.setAttribute("usuario", usuario);
                 Session.setAttribute("paginasAcesso", paginasPermitidas);
-                
+
                 Response.redirect("/web/faces/views/menu/Index.xhtml");
-            } else {
+            } else
+            {
                 copia = copia.validarLogin();
-                if (copia.getLogin() != null || copia.getLogin().equals("")) {
+                if (copia.getLogin() != null || copia.getLogin().equals(""))
+                {
                     Mensageiro.mensagemInfo("Senha incorreta!!");
 
-                } else {
+                } else
+                {
                     Mensageiro.mensagemInfo("Não foi possível autenticar o usuário com os dados informados!");
                 }
             }
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             Mensageiro.mensagemInfo("Não foi possível realizar a autenticação do usuário!");
         }
     }
-    
+
     public void solicitarNovaSenha()
     {
         try
@@ -84,33 +102,36 @@ public class Index extends ABaseNamed {
             Usuario usuario = new Usuario();
             usuario.setEmail(emailNovaSenha);
             usuario = usuario.consultarPorEmail();
-            if(usuario.getNome() != null)
+            if (usuario.getNome() != null)
             {
                 String novaSenha = GeradorDeSenha.gerarCombinacaoNumerica();
                 Email.enviarEmailAlteracaoSenha(usuario.getNome(), usuario.getLogin(), novaSenha, usuario.getEmail());
                 usuario.setSenha(novaSenha);
                 usuario.editar();
                 Mensageiro.mensagemInfo("Nova senha enviada para o e-mail do usuário!!");
-            }else
+            } else
+            {
                 Mensageiro.mensagemInfo("Não foi possível localizar o usuário!!");
-                
-        }
-        catch(Exception e)
+            }
+
+        } catch (Exception e)
         {
-           Mensageiro.mensagemInfo("Não foi possível realizar o envio de uma nova senha para este e-mail, porfavor tente novamente mais tarde!!"); 
+            Mensageiro.mensagemInfo("Não foi possível realizar o envio de uma nova senha para este e-mail, porfavor tente novamente mais tarde!!");
         }
-        
+
     }
 
-    public String getEmailNovaSenha() {
+    public String getEmailNovaSenha()
+    {
         return emailNovaSenha;
     }
 
-    public void setEmailNovaSenha(String emailNovaSenha) {
+    public void setEmailNovaSenha(String emailNovaSenha)
+    {
         this.emailNovaSenha = emailNovaSenha;
     }
-    
+
     private static final long serialVersionUID = 5585493974059809141L;
-    private IUsuario usuario;
+    private Usuario usuario;
     private String emailNovaSenha;
 }

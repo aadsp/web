@@ -1,4 +1,3 @@
-
 package org.aadsp.annotations;
 
 import java.io.Serializable;
@@ -11,80 +10,95 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.aadsp.annotations.model.EquipeModel;
+import org.aadsp.interfaces.IAnnotations;
 
 @Entity
-@Table(name="TAP.TAP_AADSP_EQUIPE")
-public class Equipe implements Serializable
+@Table(name = "TAP.TAP_AADSP_EQUIPE")
+public class Equipe implements Serializable, IAnnotations
 {
+
     @Id
     @GeneratedValue
-    @Column(name="ID_equipe") private Integer ID;
+    @Column(name = "ID_equipe")
+    private Integer ID;
     @OneToOne
-    @JoinColumn(name="ID_funcao") private Funcao funcao;
+    @JoinColumn(name = "ID_funcao")
+    private Funcao funcao;
     @OneToOne
-    @JoinColumn(name="ID_tap") private TAP tap;
+    @JoinColumn(name = "ID_tap")
+    private TAP tap;
 
-    public Integer getID() {
+    public Integer getID()
+    {
         return ID;
     }
 
-    public void setID(Integer ID) {
+    public void setID(Integer ID)
+    {
         this.ID = ID;
     }
 
-    public Funcao getFuncao() {
+    public Funcao getFuncao()
+    {
         return funcao;
     }
 
-    public void setFuncao(Funcao funcao) {
+    public void setFuncao(Funcao funcao)
+    {
         this.funcao = funcao;
     }
 
-    public TAP getTap() {
+    public TAP getTap()
+    {
         return tap;
     }
 
-    public void setTap(TAP tap) {
+    public void setTap(TAP tap)
+    {
         this.tap = tap;
     }
-    
-    public String consultarNomeFuncao() throws Exception
+
+    public void cadastrar()
     {
-       Funcao model = new Funcao();
-       model.setID(this.getFuncao().getID());
-       return model.consultarPorID().getDescricao();
-    }
-    
-    public List<Equipe> listar() throws Exception
-    {
-        EquipeModel  model = new EquipeModel();
-        return model.listar();
-    }
-    
-    public List<Equipe> listarPorTAP() throws Exception
-    {
-        EquipeModel  model = new EquipeModel();
-        return model.listarPorTAP(this);
-    }
-    
-    
-    public void cadastrar(){
         EquipeModel model = new EquipeModel();
         model.salvar(this);
     }
+
+    public void excluir()
+    {
+        EquipeModel model = new EquipeModel();
+        model.excluir(this);
+    }
+
+    public void editar()
+    {
+        EquipeModel model = new EquipeModel();
+        model.atualizar(this);
+    }
+
+    public String consultarNomeFuncao() throws Exception
+    {
+        Funcao model = new Funcao();
+        model.setID(this.getFuncao().getID());
+        return model.consultarPorID().getDescricao();
+    }
+
+    public List<Equipe> listar() throws Exception
+    {
+        EquipeModel model = new EquipeModel();
+        return model.listar();
+    }
+
+    public List<Equipe> listarPorTAP() throws Exception
+    {
+        EquipeModel model = new EquipeModel();
+        return model.listarPorTAP(this);
+    }
+
     public Equipe consultarPorID() throws Exception
     {
         EquipeModel model = new EquipeModel();
         return model.consultarPorID(this);
     }
-    
-    public void excluir(){
-        EquipeModel model = new EquipeModel();
-        model.excluir(this);
-    }
-    
-    public void editar(){
-        EquipeModel model = new EquipeModel();
-        model.atualizar(this);
-    }
+
 }

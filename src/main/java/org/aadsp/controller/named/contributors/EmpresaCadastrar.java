@@ -1,4 +1,3 @@
-
 package org.aadsp.controller.named.contributors;
 
 import javax.faces.view.ViewScoped;
@@ -12,34 +11,36 @@ import org.aadsp.utils.Mensageiro;
 @Named
 public class EmpresaCadastrar extends ABaseNamed implements ICadastro
 {
-    
+
     public EmpresaCadastrar()
     {
         this.empresa = new Empresa();
     }
-   
+
     public boolean controleDeCadastro()
     {
-        return this.empresa.getRazaoSocial()!= null;
-    }
-    
-    public void cadastrar()
-    {
-      try
-      {
-        empresa.cadastrar();
-        Mensageiro.mensagemInfo("Empresa cadastrada com sucesso!");
-      }catch(Exception e)
-      {
-          Mensageiro.mensagemError("Não foi possível cadastrar a empresa!");
-      }
+        return this.empresa.getRazaoSocial() != null;
     }
 
-    public Empresa getEmpresa() {
+    public void cadastrar()
+    {
+        try
+        {
+            empresa.cadastrar();
+            Mensageiro.mensagemInfo("Empresa cadastrada com sucesso!");
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemError("Não foi possível cadastrar a empresa!");
+        }
+    }
+
+    public Empresa getEmpresa()
+    {
         return empresa;
     }
 
-    public void setEmpresa(Empresa empresa) {
+    public void setEmpresa(Empresa empresa)
+    {
         this.empresa = empresa;
     }
 

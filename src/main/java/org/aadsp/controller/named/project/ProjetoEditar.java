@@ -1,32 +1,24 @@
-
 package org.aadsp.controller.named.project;
 
-import org.aadsp.controller.named.adm.*;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import org.aadsp.annotations.Pagina;
 import org.aadsp.annotations.Projeto;
 import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.utils.Criptografia;
 import org.aadsp.utils.Mensageiro;
 import org.aadsp.utils.Response;
 
-/**
- * Classe que representa o objeto de tela Pessoal Edição
- * @author Felipe Coelho
- * @version  01/05/2016
- */
 @ViewScoped
 @Named
 public class ProjetoEditar extends ABaseNamed
 {
-    
+
     public ProjetoEditar()
     {
         this.projeto = new Projeto();
         carregarDadosIniciais();
     }
-   
+
     private void carregarDadosIniciais()
     {
         try
@@ -34,41 +26,43 @@ public class ProjetoEditar extends ABaseNamed
             int IDProjeto = Integer.parseInt(Criptografia.decodificarBase64(Response.getParametroURL("Projeto")));
             this.projeto.setID(IDProjeto);
             this.projeto = projeto.consultarPorID();
-        }catch(Exception e)
+        } catch (Exception e)
         {
             Mensageiro.mensagemError("Não foi possível carregar os dados iniciais da página");
         }
     }
-    
+
     public void excluir()
     {
-      try
-      {
-        projeto.excluir();
-        Response.redirect("/web/faces/views/projetos/ProjetoConsultar.xhtml");
-      }catch(Exception e)
-      {
-          Mensageiro.mensagemError("Não foi possível excluir o projeto!");
-      }
-    }
-    
-    public void editar()
-    {
-      try
-      {
-        projeto.editar();
-        Mensageiro.mensagemInfo("Projeto atualizado com sucesso");
-      }catch(Exception e)
-      {
-          Mensageiro.mensagemError("Não foi possível atualizar o projeto!");
-      }
+        try
+        {
+            projeto.excluir();
+            Response.redirect("/web/faces/views/projetos/ProjetoConsultar.xhtml");
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemError("Não foi possível excluir o projeto!");
+        }
     }
 
-    public Projeto getProjeto() {
+    public void editar()
+    {
+        try
+        {
+            projeto.editar();
+            Mensageiro.mensagemInfo("Projeto atualizado com sucesso");
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemError("Não foi possível atualizar o projeto!");
+        }
+    }
+
+    public Projeto getProjeto()
+    {
         return projeto;
     }
 
-    public void setProjeto(Projeto projeto) {
+    public void setProjeto(Projeto projeto)
+    {
         this.projeto = projeto;
     }
 

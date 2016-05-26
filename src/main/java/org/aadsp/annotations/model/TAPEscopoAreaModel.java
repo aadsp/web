@@ -1,4 +1,3 @@
-
 package org.aadsp.annotations.model;
 
 import java.util.List;
@@ -9,18 +8,19 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-
 public class TAPEscopoAreaModel implements ICRUD
 {
-private final Session sessao;
-    
+
+    private final Session sessao;
+
     public TAPEscopoAreaModel()
     {
         this.sessao = FactoryHibernate.getSessionFactory().openSession();
     }
-    
-     @Override
-    public void salvar(Object obj) {
+
+    @Override
+    public void salvar(Object obj)
+    {
         Transaction transacao = sessao.beginTransaction();
         sessao.save(obj);
         transacao.commit();
@@ -28,7 +28,8 @@ private final Session sessao;
     }
 
     @Override
-    public void atualizar(Object obj) {
+    public void atualizar(Object obj)
+    {
         Transaction transacao = sessao.beginTransaction();
         sessao.update(obj);
         transacao.commit();
@@ -36,43 +37,44 @@ private final Session sessao;
     }
 
     @Override
-    public void excluir(Object obj) {
+    public void excluir(Object obj)
+    {
         Transaction transacao = sessao.beginTransaction();
         sessao.delete(obj);
         transacao.commit();
         sessao.close();
     }
-    
+
     public TAPEscopoArea consultarPorID(TAPEscopoArea tap)
     {
         try
-        { 
+        {
             Query consulta = sessao.createQuery("from TAPEscopoArea where ID = :ID");
             consulta.setInteger("ID", tap.getID());
             return (TAPEscopoArea) consulta.uniqueResult();
-        }catch(Exception e){
+        } catch (Exception e)
+        {
             throw e;
-        }finally{
+        } finally
+        {
             sessao.close();
         }
-    
+
     }
-    
-    public List<TAPEscopoArea> listar()throws Exception
+
+    public List<TAPEscopoArea> listar() throws Exception
     {
         try
         {
             Query consulta = sessao.createQuery("from TAPEscopoArea");
             return consulta.list();
-        }
-        catch(Exception e)
+        } catch (Exception e)
         {
             throw e;
-        }
-        finally
+        } finally
         {
             sessao.close();
         }
     }
-    
+
 }

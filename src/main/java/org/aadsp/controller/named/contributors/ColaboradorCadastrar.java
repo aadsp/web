@@ -1,4 +1,3 @@
-
 package org.aadsp.controller.named.contributors;
 
 import java.util.ArrayList;
@@ -15,15 +14,12 @@ import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.interfaces.ICadastro;
 import org.aadsp.utils.Mensageiro;
 
-/**
- * Classe que representa o objeto de tela Pessoal Cadastro
- * @author Felipe Coelho
- * @version  25/04/2016
- */
+
 @ViewScoped
 @Named
 public class ColaboradorCadastrar extends ABaseNamed implements ICadastro
-{   
+{
+
     public ColaboradorCadastrar()
     {
         data = new Date(new Date().getTime());
@@ -31,78 +27,88 @@ public class ColaboradorCadastrar extends ABaseNamed implements ICadastro
         this.colaborador = new Colaborador();
         this.usuario = new Usuario();
     }
-    
+
     public boolean controleDeCadastro()
     {
-        return this.colaborador.getNumeroPIS()!= null;
+        return this.colaborador.getNumeroPIS() != null;
     }
-   
+
     public void cadastrar()
     {
-      try
-      {
-        Usuario usuario = new Usuario();
-        usuario.setID(usuarioSelecionado);
-        this.colaborador.setUsuario(usuario);
-        this.colaborador.cadastrar();
-        Mensageiro.mensagemInfo("Cadastro realizado com sucesso!!");
-      }catch(Exception e){
-          Mensageiro.mensagemError("Não foi possível realizar o cadastro deste usuário!!");
-      }
-    }
-    
-    public Map<String,Integer> getUsuarios(){
-       try{
-
-        List<Usuario> lista = usuario.listar();
-        List<Colaborador> listaColaborador = colaborador.listar();
-        List<Integer> listaIDColaborador = new ArrayList<Integer>();
-        
-        for(Colaborador obj:listaColaborador)
+        try
         {
-            listaIDColaborador.add(obj.getID());
+            Usuario usuario = new Usuario();
+            usuario.setID(usuarioSelecionado);
+            this.colaborador.setUsuario(usuario);
+            this.colaborador.cadastrar();
+            Mensageiro.mensagemInfo("Cadastro realizado com sucesso!!");
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemError("Não foi possível realizar o cadastro deste usuário!!");
         }
-            
-       for(Usuario obj: lista){
-           if(!listaIDColaborador.contains(obj.getID()))
-              usuarios.put(obj.getNome(),obj.getID());
-       }
-       return usuarios;
-       }catch(Exception e){
-           Mensageiro.mensagemError("Não foi possível consultar os usuários no banco de dados!");
-       }
+    }
+
+    public Map<String, Integer> getUsuarios()
+    {
+        try
+        {
+
+            List<Usuario> lista = usuario.listar();
+            List<Colaborador> listaColaborador = colaborador.listar();
+            List<Integer> listaIDColaborador = new ArrayList<Integer>();
+
+            for (Colaborador obj : listaColaborador)
+            {
+                listaIDColaborador.add(obj.getID());
+            }
+
+            for (Usuario obj : lista)
+            {
+                if (!listaIDColaborador.contains(obj.getID()))
+                {
+                    usuarios.put(obj.getNome(), obj.getID());
+                }
+            }
+            return usuarios;
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemError("Não foi possível consultar os usuários no banco de dados!");
+        }
         return null;
     }
-    
-     public Date getData()
-     {
+
+    public Date getData()
+    {
         return data;
-     }
-    
+    }
+
     public void setData(Date date) throws ParseException
     {
-       java.sql.Date dataSql = new java.sql.Date(date.getTime());
-       this.colaborador.setDataContrato(dataSql);
+        java.sql.Date dataSql = new java.sql.Date(date.getTime());
+        this.colaborador.setDataContrato(dataSql);
     }
-    
-    public int getUsuarioSelecionado() {
+
+    public int getUsuarioSelecionado()
+    {
         return usuarioSelecionado;
     }
 
-    public void setUsuarioSelecionado(int usuarioSelecionado) {
+    public void setUsuarioSelecionado(int usuarioSelecionado)
+    {
         this.usuarioSelecionado = usuarioSelecionado;
     }
 
-    public Colaborador getColaborador() {
+    public Colaborador getColaborador()
+    {
         return colaborador;
     }
 
-    public void setColaborador(Colaborador colaborador) {
+    public void setColaborador(Colaborador colaborador)
+    {
         this.colaborador = colaborador;
     }
-    
-  
-    private Map<String,Integer> usuarios;
+
+    private Map<String, Integer> usuarios;
     private int usuarioSelecionado;
     private Usuario usuario;
     private Colaborador colaborador;

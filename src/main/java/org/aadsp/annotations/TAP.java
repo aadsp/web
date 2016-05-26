@@ -1,4 +1,3 @@
-
 package org.aadsp.annotations;
 
 import java.io.Serializable;
@@ -10,165 +9,210 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import org.aadsp.annotations.model.TAPModel;
+import org.aadsp.interfaces.IAnnotations;
 
 /**
- * Classe que representa a tabela do banco 
+ * Classe que representa a tabela do banco
+ *
  * @author Felipe
  */
 @Entity
-@Table(name="TAP.TAP_AADSP_TAP")
-public class TAP implements Serializable 
+@Table(name = "TAP.TAP_AADSP_TAP")
+public class TAP implements Serializable, IAnnotations
 {
+
     @Id
     @GeneratedValue
-    @Column(name="ID_tap") private Integer ID;
-    @Column(name="nome") private String nome;
-    @Column(name="justificativa") private String justificativa;
-    @Column(name="objetivo") private String objetivo;
-    @Column(name="alinhamentoEstrategico") private String alinhamentoEstrategico;
-    @Column(name="custo") private double custo;
-    @Column(name="dataInicio") private Date dataInicio;
-    @Column(name="dataFim") private Date dataFim;
-    @Column(name="dataHomologacao") private Date dataHomologacao;
-    @Column(name="dataCriacao") private Date dataCriacao;
-    @Column(name="premissas") private String premissas;
-    @Column(name="restricoes") private String restricoes;
-    @Column(name="riscosIniciais") private String riscosIniciais;
+    @Column(name = "ID_tap")
+    private Integer ID;
+    @Column(name = "nome")
+    private String nome;
+    @Column(name = "justificativa")
+    private String justificativa;
+    @Column(name = "objetivo")
+    private String objetivo;
+    @Column(name = "alinhamentoEstrategico")
+    private String alinhamentoEstrategico;
+    @Column(name = "custo")
+    private double custo;
+    @Column(name = "dataInicio")
+    private Date dataInicio;
+    @Column(name = "dataFim")
+    private Date dataFim;
+    @Column(name = "dataHomologacao")
+    private Date dataHomologacao;
+    @Column(name = "dataCriacao")
+    private Date dataCriacao;
+    @Column(name = "premissas")
+    private String premissas;
+    @Column(name = "restricoes")
+    private String restricoes;
+    @Column(name = "riscosIniciais")
+    private String riscosIniciais;
 
-    public Integer getID() {
+    public Integer getID()
+    {
         return ID;
     }
 
-    public void setID(Integer ID) {
+    public void setID(Integer ID)
+    {
         this.ID = ID;
     }
 
-    public String getObjetivo() {
+    public String getObjetivo()
+    {
         return objetivo;
     }
 
-    public void setObjetivo(String objetivo) {
+    public void setObjetivo(String objetivo)
+    {
         this.objetivo = objetivo;
     }
-    
-    public String getNome() {
+
+    public String getNome()
+    {
         return nome;
     }
 
-    public void setNome(String nome) {
+    public void setNome(String nome)
+    {
         this.nome = nome;
     }
 
-    public String getJustificativa() {
+    public String getJustificativa()
+    {
         return justificativa;
     }
 
-    public void setJustificativa(String justificativa) {
+    public void setJustificativa(String justificativa)
+    {
         this.justificativa = justificativa;
     }
 
-    public String getAlinhamentoEstrategico() {
+    public String getAlinhamentoEstrategico()
+    {
         return alinhamentoEstrategico;
     }
 
-    public void setAlinhamentoEstrategico(String alinhamentoEstrategico) {
+    public void setAlinhamentoEstrategico(String alinhamentoEstrategico)
+    {
         this.alinhamentoEstrategico = alinhamentoEstrategico;
     }
 
-    public double getCusto() {
+    public double getCusto()
+    {
         return custo;
     }
 
-    public void setCusto(double custo) {
+    public void setCusto(double custo)
+    {
         this.custo = custo;
     }
 
-    public Date getDataInicio() {
+    public Date getDataInicio()
+    {
         return dataInicio;
     }
 
-    public void setDataInicio(Date dataInicio) {
+    public void setDataInicio(Date dataInicio)
+    {
         this.dataInicio = dataInicio;
     }
 
-    public Date getDataFim() {
+    public Date getDataFim()
+    {
         return dataFim;
     }
 
-    public void setDataFim(Date dataFim) {
+    public void setDataFim(Date dataFim)
+    {
         this.dataFim = dataFim;
     }
 
-    public Date getDataHomologacao() {
+    public Date getDataHomologacao()
+    {
         return dataHomologacao;
     }
 
-    public void setDataHomologacao(Date dataHomologacao) {
+    public void setDataHomologacao(Date dataHomologacao)
+    {
         this.dataHomologacao = dataHomologacao;
     }
 
-    public Date getDataCriacao() {
+    public Date getDataCriacao()
+    {
         return dataCriacao;
     }
 
-    public void setDataCriacao(Date dataCriacao) {
+    public void setDataCriacao(Date dataCriacao)
+    {
         this.dataCriacao = dataCriacao;
     }
 
-    public String getPremissas() {
+    public String getPremissas()
+    {
         return premissas;
     }
 
-    public void setPremissas(String premissas) {
+    public void setPremissas(String premissas)
+    {
         this.premissas = premissas;
     }
 
-    public String getRestricoes() {
+    public String getRestricoes()
+    {
         return restricoes;
     }
 
-    public void setRestricoes(String restricoes) {
+    public void setRestricoes(String restricoes)
+    {
         this.restricoes = restricoes;
     }
 
-    public String getRiscosIniciais() {
+    public String getRiscosIniciais()
+    {
         return riscosIniciais;
     }
 
-    public void setRiscosIniciais(String riscosIniciais) {
+    public void setRiscosIniciais(String riscosIniciais)
+    {
         this.riscosIniciais = riscosIniciais;
     }
-    
-    public List<TAP> listar() throws Exception
-    {
-        TAPModel  model = new TAPModel();
-        return model.listar();
-    }
-    
+
+    @Override
     public void cadastrar()
     {
         TAPModel model = new TAPModel();
         model.salvar(this);
     }
-    
-    public void deletar()
+
+    @Override
+    public void excluir()
     {
         TAPModel model = new TAPModel();
         model.excluir(this);
     }
-    
-    public void atualizar()
+
+    @Override
+    public void editar()
     {
         TAPModel model = new TAPModel();
         model.atualizar(this);
     }
-    
+
+    public List<TAP> listar() throws Exception
+    {
+        TAPModel model = new TAPModel();
+        return model.listar();
+    }
+
     public TAP consultar() throws Exception
     {
         TAPModel model = new TAPModel();
         return model.consultarPorID(this);
     }
-    
+
     public List<TAP> listarPorFiltro(String filtro) throws Exception
     {
         TAPModel model = new TAPModel();

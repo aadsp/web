@@ -1,4 +1,3 @@
-
 package org.aadsp.annotations;
 
 import java.io.Serializable;
@@ -9,89 +8,113 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import org.aadsp.annotations.model.StakeholderModel;
+import org.aadsp.interfaces.IAnnotations;
 
 @Entity
-@Table(name="TAP.TAP_AADSP_STAKEHOLDER")
-public class Stakeholder implements Serializable
+@Table(name = "TAP.TAP_AADSP_STAKEHOLDER")
+public class Stakeholder implements Serializable, IAnnotations
 {
+
     @Id
     @GeneratedValue
-    @Column(name="ID_stakeholder") private Integer ID;
-    @Column(name="nome") private String nome;
-    @Column(name="rg") private String rg;
-    @Column(name="cpf") private String cpf;
-    @Column(name="email") private String email;
+    @Column(name = "ID_stakeholder")
+    private Integer ID;
+    @Column(name = "nome")
+    private String nome;
+    @Column(name = "rg")
+    private String rg;
+    @Column(name = "cpf")
+    private String cpf;
+    @Column(name = "email")
+    private String email;
 
-    public Integer getID() {
+    public Integer getID()
+    {
         return ID;
     }
 
-    public void setID(Integer ID) {
+    public void setID(Integer ID)
+    {
         this.ID = ID;
     }
 
-    public String getNome() {
+    public String getNome()
+    {
         return nome;
     }
 
-    public void setNome(String nome) {
+    public void setNome(String nome)
+    {
         this.nome = nome;
     }
-    
-    public String getRg() {
+
+    public String getRg()
+    {
         return rg;
     }
 
-    public void setRg(String rg) {
+    public void setRg(String rg)
+    {
         this.rg = rg;
     }
 
-    public String getCpf() {
+    public String getCpf()
+    {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
+    public void setCpf(String cpf)
+    {
         this.cpf = cpf;
     }
 
-    public String getEmail() {
+    public String getEmail()
+    {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String email)
+    {
         this.email = email;
     }
-    
-    public List<Stakeholder> listar() throws Exception
+
+    @Override
+    public void cadastrar()
     {
-        StakeholderModel  model = new StakeholderModel();
-        return model.listar();
-    }
-    
-    public void cadastrar(){
         StakeholderModel model = new StakeholderModel();
         model.salvar(this);
     }
+
+    @Override
+    public void excluir()
+    {
+        StakeholderModel model = new StakeholderModel();
+        model.excluir(this);
+    }
+
+    @Override
+    public void editar()
+    {
+        StakeholderModel model = new StakeholderModel();
+        model.atualizar(this);
+    }
+
+    public List<Stakeholder> listar() throws Exception
+    {
+        StakeholderModel model = new StakeholderModel();
+        return model.listar();
+    }
+
     public Stakeholder consultarPorID() throws Exception
     {
         StakeholderModel model = new StakeholderModel();
         return model.consultarPorID(this);
     }
-    
-    public void excluir(){
-        StakeholderModel model = new StakeholderModel();
-        model.excluir(this);
-    }
-    
-    public void editar(){
-        StakeholderModel model = new StakeholderModel();
-        model.atualizar(this);
-    }
-    
+
     public List<Stakeholder> listarPorFiltro(String filtro) throws Exception
     {
         StakeholderModel model = new StakeholderModel();
         return model.listarPorFiltro(filtro);
     }
-    
+
 }

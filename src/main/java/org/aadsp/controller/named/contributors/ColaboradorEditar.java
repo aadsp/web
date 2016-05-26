@@ -1,4 +1,3 @@
-
 package org.aadsp.controller.named.contributors;
 
 import java.util.Date;
@@ -11,22 +10,18 @@ import org.aadsp.utils.Criptografia;
 import org.aadsp.utils.Mensageiro;
 import org.aadsp.utils.Response;
 
-/**
- * Classe que representa o objeto de tela Pessoal Edição
- * @author Felipe Coelho
- * @version  01/05/2016
- */
+
 @ViewScoped
 @Named
 public class ColaboradorEditar extends ABaseNamed
 {
-    
+
     public ColaboradorEditar()
     {
         this.colaborador = new Colaborador();
         carregarDadosIniciais();
     }
-   
+
     private void carregarDadosIniciais()
     {
         try
@@ -35,53 +30,55 @@ public class ColaboradorEditar extends ABaseNamed
             this.colaborador.setID(IDColaborador);
             this.colaborador = colaborador.consultar();
             data = colaborador.getDataContrato();
-        }catch(Exception e)
+        } catch (Exception e)
         {
             Mensageiro.mensagemError("Não foi possível carregar os dados iniciais da página");
         }
     }
-    
+
     public void excluir()
     {
-      try
-      {
-        colaborador.excluir();
-        Response.redirect("/web/faces/views/colaboradores/ColaboradorConsultar.xhtml");
-      }catch(Exception e)
-      {
-          Mensageiro.mensagemError("Não foi possível excluir os dados deste colaborador!");
-      }
-    }
-    
-    public void editar()
-    {
-      try
-      {
-        colaborador.editar();
-        Mensageiro.mensagemInfo("Dados do colaborador atualizado com sucesso");
-      }catch(Exception e)
-      {
-          Mensageiro.mensagemError("Não foi possível atualizar os dados do colaborador!");
-      }
+        try
+        {
+            colaborador.excluir();
+            Response.redirect("/web/faces/views/colaboradores/ColaboradorConsultar.xhtml");
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemError("Não foi possível excluir os dados deste colaborador!");
+        }
     }
 
-    public Colaborador getColaborador() {
+    public void editar()
+    {
+        try
+        {
+            colaborador.editar();
+            Mensageiro.mensagemInfo("Dados do colaborador atualizado com sucesso");
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemError("Não foi possível atualizar os dados do colaborador!");
+        }
+    }
+
+    public Colaborador getColaborador()
+    {
         return colaborador;
     }
 
-    public void setColaborador(Colaborador colaborador) {
+    public void setColaborador(Colaborador colaborador)
+    {
         this.colaborador = colaborador;
     }
-    
-     public Date getData()
-     {
+
+    public Date getData()
+    {
         return data;
-     }
-    
+    }
+
     public void setData(Date date) throws ParseException
     {
-       java.sql.Date dataSql = new java.sql.Date(date.getTime());
-       this.colaborador.setDataContrato(dataSql);
+        java.sql.Date dataSql = new java.sql.Date(date.getTime());
+        this.colaborador.setDataContrato(dataSql);
     }
 
     private Colaborador colaborador;

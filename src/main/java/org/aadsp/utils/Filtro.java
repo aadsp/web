@@ -8,22 +8,26 @@ import java.util.Map;
  *
  * @author Felipe
  */
-public class Filtro {
+public class Filtro
+{
 
-    public Filtro() {
+    public Filtro()
+    {
         addOperadorCondicional();
         this.atributo = new HashMap<>();
         this.atributoClasse = new HashMap<>();
         this.filtro = "TODOS";
     }
 
-    private void addOperadorCondicional() {
+    private void addOperadorCondicional()
+    {
         this.operadorCondicional = new HashMap<>();
         operadorCondicional.put("E", "AND");
         operadorCondicional.put("OU", "OR");
     }
 
-    private void addOperadorLogico() {
+    private void addOperadorLogico()
+    {
         this.filtro = null;
         this.operadorLogico = new HashMap<>();
         operadorLogico.put("IGUAL", "=");
@@ -35,19 +39,24 @@ public class Filtro {
         operadorLogico.put("MENOR", "<");
     }
 
-    public void onAtributoSelecionado() throws ClassNotFoundException {
+    public void onAtributoSelecionado() throws ClassNotFoundException
+    {
         addOperadorLogico();
-        if (atributoSelecionado != null) {
+        if (atributoSelecionado != null)
+        {
             String atributoAnotacao = atributoSelecionado;
-            if(atributoSelecionado.contains(".")){
+            if (atributoSelecionado.contains("."))
+            {
                 String objMapeamento = Character.toString(atributoAnotacao.charAt(0));
-                atributoAnotacao = atributoAnotacao.replace(objMapeamento+".", "");
+                atributoAnotacao = atributoAnotacao.replace(objMapeamento + ".", "");
             }
-            
+
             String nomeClasseAtributo = atributoClasse.get(atributoSelecionado);
             String tipoAtributo = "";
-            for (Field atributoClasse : Class.forName("org.aadsp.annotations." + nomeClasseAtributo).getDeclaredFields()) {
-                if (atributoClasse.getName().equals(atributoAnotacao)) {
+            for (Field atributoClasse : Class.forName("org.aadsp.annotations." + nomeClasseAtributo).getDeclaredFields())
+            {
+                if (atributoClasse.getName().equals(atributoAnotacao))
+                {
                     tipoAtributo = atributoClasse.getType().getName();
 
                 }
@@ -55,22 +64,25 @@ public class Filtro {
 
             tipoAtributo = tipoAtributo.replace("java.lang.", "");
 
-            if (tipoAtributo.equals("String")) {
+            if (tipoAtributo.equals("String"))
+            {
                 operadorLogico.remove("MAIOR OU IGUAL");
                 operadorLogico.remove("MENOR OU IGUAL");
                 operadorLogico.remove("MAIOR");
                 operadorLogico.remove("MENOR");
-            }else {
+            } else
+            {
                 operadorLogico.remove("SEMELHANTE");
             }
 
-            if (filtro == null) {
+            if (filtro == null)
+            {
                 filtro = "( " + atributoSelecionado;
-            }else if(!filtro.endsWith(") ") && !atributoSelecionado.equals("FILTRAR POR"))
+            } else if (!filtro.endsWith(") ") && !atributoSelecionado.equals("FILTRAR POR"))
             {
                 filtro = filtro + " " + operadorCondicionalSelecionada + " ( " + atributoSelecionado;
             }
-        }else
+        } else
         {
             operadorLogico.remove("IGUAL");
             operadorLogico.remove("DIFERENTE");
@@ -83,126 +95,161 @@ public class Filtro {
 
     }
 
-    public void onOperadorLogicoSelecionado() {
-        if (operadorLogicoSelecionado != null) {
-            if (filtro != null) {
-                if (!filtro.endsWith("=") 
-                    && !filtro.endsWith(">=") && !filtro.endsWith("<=")
-                    && !filtro.endsWith(">")&& !filtro.endsWith("<")
-                    && !filtro.endsWith("<>")&& !filtro.endsWith("LIKE")) {
-                        filtro = filtro +" "+operadorLogicoSelecionado;
+    public void onOperadorLogicoSelecionado()
+    {
+        if (operadorLogicoSelecionado != null)
+        {
+            if (filtro != null)
+            {
+                if (!filtro.endsWith("=")
+                        && !filtro.endsWith(">=") && !filtro.endsWith("<=")
+                        && !filtro.endsWith(">") && !filtro.endsWith("<")
+                        && !filtro.endsWith("<>") && !filtro.endsWith("LIKE"))
+                {
+                    filtro = filtro + " " + operadorLogicoSelecionado;
                 }
             }
         }
     }
 
-    public Map<String, String> getOperadorCondicional() {
+    public Map<String, String> getOperadorCondicional()
+    {
         return operadorCondicional;
     }
 
-    public void setOperadorCondicional(Map<String, String> operadorCondicional) {
+    public void setOperadorCondicional(Map<String, String> operadorCondicional)
+    {
         this.operadorCondicional = operadorCondicional;
     }
 
-    public String getOperadorCondicionalSelecionada() {
+    public String getOperadorCondicionalSelecionada()
+    {
         return operadorCondicionalSelecionada;
     }
 
-    public void setOperadorCondicionalSelecionada(String operadorCondicionalSelecionada) {
+    public void setOperadorCondicionalSelecionada(String operadorCondicionalSelecionada)
+    {
         this.operadorCondicionalSelecionada = operadorCondicionalSelecionada;
     }
 
-    public Map<String, String> getAtributo() {
+    public Map<String, String> getAtributo()
+    {
         return atributo;
     }
 
-    public void setAtributo(Map<String, String> atributo, Map<String, String> atributoClasse) {
+    public void setAtributo(Map<String, String> atributo, Map<String, String> atributoClasse)
+    {
         this.atributo = atributo;
         this.atributoClasse = atributoClasse;
     }
 
-    public String getAtributoSelecionado() {
+    public String getAtributoSelecionado()
+    {
         return atributoSelecionado;
     }
 
-    public void setAtributoSelecionado(String atributoSelecionado) {
+    public void setAtributoSelecionado(String atributoSelecionado)
+    {
         this.atributoSelecionado = atributoSelecionado;
     }
 
-    public Map<String, String> getOperadorLogico() {
+    public Map<String, String> getOperadorLogico()
+    {
         return operadorLogico;
     }
 
-    public void setOperadorLogico(Map<String, String> operadorLogico) {
+    public void setOperadorLogico(Map<String, String> operadorLogico)
+    {
         this.operadorLogico = operadorLogico;
     }
 
-    public String getOperadorLogicoSelecionado() {
+    public String getOperadorLogicoSelecionado()
+    {
         return operadorLogicoSelecionado;
     }
 
-    public void setOperadorLogicoSelecionado(String operadorLogicoSelecionado) {
+    public void setOperadorLogicoSelecionado(String operadorLogicoSelecionado)
+    {
         this.operadorLogicoSelecionado = operadorLogicoSelecionado;
     }
 
-    public String getAtributoFiltro() {
+    public String getAtributoFiltro()
+    {
         return atributoFiltro;
     }
 
-    public void setAtributoFiltro(String atributoFiltro) {
+    public void setAtributoFiltro(String atributoFiltro)
+    {
         this.atributoFiltro = atributoFiltro;
     }
 
-    public boolean getOnAtributoSelecionado() {
+    public boolean getOnAtributoSelecionado()
+    {
         return atributoSelecionado != null;
     }
-    
-    public void removerFiltro(){
+
+    public void removerFiltro()
+    {
         this.filtro = "TODOS";
     }
-    
-    public void filtrar() throws ClassNotFoundException {
-        if (operadorLogicoSelecionado != null) {
-            if (filtro != null && atributoFiltro != null && operadorLogicoSelecionado != null) {
+
+    public void filtrar() throws ClassNotFoundException
+    {
+        if (operadorLogicoSelecionado != null)
+        {
+            if (filtro != null && atributoFiltro != null && operadorLogicoSelecionado != null)
+            {
                 if (filtro.startsWith("(") && !filtro.endsWith(")")
                         && !atributoFiltro.equals(" ") && !atributoFiltro.equals("")
-                    && (filtro.endsWith("=") || filtro.endsWith(")")
-                    || filtro.endsWith(">=") || filtro.endsWith("<=")
-                    || filtro.endsWith(">")||filtro.endsWith("<")
-                    || filtro.endsWith("<>")|| filtro.endsWith("LIKE"))) {
-                    
+                        && (filtro.endsWith("=") || filtro.endsWith(")")
+                        || filtro.endsWith(">=") || filtro.endsWith("<=")
+                        || filtro.endsWith(">") || filtro.endsWith("<")
+                        || filtro.endsWith("<>") || filtro.endsWith("LIKE")))
+                {
+
                     String atributoAnotacao = atributoSelecionado;
-                    if(atributoSelecionado.contains(".")){
+                    if (atributoSelecionado.contains("."))
+                    {
                         String objMapeamento = Character.toString(atributoAnotacao.charAt(0));
-                        atributoAnotacao = atributoAnotacao.replace(objMapeamento+".", "");
+                        atributoAnotacao = atributoAnotacao.replace(objMapeamento + ".", "");
                     }
-                    
+
                     String nomeClasseAtributo = atributoClasse.get(atributoSelecionado);
                     String tipoAtributo = "";
-                    for (Field atributoClasse : Class.forName("org.aadsp.annotations." + nomeClasseAtributo).getDeclaredFields()) {
-                        if (atributoClasse.getName().equals(atributoAnotacao)) {
+                    for (Field atributoClasse : Class.forName("org.aadsp.annotations." + nomeClasseAtributo).getDeclaredFields())
+                    {
+                        if (atributoClasse.getName().equals(atributoAnotacao))
+                        {
                             tipoAtributo = atributoClasse.getType().getName();
 
                         }
                     }
                     tipoAtributo = tipoAtributo.replace("java.lang.", "");
-                    if(tipoAtributo.equals("String"))
-                        if(filtro.endsWith("LIKE"))
-                            filtro = filtro +" '%"+atributoFiltro+"%')";
-                        else
-                            filtro = filtro +" '"+atributoFiltro+"')";
-                    else
-                       filtro = filtro +" "+atributoFiltro+")";
+                    if (tipoAtributo.equals("String"))
+                    {
+                        if (filtro.endsWith("LIKE"))
+                        {
+                            filtro = filtro + " '%" + atributoFiltro + "%')";
+                        } else
+                        {
+                            filtro = filtro + " '" + atributoFiltro + "')";
+                        }
+                    } else
+                    {
+                        filtro = filtro + " " + atributoFiltro + ")";
+                    }
                 }
             }
         }
     }
 
-    public String getFiltro() {
+    public String getFiltro()
+    {
         return filtro;
     }
 
-    public void setFiltro(String filtro) {
+    public void setFiltro(String filtro)
+    {
         this.filtro = filtro;
     }
 

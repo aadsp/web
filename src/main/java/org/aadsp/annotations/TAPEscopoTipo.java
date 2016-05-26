@@ -1,4 +1,3 @@
-
 package org.aadsp.annotations;
 
 import java.io.Serializable;
@@ -9,53 +8,67 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import org.aadsp.annotations.model.TAPEscopoTipoModel;
+import org.aadsp.interfaces.IAnnotations;
 
 @Entity
-@Table(name="TAP.TAP_AADSP_ESCOPO_TIPO")
-public class TAPEscopoTipo implements Serializable
+@Table(name = "TAP.TAP_AADSP_ESCOPO_TIPO")
+public class TAPEscopoTipo implements Serializable, IAnnotations
 {
+
     @Id
     @GeneratedValue
-    @Column(name="ID_escopoTipo") private Integer ID;
-    @Column(name="descricao") private String descricao;
+    @Column(name = "ID_escopoTipo")
+    private Integer ID;
+    @Column(name = "descricao")
+    private String descricao;
 
-    public Integer getID() {
+    public Integer getID()
+    {
         return ID;
     }
 
-    public void setID(Integer ID) {
+    public void setID(Integer ID)
+    {
         this.ID = ID;
     }
 
-    public String getDescricao() {
+    public String getDescricao()
+    {
         return descricao;
     }
 
-    public void setDescricao(String descricao) {
+    public void setDescricao(String descricao)
+    {
         this.descricao = descricao;
     }
 
-    public void cadastrar(){
+    @Override
+    public void cadastrar()
+    {
         TAPEscopoTipoModel model = new TAPEscopoTipoModel();
         model.salvar(this);
     }
-    
+
+    @Override
+    public void excluir()
+    {
+        TAPEscopoTipoModel model = new TAPEscopoTipoModel();
+        model.excluir(this);
+    }
+
+    @Override
+    public void editar()
+    {
+        TAPEscopoTipoModel model = new TAPEscopoTipoModel();
+        model.atualizar(this);
+    }
+
     public TAPEscopoTipo consultar()
     {
         TAPEscopoTipoModel model = new TAPEscopoTipoModel();
         return model.consultarPorID(this);
     }
-    
-    public void excluir(){
-        TAPEscopoTipoModel model = new TAPEscopoTipoModel();
-        model.excluir(this);
-    }
-    
-    public void editar(){
-        TAPEscopoTipoModel model = new TAPEscopoTipoModel();
-        model.atualizar(this);
-    }
-    
+
     public List<TAPEscopoTipo> listar() throws Exception
     {
         TAPEscopoTipoModel model = new TAPEscopoTipoModel();

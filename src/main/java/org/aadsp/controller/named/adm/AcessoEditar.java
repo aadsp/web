@@ -21,9 +21,11 @@ import org.aadsp.utils.Response;
  */
 @ViewScoped
 @Named
-public class AcessoEditar extends ABaseNamed {
+public class AcessoEditar extends ABaseNamed
+{
 
-    public AcessoEditar() {
+    public AcessoEditar()
+    {
         this.acesso = new Acesso();
         this.funcao = new Funcao();
         this.pagina = new Pagina();
@@ -32,18 +34,23 @@ public class AcessoEditar extends ABaseNamed {
         carregarDadosIniciais();
     }
 
-    public void carregarDadosIniciais() {
-        try {
+    public void carregarDadosIniciais()
+    {
+        try
+        {
             int IDAcesso = Integer.parseInt(Criptografia.decodificarBase64(Response.getParametroURL("Acesso")));
             acesso.setID(IDAcesso);
             acesso = acesso.consultar();
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             Mensageiro.mensagemError("Não foi possível carregar os dados da página!!");
         }
     }
 
-    public void editar() {
-        try {
+    public void editar()
+    {
+        try
+        {
             Funcao funcao = new Funcao();
             Pagina pagina = new Pagina();
 
@@ -51,71 +58,91 @@ public class AcessoEditar extends ABaseNamed {
             acesso.setPagina(pagina);
             acesso.cadastrar();
             Mensageiro.mensagemInfo("Atualização realizada com suceso!!");
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             Mensageiro.mensagemError("Não foi possível realizar esta operação!!");
         }
     }
 
-    public void excluir() {
-        try {
+    public void excluir()
+    {
+        try
+        {
             acesso.excluir();
             Response.redirect("/web/faces/views/adm/AcessoConsultar.xhtml");
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             Mensageiro.mensagemError("Não foi possível realizar esta operação!!");
         }
     }
 
-    public int getFuncaoSelecionada() {
+    public int getFuncaoSelecionada()
+    {
         return funcaoSelecionada;
     }
 
-    public void setFuncaoSelecionada(int funcaoSelecionada) {
+    public void setFuncaoSelecionada(int funcaoSelecionada)
+    {
         this.funcaoSelecionada = funcaoSelecionada;
     }
 
-    public int getPaginaSelecionada() {
+    public int getPaginaSelecionada()
+    {
         return paginaSelecionada;
     }
 
-    public void setPaginaSelecionada(int paginaSelecionada) {
+    public void setPaginaSelecionada(int paginaSelecionada)
+    {
         this.paginaSelecionada = paginaSelecionada;
     }
 
-    public Map<String, Integer> getFuncoes() {
-        try {
+    public Map<String, Integer> getFuncoes()
+    {
+        try
+        {
 
             List<Funcao> lista = funcao.listar();
-            for (Funcao obj : lista) {
-                if (!this.acesso.getFuncao().getID().equals(obj.getID())) {
+            for (Funcao obj : lista)
+            {
+                if (!this.acesso.getFuncao().getID().equals(obj.getID()))
+                {
                     funcoes.put(obj.getDescricao(), obj.getID());
                 }
             }
             return funcoes;
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             Mensageiro.mensagemError("Não foi possível consultar as funções no banco de dados!");
         }
         return null;
     }
 
-    public Acesso getAcesso() {
+    public Acesso getAcesso()
+    {
         return acesso;
     }
 
-    public void setAcesso(Acesso acesso) {
+    public void setAcesso(Acesso acesso)
+    {
         this.acesso = acesso;
     }
 
-    public Map<String, Integer> getPaginas() {
-        try {
+    public Map<String, Integer> getPaginas()
+    {
+        try
+        {
 
             List<Pagina> lista = pagina.listar();
-            for (Pagina obj : lista) {
-                if (!this.acesso.getPagina().getID().equals(obj.getID())) {
+            for (Pagina obj : lista)
+            {
+                if (!this.acesso.getPagina().getID().equals(obj.getID()))
+                {
                     paginas.put(obj.getNome(), obj.getID());
                 }
             }
             return paginas;
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             Mensageiro.mensagemError("Não foi possível consultar as páginas no banco de dados!");
         }
         return null;

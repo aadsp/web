@@ -16,24 +16,28 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.aadsp.annotations.Usuario;
 
-@WebFilter(servletNames = { "Faces Servlet" })
-public class ControleDeAcesso implements Filter {
-	
-    
-    
+@WebFilter(servletNames =
+{
+    "Faces Servlet"
+})
+public class ControleDeAcesso implements Filter
+{
+
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response,FilterChain chain) throws IOException, ServletException
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException
     {
         HttpServletRequest req = (HttpServletRequest) request;
-        HttpSession session = req.getSession();        
-        
+        HttpSession session = req.getSession();
+
         controlarAcesso(session, req, chain, request, response);
 
     }
-    
+
     /**
-     Metódo que controla o acesso dos usuário no sistema, este utiliza a URL do sistema verificando a ultima 
-     * pagina e conforme a lista de páginas disponiveis ao usuário.
+     * Metódo que controla o acesso dos usuário no sistema, este utiliza a URL
+     * do sistema verificando a ultima pagina e conforme a lista de páginas
+     * disponiveis ao usuário.
+     *
      * @param session deve ser fornecido o HTTPSession
      * @exception IOException exceção de entrada e saida
      * @exception ServletException é resultado de uma exceção do servelet
@@ -45,7 +49,7 @@ public class ControleDeAcesso implements Filter {
                 || (req.getRequestURI().endsWith("acessoNegado.xhtml"))
                 || (req.getRequestURI().endsWith("aadsp/"))
                 || (req.getRequestURI().contains("reports/"))
-                || (req.getRequestURI().contains("bootstrap/"))        
+                || (req.getRequestURI().contains("bootstrap/"))
                 || (req.getRequestURI().contains("chart/"))
                 || (req.getRequestURI().contains("img/"))
                 || (req.getRequestURI().contains("primefaces/"))
@@ -62,51 +66,56 @@ public class ControleDeAcesso implements Filter {
                     || (req.getRequestURI().contains("javax.faces.resource/")))
             {
                 chain.doFilter(request, response);
-            }
-            else
+            } else
             {
                 List<String> paginaPermitida = new ArrayList<>();
                 paginaPermitida = (List<String>) session.getAttribute("paginasAcesso");
                 Usuario usuario = (Usuario) session.getAttribute("usuario");
-                if(session.getAttribute("usuario") != null)
+                if (session.getAttribute("usuario") != null)
                 {
                     int count = paginaPermitida.size();
-                    for(String pag: paginaPermitida){
-                        if(req.getRequestURI().contains(pag+".xhtml") || req.getRequestURI().contains(".jrxml"))
+                    for (String pag : paginaPermitida)
+                    {
+                        if (req.getRequestURI().contains(pag + ".xhtml") || req.getRequestURI().contains(".jrxml"))
+                        {
                             chain.doFilter(request, response);
-                        count --;
+                        }
+                        count--;
                     }
-                    if(count == 0)
-                         redireciona("/web/faces/acessoNegado.xhtml", response);
-                }
-                else
+                    if (count == 0)
+                    {
+                        redireciona("/web/faces/acessoNegado.xhtml", response);
+                    }
+                } else
                 {
                     redireciona("/web/faces/acessoNegado.xhtml", response);
                 }
             }
-        }
-        else 
+        } else
         {
             redireciona("/web/faces/Index.xhtml", response);
         }
     }
 
-    public void init(FilterConfig filterConfig) throws ServletException {
-	
+    public void init(FilterConfig filterConfig) throws ServletException
+    {
+
     }
 
-    public void destroy() {
-    
-    }
-	
-    private void redireciona(String url, ServletResponse response) 
+    public void destroy()
     {
-        try{
-        HttpServletResponse res = (HttpServletResponse) response;
-        res.sendRedirect(url);
-        }catch(Exception e)
+
+    }
+
+    private void redireciona(String url, ServletResponse response)
+    {
+        try
         {
-        
+            HttpServletResponse res = (HttpServletResponse) response;
+            res.sendRedirect(url);
+        } catch (Exception e)
+        {
+
         }
     }
 }

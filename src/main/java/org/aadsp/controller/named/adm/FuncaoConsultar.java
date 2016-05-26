@@ -20,61 +20,77 @@ import org.aadsp.utils.Response;
  */
 @ViewScoped
 @Named
-public class FuncaoConsultar extends ABaseNamed {
+public class FuncaoConsultar extends ABaseNamed
+{
 
-    public FuncaoConsultar() {
-        try {
+    public FuncaoConsultar()
+    {
+        try
+        {
             this.funcao = new Funcao();
             this.filtro = new Filtro();
             listarFuncoes = this.funcao.listar();
             criarFiltro();
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             Mensageiro.mensagemError("Erro ao listar Funções!!");
         }
 
     }
-    
-    private void criarFiltro() {
+
+    private void criarFiltro()
+    {
         Map<String, String> atributo = new HashMap<>();
         Map<String, String> atributoClasse = new HashMap<>();
-        
+
         atributo.put("Nome", "descricao");
         atributo.put("Sigla", "sigla");
-        
+
         atributoClasse.put("descricao", "Funcao");
         atributoClasse.put("sigla", "Funcao");
         filtro.setAtributo(atributo, atributoClasse);
     }
 
-    public List<Funcao> getListarFuncoes() {
+    public List<Funcao> getListarFuncoes()
+    {
         return listarFuncoes;
 
     }
 
-    public void editar(Funcao funcao) {
-        try {
+    public void editar(Funcao funcao)
+    {
+        try
+        {
             Response.redirect("/web/faces/views/adm/FuncaoEditar.xhtml?Funcao=" + Criptografia.codificarParaBase64(funcao.getID().toString()));
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             Mensageiro.mensagemError("Erro ao selecionar Função!!");
         }
     }
 
-    public Filtro getFiltro() {
+    public Filtro getFiltro()
+    {
         return filtro;
     }
 
-    public void setFiltro(Filtro filtro) {
+    public void setFiltro(Filtro filtro)
+    {
         this.filtro = filtro;
     }
 
-    public void filtroConsulta() {
-        try {
-            if (this.filtro.filtro.endsWith(")")) {
+    public void filtroConsulta()
+    {
+        try
+        {
+            if (this.filtro.filtro.endsWith(")"))
+            {
                 listarFuncoes = this.funcao.listarPorFiltro(filtro.filtro);
-            } else {
+            } else
+            {
                 listarFuncoes = this.funcao.listar();
             }
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             Mensageiro.mensagemError("Não foi possível consultar pelo filtro gerado!!");
         }
     }

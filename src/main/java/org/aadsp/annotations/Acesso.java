@@ -1,4 +1,3 @@
-
 package org.aadsp.annotations;
 
 import java.io.Serializable;
@@ -11,65 +10,89 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.aadsp.annotations.model.AcessoModel;
+import org.aadsp.annotations.model.DiagramaUMLTipoModel;
+import org.aadsp.interfaces.IAnnotations;
 
-/** Classe de Entidade ACESSO.ACESSO, Representa o acesso por meio da função com a página
+/**
+ * Classe de Entidade ACESSO.ACESSO, Representa o acesso por meio da função com
+ * a página
+ *
  * @author Felipe Coelho
- * @version  24/04/2016
+ * @version 24/04/2016
  */
 @Entity
-@Table(name="ACESSO.ACESSO_AADSP_ACESSO")
-public class Acesso implements Serializable
+@Table(name = "ACESSO.ACESSO_AADSP_ACESSO")
+public class Acesso implements Serializable, IAnnotations
 {
+
     @Id
     @GeneratedValue
-    @Column(name="ID_acesso") private Integer ID;
+    @Column(name = "ID_acesso")
+    private Integer ID;
     @OneToOne
-    @JoinColumn(name="ID_funcao") private Funcao funcao;
+    @JoinColumn(name = "ID_funcao")
+    private Funcao funcao;
     @OneToOne
-    @JoinColumn(name="ID_pagina") private Pagina pagina;
+    @JoinColumn(name = "ID_pagina")
+    private Pagina pagina;
 
-    public Integer getID() {
+    public Integer getID()
+    {
         return ID;
     }
 
-    public void setID(Integer ID) {
+    public void setID(Integer ID)
+    {
         this.ID = ID;
     }
 
-    public Funcao getFuncao() {
+    public Funcao getFuncao()
+    {
         return funcao;
     }
 
-    public void setFuncao(Funcao funcao) {
+    public void setFuncao(Funcao funcao)
+    {
         this.funcao = funcao;
     }
 
-    public Pagina getPagina() {
+    public Pagina getPagina()
+    {
         return pagina;
     }
 
-    public void setPagina(Pagina pagina) {
+    public void setPagina(Pagina pagina)
+    {
         this.pagina = pagina;
     }
 
+    @Override
     public void cadastrar()
     {
         AcessoModel model = new AcessoModel();
         model.salvar(this);
     }
-    
-    public Acesso consultar() throws Exception
-    {
-        AcessoModel model = new AcessoModel();
-        return model.consultar(this);
-    }
-    
+
+    @Override
     public void excluir()
     {
         AcessoModel model = new AcessoModel();
         model.excluir(this);
     }
-    
+
+    @Override
+    public void editar()
+    {
+        DiagramaUMLTipoModel model = new DiagramaUMLTipoModel();
+        model.atualizar(this);
+    }
+
+    public Acesso consultar() throws Exception
+    {
+        AcessoModel model = new AcessoModel();
+        return model.consultar(this);
+    }
+
     public String consultarFuncao() throws Exception
     {
         Funcao funcao = new Funcao();
@@ -77,7 +100,7 @@ public class Acesso implements Serializable
         funcao = funcao.consultarPorID();
         return funcao.getDescricao();
     }
-    
+
     public String consultarPagina() throws Exception
     {
         Pagina pagina = new Pagina();
@@ -85,25 +108,25 @@ public class Acesso implements Serializable
         pagina = pagina.consultarPorID();
         return pagina.getNome();
     }
-    
+
     public List<Acesso> listarPorFuncao() throws Exception
     {
-         AcessoModel model = new AcessoModel();
-         return model.listar(this);
+        AcessoModel model = new AcessoModel();
+        return model.listar(this);
     }
-    
+
     public boolean registrada() throws Exception
     {
-         AcessoModel model = new AcessoModel();
-         return model.registrada(this) != null;
+        AcessoModel model = new AcessoModel();
+        return model.registrada(this) != null;
     }
-    
-    public  List<Acesso> listar() throws Exception
+
+    public List<Acesso> listar() throws Exception
     {
         AcessoModel model = new AcessoModel();
         return model.listar();
     }
-    
+
     public List<Acesso> listarPorFiltro(String filtro) throws Exception
     {
         AcessoModel model = new AcessoModel();

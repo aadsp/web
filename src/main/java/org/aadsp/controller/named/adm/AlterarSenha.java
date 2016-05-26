@@ -1,4 +1,3 @@
-
 package org.aadsp.controller.named.adm;
 
 import javax.faces.view.ViewScoped;
@@ -11,55 +10,60 @@ import org.aadsp.utils.Session;
 
 /**
  * Classe que representa o objeto de tela Pessoal Consulta
+ *
  * @author Felipe Coelho
- * @version  25/04/2016
+ * @version 25/04/2016
  */
 @ViewScoped
 @Named
 public class AlterarSenha extends ABaseNamed implements ICadastro
-{   
+{
+
     public void alterar()
     {
-      try
-      {
-        if(senha.equals(RepetirSenha))
+        try
         {
-           Usuario usuario = (Usuario) Session.getAttribute("usuario");
-           usuario.setSenha(senha);
-           usuario.editar();
-           Mensageiro.mensagemInfo("Senha alterada com sucesso");
-        }
-        else
+            if (senha.equals(RepetirSenha))
+            {
+                Usuario usuario = (Usuario) Session.getAttribute("usuario");
+                usuario.setSenha(senha);
+                usuario.editar();
+                Mensageiro.mensagemInfo("Senha alterada com sucesso");
+            } else
+            {
+                Mensageiro.mensagemWarn("Você não repetiu a senha como solicitado!");
+            }
+        } catch (Exception e)
         {
-            Mensageiro.mensagemWarn("Você não repetiu a senha como solicitado!");
+            Mensageiro.mensagemError("Não foi possível alterar a senha!");
         }
-      }catch(Exception e)
-      {
-          Mensageiro.mensagemError("Não foi possível alterar a senha!");
-      }
     }
-    
+
     public boolean controleDeCadastro()
     {
         return this.senha != null;
     }
 
-    public String getSenha() {
+    public String getSenha()
+    {
         return senha;
     }
 
-    public void setSenha(String senha) {
+    public void setSenha(String senha)
+    {
         this.senha = senha;
     }
 
-    public String getRepetirSenha() {
+    public String getRepetirSenha()
+    {
         return RepetirSenha;
     }
 
-    public void setRepetirSenha(String RepetirSenha) {
+    public void setRepetirSenha(String RepetirSenha)
+    {
         this.RepetirSenha = RepetirSenha;
     }
-    
+
     private String senha;
     private String RepetirSenha;
 }

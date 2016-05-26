@@ -1,4 +1,3 @@
-
 package org.aadsp.annotations;
 
 import java.io.Serializable;
@@ -17,137 +16,183 @@ import javax.persistence.Table;
 import org.aadsp.annotations.model.AcessoModel;
 import org.aadsp.annotations.model.FuncaoModel;
 import org.aadsp.annotations.model.UsuarioModel;
+import org.aadsp.interfaces.IAnnotations;
 import org.aadsp.interfaces.IUsuario;
 import org.aadsp.utils.Criptografia;
 import org.aadsp.utils.Mensageiro;
 
 @Entity
-@Table(name="ACESSO.ACESSO_AADSP_USUARIO")
-public class Usuario implements Serializable,IUsuario
+@Table(name = "ACESSO.ACESSO_AADSP_USUARIO")
+public class Usuario implements Serializable, IAnnotations
 {
+
     @Id
     @GeneratedValue
-    @Column(name="ID_usuario") private Integer ID;
-    @Column(name="nome") private String nome;
-    @Column(name="dataNascimento") private Date dataNascimento;
-    @Column(name="cpf") private String cpf;
-    @Column(name="rg") private String rg;
-    @Column(name="email") private String email;
-    @Column(name="login") private String login;
-    @Column(name="senha") private String senha;
-    @Column(name="imagem") private String imagem;
-    
-    @OneToOne
-    @JoinColumn(name="ID_funcao") private Funcao funcao;
-    
+    @Column(name = "ID_usuario")
+    private Integer ID;
+    @Column(name = "nome")
+    private String nome;
+    @Column(name = "dataNascimento")
+    private Date dataNascimento;
+    @Column(name = "cpf")
+    private String cpf;
+    @Column(name = "rg")
+    private String rg;
+    @Column(name = "email")
+    private String email;
+    @Column(name = "login")
+    private String login;
+    @Column(name = "senha")
+    private String senha;
+    @Column(name = "imagem")
+    private String imagem;
 
-    public Integer getID() {
+    @OneToOne
+    @JoinColumn(name = "ID_funcao")
+    private Funcao funcao;
+
+    public Integer getID()
+    {
         return ID;
     }
 
-    public void setID(Integer ID) {
+    public void setID(Integer ID)
+    {
         this.ID = ID;
     }
 
-    public String getNome() {
+    public String getNome()
+    {
         return nome;
     }
 
-    public void setNome(String nome) {
+    public void setNome(String nome)
+    {
         this.nome = nome;
     }
 
-    public Date getDataNascimento() {
+    public Date getDataNascimento()
+    {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(Date dataNascimento)
+    {
         this.dataNascimento = dataNascimento;
     }
 
-    public Funcao getFuncao() {
+    public Funcao getFuncao()
+    {
         return funcao;
     }
 
-    public void setFuncao(Funcao funcao) {
+    public void setFuncao(Funcao funcao)
+    {
         this.funcao = funcao;
     }
 
-    public String getCpf() {
+    public String getCpf()
+    {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
+    public void setCpf(String cpf)
+    {
         this.cpf = cpf;
     }
 
-    public String getRg() {
+    public String getRg()
+    {
         return rg;
     }
 
-    public void setRg(String rg) {
+    public void setRg(String rg)
+    {
         this.rg = rg;
     }
 
-    public String getEmail() {
+    public String getEmail()
+    {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String email)
+    {
         this.email = email;
     }
 
-    public String getImagem() {
+    public String getImagem()
+    {
         return imagem;
     }
 
-    public void setImagem(String imagem) {
+    public void setImagem(String imagem)
+    {
         this.imagem = imagem;
     }
-    
 
-   @Override
-   public String getLogin() {
+    public String getLogin()
+    {
         return login;
     }
 
-    @Override
-    public void setLogin(String login) {
+    public void setLogin(String login)
+    {
         this.login = login;
     }
 
-    @Override
-    public String getSenha() {
+    public String getSenha()
+    {
         return senha;
     }
 
     @Override
-    public void setSenha(String senha) 
+    public void cadastrar()
     {
-        try {
+        UsuarioModel model = new UsuarioModel();
+        model.salvar(this);
+    }
+
+    @Override
+    public void editar()
+    {
+        UsuarioModel model = new UsuarioModel();
+        model.atualizar(this);
+    }
+
+    @Override
+    public void excluir()
+    {
+        UsuarioModel model = new UsuarioModel();
+        model.excluir(this);
+    }
+
+    public void setSenha(String senha)
+    {
+        try
+        {
             this.senha = Criptografia.codificarParaSSH(senha);
-        } catch (NoSuchAlgorithmException ex) {
+        } catch (NoSuchAlgorithmException ex)
+        {
             Mensageiro.mensagemError("Não foi encontrado o algoritmo de criptografia!!");
-        } catch (UnsupportedEncodingException ex) {
+        } catch (UnsupportedEncodingException ex)
+        {
             Mensageiro.mensagemError("Não foi suportada a codificação de criptografia!!");
         }
     }
 
-    @Override
-    public Usuario autenticar() 
+    public Usuario autenticar()
     {
         UsuarioModel modelo = new UsuarioModel();
         return modelo.autenticar(this);
     }
 
-    @Override
-    public Usuario validarLogin() 
+    public Usuario validarLogin()
     {
-       UsuarioModel modelo = new UsuarioModel();
-       return modelo.validarLogin(this);
+        UsuarioModel modelo = new UsuarioModel();
+        return modelo.validarLogin(this);
     }
 
-    @Override
     public List<String> paginasAcesso() throws Exception
     {
         List<String> lista = new ArrayList<>();
@@ -156,18 +201,18 @@ public class Usuario implements Serializable,IUsuario
         AcessoModel acessoModel = new AcessoModel();
         List<Acesso> listaAcesso = acessoModel.listar(obj);
         List<String> paginas = new ArrayList<>();
-        
-        for(Acesso acesso: listaAcesso){
+
+        for (Acesso acesso : listaAcesso)
+        {
             Pagina pagina = new Pagina();
             pagina.setID(acesso.getPagina().getID());
             paginas.add(pagina.consultarNomePagina(pagina));
         }
         return paginas;
-       
+
     }
 
-    @Override
-    public String consultarFuncao() throws  Exception
+    public String consultarFuncao() throws Exception
     {
         FuncaoModel model = new FuncaoModel();
         Funcao obj = new Funcao();
@@ -175,43 +220,26 @@ public class Usuario implements Serializable,IUsuario
         obj = model.consultarPorID(obj);
         return obj.getDescricao();
     }
-    
-    @Override
-    public List<Usuario> listar() throws  Exception
+
+    public List<Usuario> listar() throws Exception
     {
         UsuarioModel model = new UsuarioModel();
         return model.listar();
     }
-    
-    public void cadastrar()throws Exception
-    {
-        UsuarioModel model = new UsuarioModel();
-        model.salvar(this);
-    }
-    
-    public void editar(){
-        UsuarioModel model = new UsuarioModel();
-        model.atualizar(this);
-    }
-    
-    public void excluir()
-    {
-        UsuarioModel model = new UsuarioModel();
-        model.excluir(this);
-    }
-    
+
     public Usuario consultar() throws Exception
     {
         UsuarioModel model = new UsuarioModel();
         return model.consultarPorID(this);
     }
-    
-    public Usuario consultarPorEmail() throws Exception{
+
+    public Usuario consultarPorEmail() throws Exception
+    {
         UsuarioModel model = new UsuarioModel();
         return model.consultarPorEmail(this);
     }
-    
-   public List<Usuario> listarPorFiltro(String filtro) throws Exception
+
+    public List<Usuario> listarPorFiltro(String filtro) throws Exception
     {
         UsuarioModel model = new UsuarioModel();
         return model.listarPorFiltro(filtro);

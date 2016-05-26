@@ -20,58 +20,75 @@ import org.aadsp.utils.Response;
  */
 @ViewScoped
 @Named
-public class ColaboradorConsultar extends ABaseNamed {
+public class ColaboradorConsultar extends ABaseNamed
+{
 
-    public ColaboradorConsultar() {
-        try {
+    public ColaboradorConsultar()
+    {
+        try
+        {
             this.colaborador = new Colaborador();
             this.listaColaborador = this.colaborador.listar();
             this.filtro = new Filtro();
             criarFiltro();
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             Mensageiro.mensagemError("Erro ao listar colaboradores cadastrados!!");
         }
     }
 
-    private void criarFiltro() {
+    private void criarFiltro()
+    {
         Map<String, String> atributo = new HashMap<>();
         Map<String, String> atributoClasse = new HashMap<>();
 
         atributo.put("Nome", "u.nome");
         atributo.put("Função", "f.descricao");
-        
+
         atributoClasse.put("u.nome", "Usuario");
         atributoClasse.put("f.descricao", "Funcao");
         filtro.setAtributo(atributo, atributoClasse);
     }
 
-    public List<Colaborador> getListarColaboradores() {
+    public List<Colaborador> getListarColaboradores()
+    {
         return this.listaColaborador;
     }
 
-    public void editar(Colaborador colaborador) {
-        try {
+    public void editar(Colaborador colaborador)
+    {
+        try
+        {
             Response.redirect("/web/faces/views/colaboradores/ColaboradorEditar.xhtml?colaborador=" + Criptografia.codificarParaBase64(colaborador.getID().toString()));
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             Mensageiro.mensagemError("Erro ao selecionar colaborador!!");
         }
     }
 
-    public Filtro getFiltro() {
+    public Filtro getFiltro()
+    {
         return filtro;
     }
 
-    public void setFiltro(Filtro filtro) {
+    public void setFiltro(Filtro filtro)
+    {
         this.filtro = filtro;
     }
-    
-    public void filtroConsulta() {
-        try {
-            if (this.filtro.filtro.endsWith(")")) {
+
+    public void filtroConsulta()
+    {
+        try
+        {
+            if (this.filtro.filtro.endsWith(")"))
+            {
                 listaColaborador = this.colaborador.listarPorFiltro(filtro.filtro);
-            }else
+            } else
+            {
                 listaColaborador = this.colaborador.listar();
-        } catch (Exception e) {
+            }
+        } catch (Exception e)
+        {
             Mensageiro.mensagemError("Não foi possível consultar pelo filtro gerado!!");
         }
     }

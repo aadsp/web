@@ -1,4 +1,3 @@
-
 package org.aadsp.annotations;
 
 import java.io.Serializable;
@@ -12,60 +11,97 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.aadsp.annotations.model.ColaboradorModel;
+import org.aadsp.interfaces.IAnnotations;
 
 @Entity
-@Table(name="COLABORADOR.COLABORADOR_AADSP_COLABORADOR")
-public class Colaborador implements Serializable
+@Table(name = "COLABORADOR.COLABORADOR_AADSP_COLABORADOR")
+public class Colaborador implements Serializable, IAnnotations
 {
+
     @Id
     @GeneratedValue
-    @Column(name="ID_colaborador") private Integer ID;
-    @Column(name="numeroPIS") private String numeroPIS;
-    @Column(name="dataContrato") private Date dataContrato;
-    @Column(name="valorBruto") private double valorBruto;
-    
-    @OneToOne
-    @JoinColumn(name="ID_usuario") private Usuario usuario;
-    
+    @Column(name = "ID_colaborador")
+    private Integer ID;
+    @Column(name = "numeroPIS")
+    private String numeroPIS;
+    @Column(name = "dataContrato")
+    private Date dataContrato;
+    @Column(name = "valorBruto")
+    private double valorBruto;
 
-    public Integer getID() {
+    @OneToOne
+    @JoinColumn(name = "ID_usuario")
+    private Usuario usuario;
+
+    public Integer getID()
+    {
         return ID;
     }
 
-    public void setID(Integer ID) {
+    public void setID(Integer ID)
+    {
         this.ID = ID;
     }
 
-    public Usuario getUsuario() {
+    public Usuario getUsuario()
+    {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(Usuario usuario)
+    {
         this.usuario = usuario;
     }
-    
-    public String getNumeroPIS() {
+
+    public String getNumeroPIS()
+    {
         return numeroPIS;
     }
 
-    public void setNumeroPIS(String numeroPIS) {
+    public void setNumeroPIS(String numeroPIS)
+    {
         this.numeroPIS = numeroPIS;
     }
 
-    public Date getDataContrato() {
+    public Date getDataContrato()
+    {
         return dataContrato;
     }
 
-    public void setDataContrato(Date dataContrato) {
+    public void setDataContrato(Date dataContrato)
+    {
         this.dataContrato = dataContrato;
     }
 
-    public double getValorBruto() {
+    public double getValorBruto()
+    {
         return valorBruto;
     }
 
-    public void setValorBruto(double valorBruto) {
+    public void setValorBruto(double valorBruto)
+    {
         this.valorBruto = valorBruto;
+    }
+
+    @Override
+    public void cadastrar()
+    {
+        ColaboradorModel model = new ColaboradorModel();
+        model.salvar(this);
+    }
+
+    @Override
+    public void excluir()
+    {
+        ColaboradorModel model = new ColaboradorModel();
+        model.excluir(this);
+    }
+
+    @Override
+    public void editar()
+    {
+        ColaboradorModel model = new ColaboradorModel();
+        model.atualizar(this);
     }
 
     public String consultarNomeColaborador() throws Exception
@@ -74,7 +110,7 @@ public class Colaborador implements Serializable
         model.setID(this.usuario.getID());
         return model.consultar().getNome();
     }
-    
+
     public String consultarFuncaoColaborador() throws Exception
     {
         Usuario modelUsuario = new Usuario();
@@ -84,34 +120,19 @@ public class Colaborador implements Serializable
         model.setID(modelUsuario.getFuncao().getID());
         return model.consultarPorID().getDescricao();
     }
-    
+
     public Colaborador consultar() throws Exception
     {
         ColaboradorModel model = new ColaboradorModel();
         return model.consultarPorID(this);
     }
-    
+
     public List<Colaborador> listar() throws Exception
     {
-        ColaboradorModel  model = new ColaboradorModel();
+        ColaboradorModel model = new ColaboradorModel();
         return model.listar();
     }
-    
-    public void cadastrar(){
-        ColaboradorModel model = new ColaboradorModel();
-        model.salvar(this);
-    }
-    
-    public void excluir(){
-        ColaboradorModel model = new ColaboradorModel();
-        model.excluir(this);
-    }
-    
-    public void editar(){
-        ColaboradorModel model = new ColaboradorModel();
-        model.atualizar(this);
-    }
-    
+
     public List<Colaborador> listarPorFiltro(String filtro) throws Exception
     {
         ColaboradorModel model = new ColaboradorModel();

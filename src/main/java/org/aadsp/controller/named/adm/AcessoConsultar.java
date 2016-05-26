@@ -20,63 +20,79 @@ import org.aadsp.utils.Response;
  */
 @ViewScoped
 @Named
-public class AcessoConsultar extends ABaseNamed {
+public class AcessoConsultar extends ABaseNamed
+{
 
-    public AcessoConsultar() {
-        try {
+    public AcessoConsultar()
+    {
+        try
+        {
             this.acesso = new Acesso();
             this.filtro = new Filtro();
             this.listaAcesso = this.acesso.listar();
             criarFiltro();
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             Mensageiro.mensagemError("Erro ao listar Funções por páginas!!");
         }
     }
-    
-     private void criarFiltro() {
+
+    private void criarFiltro()
+    {
         Map<String, String> atributo = new HashMap<>();
         Map<String, String> atributoClasse = new HashMap<>();
-        
+
         atributo.put("Função", "f.descricao");
         atributo.put("Página", "p.nome");
-        
+
         atributoClasse.put("f.descricao", "Funcao");
         atributoClasse.put("p.nome", "Pagina");
         filtro.setAtributo(atributo, atributoClasse);
     }
 
-    public List<Acesso> getListarAcessoFuncao() {
+    public List<Acesso> getListarAcessoFuncao()
+    {
         return listaAcesso;
     }
 
-    public void editar(Acesso acessoFuncao) {
-        try {
+    public void editar(Acesso acessoFuncao)
+    {
+        try
+        {
             Response.redirect("/web/faces/views/adm/AcessoEditar.xhtml?Acesso=" + Criptografia.codificarParaBase64(Integer.toString(acessoFuncao.getID())));
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             Mensageiro.mensagemError("Erro ao selecionar controle de acesso!!");
         }
     }
 
-    public Filtro getFiltro() {
+    public Filtro getFiltro()
+    {
         return filtro;
     }
 
-    public void setFiltro(Filtro filtro) {
+    public void setFiltro(Filtro filtro)
+    {
         this.filtro = filtro;
     }
-    
-    
-    public void filtroConsulta() {
-        try {
-            if (this.filtro.filtro.endsWith(")")) {
+
+    public void filtroConsulta()
+    {
+        try
+        {
+            if (this.filtro.filtro.endsWith(")"))
+            {
                 listaAcesso = this.acesso.listarPorFiltro(filtro.filtro);
-            }else
+            } else
+            {
                 listaAcesso = this.acesso.listar();
-        } catch (Exception e) {
+            }
+        } catch (Exception e)
+        {
             Mensageiro.mensagemError("Não foi possível consultar pelo filtro gerado!!");
         }
     }
-    
+
     private Acesso acesso;
     private List<Acesso> listaAcesso;
     private Filtro filtro;

@@ -12,36 +12,36 @@ import org.aadsp.utils.Filtro;
 import org.aadsp.utils.Mensageiro;
 import org.aadsp.utils.Response;
 
-/**
- * Classe que representa o objeto de tela Pessoal Consulta
- *
- * @author Felipe Coelho
- * @version 02/05/2016
- */
+
 @ViewScoped
 @Named
-public class StakeholderConsultar extends ABaseNamed {
+public class StakeholderConsultar extends ABaseNamed
+{
 
-    public StakeholderConsultar() {
-        try {
+    public StakeholderConsultar()
+    {
+        try
+        {
             this.stakeholder = new Stakeholder();
             this.listaStakeholder = this.stakeholder.listar();
             this.filtro = new Filtro();
             criarFiltro();
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             Mensageiro.mensagemError("Erro ao listar stakeholders cadastrados!!");
         }
     }
-    
-    private void criarFiltro() {
+
+    private void criarFiltro()
+    {
         Map<String, String> atributo = new HashMap<>();
         Map<String, String> atributoClasse = new HashMap<>();
-        
+
         atributo.put("Nome", "nome");
         atributo.put("RG", "rg");
         atributo.put("CPF", "cpf");
-         atributo.put("E-mail", "email");
-        
+        atributo.put("E-mail", "email");
+
         atributoClasse.put("nome", "Stakeholder");
         atributoClasse.put("rg", "Stakeholder");
         atributoClasse.put("cpf", "Stakeholder");
@@ -49,33 +49,45 @@ public class StakeholderConsultar extends ABaseNamed {
         filtro.setAtributo(atributo, atributoClasse);
     }
 
-    public List<Stakeholder> getListarStakeholders() {
+    public List<Stakeholder> getListarStakeholders()
+    {
         return this.listaStakeholder;
     }
 
-    public void editar(Stakeholder stakeholder) {
-        try {
+    public void editar(Stakeholder stakeholder)
+    {
+        try
+        {
             Response.redirect("/web/faces/views/colaboradores/StakeholderEditar.xhtml?Stakeholder=" + Criptografia.codificarParaBase64(stakeholder.getID().toString()));
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             Mensageiro.mensagemError("Erro ao selecionar Página!!");
         }
     }
 
-    public Filtro getFiltro() {
+    public Filtro getFiltro()
+    {
         return filtro;
     }
 
-    public void setFiltro(Filtro filtro) {
+    public void setFiltro(Filtro filtro)
+    {
         this.filtro = filtro;
     }
-    
-    public void filtroConsulta() {
-        try {
-            if (this.filtro.filtro.endsWith(")")) {
+
+    public void filtroConsulta()
+    {
+        try
+        {
+            if (this.filtro.filtro.endsWith(")"))
+            {
                 listaStakeholder = this.stakeholder.listarPorFiltro(filtro.filtro);
-            }else
+            } else
+            {
                 listaStakeholder = this.stakeholder.listar();
-        } catch (Exception e) {
+            }
+        } catch (Exception e)
+        {
             Mensageiro.mensagemError("Não foi possível consultar pelo filtro gerado!!");
         }
     }

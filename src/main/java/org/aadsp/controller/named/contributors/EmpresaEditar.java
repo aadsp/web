@@ -1,4 +1,3 @@
-
 package org.aadsp.controller.named.contributors;
 
 import javax.faces.view.ViewScoped;
@@ -9,22 +8,18 @@ import org.aadsp.utils.Criptografia;
 import org.aadsp.utils.Mensageiro;
 import org.aadsp.utils.Response;
 
-/**
- * Classe que representa o objeto de tela Pessoal Edição
- * @author Felipe Coelho
- * @version  01/05/2016
- */
+
 @ViewScoped
 @Named
 public class EmpresaEditar extends ABaseNamed
 {
-    
+
     public EmpresaEditar()
     {
         this.empresa = new Empresa();
         carregarDadosIniciais();
     }
-   
+
     private void carregarDadosIniciais()
     {
         try
@@ -32,41 +27,43 @@ public class EmpresaEditar extends ABaseNamed
             int IDEmpresa = Integer.parseInt(Criptografia.decodificarBase64(Response.getParametroURL("empresa")));
             this.empresa.setID(IDEmpresa);
             this.empresa = empresa.consultarPorID();
-        }catch(Exception e)
+        } catch (Exception e)
         {
             Mensageiro.mensagemError("Não foi possível carregar os dados iniciais da página");
         }
     }
-    
+
     public void excluir()
     {
-      try
-      {
-        empresa.excluir();
-        Response.redirect("/web/faces/views/colaboradores/EmpresaConsultar.xhtml");
-      }catch(Exception e)
-      {
-          Mensageiro.mensagemError("Não foi possível excluir os dados deste stakeholder!");
-      }
-    }
-    
-    public void editar()
-    {
-      try
-      {
-        empresa.editar();
-        Mensageiro.mensagemInfo("Dados da empresa atualizado com sucesso");
-      }catch(Exception e)
-      {
-          Mensageiro.mensagemError("Não foi possível atualizar os dados do empresa!");
-      }
+        try
+        {
+            empresa.excluir();
+            Response.redirect("/web/faces/views/colaboradores/EmpresaConsultar.xhtml");
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemError("Não foi possível excluir os dados deste stakeholder!");
+        }
     }
 
-    public Empresa getEmpresa() {
+    public void editar()
+    {
+        try
+        {
+            empresa.editar();
+            Mensageiro.mensagemInfo("Dados da empresa atualizado com sucesso");
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemError("Não foi possível atualizar os dados do empresa!");
+        }
+    }
+
+    public Empresa getEmpresa()
+    {
         return empresa;
     }
 
-    public void setEmpresa(Empresa empresa) {
+    public void setEmpresa(Empresa empresa)
+    {
         this.empresa = empresa;
     }
 
