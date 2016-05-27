@@ -39,5 +39,7 @@
     <mapping class="org.aadsp.annotations.Colaborador" />
     <mapping class="org.aadsp.annotations.Projeto" />
     <mapping class="org.aadsp.annotations.ReuniaoAta" />
+    <mapping class="org.aadsp.annotations.DiagramaUMLTipo" />
+    <mapping class="org.aadsp.annotations.DiagramaUML" />
   </session-factory>
 </hibernate-configuration>

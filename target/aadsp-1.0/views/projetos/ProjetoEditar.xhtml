@@ -36,7 +36,7 @@
                                 </p:menubar>    
                                 <p:tabView scrollable="true">
                                     <p:tab title="Dados gerais">
-                                       <h:panelGrid columns="2" cellpadding="5">
+                                        <h:panelGrid columns="2" cellpadding="5">
                                             <p:outputLabel for="titulo" value="Título:" />
                                             <h:outputText id="titulo"  value="#{projetoEditar.projeto.tap.nome}"/>
                                             <p:outputLabel for="justificativa" value="Justificativa" />
@@ -50,9 +50,11 @@
 
                                     </p:tab>
                                     <p:tab title="Diagramas UML">
-
+                                        <p:contentFlow value="#{projetoEditar.listarDiagramasUMLDoProjeto()}" var="diagrama">
+                                            <p:graphicImage name="diagramas/uml/#{diagrama.imagem}" styleClass="content" />
+                                            <div class="caption">#{diagrama.diagramaUMLTipo.descricao}</div>
+                                        </p:contentFlow>
                                     </p:tab>
-
                                 </p:tabView>
                             </div>
                             <div class="space-20"></div>
@@ -66,12 +68,25 @@
                     <div class="space-50"></div>
 
                     <!--Modal região -->
-                    <p:dialog header="DIAGRAMAS UML DO PROJETO" showEffect="explode" widgetVar="diagramasUML" modal="true" width="600" height="300">
-                       
+                    <p:dialog header="DIAGRAMAS UML DO PROJETO" showEffect="explode" widgetVar="diagramasUML" modal="true" width="800" height="300">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel for="imgDiagramaUML" value="Diagrama UML(imagem):" />
+                            <p:outputLabel id="imgDiagramaUML"  value="#{projetoEditar.imagem}"/>
+                            <p:fileUpload fileUploadListener="#{projetoEditar.fileUploadImagem}" mode="advanced" dragDropSupport="false"
+                                          update="imgDiagramaUML" sizeLimit="300000" fileLimit="1" allowTypes="/(\.|\/)(jpe?g|png)$/" />
+
+                        </h:panelGrid>
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel for="tipoDiagrama" value="Tipo do diagrama: " />
+                            <p:selectOneMenu id="tipoDiagrama"  value="#{projetoEditar.tipoDiagramaSelecionado}" style="width:250px">
+                                <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
+                                <f:selectItems value="#{projetoEditar.listarTiposDiagramUML()}" />
+                            </p:selectOneMenu>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" cellpadding="5">
+                            <p:commandButton value="SALVAR" update="growl" actionListener="#{projetoEditar.salvarDiagrama()}" />
+                        </h:panelGrid>
                     </p:dialog>
-
-                    
-
                 </h:form>
             </ui:define>
         </ui:composition>
