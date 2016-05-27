@@ -44,15 +44,19 @@
                                         </h:panelGrid>
                                     </p:tab>
                                     <p:tab title="Cronograma">
-
+                                            
                                     </p:tab>
                                     <p:tab title="Custo">
                                         <h:panelGrid columns="2" columnClasses="left,right" style="width:100%">
-                                            <h:panelGrid columns="2" columnClasses="left,right" >
-                                                
+                                            <h:panelGrid columns="2" cellpadding="5" columnClasses="left,right" >
+                                                <p:outputLabel for="custo" value="Investimento:" />
+                                                <h:inputText id="custo"  value="#{projetoEditar.projeto.investimento}">
+                                                    <f:convertNumber pattern="#,##0.00"></f:convertNumber>
+                                                    <p:ajax update="custo" process="custo" event="change" />
+                                                </h:inputText>
                                             </h:panelGrid>
                                             <h:panelGrid columns="1" columnClasses="left,right">
-                                            <p:chart type="bar" model="#{projetoEditar.graficoCusto}" style="width:400px;" />
+                                                <p:chart type="bar" model="#{projetoEditar.graficoCusto}" style="width:400px;" />
                                             </h:panelGrid>
                                         </h:panelGrid>
 
