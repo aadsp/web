@@ -123,7 +123,7 @@ public class ProjetoCadastrar extends ABaseNamed implements ICadastro
 
     public int getTapSelecionado()
     {
-        return projeto.getTap().getID();
+        return tapSelecionado;
     }
 
     public void setTapSelecionado(int tapSelecionado)
