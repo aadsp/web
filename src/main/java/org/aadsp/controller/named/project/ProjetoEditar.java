@@ -16,6 +16,10 @@ import org.aadsp.utils.Mensageiro;
 import org.aadsp.utils.Response;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
+import org.primefaces.model.chart.Axis;
+import org.primefaces.model.chart.AxisType;
+import org.primefaces.model.chart.BarChartModel;
+import org.primefaces.model.chart.ChartSeries;
 
 @ViewScoped
 @Named
@@ -26,8 +30,50 @@ public class ProjetoEditar extends ABaseNamed
     {
         this.projeto = new Projeto();
         carregarDadosIniciais();
+        criarGraficosTela();
+        
     }
+    
+    private void criarGraficosTela()
+    {
+        graficoCusto = inicializarBarrasDoGrafico();
+        graficoCusto.setTitle("CUSTO -  TAP / PROJETO");
+        graficoCusto.setAnimate(true);
+        graficoCusto.setLegendPosition("ne");
+        
+        Axis yAxis = graficoCusto.getAxis(AxisType.Y);
+        yAxis.setMin(0);
+        yAxis.setMax(10);
+        yAxis = graficoCusto.getAxis(AxisType.Y);
+        
+        yAxis.setMin(0);
+        if(projeto.getTap().getCusto() <= projeto.getInvestimento())
+             yAxis.setMax(projeto.getInvestimento()*2);
+        else
+             yAxis.setMax(projeto.getTap().getCusto());
+       
+       
+    }
+    
+    private BarChartModel inicializarBarrasDoGrafico() {
+        BarChartModel model = new BarChartModel();
+ 
+        ChartSeries tap = new ChartSeries();
+        tap.setLabel("TAP");
+        tap.set("Custo R$", projeto.getTap().getCusto());
+        
+ 
+        ChartSeries proj= new ChartSeries();
+        proj.setLabel("PROJETO");
+        proj.set("Custo R$", projeto.getInvestimento());
 
+ 
+        model.addSeries(tap);
+        model.addSeries(proj);
+         
+        return model;
+    }
+    
     private void carregarDadosIniciais()
     {
         try
@@ -171,9 +217,15 @@ public class ProjetoEditar extends ABaseNamed
         }
         return null;
     }
+    
+    public BarChartModel getGraficoCusto() {
+        return graficoCusto;
+    }
+    
 
     private Projeto projeto;
     private UploadedFile imagem;
+    private BarChartModel graficoCusto;
     private int tipoDiagramaSelecionado;
     private String caminhoImagemServidor;
     private byte[] arquivoImagem;
