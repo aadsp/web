@@ -66,11 +66,11 @@ public class ATAConsultar extends ABaseNamed
         return this.listaAtasReuniao;
     }
 
-    public void editar(Projeto projeto)
+    public void editar(ReuniaoAta reuniaoAta)
     {
         try
         {
-            Response.redirect("/web/faces/views/projetos/AtasEditar.xhtml?ATA=" + Criptografia.codificarParaBase64(projeto.getID().toString()));
+            Response.redirect("/web/faces/views/projetos/ATAEditar.xhtml?ReuniaoAta=" + Criptografia.codificarParaBase64(reuniaoAta.getID().toString()));
         } catch (Exception e)
         {
             Mensageiro.mensagemError("Erro ao selecionar Ata do Projeto!!");
