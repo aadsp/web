@@ -9,8 +9,6 @@ import org.aadsp.utils.Mensageiro;
 import org.aadsp.utils.Session;
 
 /**
- * Classe que representa o objeto de tela Pessoal Consulta
- *
  * @author Felipe Coelho
  * @version 25/04/2016
  */

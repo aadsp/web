@@ -68,6 +68,12 @@ public class PessoalEditar extends ABaseNamed
             Funcao funcao = new Funcao();
             funcao.setID(funcaoSelecionada);
             this.usuario.setFuncao(funcao);
+            
+            String caminhoServidor = FacesContext.getCurrentInstance().getExternalContext().getRealPath("");
+            
+            File file = new File(caminhoServidor + "/img/user/" + usuario.getImagem());
+            file.delete();
+            
             this.usuario.setImagem(novoNomeImagem);
             this.usuario.editar();
             Mensageiro.mensagemInfo("Dados do usuário foram atualizados com sucesso!!");
