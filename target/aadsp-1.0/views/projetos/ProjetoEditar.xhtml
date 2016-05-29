@@ -73,10 +73,28 @@
                                         </h:panelGrid>
                                     </p:tab>
                                     <p:tab title="Diagramas UML">
-                                        <p:contentFlow value="#{projetoEditar.listarDiagramasUMLDoProjeto()}" var="diagrama">
-                                            <p:graphicImage name="diagramas/uml/#{diagrama.imagem}" styleClass="content" />
-                                            <div class="caption">#{diagrama.diagramaUMLTipo.descricao}</div>
-                                        </p:contentFlow>
+
+                                        <p:dataTable id="tbl" style="text-align:center" var="diagrama" value="#{projetoEditar.listarDiagramasUMLDoProjeto()}"
+                                                     paginator="true" rows="10">
+                                            <p:column width="360">
+                                                <f:facet name="header">
+                                                    <h:outputText value="diagrama" />
+                                                </f:facet>
+                                                <h:outputText value="#{diagrama.diagramaUMLTipo.descricao}" />
+                                            </p:column>
+                                            <p:column style="width:10px;text-align: center" >
+                                                <f:facet name="header">
+                                                    <h:outputText value="remover" />
+                                                </f:facet>
+                                                <p:commandButton icon="ui-icon-close" actionListener="#{projetoEditar.remvoerDiagramaSelecionado(diagrama)}"/>
+                                            </p:column>
+                                            <p:column style="width:10px;text-align: center" >
+                                                <f:facet name="header">
+                                                    <h:outputText value="detalhar" />
+                                                </f:facet>
+                                                <h:commandLink value="imagem" target="_blank" actionListener="#{projetoEditar.selecionarDiagrama(diagrama)}"/>
+                                            </p:column>
+                                        </p:dataTable>
                                     </p:tab>
                                 </p:tabView>
                             </div>
@@ -91,7 +109,8 @@
                     <div class="space-50"></div>
 
                     <!--Modal região -->
-                    <p:dialog header="DIAGRAMAS UML DO PROJETO" showEffect="explode" widgetVar="diagramasUML" modal="true" width="800" height="300">
+                    <p:dialog header="DIAGRAMAS UML DO PROJETO" showEffect="explode" 
+                              widgetVar="diagramasUML" modal="true" width="800" height="300">
                         <h:panelGrid columns="2" cellpadding="5">
                             <p:outputLabel for="imgDiagramaUML" value="Diagrama UML(imagem):" />
                             <p:outputLabel id="imgDiagramaUML"  value="#{projetoEditar.imagem}"/>

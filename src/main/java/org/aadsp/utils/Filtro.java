@@ -1,5 +1,6 @@
 package org.aadsp.utils;
 
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,7 +9,7 @@ import java.util.Map;
  *
  * @author Felipe
  */
-public class Filtro
+public class Filtro implements Serializable
 {
 
     public Filtro()

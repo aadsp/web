@@ -1,5 +1,6 @@
 package org.aadsp.controller.named.project;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -77,25 +78,24 @@ public class ProjetoEditar extends ABaseNamed
         LineChartModel model = new LineChartModel();
         SimpleDateFormat formatoAnoMesDia = new SimpleDateFormat("yyyy-MM-dd");
         Calendar calendar = new GregorianCalendar();
-        
-        
+
         LineChartSeries tap = new LineChartSeries();
         tap.setLabel("Tap");
         calendar.setTime(projeto.getTap().getDataInicio());
-        tap.set(formatoAnoMesDia.format(projeto.getTap().getDataInicio()),calendar.get(Calendar.DAY_OF_MONTH));
+        tap.set(formatoAnoMesDia.format(projeto.getTap().getDataInicio()), calendar.get(Calendar.DAY_OF_MONTH));
         calendar.setTime(projeto.getTap().getDataFim());
-        tap.set(formatoAnoMesDia.format(projeto.getTap().getDataFim()),calendar.get(Calendar.DAY_OF_MONTH));
+        tap.set(formatoAnoMesDia.format(projeto.getTap().getDataFim()), calendar.get(Calendar.DAY_OF_MONTH));
 
         LineChartSeries proj = new LineChartSeries();
         proj.setLabel("Projeto");
         calendar.setTime(projeto.getDataInicio());
-        proj.set(formatoAnoMesDia.format(projeto.getDataInicio()),calendar.get(Calendar.DAY_OF_MONTH));
+        proj.set(formatoAnoMesDia.format(projeto.getDataInicio()), calendar.get(Calendar.DAY_OF_MONTH));
         calendar.setTime(projeto.getDataTermino());
-        proj.set(formatoAnoMesDia.format(projeto.getDataTermino()),calendar.get(Calendar.DAY_OF_MONTH));
-        
+        proj.set(formatoAnoMesDia.format(projeto.getDataTermino()), calendar.get(Calendar.DAY_OF_MONTH));
+
         model.addSeries(tap);
         model.addSeries(proj);
-        
+
         model.setTitle("Zoom para detalhamento");
         model.setZoom(true);
         model.getAxis(AxisType.Y).setLabel("Dia");
@@ -103,7 +103,7 @@ public class ProjetoEditar extends ABaseNamed
         axis.setTickAngle(0);
         axis.setMax(formatoAnoMesDia.format(projeto.getDataTermino()));
         axis.setTickFormat("%b, %y");
-         
+
         model.getAxes().put(AxisType.X, axis);
         return model;
     }
@@ -279,7 +279,7 @@ public class ProjetoEditar extends ABaseNamed
     {
         return graficoCronograma;
     }
-    
+
     public Date getDataInicio()
     {
         return dataInicio;
@@ -303,7 +303,38 @@ public class ProjetoEditar extends ABaseNamed
         java.sql.Date dataSql = new java.sql.Date(date.getTime());
         this.projeto.setDataTermino(dataSql);
     }
-    
+
+    public void remvoerDiagramaSelecionado(DiagramaUML diagrama)
+    {
+        try
+        {
+            String caminhoServidor = FacesContext.getCurrentInstance().getExternalContext().getRealPath("");
+
+            File file = new File(caminhoServidor + "/img/diagramas/uml/" + diagrama.getImagem());
+            file.delete();
+
+            diagrama.excluir();
+
+            Response.redirect("/web/faces/views/projetos/ProjetoEditar.xhtml?Projeto=" + Criptografia.codificarParaBase64(projeto.getID().toString()));
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemError("Não foi possível excluir o diagrama selecionado!!");
+        }
+    }
+
+    public void selecionarDiagrama(DiagramaUML diagrama)
+    {
+        try
+        {
+            Response.redirect("../../img/diagramas/uml/"+diagrama.getImagem());
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemInfo("Erro ao selecionar imagem do diagrama UML");
+        }
+
+    }
+
+    private DiagramaUML diagramaSelecionado;
     private Projeto projeto;
     private UploadedFile imagem;
     private BarChartModel graficoCusto;
