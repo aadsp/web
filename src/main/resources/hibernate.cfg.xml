@@ -41,5 +41,7 @@
     <mapping class="org.aadsp.annotations.ReuniaoAta" />
     <mapping class="org.aadsp.annotations.DiagramaUMLTipo" />
     <mapping class="org.aadsp.annotations.DiagramaUML" />
+    <mapping class="org.aadsp.annotations.DocumentoRequisitos" />
+    <mapping class="org.aadsp.annotations.DocumentoRequisitosTemplate" />
   </session-factory>
 </hibernate-configuration>

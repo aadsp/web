@@ -33,6 +33,7 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\StakeholderModel.ja
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\StakeholderTAPModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Responsavel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\TAPCadastrar.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\DocumentoRequisitos.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\utils\Response.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\TAPEscopoArea.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\DiagramaUML.java
@@ -66,6 +67,7 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\PaginaCadastrar.
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\EquipeModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Colaborador.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\DiagramaUMLTipo.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\DocumentoRequisitosTemplate.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\PaginalConsultar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\utils\settings\ConexaoSQLServer.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Empresa.java
@@ -75,9 +77,12 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\ATAConsultar
 G:\PROJETO TCC\web\src\main\java\org\aadsp\interfaces\ICadastro.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\utils\TemplateEmail.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\ColaboradorModel.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\DocumentoRequisitosTemplateModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\StakeholderTAP.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\EmpresaModel.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\requisitos\DocumentoRequisitosConsultar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\TAPEscopoTipoModel.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\DocumentoRequisitosModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\PessoalCadastrar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\contributors\ColaboradorEditar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\AlterarSenha.java
