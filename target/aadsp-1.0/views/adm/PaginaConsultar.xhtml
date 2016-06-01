@@ -66,7 +66,8 @@
                                 <div>
                                     <div class="table-responsive">
 
-                                        <p:dataTable id="tbl" style="text-align:center" var="pagina" value="#{paginalConsultar.listarPaginas}"
+                                        <p:dataTable id="tbl" style="text-align:center" var="pagina" emptyMessage="Nenhum Registro Encontrado!"
+                                                     value="#{paginalConsultar.listarPaginas}"
                                                      paginator="true" rows="10">
                                             <p:column width="400">
                                                 <f:facet name="header">

@@ -66,7 +66,8 @@
                                 <div>
                                     <div class="table-responsive">
 
-                                        <p:dataTable id="tbl" style="text-align:center" var="documentoRequisitos" value="#{documentoRequisitosConsultar.listarDocumentosDeRequisitos}"
+                                        <p:dataTable id="tbl" style="text-align:center" var="documentoRequisitos" emptyMessage="Nenhum Registro Encontrado!"
+                                                     value="#{documentoRequisitosConsultar.listarDocumentosDeRequisitos}"
                                                      paginator="true" rows="10">
                                             <p:column width="400">
                                                 <f:facet name="header">

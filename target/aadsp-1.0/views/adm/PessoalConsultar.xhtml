@@ -66,7 +66,8 @@
                         <div>
                             <div class="table-responsive">
                            
-                                <p:dataTable id="tbl" style="text-align:center" var="usuarios" value="#{pessoalConsultar.listarUsuarios}"
+                                <p:dataTable id="tbl" style="text-align:center" var="usuarios" emptyMessage="Nenhum Registro Encontrado!"
+                                             value="#{pessoalConsultar.listarUsuarios}"
                                                 paginator="true" rows="10">
                      
                                     <p:column width="380">

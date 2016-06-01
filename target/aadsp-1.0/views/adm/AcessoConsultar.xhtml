@@ -66,7 +66,8 @@
                         <div>
                             <div class="table-responsive">
                            
-                                <p:dataTable id="tbl" style="text-align:center" var="acessoFuncao" value="#{acessoConsultar.listarAcessoFuncao}"
+                                <p:dataTable id="tbl" style="text-align:center" var="acessoFuncao" emptyMessage="Nenhum Registro Encontrado!"
+                                             value="#{acessoConsultar.listarAcessoFuncao}"
                                                 paginator="true" rows="10">
                                     <p:column width="250">
                                            <f:facet name="header">

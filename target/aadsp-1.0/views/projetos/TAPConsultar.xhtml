@@ -68,7 +68,8 @@
                         <div>
                             <div class="table-responsive">
                            
-                                <p:dataTable id="tbl" style="text-align:center" var="tap" value="#{TAPConsultar.listarTAPs}"
+                                <p:dataTable id="tbl" style="text-align:center" var="tap" emptyMessage="Nenhum Registro Encontrado!"
+                                             value="#{TAPConsultar.listarTAPs}"
                                                 paginator="true" rows="10">
                                     <p:column width="360">
                                            <f:facet name="header">

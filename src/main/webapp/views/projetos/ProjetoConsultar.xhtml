@@ -67,7 +67,8 @@
                         <div class="space-30"></div>
                         <div>
                             <div class="table-responsive">
-                                <p:dataTable id="tbl" style="text-align:center" var="projeto" value="#{projetoConsultar.listarProjetos()}"
+                                <p:dataTable id="tbl" style="text-align:center" var="projeto" emptyMessage="Nenhum Registro Encontrado!"
+                                             value="#{projetoConsultar.listarProjetos()}"
                                                 paginator="true" rows="10">
                                     <p:column width="360">
                                            <f:facet name="header">

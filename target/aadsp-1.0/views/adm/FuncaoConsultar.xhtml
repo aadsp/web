@@ -66,7 +66,8 @@
                         <div>
                             <div class="table-responsive">
                            
-                                <p:dataTable id="tbl" style="text-align:center" var="funcoes" value="#{funcaoConsultar.listarFuncoes}"
+                                <p:dataTable id="tbl" style="text-align:center" var="funcoes" emptyMessage="Nenhum Registro Encontrado!"
+                                             value="#{funcaoConsultar.listarFuncoes}"
                                                 paginator="true" rows="10">
                                     
                                     <p:column width="100">

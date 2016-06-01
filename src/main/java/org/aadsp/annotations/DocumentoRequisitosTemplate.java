@@ -20,7 +20,8 @@ public class DocumentoRequisitosTemplate implements Serializable, IAnnotations
     @GeneratedValue
     @Column(name = "ID_documentoRequisitosTemplate")
     private Integer ID;
-    private Projeto projeto;
+    @Column(name = "nome")
+    private String nome;
     @Column(name = "introducao")
     private String introducao;
     @Column(name = "visaoGeral")
@@ -52,14 +53,14 @@ public class DocumentoRequisitosTemplate implements Serializable, IAnnotations
         this.ID = ID;
     }
 
-    public Projeto getProjeto()
+    public String getNome()
     {
-        return projeto;
+        return nome;
     }
 
-    public void setProjeto(Projeto projeto)
+    public void setNome(String nome)
     {
-        this.projeto = projeto;
+        this.nome = nome;
     }
 
     public String getIntroducao()

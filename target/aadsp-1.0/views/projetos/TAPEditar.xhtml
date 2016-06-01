@@ -61,7 +61,8 @@
                    </p:tab>
                    <p:tab title="Stakeholder">
                         <h:panelGrid columns="2" cellpadding="5">
-                            <p:dataTable id="tblStakeholder" style="text-align:center" var="stakeholder" value="#{TAPEditar.listarStakeholderTAP()}"
+                            <p:dataTable id="tblStakeholder" style="text-align:center" var="stakeholder" emptyMessage="Nenhum Registro Encontrado!"
+                                         value="#{TAPEditar.listarStakeholderTAP()}"
                                          paginator="true" rows="5">
                             <p:column width="100">
                                 <f:facet name="header">
@@ -129,7 +130,8 @@
                   <p:tab title="Responsável">
                       <a class="label label-info" style="color:#ffffff;font-size:14px">RESPONSÁVEL:</a>
                       <h:panelGrid columns="2" cellpadding="5">
-                          <p:dataTable id="tblusuarios" style="text-align:center" var="usuarios" value="#{TAPEditar.listarResponsaveis()}"
+                          <p:dataTable id="tblusuarios" style="text-align:center" var="usuarios" emptyMessage="Nenhum Registro Encontrado!"
+                                       value="#{TAPEditar.listarResponsaveis()}"
                                     paginator="true" rows="5">
                        <p:column width="30">
                            <f:facet name="header">
@@ -156,7 +158,8 @@
                       
                       <h:panelGrid columns="1" cellpadding="5">
                           <a class="label label-info" style="color:#ffffff;font-size:14px">EMPRESAS</a>
-                          <p:dataTable id="tblEmpresasPatrocinadoras" style="text-align:center" var="empresas" value="#{TAPEditar.listarEmpresasPatrocinadoras()}"
+                          <p:dataTable id="tblEmpresasPatrocinadoras" style="text-align:center" var="empresas" emptyMessage="Nenhum Registro Encontrado!"
+                                       value="#{TAPEditar.listarEmpresasPatrocinadoras()}"
                                     paginator="true" rows="5">
                        <p:column width="30">
                            <f:facet name="header">
@@ -172,7 +175,8 @@
                        </p:dataTable>
  
                       <a class="label label-info" style="color:#ffffff;font-size:14px">STAKEHOLDERS</a>
-                          <p:dataTable id="tblStakeholderPatrocinadores" style="text-align:center" var="stakeholder" value="#{TAPEditar.listarStakeholderPatrocinadores()}"
+                          <p:dataTable id="tblStakeholderPatrocinadores" style="text-align:center" var="stakeholder" emptyMessage="Nenhum Registro Encontrado!"
+                                       value="#{TAPEditar.listarStakeholderPatrocinadores()}"
                                     paginator="true" rows="5">
                        <p:column width="30">
                            <f:facet name="header">
@@ -192,7 +196,8 @@
                   <p:tab title="Escopo">
                       <a class="label label-info" style="color:#ffffff;font-size:14px">ESCOPO:</a>
                       <h:panelGrid columns="2" cellpadding="5">
-                          <p:dataTable id="tblescopo" style="text-align:center" var="escopo" value="#{TAPEditar.listarEscopo()}"
+                          <p:dataTable id="tblescopo" style="text-align:center" var="escopo" emptyMessage="Nenhum Registro Encontrado!"
+                                       value="#{TAPEditar.listarEscopo()}"
                                     paginator="true" rows="5">
                     <p:column width="90">
                            <f:facet name="header">
@@ -224,7 +229,8 @@
                   <p:tab title="Equipe">
                       <a class="label label-info" style="color:#ffffff;font-size:14px">EQUIPE:</a>
                         <h:panelGrid columns="2" cellpadding="5">
-                            <p:dataTable id="tblEquipe" style="text-align:center" var="funcao" value="#{TAPEditar.listarEquipe()}"
+                            <p:dataTable id="tblEquipe" style="text-align:center" var="funcao" emptyMessage="Nenhum Registro Encontrado!"
+                                         value="#{TAPEditar.listarEquipe()}"
                                          paginator="true" rows="5">
                             <p:column width="100">
                                 <f:facet name="header">
@@ -252,7 +258,8 @@
                 
                 <!--Modal região -->
                 <p:dialog header="Adicionar responsável ao projeto" showEffect="explode" widgetVar="responsavelProjeto" modal="true" width="600" height="300">
-                    <p:dataTable id="tblusuarios" style="text-align:center" var="usuarios" value="#{TAPEditar.listarUsuarios()}"
+                    <p:dataTable id="tblusuarios" style="text-align:center" var="usuarios" emptyMessage="Nenhum Registro Encontrado!"
+                                 value="#{TAPEditar.listarUsuarios()}"
                                  paginator="true" rows="5">
                     <p:column width="5">
                            <f:facet name="header">
@@ -302,7 +309,8 @@
                 
                 <p:dialog header="Adicionar equipe ao projeto" showEffect="explode" widgetVar="equipeProjeto" modal="true" width="500" height="350">
                     <h:panelGrid columns="2" cellpadding="5">
-                        <p:dataTable id="tblFuncoes" style="text-align:center" var="funcoes" value="#{TAPEditar.listarFuncoes()}"
+                        <p:dataTable id="tblFuncoes" style="text-align:center" var="funcoes" emptyMessage="Nenhum Registro Encontrado!"
+                                     value="#{TAPEditar.listarFuncoes()}"
                                      paginator="true" rows="5">
                             <p:column width="100">
                                 <f:facet name="header">
@@ -319,7 +327,8 @@
                 
                 <p:dialog header="Adicionar stakeholder ao projeto" showEffect="explode" widgetVar="stakeholdersProjeto" modal="true" width="500" height="350">
                 <h:panelGrid columns="2" cellpadding="5">
-                   <p:dataTable id="tblStakeholders" style="text-align:center" var="stakeholder" value="#{TAPEditar.listarStakeholders()}"
+                   <p:dataTable id="tblStakeholders" style="text-align:center" var="stakeholder" emptyMessage="Nenhum Registro Encontrado!"
+                                value="#{TAPEditar.listarStakeholders()}"
                                      paginator="true" rows="5">
                             <p:column width="100">
                                 <f:facet name="header">
@@ -336,7 +345,8 @@
             
             <p:dialog header="Adicionar empresa patrocinadora do projeto" showEffect="explode" widgetVar="patrocinadorEmpresaProjeto" modal="true" width="600" height="350">
                 <h:panelGrid columns="2" cellpadding="5">
-                    <p:dataTable id="tblEmpresaPatrocinador" style="text-align:center" var="empresa" value="#{TAPEditar.listarEmpresasPatrocinadora()}"
+                    <p:dataTable id="tblEmpresaPatrocinador" style="text-align:center" var="empresa" emptyMessage="Nenhum Registro Encontrado!"
+                                 value="#{TAPEditar.listarEmpresasPatrocinadora()}"
                                      paginator="true" rows="5">
                             <p:column width="50">
                                 <f:facet name="header">
@@ -359,7 +369,8 @@
             
              <p:dialog header="Adicionar stakeholder patrocinador do projeto" showEffect="explode" widgetVar="patrocinadorStakeholderProjeto" modal="true" width="600" height="350">
                 <h:panelGrid columns="2" cellpadding="5">
-                    <p:dataTable id="tblStakeholdersPatrocinador" style="text-align:center" var="stakeholder" value="#{TAPEditar.listarStakeholderPatrocinador()}"
+                    <p:dataTable id="tblStakeholdersPatrocinador" style="text-align:center" var="stakeholder" emptyMessage="Nenhum Registro Encontrado!"
+                                 value="#{TAPEditar.listarStakeholderPatrocinador()}"
                                      paginator="true" rows="5">
                             <p:column width="50">
                                 <f:facet name="header">
