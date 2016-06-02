@@ -9,6 +9,7 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\utils\Session.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\contributors\EmpresaConsultar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\utils\Mensageiro.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\AcessoConsultar.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\DocumentoRequisitosTipoModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\AlterarImagem.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\interfaces\ICRUD.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\ReunioesConsultar.java
@@ -66,6 +67,7 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\utils\settings\DadosEmail.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\StakeholderModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\utils\Response.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\DiagramaUML.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\DocumentoRequisitosTipo.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Patrocinador.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\FuncaoModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\interfaces\ABaseNamed.java

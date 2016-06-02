@@ -10,7 +10,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.aadsp.annotations.model.DocumentoRequisitosModel;
-import org.aadsp.annotations.model.PaginaModel;
 import org.aadsp.interfaces.IAnnotations;
 
 @Entity
@@ -37,14 +36,17 @@ public class DocumentoRequisitos implements Serializable, IAnnotations
     private String descricaoReferencia;
     @Column(name = "abrangenciaSistemasRelacionados")
     private String abrangenciaSistemasRelacionados;
-    @Column(name = "descricaoGeralUsuarios")
-    private String descricaoGeralUsuarios;
+    @Column(name = "descricaoGeralAtores")
+    private String descricaoGeralAtores;
     @Column(name = "descricaoGeralSistema")
     private String descricaoGeralSistema;
     @Column(name = "descricaoRequisitosFuncionais")
     private String descricaoRequisitosFuncionais;
     @Column(name = "descricaoRequisitosNFuncionais")
     private String descricaoRequisitosNFuncionais;
+    @OneToOne
+    @JoinColumn(name = "ID_documentoRequisitosTipo")
+    private DocumentoRequisitosTipo documentoRequisitosTipo;
 
     public Integer getID()
     {
@@ -126,14 +128,14 @@ public class DocumentoRequisitos implements Serializable, IAnnotations
         this.abrangenciaSistemasRelacionados = abrangenciaSistemasRelacionados;
     }
 
-    public String getDescricaoGeralUsuarios()
+    public String getDescricaoGeralAtores()
     {
-        return descricaoGeralUsuarios;
+        return descricaoGeralAtores;
     }
 
-    public void setDescricaoGeralUsuarios(String descricaoGeralUsuarios)
+    public void setDescricaoGeralAtores(String descricaoGeralAtores)
     {
-        this.descricaoGeralUsuarios = descricaoGeralUsuarios;
+        this.descricaoGeralAtores = descricaoGeralAtores;
     }
 
     public String getDescricaoRequisitosFuncionais()
@@ -166,24 +168,34 @@ public class DocumentoRequisitos implements Serializable, IAnnotations
         this.descricaoGeralSistema = descricaoGeralSistema;
     }
 
+    public DocumentoRequisitosTipo getDocumentoRequisitosTipo()
+    {
+        return documentoRequisitosTipo;
+    }
+
+    public void setDocumentoRequisitosTipo(DocumentoRequisitosTipo documentoRequisitosTipo)
+    {
+        this.documentoRequisitosTipo = documentoRequisitosTipo;
+    }
+
     @Override
     public void cadastrar()
     {
-        PaginaModel model = new PaginaModel();
+        DocumentoRequisitosModel model = new DocumentoRequisitosModel();
         model.salvar(this);
     }
 
     @Override
     public void excluir()
     {
-        PaginaModel model = new PaginaModel();
+        DocumentoRequisitosModel model = new DocumentoRequisitosModel();
         model.excluir(this);
     }
 
     @Override
     public void editar()
     {
-        PaginaModel model = new PaginaModel();
+        DocumentoRequisitosModel model = new DocumentoRequisitosModel();
         model.atualizar(this);
     }
 

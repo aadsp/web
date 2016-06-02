@@ -30,7 +30,23 @@
                             </div>
                             <div class="space-40"></div>
                             <div class="control-group">   
-                                <p:tabView dynamic="true" cache="true">
+                                <p:tabView scrollable="true" cache="true">
+                                    <p:tab title="Configuração do Documento">
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <p:outputLabel for="projeto" value="Projeto: " />
+                                            <p:selectOneMenu id="projeto"  value="#{documentoRequisitosCadastrar.projetoSelecionado}" style="width:150px">
+                                                <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
+                                                <f:selectItems value="#{documentoRequisitosCadastrar.projetos()}" />
+                                            </p:selectOneMenu>
+                                        </h:panelGrid>
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                             <p:outputLabel for="tipoDocReq" value="Tipo de documento de requisitos: " />
+                                             <p:selectOneMenu id="tipoDocReq"  value="#{documentoRequisitosCadastrar.tipoDocumentoRequisitoSelecionado}" style="width:150px">
+                                                <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
+                                                <f:selectItems value="#{documentoRequisitosCadastrar.tiposDocumentoRequisitos()}" />
+                                            </p:selectOneMenu>
+                                        </h:panelGrid>
+                                    </p:tab>
                                     <p:tab title="Introdução">
                                         <h:panelGrid columns="2" cellpadding="5">
                                             <p:outputLabel for="introducao" value="Introdução:" />
@@ -104,7 +120,7 @@
                                     <p:tab title="Usuários">
                                         <h:panelGrid columns="2" cellpadding="5">
                                             <p:outputLabel for="descricaoGeralUsuarios" value="Descrição geral dos usuários:" />
-                                            <p:inputTextarea id="descricaoGeralUsuarios" rows="1" cols="400" required="true" value="#{documentoRequisitosCadastrar.documentoRequisitos.descricaoGeralUsuarios}" counter="displaydescricaoGeralUsuarios" maxlength="500" counterTemplate="{0} caracteres restantes." autoResize="false" />
+                                            <p:inputTextarea id="descricaoGeralUsuarios" rows="1" cols="400" required="true" value="#{documentoRequisitosCadastrar.documentoRequisitos.descricaoGeralAtores}" counter="displaydescricaoGeralUsuarios" maxlength="500" counterTemplate="{0} caracteres restantes." autoResize="false" />
                                             <h:outputText id="displaydescricaoGeralUsuarios" />
                                         </h:panelGrid>
                                         <h:panelGrid columns="2" cellpadding="5">
@@ -118,9 +134,14 @@
                         </div>
                     </div>
                     <div class="space-50"></div>
-                    </h:form>
+                </h:form>
                 <h:form>
-                <p:dialog header="MODELOS DE DOC. DE REQUISITOS" showEffect="explode" widgetVar="modelosDocRequisitos" modal="true" width="500" height="300">
+                    <p:growl id="growl" showDetail="true" sticky="true" /> 
+                    <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+                    <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                        <img src="../../img/loading.gif" alt=""/>
+                    </p:dialog>
+                    <p:dialog header="MODELOS DE DOC. DE REQUISITOS" showEffect="explode" widgetVar="modelosDocRequisitos" modal="true" width="500" height="300">
                         <h:panelGrid columns="1" cellpadding="5">
                             <p:dataTable id="modeloDocumento" style="text-align:center" emptyMessage="Nenhum Registro Encontrado!"
                                          var="template" value="#{documentoRequisitosCadastrar.listarModelosDocRequisitos()}"
@@ -141,8 +162,8 @@
                             </p:dataTable>
                         </h:panelGrid>
                     </p:dialog>
-                    </h:form>
-                    
+                </h:form>
+
             </ui:define>
         </ui:composition>
     </h:body>

@@ -129,6 +129,12 @@ public class Projeto implements Serializable, IAnnotations
         return model.listar();
     }
 
+    public List<Projeto> listarSemDocRequisitos() throws Exception
+    {
+        ProjetoModel model = new ProjetoModel();
+        return model.listarSemDocRequisitos();
+    }
+
     public Projeto consultarPorID()
     {
         ProjetoModel model = new ProjetoModel();

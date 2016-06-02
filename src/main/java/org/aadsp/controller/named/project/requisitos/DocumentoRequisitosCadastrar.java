@@ -1,7 +1,9 @@
 package org.aadsp.controller.named.project.requisitos;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.view.ViewScoped;
@@ -9,6 +11,8 @@ import javax.inject.Named;
 import javax.mail.MessagingException;
 import org.aadsp.annotations.DocumentoRequisitos;
 import org.aadsp.annotations.DocumentoRequisitosTemplate;
+import org.aadsp.annotations.DocumentoRequisitosTipo;
+import org.aadsp.annotations.Projeto;
 import org.aadsp.annotations.Usuario;
 import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.interfaces.ICadastro;
@@ -52,7 +56,7 @@ public class DocumentoRequisitosCadastrar extends ABaseNamed implements ICadastr
                 this.documentoRequisitos.setDescricaoReferencia(documentoRequisitosTemplate.getDescricaoReferencia());
                 this.documentoRequisitos.setDescricaoGeralSistema(documentoRequisitosTemplate.getDescricaoGeralSistema());
                 this.documentoRequisitos.setAbrangenciaSistemasRelacionados(documentoRequisitosTemplate.getAbrangenciaSistemasRelacionados());
-                this.documentoRequisitos.setDescricaoGeralUsuarios(documentoRequisitosTemplate.getDescricaoGeralUsuarios());
+                this.documentoRequisitos.setDescricaoGeralAtores(documentoRequisitosTemplate.getDescricaoGeralAtores());
                 this.documentoRequisitos.setDescricaoRequisitosFuncionais(documentoRequisitosTemplate.getDescricaoRequisitosFuncionais());
                 this.documentoRequisitos.setDescricaoRequisitosNFuncionais(documentoRequisitosTemplate.getDescricaoRequisitosNFuncionais());
 
@@ -74,11 +78,17 @@ public class DocumentoRequisitosCadastrar extends ABaseNamed implements ICadastr
         try
         {
             documentoRequisitos.cadastrar();
+            Projeto projeto = new Projeto();
+            projeto.setID(projetoSelecionado);
+            documentoRequisitos.setProjeto(projeto);
+            DocumentoRequisitosTipo tipo = new DocumentoRequisitosTipo();
+            tipo.setID(tipoDocumentoRequisitoSelecionado);
+            documentoRequisitos.setDocumentoRequisitosTipo(tipo);
             controleCadastro = true;
             Mensageiro.mensagemInfo("Documenot de requisitos cadastrado com sucesso");
         } catch (Exception e)
         {
-            Mensageiro.mensagemError("Não foi possível cadastrar a documento de requisitos!", (Usuario) Session.getAttribute("usuario"), e);
+            Mensageiro.mensagemError("Não foi possível cadastrar a documento de requisitos!");
         }
     }
 
@@ -115,7 +125,69 @@ public class DocumentoRequisitosCadastrar extends ABaseNamed implements ICadastr
         }
     }
 
+    public int getTipoDocumentoRequisitoSelecionado()
+    {
+        return tipoDocumentoRequisitoSelecionado;
+    }
+
+    public void setTipoDocumentoRequisitoSelecionado(int tipoDocumentoRequisitoSelecionado)
+    {
+        this.tipoDocumentoRequisitoSelecionado = tipoDocumentoRequisitoSelecionado;
+    }
+
+    public int getProjetoSelecionado()
+    {
+        return projetoSelecionado;
+    }
+
+    public void setProjetoSelecionado(int projetoSelecionado)
+    {
+        this.projetoSelecionado = projetoSelecionado;
+    }
+
+    public Map<String, Integer> tiposDocumentoRequisitos()
+    {
+        Map<String, Integer> map = new HashMap<>();
+        try
+        {
+            DocumentoRequisitosTipo documentoTipo = new DocumentoRequisitosTipo();
+            List<DocumentoRequisitosTipo> lista = documentoTipo.listar();
+
+            for (DocumentoRequisitosTipo obj : lista)
+            {
+                map.put(obj.getNome(), obj.getID());
+            }
+
+        } catch (Exception ex)
+        {
+            Mensageiro.mensagemError("Não foi possível listar os tipos de documentos de requisitos!");
+        }
+        return map;
+    }
+
+    public Map<String, Integer> projetos()
+    {
+        Map<String, Integer> map = new HashMap<>();
+        try
+        {
+            Projeto projeto = new Projeto();
+            List<Projeto> lista = projeto.listarSemDocRequisitos();
+
+            for (Projeto obj : lista)
+            {
+                map.put(obj.getTap().getNome(), obj.getID());
+            }
+
+        } catch (Exception ex)
+        {
+            Mensageiro.mensagemError("Não foi possível listar os projetos!");
+        }
+        return map;
+    }
+
     private DocumentoRequisitos documentoRequisitos;
     private boolean controleCadastro;
+    private int tipoDocumentoRequisitoSelecionado;
+    private int projetoSelecionado;
     private DocumentoRequisitosTemplate documentoRequisitosTemplate;
 }

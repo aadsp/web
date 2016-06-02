@@ -77,6 +77,21 @@ public class ProjetoModel implements ICRUD
         }
     }
 
+    public List<Projeto> listarSemDocRequisitos() throws Exception
+    {
+        try
+        {
+            Query consulta = sessao.createQuery("select p from Projeto p where p.ID NOT IN (select docRec.projeto.ID from DocumentoRequisitos docRec ) ");
+            return consulta.list();
+        } catch (Exception e)
+        {
+            throw e;
+        } finally
+        {
+            sessao.close();
+        }
+    }
+
     public List<Projeto> listarPorFiltro(String filtro) throws Exception
     {
         try

@@ -34,8 +34,8 @@ public class DocumentoRequisitosTemplate implements Serializable, IAnnotations
     private String descricaoReferencia;
     @Column(name = "abrangenciaSistemasRelacionados")
     private String abrangenciaSistemasRelacionados;
-    @Column(name = "descricaoGeralUsuarios")
-    private String descricaoGeralUsuarios;
+    @Column(name = "descricaoGeralAtores")
+    private String descricaoGeralAtores;
     @Column(name = "descricaoGeralSistema")
     private String descricaoGeralSistema;
     @Column(name = "descricaoRequisitosFuncionais")
@@ -123,14 +123,14 @@ public class DocumentoRequisitosTemplate implements Serializable, IAnnotations
         this.abrangenciaSistemasRelacionados = abrangenciaSistemasRelacionados;
     }
 
-    public String getDescricaoGeralUsuarios()
+    public String getDescricaoGeralAtores()
     {
-        return descricaoGeralUsuarios;
+        return descricaoGeralAtores;
     }
 
-    public void setDescricaoGeralUsuarios(String descricaoGeralUsuarios)
+    public void setDescricaoGeralAtores(String descricaoGeralAtores)
     {
-        this.descricaoGeralUsuarios = descricaoGeralUsuarios;
+        this.descricaoGeralAtores = descricaoGeralAtores;
     }
 
     public String getDescricaoRequisitosFuncionais()
