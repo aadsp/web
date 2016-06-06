@@ -173,6 +173,16 @@ public class ProjetoEditar extends ABaseNamed
         arquivoImagem = event.getFile().getContents();
     }
 
+    public void fileUploadImgProjetoTela(FileUploadEvent event) throws Exception
+    {
+        imgProjetoTela = event.getFile();
+        novoNomeImgProjetoTela = new java.util.Date().getTime() + "";
+
+        caminhoImgProjetoTelaServidor = FacesContext.getCurrentInstance().getExternalContext().getRealPath("") + "/img/projeto/telas/" + novoNomeImgProjetoTela;
+
+        arquivoImgProjetoTela = event.getFile().getContents();
+    }
+
     public Projeto getProjeto()
     {
         return projeto;
@@ -188,6 +198,17 @@ public class ProjetoEditar extends ABaseNamed
         if (imagem != null)
         {
             return imagem.getFileName();
+        } else
+        {
+            return "Nenhuma imagem adicionada!";
+        }
+    }
+
+    public String getImgProjetoTela()
+    {
+        if (imgProjetoTela != null)
+        {
+            return imgProjetoTela.getFileName();
         } else
         {
             return "Nenhuma imagem adicionada!";
@@ -326,7 +347,7 @@ public class ProjetoEditar extends ABaseNamed
     {
         try
         {
-            Response.redirect("../../img/diagramas/uml/"+diagrama.getImagem());
+            Response.redirect("../../img/diagramas/uml/" + diagrama.getImagem());
         } catch (Exception e)
         {
             Mensageiro.mensagemInfo("Erro ao selecionar imagem do diagrama UML");
@@ -337,12 +358,16 @@ public class ProjetoEditar extends ABaseNamed
     private DiagramaUML diagramaSelecionado;
     private Projeto projeto;
     private UploadedFile imagem;
+    private UploadedFile imgProjetoTela;
     private BarChartModel graficoCusto;
     private LineChartModel graficoCronograma;
     private int tipoDiagramaSelecionado;
     private String caminhoImagemServidor;
+    private String caminhoImgProjetoTelaServidor;
     private byte[] arquivoImagem;
+    private byte[] arquivoImgProjetoTela;
     private String novoNomeImagem;
+    private String novoNomeImgProjetoTela;
     private Date dataInicio;
     private Date dataFim;
 }

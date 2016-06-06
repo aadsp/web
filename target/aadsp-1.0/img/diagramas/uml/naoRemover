@@ -1,3 +1,2 @@
 Não remover este arquiv, o mesmo é utilizado para manter existente a pasta temporaria
-durante as compilações do projeto, esta pasta é utilizada para armazenamento dos PDFs
-de relatórios em tempo de execução do sistema.
+durante as compilações do projeto, esta pasta é utilizada para armazenamento dos diagramas UML do projeto
