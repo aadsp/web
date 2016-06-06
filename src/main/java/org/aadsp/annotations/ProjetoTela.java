@@ -6,22 +6,34 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.aadsp.annotations.model.PaginaModel;
 import org.aadsp.annotations.model.ProjetoTelaModel;
 import org.aadsp.interfaces.IAnnotations;
 
 @Entity
-@Table(name = "ACESSO.ACESSO_AADSP_PAGINA")
+@Table(name = "PROJETO.PROJETO_AADSP_PROJETO_TELAS")
 public class ProjetoTela implements Serializable, IAnnotations
 {
 
     @Id
     @GeneratedValue
-    @Column(name = "ID_pagina")
+    @Column(name = "ID_projetoTelas")
     private Integer ID;
-    @Column(name = "nome",length = 60)
-    private String nome;
+    @Column(name = "imagem", length = 60)
+    private String imagem;
+    @Column(name = "descricao", length = 800)
+    private String descricao;
+
+    @OneToOne
+    @JoinColumn(name = "ID_projeto")
+    private Projeto projeto;
+
+    @OneToOne
+    @JoinColumn(name = "ID_requisito")
+    private Requisitos requisitos;
 
     public Integer getID()
     {
@@ -33,14 +45,44 @@ public class ProjetoTela implements Serializable, IAnnotations
         this.ID = ID;
     }
 
-    public String getNome()
+    public String getImagem()
     {
-        return nome;
+        return imagem;
     }
 
-    public void setNome(String nome)
+    public void setImagem(String imagem)
     {
-        this.nome = nome;
+        this.imagem = imagem;
+    }
+
+    public String getDescricao()
+    {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao)
+    {
+        this.descricao = descricao;
+    }
+
+    public Projeto getProjeto()
+    {
+        return projeto;
+    }
+
+    public void setProjeto(Projeto projeto)
+    {
+        this.projeto = projeto;
+    }
+
+    public Requisitos getRequisitos()
+    {
+        return requisitos;
+    }
+
+    public void setRequisitos(Requisitos requisitos)
+    {
+        this.requisitos = requisitos;
     }
 
     @Override
@@ -69,7 +111,13 @@ public class ProjetoTela implements Serializable, IAnnotations
         ProjetoTelaModel model = new ProjetoTelaModel();
         return model.listar();
     }
-
+    
+    public List<ProjetoTela> listarPorProjeto() throws Exception
+    {
+        ProjetoTelaModel model = new ProjetoTelaModel();
+        return model.listarPorProjeto();
+    }        
+            
     public ProjetoTela consultarPorID() throws Exception
     {
         ProjetoTelaModel model = new ProjetoTelaModel();

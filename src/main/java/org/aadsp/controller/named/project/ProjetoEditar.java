@@ -9,12 +9,15 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import org.aadsp.annotations.DiagramaUML;
 import org.aadsp.annotations.DiagramaUMLTipo;
 import org.aadsp.annotations.Projeto;
+import org.aadsp.annotations.ProjetoTela;
 import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.utils.Criptografia;
 import org.aadsp.utils.Mensageiro;
@@ -276,6 +279,31 @@ public class ProjetoEditar extends ABaseNamed
 
     }
 
+    public void salvarProjetoDeTela()
+    {
+        try
+        {
+
+            ProjetoTela tela = new ProjetoTela();
+
+            FileOutputStream fos;
+            fos = new FileOutputStream(caminhoImgProjetoTelaServidor);
+            fos.write(arquivoImgProjetoTela);
+            fos.close();
+
+            tela.setProjeto(projeto);
+            tela.setImagem(novoNomeImgProjetoTela);
+
+            tela.cadastrar();
+
+            Response.redirect("/web/faces/views/projetos/ProjetoEditar.xhtml?Projeto=" + Criptografia.codificarParaBase64(projeto.getID().toString()));
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemError("Erro ao salvar projeto de tela mockup!");
+        }
+
+    }
+
     public List<DiagramaUML> listarDiagramasUMLDoProjeto()
     {
         try
@@ -353,6 +381,21 @@ public class ProjetoEditar extends ABaseNamed
             Mensageiro.mensagemInfo("Erro ao selecionar imagem do diagrama UML");
         }
 
+    }
+
+    public List<ProjetoTela> listarMockupDoProjeto()
+    {
+        try
+        {
+            ProjetoTela projetoTela = new ProjetoTela();
+            projetoTela.setProjeto(projeto);
+
+            return projetoTela.listarPorProjeto();
+        } catch (Exception ex)
+        {
+            Mensageiro.mensagemInfo("Não foi possível listar os mockup de tela!!");
+        }
+        return null;
     }
 
     private DiagramaUML diagramaSelecionado;

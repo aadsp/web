@@ -14,6 +14,7 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\AlterarImagem.ja
 G:\PROJETO TCC\web\src\main\java\org\aadsp\interfaces\ICRUD.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\ReunioesConsultar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\utils\Filtro.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\ProjetoTelaModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\StakeholderTAPModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Responsavel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\TAPCadastrar.java
@@ -22,6 +23,7 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\TAPEscopoArea.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Usuario.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\Index.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\TAPEscopo.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\RequisitosModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\utils\GeradorDeSenha.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\PessoalEditar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\HeaderTemplate.java
@@ -31,6 +33,7 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\contributors\Empresa
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\ProjetoModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\ReuniaoAta.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\EquipeModel.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\ProjetoTela.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\DocumentoRequisitosTemplate.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\requisitos\DocumentoRequisitosCadastrar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\PaginalConsultar.java
@@ -75,6 +78,7 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\PessoalConsultar
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Equipe.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\contributors\ColaboradorCadastrar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\UsuariosVisualizar.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Requisitos.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\PaginaEditar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\UsuarioModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Stakeholder.java

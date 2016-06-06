@@ -76,7 +76,7 @@
                                     <p:tab title="Diagramas UML">
 
                                         <p:dataTable id="tbl" style="text-align:center" var="diagrama" value="#{projetoEditar.listarDiagramasUMLDoProjeto()}"
-                                                     paginator="true" rows="10">
+                                                     paginator="true" rows="10" emptyMessage="Nenhum Registro Encontrado!">
                                             <p:column width="360">
                                                 <f:facet name="header">
                                                     <h:outputText value="diagrama" />
@@ -94,6 +94,23 @@
                                                     <h:outputText value="detalhar" />
                                                 </f:facet>
                                                 <h:commandLink value="imagem" target="_blank" actionListener="#{projetoEditar.selecionarDiagrama(diagrama)}"/>
+                                            </p:column>
+                                        </p:dataTable>
+                                    </p:tab>
+                                    <p:tab title="Projeto de Tela (mockup)">
+                                        <p:dataTable id="tblProjetoTela" style="text-align:center" var="mockup" value="#{projetoEditar.listarDiagramasUMLDoProjeto()}"
+                                                     paginator="true" rows="10" emptyMessage="Nenhum Registro Encontrado!">
+                                            <p:column width="360">
+                                                <f:facet name="header">
+                                                    <h:outputText value="mockup" />
+                                                </f:facet>
+                                                <h:outputText value="#{diagrama.diagramaUMLTipo.descricao}" />
+                                            </p:column>
+                                            <p:column style="width:10px;text-align: center" >
+                                                <f:facet name="header">
+                                                    <h:outputText value="remover" />
+                                                </f:facet>
+                                                <p:commandButton icon="ui-icon-close" actionListener="#{projetoEditar.remvoerDiagramaSelecionado(diagrama)}"/>
                                             </p:column>
                                         </p:dataTable>
                                     </p:tab>
@@ -150,7 +167,7 @@
 
                         </h:panelGrid>
                         <h:panelGrid columns="1" cellpadding="5">
-                            <p:commandButton value="SALVAR" update="growl" actionListener="#{projetoEditar.salvarDiagrama()}" />
+                            <p:commandButton value="SALVAR" update="growl" actionListener="#{projetoEditar.salvarProjetoDeTela()}" />
                         </h:panelGrid>
                     </p:dialog>
                 </h:form>

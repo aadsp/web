@@ -76,7 +76,23 @@ public class ProjetoTelaModel implements ICRUD
             sessao.close();
         }
     }
-
+    
+    public List<ProjetoTela> listarPorProjeto(ProjetoTela projetoTela) throws Exception
+    {
+        try
+        {
+            Query consulta = sessao.createQuery("Select pt  from ProjetoTela pt where pt.projeto.ID = :ID");
+            consulta.setInteger("ID", projetoTela.getProjeto().getID());
+            return consulta.list();
+        } catch (Exception e)
+        {
+            throw e;
+        } finally
+        {
+            sessao.close();
+        }
+    }
+    
     public List<ProjetoTela> listarPorFiltro(String filtro) throws Exception
     {
         try
@@ -90,6 +106,11 @@ public class ProjetoTelaModel implements ICRUD
         {
             sessao.close();
         }
+    }
+
+    public List<ProjetoTela> listarPorProjeto()
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
