@@ -1,6 +1,7 @@
 package org.aadsp.controller.named.project.requisitos;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -84,6 +85,7 @@ public class DocumentoRequisitosCadastrar extends ABaseNamed implements ICadastr
             DocumentoRequisitosTipo tipo = new DocumentoRequisitosTipo();
             tipo.setID(tipoDocumentoRequisitoSelecionado);
             documentoRequisitos.setDocumentoRequisitosTipo(tipo);
+            documentoRequisitos.setDataCadastro(new java.sql.Date(new Date().getTime()));
             documentoRequisitos.cadastrar();
             controleCadastro = true;
             Mensageiro.mensagemInfo("Documenot de requisitos cadastrado com sucesso");

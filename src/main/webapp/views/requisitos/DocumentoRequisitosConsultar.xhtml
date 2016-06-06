@@ -69,13 +69,36 @@
                                         <p:dataTable id="tbl" style="text-align:center" var="documentoRequisitos" emptyMessage="Nenhum Registro Encontrado!"
                                                      value="#{documentoRequisitosConsultar.listarDocumentosDeRequisitos}"
                                                      paginator="true" rows="10">
-                                            <p:column width="400">
+                                            <p:column width="300">
                                                 <f:facet name="header">
                                                     <h:outputText value="nome" />
                                                 </f:facet>
                                                 <h:outputText value="#{documentoRequisitos.projeto.tap.nome}" />
                                             </p:column>
-
+                                            <p:column width="30">
+                                                <f:facet name="header">
+                                                    <h:outputText value="Data Cadastro" />
+                                                </f:facet>
+                                                <h:outputText value="#{documentoRequisitos.dataCadastro}">
+                                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                                </h:outputText>
+                                            </p:column>
+                                            <p:column width="30">
+                                                <f:facet name="header">
+                                                    <h:outputText value="Início do Projeto" />
+                                                </f:facet>
+                                                <h:outputText value="#{documentoRequisitos.projeto.dataInicio}">
+                                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                                </h:outputText>
+                                            </p:column>
+                                            <p:column width="30">
+                                                <f:facet name="header">
+                                                    <h:outputText value="Fim do Projeto" />
+                                                </f:facet>
+                                                <h:outputText value="#{documentoRequisitos.projeto.dataTermino}">
+                                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                                </h:outputText>
+                                            </p:column>
                                             <p:column style="width:5px;text-align: center" >
                                                 <f:facet name="header">
                                                     <h:outputText value="detalhar" />

@@ -1,6 +1,7 @@
 package org.aadsp.annotations;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -44,8 +45,10 @@ public class DocumentoRequisitos implements Serializable, IAnnotations
     private String descricaoRequisitosFuncionais;
     @Column(name = "descricaoRequisitosNFuncionais", length = 500)
     private String descricaoRequisitosNFuncionais;
-    @Column(name = "versao",scale = 2)
+    @Column(name = "versao", scale = 2)
     private double versao;
+    @Column(name = "dataCadastro")
+    private Date dataCadastro;
 
     @OneToOne
     @JoinColumn(name = "ID_documentoRequisitosTipo")
@@ -189,6 +192,16 @@ public class DocumentoRequisitos implements Serializable, IAnnotations
     public void setVersao(double versao)
     {
         this.versao = versao;
+    }
+
+    public Date getDataCadastro()
+    {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(Date dataCadastro)
+    {
+        this.dataCadastro = dataCadastro;
     }
 
     @Override

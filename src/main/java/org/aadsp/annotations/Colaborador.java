@@ -22,11 +22,11 @@ public class Colaborador implements Serializable, IAnnotations
     @GeneratedValue
     @Column(name = "ID_colaborador")
     private Integer ID;
-    @Column(name = "numeroPIS",length = 60)
+    @Column(name = "numeroPIS", length = 60)
     private String numeroPIS;
     @Column(name = "dataContrato")
     private Date dataContrato;
-    @Column(name = "valorBruto",scale = 2)
+    @Column(name = "valorBruto", scale = 2)
     private double valorBruto;
 
     @OneToOne
