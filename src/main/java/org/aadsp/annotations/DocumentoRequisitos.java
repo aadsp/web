@@ -24,26 +24,29 @@ public class DocumentoRequisitos implements Serializable, IAnnotations
     @OneToOne
     @JoinColumn(name = "ID_projeto")
     private Projeto projeto;
-    @Column(name = "introducao")
+    @Column(name = "introducao", length = 500)
     private String introducao;
-    @Column(name = "visaoGeral")
+    @Column(name = "visaoGeral", length = 500)
     private String visaoGeral;
-    @Column(name = "convencoesTermoAbreviacoes")
+    @Column(name = "convencoesTermoAbreviacoes", length = 500)
     private String convencoesTermoAbreviacoes;
-    @Column(name = "identificacaoDosRequisitos")
+    @Column(name = "identificacaoDosRequisitos", length = 500)
     private String identificacaoDosRequisitos;
-    @Column(name = "descricaoReferencia")
+    @Column(name = "descricaoReferencia", length = 300)
     private String descricaoReferencia;
-    @Column(name = "abrangenciaSistemasRelacionados")
+    @Column(name = "abrangenciaSistemasRelacionados", length = 500)
     private String abrangenciaSistemasRelacionados;
-    @Column(name = "descricaoGeralAtores")
+    @Column(name = "descricaoGeralAtores", length = 300)
     private String descricaoGeralAtores;
-    @Column(name = "descricaoGeralSistema")
+    @Column(name = "descricaoGeralSistema", length = 500)
     private String descricaoGeralSistema;
-    @Column(name = "descricaoRequisitosFuncionais")
+    @Column(name = "descricaoRequisitosFuncionais", length = 500)
     private String descricaoRequisitosFuncionais;
-    @Column(name = "descricaoRequisitosNFuncionais")
+    @Column(name = "descricaoRequisitosNFuncionais", length = 500)
     private String descricaoRequisitosNFuncionais;
+    @Column(name = "versao")
+    private double versao;
+
     @OneToOne
     @JoinColumn(name = "ID_documentoRequisitosTipo")
     private DocumentoRequisitosTipo documentoRequisitosTipo;
@@ -176,6 +179,16 @@ public class DocumentoRequisitos implements Serializable, IAnnotations
     public void setDocumentoRequisitosTipo(DocumentoRequisitosTipo documentoRequisitosTipo)
     {
         this.documentoRequisitosTipo = documentoRequisitosTipo;
+    }
+
+    public double getVersao()
+    {
+        return versao;
+    }
+
+    public void setVersao(double versao)
+    {
+        this.versao = versao;
     }
 
     @Override

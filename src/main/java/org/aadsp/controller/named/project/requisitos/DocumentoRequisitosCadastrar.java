@@ -77,13 +77,14 @@ public class DocumentoRequisitosCadastrar extends ABaseNamed implements ICadastr
     {
         try
         {
-            documentoRequisitos.cadastrar();
+            
             Projeto projeto = new Projeto();
             projeto.setID(projetoSelecionado);
             documentoRequisitos.setProjeto(projeto);
             DocumentoRequisitosTipo tipo = new DocumentoRequisitosTipo();
             tipo.setID(tipoDocumentoRequisitoSelecionado);
             documentoRequisitos.setDocumentoRequisitosTipo(tipo);
+            documentoRequisitos.cadastrar();
             controleCadastro = true;
             Mensageiro.mensagemInfo("Documenot de requisitos cadastrado com sucesso");
         } catch (Exception e)
