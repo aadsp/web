@@ -22,11 +22,11 @@ public class ReuniaoAta implements Serializable, IAnnotations
     @GeneratedValue
     @Column(name = "ID_ata")
     private Integer ID;
-    @Column(name = "titulo")
+    @Column(name = "titulo",length = 250)
     private String titulo;
-    @Column(name = "pauta")
+    @Column(name = "pauta",length = 8000)
     private String pauta;
-    @Column(name = "assuntosTratados")
+    @Column(name = "assuntosTratados",length = 8000)
     private String assuntosTratados;
     @Column(name = "dataCadastro")
     private Date dataCadastro;

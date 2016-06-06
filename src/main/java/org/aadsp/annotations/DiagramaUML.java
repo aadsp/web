@@ -28,7 +28,7 @@ public class DiagramaUML implements Serializable, IAnnotations
     @OneToOne
     @JoinColumn(name = "ID_diagramaUMLTipo")
     private DiagramaUMLTipo diagramaUMLTipo;
-    @Column(name="imagem")
+    @Column(name="imagem",length = 100)
     private String imagem;
 
     public Integer getID()

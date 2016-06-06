@@ -19,13 +19,13 @@ public class Stakeholder implements Serializable, IAnnotations
     @GeneratedValue
     @Column(name = "ID_stakeholder")
     private Integer ID;
-    @Column(name = "nome")
+    @Column(name = "nome",length = 80)
     private String nome;
-    @Column(name = "rg")
+    @Column(name = "rg",length = 30)
     private String rg;
-    @Column(name = "cpf")
+    @Column(name = "cpf",length = 30)
     private String cpf;
-    @Column(name = "email")
+    @Column(name = "email",length = 100)
     private String email;
 
     public Integer getID()

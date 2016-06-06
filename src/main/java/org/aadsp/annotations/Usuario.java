@@ -29,21 +29,21 @@ public class Usuario implements Serializable, IAnnotations
     @GeneratedValue
     @Column(name = "ID_usuario")
     private Integer ID;
-    @Column(name = "nome")
+    @Column(name = "nome",length = 70)
     private String nome;
     @Column(name = "dataNascimento")
     private Date dataNascimento;
-    @Column(name = "cpf")
+    @Column(name = "cpf",length = 30)
     private String cpf;
-    @Column(name = "rg")
+    @Column(name = "rg",length = 30)
     private String rg;
-    @Column(name = "email")
+    @Column(name = "email",length = 100)
     private String email;
-    @Column(name = "login")
+    @Column(name = "login",length = 30)
     private String login;
-    @Column(name = "senha")
+    @Column(name = "senha",length = 257)
     private String senha;
-    @Column(name = "imagem")
+    @Column(name = "imagem",length = 100)
     private String imagem;
 
     @OneToOne

@@ -21,7 +21,7 @@ public class TAPEscopo implements Serializable, IAnnotations
     @GeneratedValue
     @Column(name = "ID_escopo")
     private Integer ID;
-    @Column(name = "descricao")
+    @Column(name = "descricao",length = 250)
     private String descricao;
 
     @OneToOne

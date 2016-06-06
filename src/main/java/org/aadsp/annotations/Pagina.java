@@ -19,7 +19,7 @@ public class Pagina implements Serializable, IAnnotations
     @GeneratedValue
     @Column(name = "ID_pagina")
     private Integer ID;
-    @Column(name = "nome")
+    @Column(name = "nome",length = 60)
     private String nome;
 
     public Integer getID()

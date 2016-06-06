@@ -19,7 +19,7 @@ public class DocumentoRequisitosTipo implements Serializable, IAnnotations
     @GeneratedValue
     @Column(name = "ID_documentoRequisitosTipo")
     private Integer ID;
-    @Column(name = "nome")
+    @Column(name = "nome",length = 50)
     private String nome;
 
     public Integer getID()

@@ -25,15 +25,15 @@ public class TAP implements Serializable, IAnnotations
     @GeneratedValue
     @Column(name = "ID_tap")
     private Integer ID;
-    @Column(name = "nome")
+    @Column(name = "nome",length = 250)
     private String nome;
-    @Column(name = "justificativa")
+    @Column(name = "justificativa",length = 500)
     private String justificativa;
-    @Column(name = "objetivo")
+    @Column(name = "objetivo",length = 500)
     private String objetivo;
-    @Column(name = "alinhamentoEstrategico")
+    @Column(name = "alinhamentoEstrategico",length = 500)
     private String alinhamentoEstrategico;
-    @Column(name = "custo")
+    @Column(name = "custo", scale = 2)
     private double custo;
     @Column(name = "dataInicio")
     private Date dataInicio;
@@ -43,11 +43,11 @@ public class TAP implements Serializable, IAnnotations
     private Date dataHomologacao;
     @Column(name = "dataCriacao")
     private Date dataCriacao;
-    @Column(name = "premissas")
+    @Column(name = "premissas",length = 250)
     private String premissas;
-    @Column(name = "restricoes")
+    @Column(name = "restricoes",length = 250)
     private String restricoes;
-    @Column(name = "riscosIniciais")
+    @Column(name = "riscosIniciais",length = 300)
     private String riscosIniciais;
 
     public Integer getID()

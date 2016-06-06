@@ -44,7 +44,7 @@ public class DocumentoRequisitos implements Serializable, IAnnotations
     private String descricaoRequisitosFuncionais;
     @Column(name = "descricaoRequisitosNFuncionais", length = 500)
     private String descricaoRequisitosNFuncionais;
-    @Column(name = "versao")
+    @Column(name = "versao",scale = 2)
     private double versao;
 
     @OneToOne

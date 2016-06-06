@@ -19,7 +19,7 @@ public class DiagramaUMLTipo implements Serializable, IAnnotations
     @GeneratedValue
     @Column(name = "ID_diagramaUMLTipo")
     private Integer ID;
-    @Column(name = "descricao")
+    @Column(name = "descricao",length = 100)
     private String descricao;
 
     public Integer getID()

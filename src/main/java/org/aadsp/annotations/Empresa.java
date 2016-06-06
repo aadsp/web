@@ -19,15 +19,15 @@ public class Empresa implements Serializable, IAnnotations
     @GeneratedValue
     @Column(name = "ID_empresa")
     private Integer ID;
-    @Column(name = "razaoSocial")
+    @Column(name = "razaoSocial",length = 100)
     private String razaoSocial;
-    @Column(name = "cnpj")
+    @Column(name = "cnpj",length = 60)
     private String cnpj;
-    @Column(name = "cpf")
+    @Column(name = "cpf",length = 60)
     private String cpf;
-    @Column(name = "telefone")
+    @Column(name = "telefone",length = 20)
     private String telefone;
-    @Column(name = "email")
+    @Column(name = "email", length = 100)
     private String email;
 
     public Integer getID()

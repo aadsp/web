@@ -29,7 +29,7 @@ public class Projeto implements Serializable, IAnnotations
     private Date dataTermino;
     @Column(name = "dataCadastro")
     private Date dataCadastro;
-    @Column(name = "investimento")
+    @Column(name = "investimento",scale = 2)
     private double investimento;
 
     @OneToOne

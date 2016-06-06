@@ -19,9 +19,9 @@ public class Funcao implements Serializable, IAnnotations
     @GeneratedValue
     @Column(name = "ID_funcao")
     private Integer ID;
-    @Column(name = "sigla")
+    @Column(name = "sigla",length = 10)
     private String sigla;
-    @Column(name = "descricao")
+    @Column(name = "descricao",length = 100)
     private String descricao;
 
     public Integer getID()
