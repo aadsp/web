@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import org.aadsp.annotations.model.PaginaModel;
 import org.aadsp.annotations.model.RequisitosModel;
 import org.aadsp.interfaces.IAnnotations;
 

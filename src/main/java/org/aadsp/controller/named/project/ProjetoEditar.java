@@ -9,8 +9,6 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -44,7 +42,7 @@ public class ProjetoEditar extends ABaseNamed
         criarGraficosTela();
         dataInicio = new Date(projeto.getDataInicio().getTime());
         dataFim = new Date(projeto.getDataTermino().getTime());
-
+        descricaoProjetoTela = "Insira um descrição para este mockup!";
     }
 
     private void criarGraficosTela()
@@ -292,6 +290,7 @@ public class ProjetoEditar extends ABaseNamed
             fos.close();
 
             tela.setProjeto(projeto);
+            tela.setDescricao(descricaoProjetoTela);
             tela.setImagem(novoNomeImgProjetoTela);
 
             tela.cadastrar();
@@ -383,6 +382,17 @@ public class ProjetoEditar extends ABaseNamed
 
     }
 
+    public void selecionarMockup(ProjetoTela projetoTela)
+    {
+        try
+        {
+            Response.redirect("../../img/projeto/telas/" + projetoTela.getImagem());
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemInfo("Erro ao selecionar imagem do diagrama UML");
+        }
+    }
+
     public List<ProjetoTela> listarMockupDoProjeto()
     {
         try
@@ -398,8 +408,37 @@ public class ProjetoEditar extends ABaseNamed
         return null;
     }
 
+    public void removerMockupDoProjeto(ProjetoTela projetoTela)
+    {
+        try
+        {
+            String caminhoServidor = FacesContext.getCurrentInstance().getExternalContext().getRealPath("");
+
+            File file = new File(caminhoServidor + "/img/projeto/telas/" + projetoTela.getImagem());
+            file.delete();
+
+            projetoTela.excluir();
+
+            Response.redirect("/web/faces/views/projetos/ProjetoEditar.xhtml?Projeto=" + Criptografia.codificarParaBase64(projeto.getID().toString()));
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemError("Não foi possível excluir o mockup selecionado!!");
+        }
+    }
+
+    public String getDescricaoProjetoTela()
+    {
+        return descricaoProjetoTela;
+    }
+
+    public void setDescricaoProjetoTela(String descricaoProjetoTela)
+    {
+        this.descricaoProjetoTela = descricaoProjetoTela;
+    }
+
     private DiagramaUML diagramaSelecionado;
     private Projeto projeto;
+    private String descricaoProjetoTela;
     private UploadedFile imagem;
     private UploadedFile imgProjetoTela;
     private BarChartModel graficoCusto;

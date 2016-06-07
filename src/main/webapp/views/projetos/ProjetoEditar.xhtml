@@ -85,33 +85,47 @@
                                             </p:column>
                                             <p:column style="width:10px;text-align: center" >
                                                 <f:facet name="header">
+                                                    <h:outputText value="detalhar" />
+                                                </f:facet>
+                                                <h:commandLink value="imagem" target="_blank" actionListener="#{projetoEditar.selecionarDiagrama(diagrama)}"/>
+                                            </p:column>
+                                            <p:column style="width:10px;text-align: center" >
+                                                <f:facet name="header">
                                                     <h:outputText value="remover" />
                                                 </f:facet>
                                                 <p:commandButton icon="ui-icon-close" actionListener="#{projetoEditar.remvoerDiagramaSelecionado(diagrama)}"/>
+                                            </p:column>
+                                        </p:dataTable>
+                                    </p:tab>
+                                    <p:tab title="Projeto de Tela (mockup)">
+                                        <p:dataTable id="tblProjetoMockup" style="text-align:center" var="mockup" value="#{projetoEditar.listarMockupDoProjeto()}"
+                                                     paginator="true" rows="10" emptyMessage="Nenhum Registro Encontrado!">
+                                            <p:column width="80">
+                                                <f:facet name="header">
+                                                    <h:outputText value="código do mockup" />
+                                                </f:facet>
+                                                <h:outputText value="MC[#{mockup.ID}]" />
+                                            </p:column>
+                                            <p:column width="300">
+                                                <f:facet name="header">
+                                                    <h:outputText value="requisito associado" />
+                                                </f:facet>
+                                                <h:outputText value="#{mockup.requisitos.descricao}" />
                                             </p:column>
                                             <p:column style="width:10px;text-align: center" >
                                                 <f:facet name="header">
                                                     <h:outputText value="detalhar" />
                                                 </f:facet>
-                                                <h:commandLink value="imagem" target="_blank" actionListener="#{projetoEditar.selecionarDiagrama(diagrama)}"/>
+                                                <h:commandLink value="imagem" target="_blank" actionListener="#{projetoEditar.selecionarMockup(mockup)}"/>
                                             </p:column>
-                                        </p:dataTable>
-                                    </p:tab>
-                                    <p:tab title="Projeto de Tela (mockup)">
-                                        <p:dataTable id="tblProjetoTela" style="text-align:center" var="mockup" value="#{projetoEditar.listarDiagramasUMLDoProjeto()}"
-                                                     paginator="true" rows="10" emptyMessage="Nenhum Registro Encontrado!">
-                                            <p:column width="360">
-                                                <f:facet name="header">
-                                                    <h:outputText value="mockup" />
-                                                </f:facet>
-                                                <h:outputText value="#{diagrama.diagramaUMLTipo.descricao}" />
-                                            </p:column>
+
                                             <p:column style="width:10px;text-align: center" >
                                                 <f:facet name="header">
                                                     <h:outputText value="remover" />
                                                 </f:facet>
-                                                <p:commandButton icon="ui-icon-close" actionListener="#{projetoEditar.remvoerDiagramaSelecionado(diagrama)}"/>
+                                                <p:commandButton icon="ui-icon-close" actionListener="#{projetoEditar.removerMockupDoProjeto(mockup)}"/>
                                             </p:column>
+
                                         </p:dataTable>
                                     </p:tab>
                                 </p:tabView>
@@ -153,14 +167,14 @@
                         <h:panelGrid columns="2" cellpadding="5">
                             <p:outputLabel for="imgProjetoTela" value="Mockup (png ou jpeg):" />
                             <p:outputLabel id="imgProjetoTela"  value="#{projetoEditar.imgProjetoTela}"/>
-                            <p:fileUpload fileUploadListener="#{projetoEditar.fileUploadImagem}" mode="advanced" dragDropSupport="false"
-                                          update="imgDiagramaUML" sizeLimit="300000" fileLimit="1" allowTypes="/(\.|\/)(jpe?g|png)$/" />
+                            <p:fileUpload fileUploadListener="#{projetoEditar.fileUploadImgProjetoTela}" mode="advanced" dragDropSupport="false"
+                                          update="imgProjetoTela" sizeLimit="300000" fileLimit="1" allowTypes="/(\.|\/)(jpe?g|png)$/" />
 
                         </h:panelGrid>
                         <h:panelGrid columns="2" cellpadding="5">
                             <p:outputLabel for="descricaoMockup" value="Descrição:" />
                             <p:inputTextarea id="descricaoMockup" rows="1" cols="800" required="true" 
-                                             value="Insira uma descrição deste o mockup!" 
+                                             value="#{projetoEditar.descricaoProjetoTela}" 
                                              counter="displayDescricaoMockup" maxlength="800" 
                                              counterTemplate="{0} caracteres restantes." autoResize="false" />
                             <h:outputText id="displayDescricaoMockup" />

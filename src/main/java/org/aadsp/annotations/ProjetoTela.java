@@ -88,14 +88,14 @@ public class ProjetoTela implements Serializable, IAnnotations
     @Override
     public void cadastrar()
     {
-        PaginaModel model = new PaginaModel();
+        ProjetoTelaModel model = new ProjetoTelaModel();
         model.salvar(this);
     }
 
     @Override
     public void excluir()
     {
-        PaginaModel model = new PaginaModel();
+        ProjetoTelaModel model = new ProjetoTelaModel();
         model.excluir(this);
     }
 
@@ -115,7 +115,7 @@ public class ProjetoTela implements Serializable, IAnnotations
     public List<ProjetoTela> listarPorProjeto() throws Exception
     {
         ProjetoTelaModel model = new ProjetoTelaModel();
-        return model.listarPorProjeto();
+        return model.listarPorProjeto(this);
     }        
             
     public ProjetoTela consultarPorID() throws Exception
