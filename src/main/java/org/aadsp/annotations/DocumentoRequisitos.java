@@ -236,6 +236,12 @@ public class DocumentoRequisitos implements Serializable, IAnnotations
         DocumentoRequisitosModel model = new DocumentoRequisitosModel();
         return model.consultarPorID(this);
     }
+    
+    public DocumentoRequisitos consultarPorIDProjeto() throws Exception
+    {
+        DocumentoRequisitosModel model = new DocumentoRequisitosModel();
+        return model.consultarPorIDProjeto(this);
+    }
 
     public List<DocumentoRequisitos> listarPorFiltro(String filtro) throws Exception
     {

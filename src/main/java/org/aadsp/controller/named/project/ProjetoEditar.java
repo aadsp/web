@@ -9,13 +9,17 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import org.aadsp.annotations.DiagramaUML;
 import org.aadsp.annotations.DiagramaUMLTipo;
+import org.aadsp.annotations.DocumentoRequisitos;
 import org.aadsp.annotations.Projeto;
 import org.aadsp.annotations.ProjetoTela;
+import org.aadsp.annotations.Requisitos;
 import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.utils.Criptografia;
 import org.aadsp.utils.Mensageiro;
@@ -436,8 +440,19 @@ public class ProjetoEditar extends ABaseNamed
         this.descricaoProjetoTela = descricaoProjetoTela;
     }
 
+    public Requisitos getRequisito()
+    {
+        return requisito;
+    }
+
+    public void setRequisito(Requisitos requisito)
+    {
+        this.requisito = requisito;
+    }
+
     private DiagramaUML diagramaSelecionado;
     private Projeto projeto;
+    private Requisitos requisito;
     private String descricaoProjetoTela;
     private UploadedFile imagem;
     private UploadedFile imgProjetoTela;

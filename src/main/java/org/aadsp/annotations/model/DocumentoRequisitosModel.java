@@ -62,6 +62,22 @@ public class DocumentoRequisitosModel implements ICRUD
 
     }
 
+    public DocumentoRequisitos consultarPorIDProjeto(DocumentoRequisitos documentoRequisitos)
+    {
+        try
+        {
+            Query consulta = sessao.createQuery("Select dr from DocumentoRequisitos dr  where dr.projeto.ID = :ID");
+            consulta.setInteger("ID", documentoRequisitos.getProjeto().getID());
+            return (DocumentoRequisitos) consulta.uniqueResult();
+        } catch (Exception e)
+        {
+            throw e;
+        } finally
+        {
+            sessao.close();
+        }
+    }
+
     public List<DocumentoRequisitos> listar() throws Exception
     {
         try
