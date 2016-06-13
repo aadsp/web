@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link href="../../bootstrap/css/bootstrap-general.css" rel="stylesheet"/>
+        <script type="text/javascript" src="../../primefaces/js/showcase.js"></script>
+    </h:head>
+    <h:body>
+        <ui:composition template="template/template.xhtml">
+            <ui:define name="content">
+                <h:form id="form">
+                    <p:growl id="growl" showDetail="true" sticky="true" /> 
+                    <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+                    <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                        <img src="../../img/loading.gif" alt=""/>
+                    </p:dialog>
+                    <div class="margin-right-left-20">
+                        <div>
+                            <h3>DOCUMENTO DE REQUISITOS</h3>
+                            <div class="right">
+                                <a class="btn btn" href="DocumentoRequisitosEditar.xhtml">VOLTAR</a>
+                            </div>
+                            <p><strong>DETALHAMENTO</strong></p>
+                            <div>
+                            </div>
+                            <div class="space-40"></div>
+                            <div class="control-group">  
+                                <p:menubar>
+                                    <p:submenu label="ADICIONAR INFORMAÇÕES" style="float: right">
+                                        <p:menuitem value="Novo requisito" onclick="PF('requisitoProjeto').show();" icon="ui-icon-document" />
+                                    </p:submenu>
+                                </p:menubar>
+                                <p:tabView dynamic="true" cache="true">
+                                    <p:tab title="Dados Gerais">
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <p:outputLabel for="tituloProjeto" value="Título:" />
+                                            <p:outputLabel id="tituloProjeto" value="#{documentoRequisitosEditar.documentoRequisitos.projeto.tap.nome}" />
+                                            <p:outputLabel for="projetojustificativa" value="Justificativa:" />
+                                            <p:outputLabel id="projetojustificativa" value="#{documentoRequisitosEditar.documentoRequisitos.projeto.tap.justificativa}" />
+                                        </h:panelGrid>
+                                    </p:tab>
+                                    <p:tab title="Requisitos">
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <p:dataTable id="tblDocumentoRequisitos" style="text-align:center" var="requisitos" emptyMessage="Nenhum Registro Encontrado!"
+                                                         value="#{documentoRequisitosEditar.listarRequisitos()}"
+                                                         paginator="true" rows="5">
+                                                <p:column width="8">
+                                                    <f:facet name="header">
+                                                        <h:outputText value="código"/>
+                                                    </f:facet>
+                                                    <h:outputText value="RF[#{requisitos.ID}]" />
+                                                </p:column>
+                                                <p:column width="100">
+                                                    <f:facet name="header">
+                                                        <h:outputText value="nome"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{requisitos.descricao}" />
+                                                </p:column>
+                                                <p:column width="10">
+                                                   <p:commandButton icon="ui-icon-close" value="remover" actionListener="#{documentoRequisitosEditar.removerRequisitoProjeto(requisitos)}"/>
+                                                </p:column>
+                                            </p:dataTable>
+                                        </h:panelGrid>
+                                    </p:tab>
+                                </p:tabView>
+                            </div>
+                            <div class="space-20"></div>
+                            <p:commandButton class="btn btn-success" value="SALVAR" update="growl" actionListener="#{ATAEditar.editar()}"/>
+                            <p:commandButton class="btn btn-danger" value="EXCLUIR" update="growl" actionListener="#{ATAEditar.excluir()}"/>
+                        </div>
+                    </div>
+                    <div class="space-50"></div>
+
+                    <!-- Zona de modais do projeto -->
+                    <p:dialog header="Adicionar novo requisito ao projeto" showEffect="explode" widgetVar="adicionarRequisitos" modal="true" width="500" height="350">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel for="nomeRequisito" value="Nome do requisito:" />
+                            <p:inputTextarea id="nomeRequisito" rows="1" cols="100" value="#{TAPEditar.tap.alinhamentoEstrategico}" counter="displayNomeRequisito" maxlength="150" counterTemplate="{0} caracteres restantes."  autoResize="false"/>
+                            <h:outputText id="displayNomeRequisito" />
+                        </h:panelGrid>
+                        <p:commandButton value="SALVAR" update="growl" actionListener="#{ATAEditar.editar()}"/>
+                    </p:dialog>
+
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

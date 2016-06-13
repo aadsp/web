@@ -76,6 +76,22 @@ public class RequisitosModel implements ICRUD
             sessao.close();
         }
     }
+    
+    public List<Requisitos> listarPorDocumentoRequisitos(Requisitos requisitos) throws Exception
+    {
+        try
+        {
+            Query consulta = sessao.createQuery("select r from Requisitos r join r.documentoRequisitos dr  where dr.ID = :ID");
+            consulta.setInteger("ID", requisitos.getDocumentoRequisitos().getID());
+            return consulta.list();
+        } catch (Exception e)
+        {
+            throw e;
+        } finally
+        {
+            sessao.close();
+        }
+    }
 
     public List<Requisitos> listarPorFiltro(String filtro) throws Exception
     {
