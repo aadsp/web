@@ -1,6 +1,7 @@
 package org.aadsp.annotations;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,7 +25,7 @@ public class Requisitos implements Serializable, IAnnotations
     @Column(name = "descricao", length = 150)
     private String descricao;
     @Column(name = "dataCadastro")
-    private String dataCadastro;
+    private Date dataCadastro;
 
     @OneToOne
     @JoinColumn(name = "ID_documentoRequisitos")
@@ -50,12 +51,12 @@ public class Requisitos implements Serializable, IAnnotations
         this.descricao = descricao;
     }
 
-    public String getDataCadastro()
+    public Date getDataCadastro()
     {
         return dataCadastro;
     }
 
-    public void setDataCadastro(String dataCadastro)
+    public void setDataCadastro(Date dataCadastro)
     {
         this.dataCadastro = dataCadastro;
     }

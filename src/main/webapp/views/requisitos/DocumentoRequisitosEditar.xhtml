@@ -31,7 +31,7 @@
                             <div class="control-group">  
                                 <p:menubar>
                                     <p:submenu label="ADICIONAR INFORMAÇÕES" style="float: right">
-                                        <p:menuitem value="Novo requisito" onclick="PF('requisitoProjeto').show();" icon="ui-icon-document" />
+                                        <p:menuitem value="Novo requisito" onclick="PF('adicionarRequisitos').show();" icon="ui-icon-document" />
                                     </p:submenu>
                                 </p:menubar>
                                 <p:tabView dynamic="true" cache="true">
@@ -77,12 +77,12 @@
 
                     <!-- Zona de modais do projeto -->
                     <p:dialog header="Adicionar novo requisito ao projeto" showEffect="explode" widgetVar="adicionarRequisitos" modal="true" width="500" height="350">
-                        <h:panelGrid columns="2" cellpadding="5">
+                        <h:panelGrid columns="1" cellpadding="5">
                             <p:outputLabel for="nomeRequisito" value="Nome do requisito:" />
-                            <p:inputTextarea id="nomeRequisito" rows="1" cols="100" value="#{TAPEditar.tap.alinhamentoEstrategico}" counter="displayNomeRequisito" maxlength="150" counterTemplate="{0} caracteres restantes."  autoResize="false"/>
+                            <p:inputTextarea id="nomeRequisito" rows="1" cols="100" value="#{documentoRequisitosEditar.requisitos.descricao}" counter="displayNomeRequisito" maxlength="150"  counterTemplate="{0} caracteres restantes."  autoResize="false"/>
                             <h:outputText id="displayNomeRequisito" />
                         </h:panelGrid>
-                        <p:commandButton value="SALVAR" update="growl" actionListener="#{ATAEditar.editar()}"/>
+                        <p:commandButton value="SALVAR" update="growl" actionListener="#{documentoRequisitosEditar.cadastrarRequisitos()}"/>
                     </p:dialog>
 
                 </h:form>

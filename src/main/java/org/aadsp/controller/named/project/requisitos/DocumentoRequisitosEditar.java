@@ -1,5 +1,6 @@
 package org.aadsp.controller.named.project.requisitos;
 
+import java.util.Date;
 import java.util.List;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -31,7 +32,7 @@ public class DocumentoRequisitosEditar extends ABaseNamed
         {
             int IDDocumentoRequisitos = Integer.parseInt(Criptografia.decodificarBase64(Response.getParametroURL("DocumentoRequisitos")));
             this.documentoRequisitos.setID(IDDocumentoRequisitos);
-            documentoRequisitos =  documentoRequisitos.consultarPorID();
+            documentoRequisitos = documentoRequisitos.consultarPorID();
         } catch (Exception e)
         {
             Mensageiro.mensagemError("Não foi possível carregar os dados iniciais da página");
@@ -71,22 +72,22 @@ public class DocumentoRequisitosEditar extends ABaseNamed
     {
         this.documentoRequisitos = documentoRequisitos;
     }
-    
+
     public List<Requisitos> listarRequisitos()
     {
         try
         {
             Requisitos requisitos = new Requisitos();
             requisitos.setDocumentoRequisitos(documentoRequisitos);
-            return requisitos.listarPorDocumentoRequisitos();            
+            return requisitos.listarPorDocumentoRequisitos();
         } catch (Exception e)
         {
             Mensageiro.mensagemError("Não foi possível listar os requisitos do projeto!");
         }
         return null;
     }
-    
-    public void removerRequisitoProjeto(Requisito requisito)
+
+    public void removerRequisitoProjeto(Requisitos requisito)
     {
         try
         {
@@ -97,6 +98,31 @@ public class DocumentoRequisitosEditar extends ABaseNamed
             Mensageiro.mensagemError("Não foi possível excluir o documento de requisitos!");
         }
     }
+
+    public Requisitos getRequisitos()
+    {
+        return requisitos;
+    }
+
+    public void setRequisitos(Requisitos requisitos)
+    {
+        this.requisitos = requisitos;
+    }
+    
+    public void cadastrarRequisitos()
+    {
+        try
+        {
+            requisitos.setDocumentoRequisitos(documentoRequisitos);
+            requisitos.setDataCadastro(new java.sql.Date(new Date().getTime()));
+            requisitos.cadastrar();
+            Response.redirect("/web/faces/views/requisitos/DocumentoRequisitosEditar.xhtml?DocumentoRequisitos=" + Criptografia.codificarParaBase64(documentoRequisitos.getID().toString()));
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemError("Não foi possível cadastrar o documento de requisitos!");
+        }
+    }
     
     private DocumentoRequisitos documentoRequisitos;
+    private Requisitos requisitos;
 }
