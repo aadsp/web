@@ -16,213 +16,176 @@ and open the template in the editor.
         <ui:composition template="template/template.xhtml">
             <ui:define id="index" name="content">
                 <h:form>
-                  <p:growl id="growl" showDetail="true" sticky="true" />
+                    <p:growl id="growl" showDetail="true" sticky="true" />
                     <div class="space-20"></div>
                     <div class="margin-right-left-20">
-                    <div class="accordion" id="AccordionRecursosHumanos">
-                    <div class="accordion-group">
-                        <div class="accordion-heading">
-                            <a class="accordion-toggle alert-info" data-toggle="collapse"
-                                data-parent="#AccordionRecursosHumanos" href="#novidade1">
-                                <b>Módulos</b> </a>
-                        </div>
-                        <div id="novidade1" class="accordion-body collapse in">
-                            <div class="accordion-inner">
-                                <div style="width:100%; margin: 10px auto auto auto;">
-                        <div class="widget-painel">
-                            <div class="thumbnail">
-                                <div class="height-280">
-                                <i class="incon icon-th-large"></i>
-                                <h3>PROJETOS</h3>
-                                <p>    
-                                <ul>
-                                    <li> Termo de Abetura de Projeto - TAP</li>
-                                    <li> Plano de Gerenciamento de Riscos - PGR</li>
-                                    <li> Desenvolvimento de Diagramas do Projeto</li>
-                                    <li> Controle de Reuniões do Projeto</li>
-                                    </ul>
-                                    </p>
+                        <div class="accordion" id="AccordionRecursosHumanos">
+                            <div class="accordion-group">
+                                <div class="accordion-heading">
+                                    <a class="accordion-toggle alert-info" data-toggle="collapse"
+                                       data-parent="#AccordionRecursosHumanos" href="#novidade1">
+                                        <b>Módulos</b> </a>
                                 </div>
-                                <div style="align:right">
-                                    <a class="btn btn-inverse" href="../projetos/Index.xhtml">Acessar</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="widget-painel">
-                            <div class="thumbnail">
-                                <div class="height-280">
-                                <i class="incon icon-th-large"></i>
-                                <h3>REQUISITOS</h3>
-                                <p>    
-                                <ul>
-                                    <li> Desenvolvimento do documento de requisitos do projeto</li>
-                                    <li> Rastreabilidade do Projeto</li>
-                                    <li> Histórico de mudança de requisitos no projeto</li>
-                                    <li> Controle de impactos e decisões</li>
-                                    </ul>
-                                    </p>
-                                </div>
-                                <div style="align:right">
-                                   <a class="btn btn-inverse" href="../requisitos/Index.xhtml">Acessar</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="widget-painel">
-                            <div class="thumbnail">
-                                <div class="height-280">
-                                <i class="incon icon-th-large"></i>
-                                <h3>CONFIG. E MUDANÇA</h3>
-                                <p>
-                                    <ul>
-                                    <li> Desenvolvimento do documento de solicitação de mudança do projeto</li>
-                                    <li> Controle e gerenciamento de versão do Projeto</li>
-                                    <li> Cadastro de auditores para controle de configuração e Mudança no Projeto</li>
-                                    <li> Controle de dependência de requisitos do projeto</li>
-                                    </ul>
-                                </p>
-                                </div>
-                                <div style="align:right">
-                                    <a class="btn btn-inverse" NavigateUrl="~/Imagens/favicon.ico" runat="server">Acessar</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="widget-painel">
-                            <div class="thumbnail">
-                                <div class="height-280">
-                                <i class="incon icon-th-large"></i>
-                                <h3>COLABORADORES</h3>
-                                <p>
-                                    <ul>
-                                    <li> Cadastro de Colaboradores</li>
-                                    <li> Controle de treinamento dos colaboradores</li>
-                                    <li> Controle de aprendizado baseado em componentes no projeto</li>
-                                    <li> Desenvolvimento de planos de melhorias do projeto</li>
-                                    <li> Custo de Colaboradores por Papeis</li>
-                                    </ul>
-                                </p>
-                                </div>
-                                <div style="align:right">
-                                    <a class="btn btn-inverse" href="../colaboradores/Index.xhtml">Acessar</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="widget-painel">
-                            <div class="thumbnail">
-                                <div class="height-280">
-                                <i class="incon icon-th-large"></i>
-                                <h3>TESTES E QUALIDADE</h3>
-                                <p>
-                                    <ul>
-                                    <li> Desenvolvimento do plano de testes do projeto</li>
-                                    <li> Controle da equipe de testadores do projeto</li>
-                                    <li> Controle de testes automatizados do projeto</li>
-                                    <li> Cadastro de casos de testes do projeto</li>
-                                    <li> Gerenciamento de problemas do projeto BugTracking</li>
-                                    </ul>
-                                </p>
-                                </div>
-                                <div style="align:right">
-                                    <a class="btn btn-inverse" NavigateUrl="~/Imagens/favicon.ico" runat="server">Acessar</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="widget-painel">
-                            <div class="thumbnail">
-                                <div class="height-280">
-                                <i class="incon icon-th-large"></i> 
-                                <h3>REUTILIZAÇÃO</h3>
-                                <p>
-                                    <ul>
-                                    <li> Desenvolvimento do modelo arquitetura do projeto</li>
-                                    <li> Controle de ativos reutilizáveis do projeto</li>
-                                    <li> Avaliação do Ativos reutilizaveis do projeto</li>
-                                    <li> Cadastro de auditores para controle de configuração e Mudança no Projeto</li>
-                                    <li> Controle de frameworks do projeto</li>
-                                    </ul>
-                                </p>
-                                </div>
-                                <div style="align:right">
-                                    <a class="btn btn-inverse" NavigateUrl="~/Imagens/favicon.ico" runat="server">Acessar</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="widget-painel">
-                            <div class="thumbnail">
-                                <div class="height-280">
-                                <i class="incon icon-th-large"></i>    
-                                <h3>ADM. SOFTWARE</h3>
-                                <p>
-                                    <ul>
-                                    <li> Controle de Usuários</li>
-                                    <li> Relatórios de Acesso</li>
-                                    <li> Controle integrado de Perfis de Acesso</li>
-                                    </ul>
-                                </p>
-                                </div>
-                                <div style="align:right">
-                                    <a class="btn btn-inverse" href="../adm/Index.xhtml">Acessar</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                                <div class="clear"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="space-20"></div>
-                        <div class="accordion-group">
-                        <div class="accordion-heading">
-                            <a class="accordion-toggle alert-info" data-toggle="collapse"
-                                data-parent="#AccordionRecursosHumanos" href="#novidade2"><b>Gráfico</b>
-                            </a>
-                        </div>
-                        <div id="novidade2" class="accordion-body collapse">
-                            <div class="accordion-inner">
-                                <p>
-                                    <canvas id="GraficoRadar" style="width:100%;"></canvas>
-                                    
-                <script type="text/javascript">                         
+                                <div id="novidade1" class="accordion-body collapse in">
+                                    <div class="accordion-inner">
+                                        <div style="width:100%; margin: 10px auto auto auto;">
+                                            <div class="widget-painel">
+                                                <div class="height-200">
+                                                    <div class="widget-painel">
+                                                        <div class="height-200">
+                                                            <div class="menu-circle-black-boder" style="background-color: #000;">
+                                                                <div class="top-80">
+                                                                    <a style="color: #ffffff"  href="../projetos/Index.xhtml"><h3>PROJETOS</h3></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="widget-painel">
+                                                <div class="height-200">
+                                                    <div class="widget-painel">
+                                                        <div class="height-200">
+                                                            <div class="menu-circle-black-boder" style="background-color: #333333;">
+                                                                <div class="top-80">
+                                                                    <a style="color: #ffffff" href="../requisitos/Index.xhtml"><h3>REQUISITOS</h3></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             
-                var options = {
-                    responsive:true
-                };
+                                            <div class="widget-painel">
+                                                <div class="height-200">
+                                                    <div class="widget-painel">
+                                                        <div class="height-200">
+                                                            <div class="menu-circle-black-boder" style="background-color: #666666;">
+                                                                <div class="top-80">
+                                                                    <a style="color: #ffffff" href="#"><h3>MUDANÇA</h3></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="widget-painel">
+                                                <div class="height-200">
+                                                    <div class="widget-painel">
+                                                        <div class="height-200">
+                                                            <div class="menu-circle-black-boder" style="background-color: #999999;">
+                                                                <div class="top-80">
+                                                                    <a style="color: #ffffff" href="../colaboradores/Index.xhtml"><h3>COLABORADOR</h3></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="widget-painel">
+                                                <div class="height-200">
+                                                    <div class="widget-painel">
+                                                        <div class="height-200">
+                                                            <div class="menu-circle-black-boder" style="background-color: #cc0000">
+                                                                <div class="top-80">
+                                                                    <a style="color: #ffffff" href="#"><h3>TESTES</h3></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="widget-painel">
+                                                <div class="height-200">
+                                                    <div class="widget-painel">
+                                                        <div class="height-200">
+                                                            <div class="menu-circle-black-boder" style="background-color: #990000;">
+                                                                <div class="top-80">
+                                                                    <a style="color: #ffffff" href="#"><h3>REUTILIZAÇÃO</h3></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="widget-painel">
+                                                <div class="height-200">
+                                                    <div class="widget-painel">
+                                                        <div class="height-200">
+                                                            <div class="menu-circle-black-boder" style="background-color: #660000;">
+                                                                <div class="top-80">
+                                                                    <a style="color: #ffffff" href="../adm/Index.xhtml"><h3>ADMINISTRADOR</h3></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                         
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="space-20"></div>
+                            <div class="accordion-group">
+                                <div class="accordion-heading">
+                                    <a class="accordion-toggle alert-info" data-toggle="collapse"
+                                       data-parent="#AccordionRecursosHumanos" href="#novidade2"><b>Gráfico</b>
+                                    </a>
+                                </div>
+                                <div id="novidade2" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <p>
+                                            <canvas id="GraficoRadar" style="width:100%;"></canvas>
 
-                var data = {
-                    labels: ["Projetos", "Requisitos", "Configuração e Mudança", "Colaboradores", "Teste e Qualidade", "Reutilização"],
-                    datasets: [
-                        {
-                            label: "Dados Primários",
-                            fillColor: "rgba(220,220,220,0.2)",
-                            strokeColor: "#000",
-                            angleLineColor : "#000",
-                            scaleFontSize: 19,
-                            scaleFontColor: "#000",
-                            pointColor: "#000",
-                            pointStrokeColor: "#000",
-                            pointHighlightFill: "#000",
-                            pointHighlightStroke: "#000",
-                            data: [20, 35, 25, 20, 5, 15]
-                        },
-                    ]
-                };            
-                
-                window.onload = function(){
+                                            <script type="text/javascript">
 
-                    var ctx = document.getElementById("GraficoRadar").getContext("2d");
-                    var RadarChart = new Chart(ctx).Radar(data, options);
-                }  
-            </script>    
-                                </p>
+                                                var options = {
+                                                    responsive: true
+                                                };
+
+                                                var data = {
+                                                    labels: ["Projetos", "Requisitos", "Configuração e Mudança", "Colaboradores", "Teste e Qualidade", "Reutilização"],
+                                                    datasets: [
+                                                        {
+                                                            label: "Dados Primários",
+                                                            fillColor: "rgba(220,220,220,0.2)",
+                                                            strokeColor: "#000",
+                                                            angleLineColor: "#000",
+                                                            scaleFontSize: 19,
+                                                            scaleFontColor: "#000",
+                                                            pointColor: "#000",
+                                                            pointStrokeColor: "#000",
+                                                            pointHighlightFill: "#000",
+                                                            pointHighlightStroke: "#000",
+                                                            data: [20, 35, 25, 20, 5, 15]
+                                                        },
+                                                    ]
+                                                };
+
+                                                window.onload = function () {
+
+                                                    var ctx = document.getElementById("GraficoRadar").getContext("2d");
+                                                    var RadarChart = new Chart(ctx).Radar(data, options);
+                                                }
+                                            </script>    
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    </div>
-                    </div>
-                  <div class="clear"></div>
-                  <div class="space-50"></div>
+                    <div class="clear"></div>
+                    <div class="space-50"></div>
                 </h:form>
             </ui:define>
-            
+
         </ui:composition>
     </h:body>
 </html>

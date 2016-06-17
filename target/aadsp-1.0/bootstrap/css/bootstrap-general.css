@@ -740,12 +740,19 @@ hr.style-six {
         
     }
 
+    
+    
 .height-230 {
     height: 230px;
     margin-bottom: 5px;
 }
 
 .height-190 {
+    height: 230px;
+    margin-bottom: 5px;
+}
+
+.height-200 {
     height: 230px;
     margin-bottom: 5px;
 }
@@ -762,8 +769,8 @@ hr.style-six {
     height: 130px;
 }
 
-.height-280{
-    height: 280px;
+.height-310{
+    height: 310px;
 }
 
 .background-color-gray
@@ -843,9 +850,12 @@ hr.style-six {
   text-decoration: none;
 }
 
-/*.ui-datatable thead th, .ui-datatable tbody td, .ui-datatable tfoot td {
-    border-style: none;
-    text-align: center;
-    border-bottom: 1px solid #eee;
-    width: 100%;
-}*/
+.menu-circle-black-boder {
+    border-radius: 50%;
+    display: inline-block;
+    height: 215px;
+    width: 215px;
+    border: 0px solid #000000;
+    
+}
+

@@ -6186,6 +6186,14 @@ a.badge:focus {
     margin-top: 50px;
 }
 
+.top-80 {
+    margin-top: 80px;
+}
+
+.top-100 {
+    margin-top: 100px;
+}
+
 .thumbnail{
   display: block;
   padding: 4px;
