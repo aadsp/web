@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2f3837a3-d734-4d32-8268-55725bc3ef06">
 	<property name="ireport.zoom" value="1.4641000000000008"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="982"/>
+	<property name="ireport.y" value="1061"/>
 	<parameter name="ID_tap" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -244,24 +244,9 @@ FROM TAP.TAP_AADSP_TAP WHERE ID_tap = $P{ID_tap}]]>
 		</band>
 	</title>
 	<detail>
-		<band height="230" splitType="Stretch">
+		<band height="178" splitType="Stretch">
 			<subreport>
-				<reportElement positionType="Float" x="0" y="76" width="555" height="35" uuid="c5a9dd88-7559-4739-922e-9e2144626d8d"/>
-				<subreportParameter name="ID_tap">
-					<subreportParameterExpression><![CDATA[$F{ID_tap}]]></subreportParameterExpression>
-				</subreportParameter>
-				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "TAP_Escopo.jasper"]]></subreportExpression>
-			</subreport>
-			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="-1" y="59" width="111" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="97c92b23-b203-4550-ad1b-e467772c4eb2"/>
-				<textElement textAlignment="Center">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Escopo]]></text>
-			</staticText>
-			<subreport>
-				<reportElement positionType="Float" x="0" y="137" width="555" height="34" uuid="c741398d-451d-4f2f-acde-ee2fa967a6ec"/>
+				<reportElement positionType="Float" x="0" y="76" width="555" height="34" uuid="c741398d-451d-4f2f-acde-ee2fa967a6ec"/>
 				<subreportParameter name="ID_tap">
 					<subreportParameterExpression><![CDATA[$F{ID_tap}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -269,21 +254,21 @@ FROM TAP.TAP_AADSP_TAP WHERE ID_tap = $P{ID_tap}]]>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "TAP_Equipe.jasper"]]></subreportExpression>
 			</subreport>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="0" y="120" width="109" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="39d03801-811c-4a62-9e39-3e68e225add2"/>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="61" width="109" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="39d03801-811c-4a62-9e39-3e68e225add2"/>
 				<textElement textAlignment="Center">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Equipe]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="0" y="181" width="109" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="d9baef42-d51c-4f8e-8607-3d52df4abd85"/>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="118" width="109" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="d9baef42-d51c-4f8e-8607-3d52df4abd85"/>
 				<textElement textAlignment="Center">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Patrocinador]]></text>
 			</staticText>
 			<subreport>
-				<reportElement positionType="Float" x="0" y="198" width="555" height="25" uuid="e4707500-a5d2-4ee5-b297-be96fd38f898"/>
+				<reportElement positionType="Float" x="0" y="135" width="555" height="39" uuid="e4707500-a5d2-4ee5-b297-be96fd38f898"/>
 				<subreportParameter name="ID_tap">
 					<subreportParameterExpression><![CDATA[$F{ID_tap}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -309,13 +294,10 @@ FROM TAP.TAP_AADSP_TAP WHERE ID_tap = $P{ID_tap}]]>
 				<reportElement positionType="Float" x="2" y="16" width="552" height="1" uuid="05d91772-7864-457e-9bc2-9b24329be511"/>
 			</line>
 			<line>
-				<reportElement positionType="Float" x="2" y="71" width="552" height="1" uuid="4218fa8e-8d67-42f1-adaf-4a62ce1d4e9d"/>
+				<reportElement positionType="Float" x="0" y="74" width="554" height="1" uuid="6399f6b7-0242-423d-b40f-8cccf44adafa"/>
 			</line>
 			<line>
-				<reportElement positionType="Float" x="0" y="133" width="554" height="1" uuid="6399f6b7-0242-423d-b40f-8cccf44adafa"/>
-			</line>
-			<line>
-				<reportElement positionType="Float" x="2" y="194" width="552" height="1" uuid="575d4733-5f4e-42b3-ad35-8e1314cc69d7"/>
+				<reportElement positionType="Float" x="2" y="132" width="552" height="1" uuid="575d4733-5f4e-42b3-ad35-8e1314cc69d7"/>
 			</line>
 		</band>
 	</detail>
