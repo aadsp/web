@@ -34,7 +34,6 @@
                             <p:menuitem value="Responsável" onclick="PF('responsavelProjeto').show();" icon="ui-icon-document" />
                             <p:menuitem value="Stakeholders" onclick="PF('stakeholdersProjeto').show();" icon="ui-icon-document" />
                             <p:menuitem value="Equipe" onclick="PF('equipeProjeto').show();" icon="ui-icon-document" />
-                            <p:menuitem value="Escopo" onclick="PF('escopoProjeto').show();" icon="ui-icon-document" /> 
                             <p:submenu label="Patrocinador" icon="ui-icon-contact">
                                 <p:menuitem value="Empresa"  onclick="PF('patrocinadorEmpresaProjeto').show();" icon="ui-icon-document" />
                                 <p:menuitem value="Stakeholders" onclick="PF('patrocinadorStakeholderProjeto').show();" icon="ui-icon-document" />
@@ -193,39 +192,6 @@
                       </h:panelGrid>
                   </p:tab>  
                     
-                  <p:tab title="Escopo">
-                      <a class="label label-info" style="color:#ffffff;font-size:14px">ESCOPO:</a>
-                      <h:panelGrid columns="2" cellpadding="5">
-                          <p:dataTable id="tblescopo" style="text-align:center" var="escopo" emptyMessage="Nenhum Registro Encontrado!"
-                                       value="#{TAPEditar.listarEscopo()}"
-                                    paginator="true" rows="5">
-                    <p:column width="90">
-                           <f:facet name="header">
-                               <h:outputText value="descricao"/>
-                           </f:facet>
-                        <h:outputText value="#{escopo.descricao}" />
-                    </p:column>
-                    <p:column width="30">
-                           <f:facet name="header">
-                               <h:outputText value="área"/>
-                           </f:facet>
-                        <h:outputText value="#{escopo.descricaoArea()}" />
-                    </p:column>
-                    <p:column width="30">
-                           <f:facet name="header">
-                               <h:outputText value="tipo"/>
-                           </f:facet>
-                        <h:outputText value="#{escopo.descricaoTipo()}" />
-                    </p:column>          
-                              
-                    <p:column width="15">
-                        <p:commandButton icon="ui-icon-close" value="remover" actionListener="#{TAPEditar.removerEscopo(escopo)}"/>
-                    </p:column> 
-                       
-                       </p:dataTable>
-
-                      </h:panelGrid>
-                    </p:tab> 
                   <p:tab title="Equipe">
                       <a class="label label-info" style="color:#ffffff;font-size:14px">EQUIPE:</a>
                         <h:panelGrid columns="2" cellpadding="5">
@@ -283,28 +249,6 @@
                         <p:commandButton icon="ui-icon-disk" value="add" actionListener="#{TAPEditar.addResponsavel(usuarios)}"/>
                     </p:column>    
                     </p:dataTable>
-                </p:dialog>
-                
-                <p:dialog header="Adicionar escopo ao projeto" showEffect="explode" widgetVar="escopoProjeto" modal="true" width="500" height="300">
-                    <h:panelGrid columns="2" cellpadding="5">
-                        <p:outputLabel for="descricaoEscopo" value="Descrição do Escopo:" />
-                        <p:inputTextarea id="descricaoEscopo" maxlength="100" value="#{TAPEditar.tapEscopo.descricao}" autoResize="false"/>
-                    </h:panelGrid>
-                    <h:panelGrid columns="2" cellpadding="5">
-                        <p:outputLabel for="escopoArea" value="Área do Escopo: " />
-                        <p:selectOneMenu id="escopoArea"  value="#{TAPEditar.tapAreaSelecionado}" style="width:230px">
-                            <f:selectItem itemLabel="Selecionar Área" itemValue="" noSelectionOption="true" />
-                            <f:selectItems value="#{TAPEditar.TAPAreas}" />
-                        </p:selectOneMenu>
-                    </h:panelGrid>
-                      <h:panelGrid columns="2" cellpadding="5">
-                        <p:outputLabel for="escopoTipo" value="Tipo do Escopo: " />
-                        <p:selectOneMenu id="escopoTipo"  value="#{TAPEditar.tapTipoSelecionado}" style="width:230px">
-                            <f:selectItem itemLabel="Selecionar Tipo" itemValue="" noSelectionOption="true" />
-                            <f:selectItems value="#{TAPEditar.TAPTipos}" />
-                        </p:selectOneMenu>
-                    </h:panelGrid>
-                    <p:commandButton class="btn" value="ADICIONAR" actionListener="#{TAPEditar.addEscopo()}"/>
                 </p:dialog>
                 
                 <p:dialog header="Adicionar equipe ao projeto" showEffect="explode" widgetVar="equipeProjeto" modal="true" width="500" height="350">
