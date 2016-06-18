@@ -27,7 +27,7 @@ public class TAP implements Serializable, IAnnotations
     private Integer ID;
     @Column(name = "nome",length = 250)
     private String nome;
-    @Column(name = "justificativa",length = 500)
+    @Column(name = "justificativa",length = 1500)
     private String justificativa;
     @Column(name = "objetivo",length = 500)
     private String objetivo;
