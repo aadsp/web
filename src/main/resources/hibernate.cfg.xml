@@ -46,5 +46,9 @@
     <mapping class="org.aadsp.annotations.DocumentoRequisitosTipo" />
     <mapping class="org.aadsp.annotations.ProjetoTela" />
     <mapping class="org.aadsp.annotations.Requisitos" />
+    <mapping class="org.aadsp.annotations.EAP" />
+    <mapping class="org.aadsp.annotations.EAPAtividade" />
+    <mapping class="org.aadsp.annotations.EAPPacote" />
+    <mapping class="org.aadsp.annotations.EAPTipo" />
   </session-factory>
 </hibernate-configuration>
