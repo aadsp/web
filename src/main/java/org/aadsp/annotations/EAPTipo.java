@@ -74,7 +74,7 @@ public class EAPTipo implements Serializable, IAnnotations
         EAPTipoModel model = new EAPTipoModel();
         return model.listar();
     }
-
+    
     public EAPTipo consultarPorID() throws Exception
     {
         EAPTipoModel model = new EAPTipoModel();

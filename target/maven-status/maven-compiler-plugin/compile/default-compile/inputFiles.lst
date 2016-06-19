@@ -51,6 +51,7 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\contributors\Colabor
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\ProjetoEditar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\TAPEscopoModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\utils\FactoryHibernate.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\EAPConsultar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\utils\Criptografia.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\TAPConsultar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Funcao.java
@@ -86,6 +87,7 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Requisitos.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\PaginaEditar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\UsuarioModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Stakeholder.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\EAPCadastrar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Acesso.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\FuncaoEditar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\TAPModel.java

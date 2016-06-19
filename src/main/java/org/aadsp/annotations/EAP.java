@@ -101,7 +101,13 @@ public class EAP implements Serializable, IAnnotations
         EAPModel model = new EAPModel();
         return model.listar();
     }
-
+    
+    public List<EAP> listarPorProjeto() throws Exception
+    {
+        EAPModel model = new EAPModel();
+        return model.listarPorProjeto(this);
+    }
+    
     public EAP consultarPorID() throws Exception
     {
         EAPModel model = new EAPModel();
