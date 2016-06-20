@@ -17,6 +17,12 @@ import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.utils.Criptografia;
 import org.aadsp.utils.Mensageiro;
 import org.aadsp.utils.Response;
+import org.primefaces.model.diagram.Connection;
+import org.primefaces.model.diagram.DefaultDiagramModel;
+import org.primefaces.model.diagram.DiagramModel;
+import org.primefaces.model.diagram.Element;
+import org.primefaces.model.diagram.endpoint.DotEndPoint;
+import org.primefaces.model.diagram.endpoint.EndPointAnchor;
 
 /**
  * @author Felipe Coelho
@@ -34,6 +40,7 @@ public class EAPEditar extends ABaseNamed
         this.pacoteAtividade = new EAPPacote();
         this.pacotesAtividades = new HashMap<String, Integer>();
         this.eapTipos = new HashMap<String, Integer>();
+        this.gerarVisualizacaoEAP();
     }
 
     private void carregarDadosIniciais()
@@ -198,7 +205,7 @@ public class EAPEditar extends ABaseNamed
             Mensageiro.mensagemError("Erro ao remover pacote de atividade!!");
         }
     }
-    
+
     public void removerAtividade(EAPAtividade atividade)
     {
         try
@@ -304,9 +311,69 @@ public class EAPEditar extends ABaseNamed
             lista = atividade.listarPorEAP();
         } catch (Exception e)
         {
-             Mensageiro.mensagemError("Não foi possível listar as atividades desta EAP!!");
+            Mensageiro.mensagemError("Não foi possível listar as atividades desta EAP!!");
         }
         return lista;
+    }
+
+    private void gerarVisualizacaoEAP()
+    {
+        try
+        {
+            visualizacaoEAP = new DefaultDiagramModel();
+            visualizacaoEAP.setMaxConnections(-1);
+
+            Element elementEAP = new Element("  "+eap.getEapTipo().getDescricao()+"  ", "20em", "6em");
+            elementEAP.addEndPoint(new DotEndPoint(EndPointAnchor.BOTTOM));
+
+            visualizacaoEAP.addElement(elementEAP);
+
+            List<EAPPacote> listaPacote = new ArrayList<>();
+            EAPPacote pacote = new EAPPacote();
+            pacote.setProjeto(eap.getProjeto());
+            listaPacote = pacote.listarPorProjeto();
+            int posicaoPacote = 10;
+            for (EAPPacote obj : listaPacote)
+            {
+
+                Element elementPacote = new Element("  "+obj.getDescricao()+"  ", posicaoPacote + "em", "18em");
+                elementPacote.addEndPoint(new DotEndPoint(EndPointAnchor.TOP));
+                elementPacote.addEndPoint(new DotEndPoint(EndPointAnchor.BOTTOM));
+
+                visualizacaoEAP.connect(new Connection(elementEAP.getEndPoints().get(0), elementPacote.getEndPoints().get(0)));
+                visualizacaoEAP.addElement(elementPacote);
+
+                List<EAPAtividade> listaAtividades = new ArrayList<>();
+                int posicaoAtividade = 30;
+                EAPAtividade atividade = new EAPAtividade();
+                atividade.setEap(eap);
+                listaAtividades = atividade.listarPorEAP();
+                for (EAPAtividade objAtividade : listaAtividades)
+                {
+                    if(objAtividade.getEapPacote().getID() == obj.getID()){
+                    Element elementAtividade = new Element("  "+objAtividade.getDescricao()+"  ", posicaoPacote + "em", posicaoAtividade+"em");
+                    elementAtividade.addEndPoint(new DotEndPoint(EndPointAnchor.LEFT));
+                    
+                    visualizacaoEAP.connect(new Connection(elementPacote.getEndPoints().get(1), elementAtividade.getEndPoints().get(0)));
+                    visualizacaoEAP.addElement(elementAtividade);
+                    
+                    posicaoAtividade += 10;
+                    }
+                }
+
+                posicaoPacote = +30;
+            }
+
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemError("Não foi possível projetar a visualização da EAP!!");
+        }
+
+    }
+
+    public DefaultDiagramModel getVisualizacaoEAP()
+    {
+        return visualizacaoEAP;
     }
 
     private int pacoteSelecionado;
@@ -320,4 +387,5 @@ public class EAPEditar extends ABaseNamed
     private EAPPacote pacoteAtividade;
     private Map<String, Integer> pacotesAtividades;
     private Map<String, Integer> eapTipos;
+    private DefaultDiagramModel visualizacaoEAP;
 }

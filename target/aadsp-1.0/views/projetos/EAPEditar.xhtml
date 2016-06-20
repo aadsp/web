@@ -8,6 +8,8 @@
     <h:head>
         <link href="../../bootstrap/css/bootstrap-general.css" rel="stylesheet"/>
         <script type="text/javascript" src="../../primefaces/js/showcase.js"></script>
+
+        
     </h:head>
     <h:body>
         <ui:composition template="template/template.xhtml">
@@ -56,7 +58,20 @@
                                         </h:panelGrid>
                                     </p:tab>
                                     <p:tab title="Visualização">
-
+                                        <style type="text/css">
+                                            .ui-diagram-element {
+                                                border:0.1em dotted #000; 
+                                                width:auto; 
+                                                height:5em;
+                                                font-size: 12px; 
+                                                line-height:2em;
+                                                padding-left: 10px;
+                                                padding-right: 10px; 
+                                                padding-top: 20px; 
+                                                text-align: center;
+                                            }
+                                        </style>
+                                        <p:diagram value="#{EAPEditar.visualizacaoEAP}" style="width:100%;height:400px;" styleClass="ui-widget-content" />
                                     </p:tab>
                                     <p:tab title="Atividades">
                                         <p:dataTable id="tblAtividadesEAP" style="text-align:center" var="atividade" value="#{EAPEditar.listarAtividadesEAP()}"
