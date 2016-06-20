@@ -77,6 +77,22 @@ public class EAPPacoteModel implements ICRUD
         }
     }
 
+    public List<EAPPacote> listarPorProjeto(EAPPacote eapPacote) throws Exception
+    {
+        try
+        {
+            Query consulta = sessao.createQuery("select ep from EAPPacote ep join ep.projeto p where p.ID = :IDProjeto");
+            consulta.setInteger("IDProjeto", eapPacote.getProjeto().getID());
+            return consulta.list();
+        } catch (Exception e)
+        {
+            throw e;
+        } finally
+        {
+            sessao.close();
+        }
+    }
+
     public List<EAPPacote> listarPorFiltro(String filtro) throws Exception
     {
         try

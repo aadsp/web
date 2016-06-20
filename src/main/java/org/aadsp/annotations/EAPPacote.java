@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.aadsp.annotations.model.EAPPacoteModel;
 import org.aadsp.interfaces.IAnnotations;
@@ -21,6 +23,10 @@ public class EAPPacote implements Serializable, IAnnotations
     private Integer ID;
     @Column(name = "descricao", length = 60)
     private String descricao;
+
+    @OneToOne
+    @JoinColumn(name = "ID_projeto")
+    private Projeto projeto;
 
     public Integer getID()
     {
@@ -40,6 +46,16 @@ public class EAPPacote implements Serializable, IAnnotations
     public void setDescricao(String descricao)
     {
         this.descricao = descricao;
+    }
+
+    public Projeto getProjeto()
+    {
+        return projeto;
+    }
+
+    public void setProjeto(Projeto projeto)
+    {
+        this.projeto = projeto;
     }
 
     @Override
@@ -73,6 +89,12 @@ public class EAPPacote implements Serializable, IAnnotations
     {
         EAPPacoteModel model = new EAPPacoteModel();
         return model.listar();
+    }
+    
+    public List<EAPPacote> listarPorProjeto() throws Exception
+    {
+        EAPPacoteModel model = new EAPPacoteModel();
+        return model.listarPorProjeto(this);
     }
 
     public EAPPacote consultarPorID() throws Exception

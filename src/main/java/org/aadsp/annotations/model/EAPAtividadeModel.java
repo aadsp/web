@@ -77,6 +77,22 @@ public class EAPAtividadeModel implements ICRUD
         }
     }
 
+    public List<EAPAtividade> listarPorEAP(EAPAtividade eapAtividade) throws Exception
+    {
+        try
+        {
+            Query consulta = sessao.createQuery("select a from EAPAtividade a join a.eap e where e.ID = :IDEAP");
+            consulta.setInteger("IDEAP", eapAtividade.getEap().getID());
+            return consulta.list();
+        } catch (Exception e)
+        {
+            throw e;
+        } finally
+        {
+            sessao.close();
+        }
+    }
+
     public List<EAPAtividade> listarPorFiltro(String filtro) throws Exception
     {
         try

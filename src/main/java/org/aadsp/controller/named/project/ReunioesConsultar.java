@@ -10,6 +10,7 @@ import javax.inject.Named;
 import net.sf.jasperreports.engine.JRException;
 import org.aadsp.annotations.Projeto;
 import org.aadsp.interfaces.ABaseNamed;
+import org.aadsp.interfaces.IConsulta;
 import org.aadsp.utils.Criptografia;
 import org.aadsp.utils.Filtro;
 import org.aadsp.utils.Mensageiro;
@@ -17,7 +18,7 @@ import org.aadsp.utils.Response;
 
 @ViewScoped
 @Named
-public class ReunioesConsultar extends ABaseNamed
+public class ReunioesConsultar extends ABaseNamed implements IConsulta
 {
 
     public ReunioesConsultar()
@@ -34,7 +35,7 @@ public class ReunioesConsultar extends ABaseNamed
         }
     }
 
-    private void criarFiltro()
+    public void criarFiltro()
     {
         Map<String, String> atributo = new HashMap<>();
         Map<String, String> atributoClasse = new HashMap<>();

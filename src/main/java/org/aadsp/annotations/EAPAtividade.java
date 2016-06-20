@@ -99,6 +99,12 @@ public class EAPAtividade implements Serializable, IAnnotations
         EAPAtividadeModel model = new EAPAtividadeModel();
         return model.listar();
     }
+    
+    public List<EAPAtividade> listarPorEAP() throws Exception
+    {
+        EAPAtividadeModel model = new EAPAtividadeModel();
+        return model.listarPorEAP(this);
+    }
 
     public EAPAtividade consultarPorID() throws Exception
     {

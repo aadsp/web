@@ -54,7 +54,7 @@ public class EAPConsultar extends ABaseNamed
     {
         try
         {
-            Response.redirect("/web/faces/views/projetos/EAPEditar.xhtml?Projeto=" + Criptografia.codificarParaBase64(eap.getID().toString()));
+            Response.redirect("/web/faces/views/projetos/EAPEditar.xhtml?EAP=" + Criptografia.codificarParaBase64(eap.getID().toString()));
         } catch (Exception e)
         {
             Mensageiro.mensagemError("Erro ao selecionar EAP!!");
