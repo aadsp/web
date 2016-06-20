@@ -13,28 +13,28 @@
     <h:body>
         <ui:composition template="template/template.xhtml">
             <ui:define name="content">
-            <h:form id="form">
-            <p:growl id="growl" showDetail="true" sticky="true" /> 
-            <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
-            <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
-                <img src="../../img/loading.gif" alt=""/>
-            </p:dialog>
-            <div class="margin-right-left-20">
-            <div class="form-inline">
-                <div class="control-group">
-                    <div>
-                        <h3>EAP - ESTRUTURA ANALÍTICA DE PROJETO</h3>
-                        <div class="right">
-                             <a class="btn btn-inverse" href="EAPCadastrar.xhtml">NOVO</a>
-                        </div>
-                        <p><strong>CONSULTA</strong></p>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <div class="space-10"></div>
+                <h:form id="form">
+                    <p:growl id="growl" showDetail="true" sticky="true" /> 
+                    <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+                    <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                        <img src="../../img/loading.gif" alt=""/>
+                    </p:dialog>
+                    <div class="margin-right-left-20">
+                        <div class="form-inline">
+                            <div class="control-group">
+                                <div>
+                                    <h3>EAP - ESTRUTURA ANALÍTICA DE PROJETO</h3>
+                                    <div class="right">
+                                        <a class="btn btn-inverse" href="EAPCadastrar.xhtml">NOVO</a>
+                                    </div>
+                                    <p><strong>CONSULTA</strong></p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="space-10"></div>
 
-                    <div class="space-10"></div>
-                        <div id="Filtros" > <!-- Div de construção de filtros -->
+                                <div class="space-10"></div>
+                                <div id="Filtros" > <!-- Div de construção de filtros -->
                                     <h:panelGrid columns="6" cellpadding="6">
                                         <div class="form-search">
                                             <a class="label label-info">Filtrar por:</a>
@@ -51,9 +51,9 @@
                                                 <f:selectItem itemLabel="CONDIÇÃO" itemValue="" noSelectionOption="true" />
                                                 <f:selectItems value="#{EAPConsultar.filtro.operadorLogico}" />
                                             </p:selectOneMenu>
-                                           <p:inputText id="atributoFiltro" value="#{EAPConsultar.filtro.atributoFiltro}"/>
-                                           <p:commandButton value="GERAR" style="color: #ffffff; background: #3399ff" ajax="true" update="filtro" actionListener="#{EAPConsultar.filtro.filtrar()}"/>
-                                         </div>
+                                            <p:inputText id="atributoFiltro" value="#{EAPConsultar.filtro.atributoFiltro}"/>
+                                            <p:commandButton value="GERAR" style="color: #ffffff; background: #3399ff" ajax="true" update="filtro" actionListener="#{EAPConsultar.filtro.filtrar()}"/>
+                                        </div>
                                     </h:panelGrid>
                                     <div class="label label-info">
                                         <p:commandLink id="filtro" style="color: #ffffff" value="#{EAPConsultar.filtro.filtro}" update="tbl" actionListener="#{EAPConsultar.filtroConsulta()}"/>
@@ -61,43 +61,49 @@
                                             <i class="icon-remove icon-white"></i>
                                         </p:commandLink>
                                     </div>
-                            </div>
-                        <div class="space-30"></div>
-                        <div>
-                            <div class="table-responsive">
-                                <p:dataTable id="tbl" style="text-align:center" var="eap" emptyMessage="Nenhum Registro Encontrado!"
-                                             value="#{EAPConsultar.listarEAPs()}"
-                                                paginator="true" rows="10">
-                                    <p:column width="360">
-                                           <f:facet name="header">
-                                               <h:outputText value="nome" />
-                                           </f:facet>
-                                        <h:outputText value="#{eap.eapTipo.descricao}" />
-                                       </p:column>
+                                </div>
+                                <div class="space-30"></div>
+                                <div>
+                                    <div class="table-responsive">
+                                        <p:dataTable id="tbl" style="text-align:center" var="eap" emptyMessage="Nenhum Registro Encontrado!"
+                                                     value="#{EAPConsultar.listarEAPs()}"
+                                                     paginator="true" rows="10">
+                                            <p:column width="360">
+                                                <f:facet name="header">
+                                                    <h:outputText value="nome" />
+                                                </f:facet>
+                                                <h:outputText value="#{eap.eapTipo.descricao}" />
+                                            </p:column>
 
-                                    <p:column width="100">
-                                           <f:facet name="header">
-                                               <h:outputText value="data criação" />
-                                           </f:facet>
-                                        <h:outputText value="#{eap.dataCriacao}" >
-                                            <f:convertDateTime pattern="dd/MM/yyyy"/>
-                                        </h:outputText>
-                                       </p:column>
-                                        <p:column style="width:10px;text-align: center" >
-                                            <f:facet name="header">
-                                               <h:outputText value="detalhar" />
-                                           </f:facet>
-                                            <p:commandButton icon="ui-icon-search" action="#{EAPConsultar.editar(eap)}" />
-                                        </p:column>
-                                    
-                                   </p:dataTable>
-                            
+                                            <p:column width="100">
+                                                <f:facet name="header">
+                                                    <h:outputText value="data criação" />
+                                                </f:facet>
+                                                <h:outputText value="#{eap.dataCriacao}" >
+                                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                                </h:outputText>
+                                            </p:column>
+                                            <p:column style="width:10px;text-align: center" >
+                                                <f:facet name="header">
+                                                    <h:outputText value="relatório" />
+                                                </f:facet>
+                                                <p:commandLink value="pdf" target="_blank" action="#{EAPConsultar.gerarPDF(eap)}"  />
+                                            </p:column>
+                                            <p:column style="width:10px;text-align: center" >
+                                                <f:facet name="header">
+                                                    <h:outputText value="detalhar" />
+                                                </f:facet>
+                                                <p:commandButton icon="ui-icon-search" action="#{EAPConsultar.editar(eap)}" />
+                                            </p:column>
+
+                                        </p:dataTable>
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                 </div>
-            </div>
-            </div>
-            </div>
-            
+                    </div>
+
                 </h:form>
             </ui:define>
         </ui:composition>

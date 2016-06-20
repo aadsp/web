@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b00dab6c-d304-4bdc-bd74-9f652c232f0d">
+	<property name="ireport.zoom" value="1.4641000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="ID_eap" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["G:\\PROJETO TCC\\web\\src\\main\\webapp\\reports\\model\\EAP\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT 
+ID_eap,
+UPPER(T.nome) titulo,
+ep.dataCadastro,
+ti.descricao tipo
+FROM PROJETO.PROJETO_AADSP_DIAGRAMA_EAP EP
+INNER JOIN PROJETO.PROJETO_AADSP_PROJETO P
+ON EP.ID_projeto = P.ID_projeto
+INNER JOIN TAP.TAP_AADSP_TAP T
+ON T.ID_tap = P.ID_tap
+INNER JOIN PROJETO.PROJETO_AADSP_DIAGRAMA_EAP_TIPO TI
+ON TI.ID_eapTipo = EP.ID_eapTipo
+WHERE EP.ID_eap = $P{ID_eap}]]>
+	</queryString>
+	<field name="ID_eap" class="java.lang.Integer"/>
+	<field name="titulo" class="java.lang.String"/>
+	<field name="dataCadastro" class="java.sql.Timestamp"/>
+	<field name="tipo" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="174" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="0" width="109" height="56" forecolor="#FFFFFF" backcolor="#000000" uuid="139317ff-8d8b-486b-b62e-28fe1c495695"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AADSP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="117" y="22" width="95" height="19" uuid="0b31b7d0-16e8-4a88-8cbb-85b90abc44b6"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Titulo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="56" width="109" height="34" forecolor="#FFFFFF" backcolor="#000000" uuid="da256749-22d8-4544-b6c6-21772a7bd286"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Abordagem Adaptativa para implantação do Processo de Software]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="110" y="0" width="446" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="87b00c48-f200-4946-bbb7-54b5c8e5bf31"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[  EAP - Estrutura Analítica do Projeto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="111" y="20" width="446" height="70" isRemoveLineWhenBlank="true" uuid="8cfdc03d-d26c-421c-bfef-1d86f08ec036"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Black" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="117" y="41" width="438" height="37" uuid="d304bee4-01e7-4a34-9f8b-e76ffe67d1b5"/>
+				<textFieldExpression><![CDATA[$F{titulo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="447" y="0" width="100" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="a8414cc9-f6d6-4762-9168-ca265ecf3847"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="110" width="109" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="65bf553e-fd0b-4ca8-9662-767e2dba1aca"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dados Gerais]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="123" width="555" height="1" uuid="d235a0d3-2fe3-49ac-b1a2-ec5588f06ec4"/>
+			</line>
+			<staticText>
+				<reportElement x="9" y="127" width="59" height="20" uuid="969e7c54-f241-42d5-8fb5-61e0d261bbea"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome EAP: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="68" y="127" width="100" height="20" uuid="2d7caae5-0a3e-4a9f-9e45-affe0e0b2001"/>
+				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="147" width="78" height="20" uuid="b459fdf6-6bf5-4f14-b4ec-991f3ba9f670"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data Cadastro:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="88" y="147" width="100" height="20" uuid="7948ade3-59c7-4c13-ac25-ed895d5feebf"/>
+				<textFieldExpression><![CDATA[$F{dataCadastro}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="69" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="4" width="555" height="58" uuid="c1257f94-56ed-489e-bda5-3df48fc3326d"/>
+				<subreportParameter name="ID_eap">
+					<subreportParameterExpression><![CDATA[$F{ID_eap}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "EAP_Atividades.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="85" splitType="Stretch">
+			<staticText>
+				<reportElement x="-222" y="-1" width="173" height="20" uuid="7b198c02-25f5-4771-b45c-d20555966533"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Stakeholder]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="435" y="65" width="80" height="20" uuid="12beba81-4815-4a3f-ab29-052f90029380"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="65" width="40" height="20" uuid="339564b0-e7cd-40cc-9553-236e5c6be7b2"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="1" y="9" width="202" height="20" uuid="ab71b7ce-b2bb-47c7-8971-e5b9ee2299b5"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="212" y="52" width="173" height="20" uuid="a0d134ea-31a8-442b-88e4-d90820ad1beb"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Stakeholder]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="52" width="178" height="20" uuid="6e4a4059-6e1e-4cdb-92cf-64cc7d126537"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Responsável pelo Projeto]]></text>
+			</staticText>
+			<line>
+				<reportElement x="212" y="51" width="173" height="1" uuid="bdfe5624-ee9c-479f-933d-aebb65d99365"/>
+			</line>
+			<line>
+				<reportElement x="10" y="51" width="178" height="1" uuid="2e75f8d8-a507-46c9-a57c-758f6604543f"/>
+			</line>
+		</band>
+	</pageFooter>
+</jasperReport>

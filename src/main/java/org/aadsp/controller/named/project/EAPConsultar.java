@@ -14,6 +14,7 @@ import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.utils.Criptografia;
 import org.aadsp.utils.Filtro;
 import org.aadsp.utils.Mensageiro;
+import org.aadsp.utils.RelatorioIReport;
 import org.aadsp.utils.Response;
 
 @ViewScoped
@@ -61,9 +62,18 @@ public class EAPConsultar extends ABaseNamed
         }
     }
 
-    public void gerarPDF(Projeto projeto) throws JRException, IOException, SQLException
+    public void gerarPDF(EAP eap) throws JRException, IOException, SQLException
     {
-
+         try
+        {
+            RelatorioIReport report = new RelatorioIReport();
+            HashMap map = new HashMap();
+            map.put("ID_eap", eap.getID());
+            report.gerarPDF("EAP", map);
+        } catch (JRException | IOException | SQLException e)
+        {
+            Mensageiro.mensagemError("Não possível gerar o relatório em PDF exception:" + e.getMessage());
+        }
     }
 
     public void filtroConsulta()

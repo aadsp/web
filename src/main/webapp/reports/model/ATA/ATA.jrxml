@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4e3a48c2-57ca-4248-ac81-51adf18f3ba6">
 	<property name="ireport.zoom" value="1.4641000000000006"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="71"/>
+	<property name="ireport.y" value="467"/>
 	<parameter name="ID_ata" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -54,14 +54,7 @@ WHERE A.ID_ata = $P{ID_ata}]]>
 				<textElement verticalAlignment="Middle">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[ATA]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="110" y="20" width="446" height="70" isRemoveLineWhenBlank="true" uuid="a92726b7-07db-4a0b-a13f-58c89067b1f9"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial Black" size="18" isBold="true"/>
-				</textElement>
-				<text><![CDATA[ATA DE REUNIÃO]]></text>
+				<text><![CDATA[AR - Ata de Reunião]]></text>
 			</staticText>
 			<textField pattern="dd/MM/yyyy">
 				<reportElement x="446" y="0" width="100" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="3bd705f6-76bf-4477-861d-1cc08b925d21"/>
@@ -76,82 +69,82 @@ WHERE A.ID_ata = $P{ID_ata}]]>
 				<text><![CDATA[Dados gerais]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="170" width="109" height="20" uuid="aaf371e0-7886-42e7-973b-7d0034e6d5fb"/>
+				<reportElement x="0" y="120" width="109" height="20" uuid="aaf371e0-7886-42e7-973b-7d0034e6d5fb"/>
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Data realização:]]></text>
 			</staticText>
 			<textField pattern="dd/MM/yyyy">
-				<reportElement x="109" y="170" width="446" height="20" uuid="f685d4c5-11a0-4d05-8a9d-7ee41cfa5583"/>
+				<reportElement x="109" y="120" width="446" height="20" uuid="f685d4c5-11a0-4d05-8a9d-7ee41cfa5583"/>
 				<textFieldExpression><![CDATA[$F{dataRealizacao}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="1" y="202" width="109" height="20" uuid="2dd0f9e0-5a22-47a9-89e1-906f91dbe4ee"/>
+				<reportElement x="1" y="152" width="109" height="20" uuid="2dd0f9e0-5a22-47a9-89e1-906f91dbe4ee"/>
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Horário:]]></text>
 			</staticText>
 			<textField pattern="HH.mm">
-				<reportElement x="109" y="202" width="446" height="20" uuid="8e60b328-e025-47a9-acd7-718afe4b5063"/>
+				<reportElement x="109" y="152" width="446" height="20" uuid="8e60b328-e025-47a9-acd7-718afe4b5063"/>
 				<textFieldExpression><![CDATA[$F{dataRealizacao}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="0" y="110" width="555" height="1" uuid="2a49e9e8-4ba9-42e3-8fc7-68682d12488f"/>
 			</line>
 			<staticText>
-				<reportElement x="0" y="122" width="109" height="20" uuid="e934ee65-3213-4387-9593-74f40c34d3b6"/>
-				<textElement textAlignment="Center">
+				<reportElement x="120" y="25" width="109" height="20" uuid="e934ee65-3213-4387-9593-74f40c34d3b6"/>
+				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Título:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="110" y="122" width="445" height="34" uuid="b6e36793-5585-492e-864a-b6e7ef6e036c"/>
+				<reportElement x="120" y="45" width="431" height="34" uuid="b6e36793-5585-492e-864a-b6e7ef6e036c"/>
 				<textElement textAlignment="Justified"/>
 				<textFieldExpression><![CDATA[$F{titulo}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="0" y="366" width="109" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="99326e11-1ab3-45b8-a1bd-890caa5d794d"/>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="344" width="109" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="99326e11-1ab3-45b8-a1bd-890caa5d794d"/>
 				<textElement textAlignment="Center">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Assuntos tratados]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="0" y="272" width="109" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="2dc138be-c5de-47f9-be7c-fce65e94b704"/>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="213" width="109" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="2dc138be-c5de-47f9-be7c-fce65e94b704"/>
 				<textElement textAlignment="Center">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Pauta]]></text>
 			</staticText>
 			<textField>
-				<reportElement positionType="Float" x="11" y="285" width="545" height="68" uuid="844c6e1e-55dc-4665-8fd4-2441454bc217"/>
+				<reportElement positionType="Float" x="11" y="230" width="545" height="112" uuid="844c6e1e-55dc-4665-8fd4-2441454bc217"/>
 				<textElement textAlignment="Justified"/>
 				<textFieldExpression><![CDATA[$F{pauta}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement positionType="Float" x="10" y="379" width="545" height="89" uuid="4938d763-a004-4475-8972-42aa1a672672"/>
+				<reportElement positionType="Float" x="10" y="361" width="545" height="120" uuid="4938d763-a004-4475-8972-42aa1a672672"/>
 				<textElement textAlignment="Justified"/>
 				<textFieldExpression><![CDATA[$F{assuntosTratados}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="232" width="109" height="20" uuid="e5980f63-303a-47d2-98e8-55f590b788bb"/>
+				<reportElement x="0" y="182" width="109" height="20" uuid="e5980f63-303a-47d2-98e8-55f590b788bb"/>
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Organizador:]]></text>
 			</staticText>
 			<textField pattern="HH.mm">
-				<reportElement x="110" y="232" width="445" height="20" uuid="1e6ca12e-b4a7-4c31-964f-a16aacda8e2a"/>
+				<reportElement x="110" y="182" width="445" height="20" uuid="1e6ca12e-b4a7-4c31-964f-a16aacda8e2a"/>
 				<textFieldExpression><![CDATA[$F{organizador}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="1" y="284" width="555" height="1" uuid="cac56a2e-40c5-47b2-b466-0b155f023853"/>
+				<reportElement x="1" y="225" width="555" height="1" uuid="cac56a2e-40c5-47b2-b466-0b155f023853"/>
 			</line>
 			<line>
-				<reportElement x="0" y="379" width="555" height="1" uuid="ea8dc70e-4eab-43a6-92b0-285b2144e574"/>
+				<reportElement x="0" y="357" width="555" height="1" uuid="ea8dc70e-4eab-43a6-92b0-285b2144e574"/>
 			</line>
 		</band>
 	</title>

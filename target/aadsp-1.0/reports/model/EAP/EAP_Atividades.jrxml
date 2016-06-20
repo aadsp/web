@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="EAP_Atividades" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="b0844474-2171-4866-8cb6-8d494a397543">
+	<property name="ireport.zoom" value="1.771561000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="ID_eap" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT 
+P.descricao pacote,
+a.descricao atividade
+FROM PROJETO.PROJETO_AADSP_DIAGRAMA_EAP_ATIVIDADE a
+INNER JOIN PROJETO.PROJETO_AADSP_DIAGRAMA_EAP_PACOTE P
+ON A.ID_eapPacote = P.ID_eapPacote
+where a.ID_eap = $P{ID_eap}
+ORDER BY P.DESCRICAO]]>
+	</queryString>
+	<field name="pacote" class="java.lang.String"/>
+	<field name="atividade" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="19" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="4" width="109" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="6c91ce4b-adaa-4d87-9763-74284cc78e92"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pacote]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="17" width="555" height="1" uuid="d6716fd3-0853-4150-8e10-028f4c13f0ef"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="5" y="1" width="105" height="20" uuid="5ae07d02-7e7d-4e0a-936e-2c6d2130070c"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pacote}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="1" width="444" height="20" uuid="bc959083-e39b-43ce-9976-4c269f3dcf1f"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{atividade}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
