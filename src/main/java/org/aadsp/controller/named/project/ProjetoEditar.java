@@ -46,7 +46,6 @@ public class ProjetoEditar extends ABaseNamed
         criarGraficosTela();
         dataInicio = new Date(projeto.getDataInicio().getTime());
         dataFim = new Date(projeto.getDataTermino().getTime());
-        descricaoProjetoTela = "Insira um descrição para este mockup!";
     }
 
     private void criarGraficosTela()
@@ -168,26 +167,6 @@ public class ProjetoEditar extends ABaseNamed
         }
     }
 
-    public void fileUploadImagem(FileUploadEvent event) throws Exception
-    {
-        imagem = event.getFile();
-        novoNomeImagem = new java.util.Date().getTime() + "";
-
-        caminhoImagemServidor = FacesContext.getCurrentInstance().getExternalContext().getRealPath("") + "/img/diagramas/uml/" + novoNomeImagem;
-
-        arquivoImagem = event.getFile().getContents();
-    }
-
-    public void fileUploadImgProjetoTela(FileUploadEvent event) throws Exception
-    {
-        imgProjetoTela = event.getFile();
-        novoNomeImgProjetoTela = new java.util.Date().getTime() + "";
-
-        caminhoImgProjetoTelaServidor = FacesContext.getCurrentInstance().getExternalContext().getRealPath("") + "/img/projeto/telas/" + novoNomeImgProjetoTela;
-
-        arquivoImgProjetoTela = event.getFile().getContents();
-    }
-
     public Projeto getProjeto()
     {
         return projeto;
@@ -196,130 +175,6 @@ public class ProjetoEditar extends ABaseNamed
     public void setProjeto(Projeto projeto)
     {
         this.projeto = projeto;
-    }
-
-    public String getImagem()
-    {
-        if (imagem != null)
-        {
-            return imagem.getFileName();
-        } else
-        {
-            return "Nenhuma imagem adicionada!";
-        }
-    }
-
-    public String getImgProjetoTela()
-    {
-        if (imgProjetoTela != null)
-        {
-            return imgProjetoTela.getFileName();
-        } else
-        {
-            return "Nenhuma imagem adicionada!";
-        }
-    }
-
-    public int getTipoDiagramaSelecionado()
-    {
-        return tipoDiagramaSelecionado;
-    }
-
-    public void setTipoDiagramaSelecionado(int tipoDiagramaSelecionado)
-    {
-        this.tipoDiagramaSelecionado = tipoDiagramaSelecionado;
-    }
-
-    public Map<String, Integer> listarTiposDiagramUML() throws Exception
-    {
-        try
-        {
-            DiagramaUMLTipo tipo = new DiagramaUMLTipo();
-            Map<String, Integer> mapTipos = new HashMap<>();
-
-            for (DiagramaUMLTipo obj : tipo.listar())
-            {
-                mapTipos.put(obj.getDescricao(), obj.getID());
-            }
-            return mapTipos;
-        } catch (Exception e)
-        {
-            Mensageiro.mensagemError("Não foi possível listar os tipos de diagramas do projeto!");
-        }
-        return null;
-    }
-
-    public void salvarDiagrama()
-    {
-        try
-        {
-            if (tipoDiagramaSelecionado != 0)
-            {
-                DiagramaUML diagrama = new DiagramaUML();
-                DiagramaUMLTipo tipoDiagrama = new DiagramaUMLTipo();
-
-                FileOutputStream fos;
-                fos = new FileOutputStream(caminhoImagemServidor);
-                fos.write(arquivoImagem);
-                fos.close();
-
-                diagrama.setProjeto(projeto);
-                tipoDiagrama.setID(tipoDiagramaSelecionado);
-                diagrama.setImagem(novoNomeImagem);
-                diagrama.setDiagramaUMLTipo(tipoDiagrama);
-                diagrama.cadastrar();
-
-                Response.redirect("/web/faces/views/projetos/ProjetoEditar.xhtml?Projeto=" + Criptografia.codificarParaBase64(projeto.getID().toString()));
-            } else
-            {
-                Mensageiro.mensagemInfo("Não foi selecionado o tipo de diagrama UML!");
-            }
-        } catch (Exception e)
-        {
-            Mensageiro.mensagemError("Erro ao salvar diagrama UML");
-        }
-
-    }
-
-    public void salvarProjetoDeTela()
-    {
-        try
-        {
-
-            ProjetoTela tela = new ProjetoTela();
-
-            FileOutputStream fos;
-            fos = new FileOutputStream(caminhoImgProjetoTelaServidor);
-            fos.write(arquivoImgProjetoTela);
-            fos.close();
-
-            tela.setProjeto(projeto);
-            tela.setDescricao(descricaoProjetoTela);
-            tela.setImagem(novoNomeImgProjetoTela);
-
-            tela.cadastrar();
-
-            Response.redirect("/web/faces/views/projetos/ProjetoEditar.xhtml?Projeto=" + Criptografia.codificarParaBase64(projeto.getID().toString()));
-        } catch (Exception e)
-        {
-            Mensageiro.mensagemError("Erro ao salvar projeto de tela mockup!");
-        }
-
-    }
-
-    public List<DiagramaUML> listarDiagramasUMLDoProjeto()
-    {
-        try
-        {
-            DiagramaUML diagrama = new DiagramaUML();
-            diagrama.setProjeto(projeto);
-
-            return diagrama.listarPorIDProjeto();
-        } catch (Exception e)
-        {
-            Mensageiro.mensagemError("Não foi possível listar os diagramas do projeto!!");
-        }
-        return null;
     }
 
     public BarChartModel getGraficoCusto()
@@ -356,90 +211,6 @@ public class ProjetoEditar extends ABaseNamed
         this.projeto.setDataTermino(dataSql);
     }
 
-    public void remvoerDiagramaSelecionado(DiagramaUML diagrama)
-    {
-        try
-        {
-            String caminhoServidor = FacesContext.getCurrentInstance().getExternalContext().getRealPath("");
-
-            File file = new File(caminhoServidor + "/img/diagramas/uml/" + diagrama.getImagem());
-            file.delete();
-
-            diagrama.excluir();
-
-            Response.redirect("/web/faces/views/projetos/ProjetoEditar.xhtml?Projeto=" + Criptografia.codificarParaBase64(projeto.getID().toString()));
-        } catch (Exception e)
-        {
-            Mensageiro.mensagemError("Não foi possível excluir o diagrama selecionado!!");
-        }
-    }
-
-    public void selecionarDiagrama(DiagramaUML diagrama)
-    {
-        try
-        {
-            Response.redirect("../../img/diagramas/uml/" + diagrama.getImagem());
-        } catch (Exception e)
-        {
-            Mensageiro.mensagemInfo("Erro ao selecionar imagem do diagrama UML");
-        }
-
-    }
-
-    public void selecionarMockup(ProjetoTela projetoTela)
-    {
-        try
-        {
-            Response.redirect("../../img/projeto/telas/" + projetoTela.getImagem());
-        } catch (Exception e)
-        {
-            Mensageiro.mensagemInfo("Erro ao selecionar imagem do diagrama UML");
-        }
-    }
-
-    public List<ProjetoTela> listarMockupDoProjeto()
-    {
-        try
-        {
-            ProjetoTela projetoTela = new ProjetoTela();
-            projetoTela.setProjeto(projeto);
-
-            return projetoTela.listarPorProjeto();
-        } catch (Exception ex)
-        {
-            Mensageiro.mensagemInfo("Não foi possível listar os mockup de tela!!");
-        }
-        return null;
-    }
-
-    public void removerMockupDoProjeto(ProjetoTela projetoTela)
-    {
-        try
-        {
-            String caminhoServidor = FacesContext.getCurrentInstance().getExternalContext().getRealPath("");
-
-            File file = new File(caminhoServidor + "/img/projeto/telas/" + projetoTela.getImagem());
-            file.delete();
-
-            projetoTela.excluir();
-
-            Response.redirect("/web/faces/views/projetos/ProjetoEditar.xhtml?Projeto=" + Criptografia.codificarParaBase64(projeto.getID().toString()));
-        } catch (Exception e)
-        {
-            Mensageiro.mensagemError("Não foi possível excluir o mockup selecionado!!");
-        }
-    }
-
-    public String getDescricaoProjetoTela()
-    {
-        return descricaoProjetoTela;
-    }
-
-    public void setDescricaoProjetoTela(String descricaoProjetoTela)
-    {
-        this.descricaoProjetoTela = descricaoProjetoTela;
-    }
-
     public Requisitos getRequisito()
     {
         return requisito;
@@ -450,21 +221,11 @@ public class ProjetoEditar extends ABaseNamed
         this.requisito = requisito;
     }
 
-    private DiagramaUML diagramaSelecionado;
+   
     private Projeto projeto;
     private Requisitos requisito;
-    private String descricaoProjetoTela;
-    private UploadedFile imagem;
-    private UploadedFile imgProjetoTela;
     private BarChartModel graficoCusto;
     private LineChartModel graficoCronograma;
-    private int tipoDiagramaSelecionado;
-    private String caminhoImagemServidor;
-    private String caminhoImgProjetoTelaServidor;
-    private byte[] arquivoImagem;
-    private byte[] arquivoImgProjetoTela;
-    private String novoNomeImagem;
-    private String novoNomeImgProjetoTela;
     private Date dataInicio;
     private Date dataFim;
 }

@@ -81,7 +81,7 @@ public class RequisitosModel implements ICRUD
     {
         try
         {
-            Query consulta = sessao.createQuery("select r from Requisitos r join r.documentoRequisitos dr  where dr.ID = :ID");
+            Query consulta = sessao.createQuery("select r from Requisitos r join r.documentoRequisitos dr where dr.ID = :ID");
             consulta.setInteger("ID", requisitos.getDocumentoRequisitos().getID());
             return consulta.list();
         } catch (Exception e)

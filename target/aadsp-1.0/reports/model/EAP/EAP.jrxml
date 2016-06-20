@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b00dab6c-d304-4bdc-bd74-9f652c232f0d">
 	<property name="ireport.zoom" value="1.4641000000000006"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="48"/>
 	<parameter name="ID_eap" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -34,6 +34,13 @@ WHERE EP.ID_eap = $P{ID_eap}]]>
 	<title>
 		<band height="174" splitType="Stretch">
 			<staticText>
+				<reportElement x="111" y="20" width="446" height="70" isRemoveLineWhenBlank="true" uuid="8cfdc03d-d26c-421c-bfef-1d86f08ec036"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Black" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
 				<reportElement mode="Opaque" x="1" y="0" width="109" height="56" forecolor="#FFFFFF" backcolor="#000000" uuid="139317ff-8d8b-486b-b62e-28fe1c495695"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="16" isBold="true"/>
@@ -45,7 +52,7 @@ WHERE EP.ID_eap = $P{ID_eap}]]>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Titulo:]]></text>
+				<text><![CDATA[Titulo do Projeto: ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="1" y="56" width="109" height="34" forecolor="#FFFFFF" backcolor="#000000" uuid="da256749-22d8-4544-b6c6-21772a7bd286"/>
@@ -60,13 +67,6 @@ WHERE EP.ID_eap = $P{ID_eap}]]>
 					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[  EAP - Estrutura Analítica do Projeto]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="111" y="20" width="446" height="70" isRemoveLineWhenBlank="true" uuid="8cfdc03d-d26c-421c-bfef-1d86f08ec036"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial Black" size="18" isBold="true"/>
-				</textElement>
-				<text><![CDATA[]]></text>
 			</staticText>
 			<textField>
 				<reportElement positionType="Float" x="117" y="41" width="438" height="37" uuid="d304bee4-01e7-4a34-9f8b-e76ffe67d1b5"/>
@@ -92,7 +92,7 @@ WHERE EP.ID_eap = $P{ID_eap}]]>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Nome EAP: ]]></text>
+				<text><![CDATA[Tipo EAP: ]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="68" y="127" width="100" height="20" uuid="2d7caae5-0a3e-4a9f-9e45-affe0e0b2001"/>

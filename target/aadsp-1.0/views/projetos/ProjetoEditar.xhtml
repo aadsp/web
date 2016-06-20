@@ -31,8 +31,8 @@
                             <div class="control-group"> 
                                 <p:menubar>
                                     <p:submenu label="ADICIONAR INFORMAÇÕES" style="float: right">
-                                        <p:menuitem value="Diagramas UML" onclick="PF('diagramasUML').show();" icon="ui-icon-document" />
-                                        <p:menuitem value="Projeto de Tela" onclick="PF('projetoDeTela').show();" icon="ui-icon-document" />
+                                        <p:menuitem value="Viabilidade" onclick="PF('viabilidadeDoProjeto').show();" icon="ui-icon-document" />
+                                        
                                     </p:submenu>
                                 </p:menubar>    
                                 <p:tabView scrollable="true">
@@ -73,61 +73,6 @@
                                             </h:panelGrid>
                                         </h:panelGrid>
                                     </p:tab>
-                                    <p:tab title="Diagramas UML">
-
-                                        <p:dataTable id="tbl" style="text-align:center" var="diagrama" value="#{projetoEditar.listarDiagramasUMLDoProjeto()}"
-                                                     paginator="true" rows="10" emptyMessage="Nenhum Registro Encontrado!">
-                                            <p:column width="360">
-                                                <f:facet name="header">
-                                                    <h:outputText value="diagrama" />
-                                                </f:facet>
-                                                <h:outputText value="#{diagrama.diagramaUMLTipo.descricao}" />
-                                            </p:column>
-                                            <p:column style="width:10px;text-align: center" >
-                                                <f:facet name="header">
-                                                    <h:outputText value="detalhar" />
-                                                </f:facet>
-                                                <h:commandLink value="imagem" target="_blank" actionListener="#{projetoEditar.selecionarDiagrama(diagrama)}"/>
-                                            </p:column>
-                                            <p:column style="width:10px;text-align: center" >
-                                                <f:facet name="header">
-                                                    <h:outputText value="remover" />
-                                                </f:facet>
-                                                <p:commandButton icon="ui-icon-close" actionListener="#{projetoEditar.remvoerDiagramaSelecionado(diagrama)}"/>
-                                            </p:column>
-                                        </p:dataTable>
-                                    </p:tab>
-                                    <p:tab title="Projeto de Tela (mockup)">
-                                        <p:dataTable id="tblProjetoMockup" style="text-align:center" var="mockup" value="#{projetoEditar.listarMockupDoProjeto()}"
-                                                     paginator="true" rows="10" emptyMessage="Nenhum Registro Encontrado!">
-                                            <p:column width="80">
-                                                <f:facet name="header">
-                                                    <h:outputText value="código do mockup" />
-                                                </f:facet>
-                                                <h:outputText value="MC[#{mockup.ID}]" />
-                                            </p:column>
-                                            <p:column width="300">
-                                                <f:facet name="header">
-                                                    <h:outputText value="requisito associado" />
-                                                </f:facet>
-                                                <h:outputText value="#{mockup.requisitos.descricao}" />
-                                            </p:column>
-                                            <p:column style="width:10px;text-align: center" >
-                                                <f:facet name="header">
-                                                    <h:outputText value="detalhar" />
-                                                </f:facet>
-                                                <h:commandLink value="imagem" target="_blank" actionListener="#{projetoEditar.selecionarMockup(mockup)}"/>
-                                            </p:column>
-
-                                            <p:column style="width:10px;text-align: center" >
-                                                <f:facet name="header">
-                                                    <h:outputText value="remover" />
-                                                </f:facet>
-                                                <p:commandButton icon="ui-icon-close" actionListener="#{projetoEditar.removerMockupDoProjeto(mockup)}"/>
-                                            </p:column>
-
-                                        </p:dataTable>
-                                    </p:tab>
                                 </p:tabView>
                             </div>
                             <div class="space-20"></div>
@@ -141,49 +86,7 @@
                     <div class="space-50"></div>
 
                     <!--Modal região -->
-                    <p:dialog header="DIAGRAMAS UML DO PROJETO" showEffect="explode" 
-                              widgetVar="diagramasUML" modal="true" width="800" height="300">
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <p:outputLabel for="imgDiagramaUML" value="Diagrama UML(imagem):" />
-                            <p:outputLabel id="imgDiagramaUML"  value="#{projetoEditar.imagem}"/>
-                            <p:fileUpload fileUploadListener="#{projetoEditar.fileUploadImagem}" mode="advanced" dragDropSupport="false"
-                                          update="imgDiagramaUML" sizeLimit="300000" fileLimit="1" allowTypes="/(\.|\/)(jpe?g|png)$/" />
-
-                        </h:panelGrid>
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <p:outputLabel for="tipoDiagrama" value="Tipo do diagrama: " />
-                            <p:selectOneMenu id="tipoDiagrama"  value="#{projetoEditar.tipoDiagramaSelecionado}" style="width:250px">
-                                <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
-                                <f:selectItems value="#{projetoEditar.listarTiposDiagramUML()}" />
-                            </p:selectOneMenu>
-                        </h:panelGrid>
-                        <h:panelGrid columns="1" cellpadding="5">
-                            <p:commandButton value="SALVAR" update="growl" actionListener="#{projetoEditar.salvarDiagrama()}" />
-                        </h:panelGrid>
-                    </p:dialog>
-
-                    <p:dialog header="PROJETO DE TELA" showEffect="explode" 
-                              widgetVar="projetoDeTela" modal="true" width="800" height="300">
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <p:outputLabel for="imgProjetoTela" value="Mockup (png ou jpeg):" />
-                            <p:outputLabel id="imgProjetoTela"  value="#{projetoEditar.imgProjetoTela}"/>
-                            <p:fileUpload fileUploadListener="#{projetoEditar.fileUploadImgProjetoTela}" mode="advanced" dragDropSupport="false"
-                                          update="imgProjetoTela" sizeLimit="300000" fileLimit="1" allowTypes="/(\.|\/)(jpe?g|png)$/" />
-
-                        </h:panelGrid>
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <p:outputLabel for="descricaoMockup" value="Descrição:" />
-                            <p:inputTextarea id="descricaoMockup" rows="1" cols="800" required="true" 
-                                             value="#{projetoEditar.descricaoProjetoTela}" 
-                                             counter="displayDescricaoMockup" maxlength="800" 
-                                             counterTemplate="{0} caracteres restantes." autoResize="false" />
-                            <h:outputText id="displayDescricaoMockup" />
-
-                        </h:panelGrid>
-                        <h:panelGrid columns="1" cellpadding="5">
-                            <p:commandButton value="SALVAR" update="growl" actionListener="#{projetoEditar.salvarProjetoDeTela()}" />
-                        </h:panelGrid>
-                    </p:dialog>
+                    
                 </h:form>
             </ui:define>
         </ui:composition>
