@@ -7,15 +7,22 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.aadsp.interfaces.ICRUD;
 import org.aadsp.utils.FactoryHibernate;
+import org.aadsp.utils.Mensageiro;
 
 public class UsuarioModel implements ICRUD
 {
 
     private final Session sessao;
 
-    public UsuarioModel()
+    public UsuarioModel() throws ExceptionInInitializerError
     {
-        this.sessao = FactoryHibernate.getSessionFactory().openSession();
+        try
+        {
+            this.sessao = FactoryHibernate.getSessionFactory().openSession();
+        } catch (Exception e)
+        {
+            throw e;
+        }
     }
 
     @Override

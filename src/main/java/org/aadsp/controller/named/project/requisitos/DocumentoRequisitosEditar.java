@@ -13,7 +13,7 @@ import org.aadsp.annotations.DiagramaUML;
 import org.aadsp.annotations.DiagramaUMLTipo;
 import org.aadsp.annotations.DocumentoRequisitos;
 import org.aadsp.annotations.ProjetoTela;
-import org.aadsp.annotations.Requisitos;
+import org.aadsp.annotations.RequisitosHistoria;
 import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.utils.Criptografia;
 import org.aadsp.utils.Mensageiro;
@@ -84,11 +84,11 @@ public class DocumentoRequisitosEditar extends ABaseNamed
         this.documentoRequisitos = documentoRequisitos;
     }
 
-    public List<Requisitos> listarRequisitos()
+    public List<RequisitosHistoria> listarRequisitos()
     {
         try
         {
-            Requisitos requisitos = new Requisitos();
+            RequisitosHistoria requisitos = new RequisitosHistoria();
             requisitos.setDocumentoRequisitos(documentoRequisitos);
             return requisitos.listarPorDocumentoRequisitos();
         } catch (Exception e)
@@ -98,7 +98,7 @@ public class DocumentoRequisitosEditar extends ABaseNamed
         return null;
     }
 
-    public void removerRequisitoProjeto(Requisitos requisito)
+    public void removerRequisitoProjeto(RequisitosHistoria requisito)
     {
         try
         {
@@ -110,12 +110,12 @@ public class DocumentoRequisitosEditar extends ABaseNamed
         }
     }
 
-    public Requisitos getRequisitos()
+    public RequisitosHistoria getRequisitos()
     {
         return requisitos;
     }
 
-    public void setRequisitos(Requisitos requisitos)
+    public void setRequisitos(RequisitosHistoria requisitos)
     {
         this.requisitos = requisitos;
     }
@@ -374,5 +374,5 @@ public class DocumentoRequisitosEditar extends ABaseNamed
     private UploadedFile imagem;
     private UploadedFile imgProjetoTela;
     private DocumentoRequisitos documentoRequisitos;
-    private Requisitos requisitos;
+    private RequisitosHistoria requisitos;
 }

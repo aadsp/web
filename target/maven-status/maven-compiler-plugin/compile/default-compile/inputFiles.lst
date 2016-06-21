@@ -24,7 +24,6 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\TAPEscopoArea.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Usuario.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\Index.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\TAPEscopo.java
-G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\RequisitosModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\utils\GeradorDeSenha.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\PessoalEditar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\EAPAtividade.java
@@ -75,6 +74,7 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\utils\settings\DadosEmail.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\StakeholderModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\utils\Response.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\DiagramaUML.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\RequisitosHistoria.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\DocumentoRequisitosTipo.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Patrocinador.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\FuncaoModel.java
@@ -84,7 +84,6 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Equipe.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\contributors\ColaboradorCadastrar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\UsuariosVisualizar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\EAPTipo.java
-G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Requisitos.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\PaginaEditar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\UsuarioModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Stakeholder.java
@@ -108,6 +107,7 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\DocumentoRequisitos
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\StakeholderTAP.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\EmpresaModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\requisitos\DocumentoRequisitosConsultar.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\RequisitosHistoriaModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\interfaces\IConsulta.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\AlterarSenha.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\AcessoCadastrar.java

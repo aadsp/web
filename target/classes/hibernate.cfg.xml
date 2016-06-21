@@ -50,6 +50,6 @@
     <mapping class="org.aadsp.annotations.EAPAtividade" />
     <mapping class="org.aadsp.annotations.EAPPacote" />
     <mapping class="org.aadsp.annotations.EAPTipo" />
-    <mapping class="org.aadsp.annotations.Requisitos" />
+    <mapping class="org.aadsp.annotations.RequisitosHistoria" />
   </session-factory>
 </hibernate-configuration>

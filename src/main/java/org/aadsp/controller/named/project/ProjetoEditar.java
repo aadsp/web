@@ -19,7 +19,7 @@ import org.aadsp.annotations.DiagramaUMLTipo;
 import org.aadsp.annotations.DocumentoRequisitos;
 import org.aadsp.annotations.Projeto;
 import org.aadsp.annotations.ProjetoTela;
-import org.aadsp.annotations.Requisitos;
+import org.aadsp.annotations.RequisitosHistoria;
 import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.utils.Criptografia;
 import org.aadsp.utils.Mensageiro;
@@ -211,19 +211,19 @@ public class ProjetoEditar extends ABaseNamed
         this.projeto.setDataTermino(dataSql);
     }
 
-    public Requisitos getRequisito()
+    public RequisitosHistoria getRequisito()
     {
         return requisito;
     }
 
-    public void setRequisito(Requisitos requisito)
+    public void setRequisito(RequisitosHistoria requisito)
     {
         this.requisito = requisito;
     }
 
    
     private Projeto projeto;
-    private Requisitos requisito;
+    private RequisitosHistoria requisito;
     private BarChartModel graficoCusto;
     private LineChartModel graficoCronograma;
     private Date dataInicio;

@@ -33,7 +33,7 @@ public class ProjetoTela implements Serializable, IAnnotations
 
     @OneToOne
     @JoinColumn(name = "ID_requisito")
-    private Requisitos requisitos;
+    private RequisitosHistoria requisitos;
 
     public Integer getID()
     {
@@ -75,12 +75,12 @@ public class ProjetoTela implements Serializable, IAnnotations
         this.projeto = projeto;
     }
 
-    public Requisitos getRequisitos()
+    public RequisitosHistoria getRequisitos()
     {
         return requisitos;
     }
 
-    public void setRequisitos(Requisitos requisitos)
+    public void setRequisitos(RequisitosHistoria requisitos)
     {
         this.requisitos = requisitos;
     }

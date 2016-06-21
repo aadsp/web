@@ -180,7 +180,7 @@ public class Usuario implements Serializable, IAnnotations
         }
     }
 
-    public Usuario autenticar()
+    public Usuario autenticar() throws ExceptionInInitializerError
     {
         UsuarioModel modelo = new UsuarioModel();
         return modelo.autenticar(this);

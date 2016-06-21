@@ -65,6 +65,7 @@ public class Index extends ABaseNamed
     {
         try
         {
+
             Usuario copia;
             copia = usuario;
             usuario = usuario.autenticar();
@@ -92,6 +93,9 @@ public class Index extends ABaseNamed
         } catch (Exception e)
         {
             Mensageiro.mensagemInfo("Não foi possível realizar a autenticação do usuário!");
+        } catch (ExceptionInInitializerError e)
+        {
+            Mensageiro.mensagemFatal("Não foi possível realizar a comunicação com o banco de dados!");
         }
     }
 

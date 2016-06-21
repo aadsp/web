@@ -17,12 +17,11 @@ public class FactoryHibernate
 
         } catch (Throwable e)
         {
-            System.out.println("Criação inicial do objeto SessionFactory falhou. Erro:" + e);
-            throw new ExceptionInInitializerError(e);
+           throw new ExceptionInInitializerError(e);
         }
     }
 
-    public static SessionFactory getSessionFactory()
+    public static SessionFactory getSessionFactory() throws ExceptionInInitializerError
     {
         return sessionFactory;
     }
