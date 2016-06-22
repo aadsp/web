@@ -69,26 +69,26 @@
                                              value="#{ATAConsultar.listarAtas()}"
                                                 paginator="true" rows="10">
 
-                                    <p:column width="360">
+                                    <p:column class="dataTable-column-70-percent-center">
                                            <f:facet name="header">
                                                <h:outputText value="nome" />
                                            </f:facet>
                                         <h:outputText value="#{ata.titulo}" />
                                        </p:column>
 
-                                    <p:column width="100">
+                                    <p:column class="dataTable-column-10-percent-center">
                                            <f:facet name="header">
                                                <h:outputText value="data realização" />
                                            </f:facet>
                                         <h:outputText value="#{ata.dataCadastro}" />
                                        </p:column>
-                                    <p:column style="width:10px;text-align: center" > 
+                                    <p:column class="dataTable-column-10-percent-center" > 
                                             <f:facet name="header">
                                                <h:outputText value="relatório" />
                                             </f:facet>
                                             <h:commandLink value="pdf" action="#{ATAConsultar.gerarPDF(ata)}"  target="_blank" />
                                     </p:column>
-                                        <p:column style="width:10px;text-align: center" >
+                                        <p:column class="dataTable-column-10-percent-center" >
                                             <f:facet name="header">
                                                <h:outputText value="detalhar" />
                                            </f:facet>

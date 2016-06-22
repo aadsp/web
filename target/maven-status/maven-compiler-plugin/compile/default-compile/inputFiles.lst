@@ -82,6 +82,7 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\interfaces\ABaseNamed.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\PessoalConsultar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Equipe.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\contributors\ColaboradorCadastrar.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\CEPSCadastrar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\UsuariosVisualizar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\EAPTipo.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\PaginaEditar.java
@@ -103,6 +104,7 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\requisitos\D
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Empresa.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\contributors\ColaboradorConsultar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\interfaces\ICadastro.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\CEPSConsultar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\DocumentoRequisitosTemplateModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\StakeholderTAP.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\EmpresaModel.java

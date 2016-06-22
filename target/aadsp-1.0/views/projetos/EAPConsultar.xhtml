@@ -68,14 +68,14 @@
                                         <p:dataTable id="tbl" style="text-align:center" var="eap" emptyMessage="Nenhum Registro Encontrado!"
                                                      value="#{EAPConsultar.listarEAPs()}"
                                                      paginator="true" rows="10">
-                                            <p:column width="360">
+                                            <p:column class="dataTable-column-70-percent-center">
                                                 <f:facet name="header">
                                                     <h:outputText value="nome" />
                                                 </f:facet>
                                                 <h:outputText value="#{eap.eapTipo.descricao}" />
                                             </p:column>
 
-                                            <p:column width="100">
+                                            <p:column class="dataTable-column-10-percent-center">
                                                 <f:facet name="header">
                                                     <h:outputText value="data criação" />
                                                 </f:facet>
@@ -83,13 +83,13 @@
                                                     <f:convertDateTime pattern="dd/MM/yyyy"/>
                                                 </h:outputText>
                                             </p:column>
-                                            <p:column style="width:10px;text-align: center" >
+                                            <p:column class="dataTable-column-10-percent-center" >
                                                 <f:facet name="header">
                                                     <h:outputText value="relatório" />
                                                 </f:facet>
                                                 <p:commandLink value="pdf"  action="#{EAPConsultar.gerarPDF(eap)}" target="_blank"/>
                                             </p:column>
-                                            <p:column style="width:10px;text-align: center" >
+                                            <p:column class="dataTable-column-10-percent-center" >
                                                 <f:facet name="header">
                                                     <h:outputText value="detalhar" />
                                                 </f:facet>

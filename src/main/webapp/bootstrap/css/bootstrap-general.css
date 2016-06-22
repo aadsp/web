@@ -856,6 +856,22 @@ hr.style-six {
     height: 215px;
     width: 215px;
     border: 0px solid #000000;
-    
+}
+
+.dataTable-column-10-percent-center 
+{
+    width:10%;
+    text-align: center
+}
+.dataTable-column-70-percent-center 
+{
+    width:70%;
+    text-align: center
+}
+
+.dataTable-column-80-percent-center 
+{
+    width:80%;
+    text-align: center
 }
 

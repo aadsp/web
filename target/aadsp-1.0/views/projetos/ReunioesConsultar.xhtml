@@ -65,14 +65,14 @@
                                 <p:dataTable id="tbl" style="text-align:center" var="projeto" emptyMessage="Nenhum Registro Encontrado!"
                                              value="#{reunioesConsultar.listarProjetos()}"
                                                 paginator="true" rows="10">
-                                    <p:column width="360">
+                                    <p:column class="dataTable-column-80-percent-center">
                                            <f:facet name="header">
                                                <h:outputText value="nome" />
                                            </f:facet>
                                         <h:outputText value="#{projeto.tap.nome}" />
                                        </p:column>
 
-                                    <p:column width="100">
+                                    <p:column class="dataTable-column-10-percent-center">
                                            <f:facet name="header">
                                                <h:outputText value="data criação" />
                                            </f:facet>
@@ -80,7 +80,7 @@
                                             <f:convertDateTime pattern="dd/MM/yyyy"/>
                                         </h:outputText>
                                        </p:column>
-                                        <p:column style="width:10px;text-align: center" >
+                                        <p:column class="dataTable-column-10-percent-center" >
                                             <f:facet name="header">
                                                <h:outputText value="detalhar" />
                                            </f:facet>
