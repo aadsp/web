@@ -14,7 +14,7 @@ import org.aadsp.annotations.model.RequisitosHistoriaModel;
 import org.aadsp.interfaces.IAnnotations;
 
 @Entity
-@Table(name = "REQUISITOS.REQUISITOS_AADSP_REQUISITO_HISTORIA_USUARIO")
+@Table(name = "REQUISITOS.REQUISITOS_AADSP_DOCUMENTO_REQUISITOS_HISTORIA_DE_USUARIO")
 public class RequisitosHistoria implements Serializable, IAnnotations
 {
 
