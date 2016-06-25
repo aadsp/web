@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link href="../../bootstrap/css/bootstrap-general.css" rel="stylesheet"/>
+        <script type="text/javascript" src="../../primefaces/js/showcase.js"></script>
+        
+    </h:head>
+    <h:body>
+        <ui:composition template="template/template.xhtml">
+            <ui:define name="content">
+                <h:form id="form">
+                    <p:growl id="growl" showDetail="true" sticky="true" /> 
+                    <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+                    <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                        <img src="../../img/loading.gif" alt=""/>
+                    </p:dialog>
+                    <div class="margin-right-left-20">
+                        <div>
+                            <h3>CEPS - CRONOGRAMA DO PROJETO </h3>
+                            <div class="right">
+                                <a class="btn btn" href="CEPSConsultar.xhtml">VOLTAR</a>
+                            </div>
+                            <p><strong>DETALHAMENTO</strong></p>
+                            <div>
+                            </div>
+                            <div class="space-40"></div>
+                            <div class="control-group">
+                                 <p:menubar>
+                                    <p:submenu label="ADICIONAR INFORMAÇÕES" style="float: right">
+                                        <p:menuitem value="Nova Atividade" onclick="PF('novaAtividadeDoProjeto').show();" icon="ui-icon-document" />
+                                        
+                                    </p:submenu>
+                                </p:menubar>
+                                <p:tabView dynamic="true" cache="true">
+                                    <p:tab title="calendário de Atividades">
+                                        <p:schedule id="scheduleLocale" value="#{CEPSCadastrar.lazyEventModel}" locale="br"/>
+                                    </p:tab>
+                                    <p:tab title="lista de atividades">
+
+                                    </p:tab>
+                                </p:tabView>
+                            </div>
+                            <div class="space-20"></div>
+                            <p:commandButton class="btn btn-success" ajax="false" disabled="#{CEPSCadastrar.controleDeCadastro()}" value="CADASTRAR" update="growl" actionListener="#{CEPSCadastrar.cadastrar()}"/>
+                        </div>
+                    </div>
+                    <div class="space-50"></div>
+                    <!-- Modais do Projeto -->
+                    
+
+                </h:form>
+                    <script type="text/javascript">
+            PrimeFaces.locales['br'] = {
+                closeText: 'Fechar',
+                prevText: 'Anterior',
+                nextText: 'Próximo',
+                currentText: 'Corrente dia',
+                monthNames: ['Janeiro', 'Ferveiro', 'Março', 'Abril', 'Maio', 'Junho',
+                    'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
+                    'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                dayNames: ['Sábado', 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'],
+                dayNamesShort: ['Sábado', 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'],
+                dayNamesMin: ['Sábado', 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'],
+                weekHeader: 'Semana',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                month: 'Mês',
+                week: 'Semana',
+                day: 'Dia',
+                allDayText: 'Dia todo'
+            };
+        </script>
+        <style type="text/css">
+            .value {
+                width: 1000px;
+            }
+        </style>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+    
+</html>
