@@ -11,7 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.aadsp.annotations.model.ProjetoCronogramaModel;
-import org.aadsp.annotations.model.ProjetoModel;
 import org.aadsp.interfaces.IAnnotations;
 
 @Entity

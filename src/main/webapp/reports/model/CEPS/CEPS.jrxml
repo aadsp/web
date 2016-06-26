@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="852a1b6d-14e2-4529-a4df-7d00b1c40a04">
+	<property name="ireport.zoom" value="1.4641000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="210"/>
+	<parameter name="ID_projeto" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["G:\\PROJETO TCC\\web\\src\\main\\webapp\\reports\\model\\CEPS\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+P.ID_projeto, 
+T.nome titulo,
+p.dataInicio projDataInicio,
+p.dataTermino projDataTermino,
+t.dataInicio tapDataInicio,
+t.dataFim tapDataTermino
+FROM
+TAP.TAP_AADSP_TAP T
+INNER JOIN PROJETO.PROJETO_AADSP_PROJETO P
+ON T.ID_tap = P.ID_tap
+WHERE P.ID_projeto = $P{ID_projeto}]]>
+	</queryString>
+	<field name="ID_projeto" class="java.lang.Integer"/>
+	<field name="titulo" class="java.lang.String"/>
+	<field name="projDataInicio" class="java.sql.Timestamp"/>
+	<field name="projDataTermino" class="java.sql.Timestamp"/>
+	<field name="tapDataInicio" class="java.sql.Timestamp"/>
+	<field name="tapDataTermino" class="java.sql.Timestamp"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="198" splitType="Stretch">
+			<staticText>
+				<reportElement x="109" y="21" width="446" height="70" isRemoveLineWhenBlank="true" uuid="029aa0e2-7e5d-4239-bb16-27c7486ab297"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Black" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="56" width="109" height="34" forecolor="#FFFFFF" backcolor="#000000" uuid="35ce1e9f-0bf1-44d3-9924-5f75c5c6e9c5"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Abordagem Adaptativa para implantação do Processo de Software]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="109" height="56" forecolor="#FFFFFF" backcolor="#000000" uuid="b5f98b1e-9f62-4e82-832e-463466fa7e59"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AADSP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="109" y="0" width="446" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="c2d19270-7a7e-4cb2-987f-5876bd72ec83"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CEPS - Cronograma Est. do Projeto de Software]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="446" y="0" width="100" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="1eb43ca3-9fd6-4554-b24f-f4296cd99896"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="116" y="22" width="95" height="19" uuid="4347b585-3ffe-4aeb-8b94-d4cbe2c21f74"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Titulo:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="116" y="41" width="438" height="20" uuid="8a5ecdf3-8564-4ff5-8e89-09db3df8d3cd"/>
+				<textFieldExpression><![CDATA[$F{titulo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="108" width="109" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="e417575b-8874-4acb-ba9d-a4ae7f6e0e39"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cronograma do TAP]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="121" width="555" height="1" uuid="969d6d31-0e80-436a-85f3-82a254e8051a"/>
+			</line>
+			<staticText>
+				<reportElement x="7" y="127" width="100" height="20" uuid="36773a34-1bdf-413c-bf7c-eccbff1a6e50"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Previsão de Início:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="127" width="109" height="20" uuid="b16046f3-b9cb-44a4-a292-d0cc488d6b07"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Previsão de Termino:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="107" y="127" width="100" height="20" uuid="4722d4f5-8c0f-4ca2-9fd4-75f94b99b872"/>
+				<textFieldExpression><![CDATA[$F{tapDataInicio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="379" y="127" width="100" height="20" uuid="920d081c-d75e-430f-af3f-6456512f5529"/>
+				<textFieldExpression><![CDATA[$F{tapDataTermino}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="152" width="109" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="9cd72406-4518-42d9-8f12-445255cad867"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cronograma do Projeto]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="165" width="555" height="1" uuid="3c87ca19-4e2d-4ccd-813b-6713b7350b90"/>
+			</line>
+			<staticText>
+				<reportElement x="7" y="169" width="100" height="20" uuid="f51269a1-67b1-4300-b6a9-14f9d7b00ec8"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data de Início:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="169" width="89" height="20" uuid="edc8bf6d-e0a1-4dd6-ad7c-f718f6c826ad"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data de Término:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="109" y="169" width="100" height="20" uuid="ac390ba8-1e0c-4cf2-a5ad-6af33e2a21ef"/>
+				<textFieldExpression><![CDATA[$F{tapDataInicio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="359" y="169" width="100" height="20" uuid="c6e8033d-0474-4761-ade9-1d7aacab1f28"/>
+				<textFieldExpression><![CDATA[$F{tapDataTermino}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="49" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="554" height="43" uuid="0e2ec944-b892-429c-897d-a25e05947203"/>
+				<subreportParameter name="ID_projeto">
+					<subreportParameterExpression><![CDATA[$F{ID_projeto}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "CEPS_Atividades.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="76" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="514" y="53" width="40" height="20" uuid="9341fd3e-d8ed-4b5b-bed2-5229522344c1"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="202" y="41" width="173" height="1" uuid="636069a4-ad5e-4d89-9ced-681d67ee6249"/>
+			</line>
+			<line>
+				<reportElement x="0" y="41" width="178" height="1" uuid="90707b88-baa3-4aba-b7ef-d0c596a06091"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="42" width="178" height="20" uuid="3754bcaa-c499-4365-87ce-b2c829e808b1"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Responsável pelo Projeto]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="434" y="53" width="80" height="20" uuid="fbbd34b8-1221-497e-b466-13ab742322d4"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="202" y="42" width="173" height="20" uuid="99c3667b-0722-4e06-bbc6-4f6b34996658"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Stakeholder]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="0" width="202" height="20" uuid="137cd1d5-3c65-4b59-945e-827ee4e3d9d9"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

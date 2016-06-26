@@ -9,10 +9,12 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import net.sf.jasperreports.engine.JRException;
 import org.aadsp.annotations.Projeto;
+import org.aadsp.annotations.ProjetoCronograma;
 import org.aadsp.interfaces.ABaseNamed;
 import org.aadsp.utils.Criptografia;
 import org.aadsp.utils.Filtro;
 import org.aadsp.utils.Mensageiro;
+import org.aadsp.utils.RelatorioIReport;
 import org.aadsp.utils.Response;
 
 @ViewScoped
@@ -63,7 +65,16 @@ public class CEPSConsultar extends ABaseNamed
 
     public void gerarPDF(Projeto projeto) throws JRException, IOException, SQLException
     {
-
+        try
+        {
+            RelatorioIReport report = new RelatorioIReport();
+            HashMap map = new HashMap();
+            map.put("ID_projeto", projeto.getID());
+            report.gerarPDF("CEPS", map);
+        } catch (JRException | IOException | SQLException e)
+        {
+            Mensageiro.mensagemError("Não possível gerar o relatório em PDF exception:" + e.getMessage());
+        }
     }
 
     public Filtro getFiltro()

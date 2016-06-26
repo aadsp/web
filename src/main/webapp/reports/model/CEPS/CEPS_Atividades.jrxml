@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CEPS_Atividades" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="1fdbbe78-299a-4141-94ce-97b26930c7f4">
+	<property name="ireport.zoom" value="1.3310000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="ID_projeto" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT 
+C.atividade,
+C.dataInicio,
+C.dataTermino
+FROM
+PROJETO.PROJETO_AADSP_CRONOGRAMA C
+WHERE C.ID_projeto = $P{ID_projeto}
+ORDER BY C.dataInicio ASC]]>
+	</queryString>
+	<field name="atividade" class="java.lang.String"/>
+	<field name="dataInicio" class="java.sql.Timestamp"/>
+	<field name="dataTermino" class="java.sql.Timestamp"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="41" splitType="Stretch">
+			<staticText>
+				<reportElement x="11" y="19" width="246" height="20" uuid="9986f297-813d-4b7e-a5b1-b1c8fc844122"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[descrição]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="257" y="19" width="153" height="20" uuid="f89f8db2-595c-447c-9bc5-0858c6c55a3e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data Início]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="19" width="145" height="20" uuid="fb39e30b-900d-4387-896e-0cc4b01f92c7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data Término]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="5" width="109" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="033ee067-3fc7-417f-ad83-b9597cb5ec86"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Atividades]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="18" width="555" height="1" uuid="70e15767-0b8d-4cf9-856e-731f0b4123c6"/>
+			</line>
+			<line>
+				<reportElement x="0" y="39" width="555" height="1" uuid="5df0adcd-f245-44bb-b4f4-e39dec559980"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="257" y="0" width="153" height="20" uuid="e29ca170-a41c-4e87-aa32-2d26974a13ba"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{dataInicio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="410" y="0" width="145" height="20" uuid="49ba53bd-e57a-451c-9436-12890c8d3170"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{dataTermino}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="11" y="0" width="246" height="20" uuid="0e7ad76b-a0ee-4289-9d8d-c5ffa8bb92cc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{atividade}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

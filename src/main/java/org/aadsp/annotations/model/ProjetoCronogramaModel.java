@@ -81,7 +81,7 @@ public class ProjetoCronogramaModel implements ICRUD
     {
         try
         {
-            Query consulta = sessao.createQuery("Select c from ProjetoCronograma c join c.projeto p where p.ID = :ID");
+            Query consulta = sessao.createQuery("Select c from ProjetoCronograma c join c.projeto p where p.ID = :ID order by c.dataInicio asc");
              consulta.setInteger("ID", projetoCronograma.getProjeto().getID());
             return consulta.list();
         } catch (Exception e)
