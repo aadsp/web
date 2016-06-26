@@ -8,7 +8,7 @@
     <h:head>
         <link href="../../bootstrap/css/bootstrap-general.css" rel="stylesheet"/>
         <script type="text/javascript" src="../../primefaces/js/showcase.js"></script>
-        
+
     </h:head>
     <h:body>
         <ui:composition template="template/template.xhtml">
@@ -30,61 +30,103 @@
                             </div>
                             <div class="space-40"></div>
                             <div class="control-group">
-                                 <p:menubar>
+                                <p:menubar>
                                     <p:submenu label="ADICIONAR INFORMAÇÕES" style="float: right">
                                         <p:menuitem value="Nova Atividade" onclick="PF('novaAtividadeDoProjeto').show();" icon="ui-icon-document" />
-                                        
+
                                     </p:submenu>
                                 </p:menubar>
                                 <p:tabView dynamic="true" cache="true">
                                     <p:tab title="calendário de Atividades">
-                                        <p:schedule id="scheduleLocale" value="#{CEPSCadastrar.lazyEventModel}" locale="br"/>
+                                        <p:schedule id="scheduleLocale" value="#{CEPSEditar.lazyEventModel}" locale="br"/>
                                     </p:tab>
                                     <p:tab title="lista de atividades">
-
+                                        <p:dataTable id="tbl" style="text-align:center" var="cronograma" value="#{CEPSEditar.listaAtividadesDoProjeto()}"
+                                                     paginator="true" rows="10" emptyMessage="Nenhum Registro Encontrado!">
+                                            <p:column class="dataTable-column-70-percent-center">
+                                                <f:facet name="header">
+                                                    <h:outputText value="Atividade" />
+                                                </f:facet>
+                                                <h:outputText value="#{cronograma.atividade}"/>
+                                            </p:column>
+                                            <p:column class="dataTable-column-10-percent-center" >
+                                                <f:facet name="header">
+                                                    <h:outputText value="data início" />
+                                                </f:facet>
+                                                <h:outputText value="#{cronograma.dataInicio}">
+                                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                                </h:outputText>
+                                            </p:column>
+                                            <p:column class="dataTable-column-10-percent-center" >
+                                                <f:facet name="header">
+                                                    <h:outputText value="data término" />
+                                                </f:facet>
+                                                <h:outputText value="#{cronograma.dataTermino}">
+                                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                                </h:outputText>
+                                            </p:column>
+                                            <p:column class="dataTable-column-10-percent-center" >
+                                                <f:facet name="header">
+                                                    <h:outputText value="remover" />
+                                                </f:facet>
+                                                <p:commandButton icon="ui-icon-close" actionListener="#{CEPSEditar.remvoerCronograma(cronograma)}"/>
+                                            </p:column>
+                                        </p:dataTable>
                                     </p:tab>
                                 </p:tabView>
                             </div>
                             <div class="space-20"></div>
-                            <p:commandButton class="btn btn-success" ajax="false" disabled="#{CEPSCadastrar.controleDeCadastro()}" value="CADASTRAR" update="growl" actionListener="#{CEPSCadastrar.cadastrar()}"/>
+
                         </div>
                     </div>
                     <div class="space-50"></div>
                     <!-- Modais do Projeto -->
-                    
+                    <p:dialog header="Nova Atividade" showEffect="explode" widgetVar="novaAtividadeDoProjeto" modal="true" width="400" height="200" resizable="false">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel for="nomeAtividade" value="Atividade:" />  
+                            <p:inputText id="nomeAtividade" maxlength="250" value="#{CEPSEditar.cronograma.atividade}"/>
+
+                            <p:outputLabel for="dataInicio" value="Data início:" />
+                            <p:calendar id="dataInicio" value="#{CEPSEditar.dataInicio}" pattern="dd/MM/yyyy HH:mm:ss" />
+                            <p:outputLabel for="dataTermino" value="Data Término:" />
+                            <p:calendar id="dataTermino" value="#{CEPSEditar.dataTermino}" pattern="dd/MM/yyyy HH:mm:ss" />
+                            <p:commandButton id="addButton" value="CADASTRAR" update="growl" actionListener="#{CEPSEditar.cadastrarAtividade()}"  />
+
+                        </h:panelGrid> 
+                    </p:dialog>
 
                 </h:form>
-                    <script type="text/javascript">
-            PrimeFaces.locales['br'] = {
-                closeText: 'Fechar',
-                prevText: 'Anterior',
-                nextText: 'Próximo',
-                currentText: 'Corrente dia',
-                monthNames: ['Janeiro', 'Ferveiro', 'Março', 'Abril', 'Maio', 'Junho',
-                    'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
-                monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
-                    'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-                dayNames: ['Sábado', 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'],
-                dayNamesShort: ['Sábado', 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'],
-                dayNamesMin: ['Sábado', 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'],
-                weekHeader: 'Semana',
-                firstDay: 1,
-                isRTL: false,
-                showMonthAfterYear: false,
-                yearSuffix: '',
-                month: 'Mês',
-                week: 'Semana',
-                day: 'Dia',
-                allDayText: 'Dia todo'
-            };
-        </script>
-        <style type="text/css">
-            .value {
-                width: 1000px;
-            }
-        </style>
+                <script type="text/javascript">
+                    PrimeFaces.locales['br'] = {
+                        closeText: 'Fechar',
+                        prevText: 'Anterior',
+                        nextText: 'Próximo',
+                        currentText: 'Corrente dia',
+                        monthNames: ['Janeiro', 'Ferveiro', 'Março', 'Abril', 'Maio', 'Junho',
+                            'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                        monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
+                            'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                        dayNames: ['Sábado', 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'],
+                        dayNamesShort: ['Sábado', 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'],
+                        dayNamesMin: ['Sábado', 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'],
+                        weekHeader: 'Semana',
+                        firstDay: 1,
+                        isRTL: false,
+                        showMonthAfterYear: false,
+                        yearSuffix: '',
+                        month: 'Mês',
+                        week: 'Semana',
+                        day: 'Dia',
+                        allDayText: 'Dia todo'
+                    };
+                </script>
+                <style type="text/css">
+                    .value {
+                        width: 1000px;
+                    }
+                </style>
             </ui:define>
         </ui:composition>
     </h:body>
-    
+
 </html>

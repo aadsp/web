@@ -4,6 +4,7 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Pagina.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\ProjetoConsultar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\EAPPacoteModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\PaginaModel.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\ProjetoCronogramaModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\contributors\EmpresaCadastrar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\AcessoModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\utils\Session.java
@@ -82,13 +83,13 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\interfaces\ABaseNamed.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\PessoalConsultar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Equipe.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\contributors\ColaboradorCadastrar.java
-G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\CEPSCadastrar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\UsuariosVisualizar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\EAPTipo.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\PaginaEditar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\UsuarioModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Stakeholder.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\EAPCadastrar.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\CEPSEditar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Acesso.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\FuncaoEditar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\TAPModel.java
@@ -113,6 +114,7 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\RequisitosHistoriaM
 G:\PROJETO TCC\web\src\main\java\org\aadsp\interfaces\IConsulta.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\AlterarSenha.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\AcessoCadastrar.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\ProjetoCronograma.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\EAPPacote.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\TAPEscopoTipo.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\interfaces\IAnnotations.java
