@@ -52,7 +52,7 @@ WHERE EP.ID_eap = $P{ID_eap}]]>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Titulo do Projeto: ]]></text>
+				<text><![CDATA[Título do Projeto: ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="1" y="56" width="109" height="34" forecolor="#FFFFFF" backcolor="#000000" uuid="da256749-22d8-4544-b6c6-21772a7bd286"/>

@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4e3a48c2-57ca-4248-ac81-51adf18f3ba6">
 	<property name="ireport.zoom" value="1.4641000000000006"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="467"/>
+	<property name="ireport.y" value="480"/>
 	<parameter name="ID_ata" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -98,7 +98,7 @@ WHERE A.ID_ata = $P{ID_ata}]]>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Título:]]></text>
+				<text><![CDATA[Título da ATA: ]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="120" y="45" width="431" height="34" uuid="b6e36793-5585-492e-864a-b6e7ef6e036c"/>

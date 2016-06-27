@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4c52323e-f0ee-473f-affd-967619de2de9">
+	<property name="ireport.zoom" value="1.3310000000000004"/>
+	<property name="ireport.x" value="6"/>
+	<property name="ireport.y" value="111"/>
+	<parameter name="ID_projeto" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["G:\\PROJETO TCC\\web\\src\\main\\webapp\\reports\\model\\RE\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT 
+P.ID_projeto,
+T.nome titulo,
+p.investimento valorProjeto,
+(SELECT isnull(sum(isnull(valor,0.00)),0.00) FROM PROJETO.PROJETO_AADSP_PROJETO_RECUROS_ADICIONAIS RA
+	WHERE RA.ID_projeto = P.ID_projeto) valorTotal
+FROM PROJETO.PROJETO_AADSP_PROJETO P
+INNER JOIN TAP.TAP_AADSP_TAP T
+ON T.ID_tap = P.ID_tap
+where P.ID_projeto = $P{ID_projeto}]]>
+	</queryString>
+	<field name="ID_projeto" class="java.lang.Integer"/>
+	<field name="titulo" class="java.lang.String"/>
+	<field name="valorProjeto" class="java.math.BigDecimal"/>
+	<field name="valorTotal" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="149" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="109" y="0" width="446" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="3c996a83-57fb-43cf-a3de-33a427b6f1d4"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RE - Recursos Especiais]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="56" width="109" height="34" forecolor="#FFFFFF" backcolor="#000000" uuid="52adb15f-f81c-457e-b5ab-6c627e8f3f71"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Abordagem Adaptativa para implantação do Processo de Software]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="446" y="0" width="100" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="da3f7bbf-da06-4024-82ad-7e220bce06bf"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="110" y="20" width="446" height="70" isRemoveLineWhenBlank="true" uuid="fb920de5-d031-45fe-9d2a-1094780d32e5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Black" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="109" height="56" forecolor="#FFFFFF" backcolor="#000000" uuid="9b40653c-bb58-47b6-89fc-da069b65e032"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AADSP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="116" y="22" width="95" height="19" uuid="e3b6826f-080e-4243-891a-ea8ff1804661"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Título do Projeto: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="116" y="41" width="438" height="37" uuid="e528683b-17a2-4d5a-84c7-e49d973d46a6"/>
+				<textFieldExpression><![CDATA[$F{titulo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="111" y="122" width="100" height="20" uuid="a5d9b616-72aa-440f-b91d-34b1935bc914"/>
+				<textFieldExpression><![CDATA[$F{valorProjeto}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="122" width="100" height="20" uuid="7c853211-0f85-4d6a-b23f-007301af7360"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor do Projeto:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="114" width="553" height="1" uuid="e3103405-63f1-4b77-b91e-215e05a10923"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="101" width="109" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="14efb566-815a-4f7e-be20-0b844a636f3c"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dados Gerais]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="61" splitType="Stretch">
+			<subreport>
+				<reportElement x="1" y="4" width="553" height="49" uuid="d3cb2e7e-2d4c-432b-915f-9652d7fecc14"/>
+				<subreportParameter name="ID_projeto">
+					<subreportParameterExpression><![CDATA[$F{ID_projeto}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "RE_recursos.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="121" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="23" width="555" height="1" uuid="24114784-3cb2-4b76-a66f-10bce533b93b"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="10" width="109" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="f7841e41-9814-4125-980b-bc641f3fcfa1"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Custo Total]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="42" width="555" height="1" uuid="00aca509-6e31-46af-9d72-463db3accfcb"/>
+			</line>
+			<staticText>
+				<reportElement x="428" y="22" width="39" height="20" uuid="145467aa-9237-4965-a424-fff80186ac9b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor:]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="467" y="23" width="87" height="20" uuid="5c726945-4a93-4ffa-a991-d2792a29a7cd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{valorTotal}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="47" width="202" height="20" uuid="d9158d52-9494-44cf-8225-a89dc5d09d4a"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="211" y="86" width="173" height="20" uuid="9e7c974b-e5aa-4baf-8084-5d2cd098cffe"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Stakeholder]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="86" width="178" height="20" uuid="056a915a-0483-45e2-bf96-02695cd3d151"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Responsável pelo Projeto]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement x="514" y="99" width="40" height="20" uuid="355879d4-d3c5-4ae9-a676-f4bfcc474478"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="9" y="85" width="178" height="1" uuid="328963a7-f2ec-489b-85c6-4bc6da16e627"/>
+			</line>
+			<line>
+				<reportElement x="211" y="85" width="173" height="1" uuid="412bd0ad-a696-461a-982e-8152dc173aca"/>
+			</line>
+			<textField>
+				<reportElement x="434" y="99" width="80" height="20" uuid="791e4579-be4d-4f1a-815c-d38307b7e275"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
