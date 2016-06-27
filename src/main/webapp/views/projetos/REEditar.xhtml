@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link href="../../bootstrap/css/bootstrap-general.css" rel="stylesheet"/>
+        <script type="text/javascript" src="../../primefaces/js/showcase.js"></script>
+
+    </h:head>
+    <h:body>
+        <ui:composition template="template/template.xhtml">
+            <ui:define name="content">
+                <h:form id="form">
+                    <p:growl id="growl" showDetail="true" sticky="true" /> 
+                    <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+                    <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                        <img src="../../img/loading.gif" alt=""/>
+                    </p:dialog>
+                    <div class="margin-right-left-20">
+                        <div>
+                            <h3>RE - RECURSOS ESPECIAIS </h3>
+                            <div class="right">
+                                <a class="btn btn" href="REConsultar.xhtml">VOLTAR</a>
+                            </div>
+                            <p><strong>DETALHAMENTO</strong></p>
+                            <div>
+                            </div>
+                            <div class="space-40"></div>
+                            <div class="control-group">
+                                <p:menubar>
+                                    <p:submenu label="ADICIONAR INFORMAÇÕES" style="float: right">
+                                        <p:menuitem value="Recurso especial" onclick="PF('novoRecurso').show();" icon="ui-icon-document" />
+
+                                    </p:submenu>
+                                </p:menubar>
+                                <p:tabView dynamic="true" cache="true">
+                                    <p:tab title="lista de recursos especiais">
+                                        <p:dataTable id="tbl" style="text-align:center" var="recurso" value="#{REEditar.listaRecursosEspeciaisDoProjeto()}"
+                                                     paginator="true" rows="10" emptyMessage="Nenhum Registro Encontrado!">
+                                            <p:column class="dataTable-column-70-percent-center">
+                                                <f:facet name="header">
+                                                    <h:outputText value="descrição" />
+                                                </f:facet>
+                                                <h:outputText value="#{recurso.descricao.toUpperCase()}"/>
+                                            </p:column>
+                                            <p:column class="dataTable-column-10-percent-center" >
+                                                <f:facet name="header">
+                                                    <h:outputText value="data cadastro" />
+                                                </f:facet>
+                                                <h:outputText value="#{recurso.valor}">
+                                                    <f:convertNumber pattern="#,##0.00"/>
+                                                </h:outputText>
+                                            </p:column>
+                                            <p:column class="dataTable-column-10-percent-center" >
+                                                <f:facet name="header">
+                                                    <h:outputText value="data cadastro" />
+                                                </f:facet>
+                                                <h:outputText value="#{recurso.dataCadastro}">
+                                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                                </h:outputText>
+                                            </p:column>
+                                            <p:column class="dataTable-column-10-percent-center" >
+                                                <f:facet name="header">
+                                                    <h:outputText value="remover" />
+                                                </f:facet>
+                                                <p:commandButton icon="ui-icon-close" actionListener="#{REEditar.removerRecursoEspecial(recurso)}"/>
+                                            </p:column>
+                                        </p:dataTable>
+                                    </p:tab>
+                                </p:tabView>
+                            </div>
+                            <div class="space-20"></div>
+
+                        </div>
+                    </div>
+                    <div class="space-50"></div>
+                    <!-- Modais do Projeto -->
+                    <p:dialog header="NOVO RECURSO ESPECIAL" showEffect="explode" widgetVar="novoRecurso" modal="true" width="400" height="300" resizable="false">
+                        <h:panelGrid columns="1" cellpadding="5">
+                            <p:outputLabel for="nomeRecursos" value="Nome do recurso:" />
+                            <p:inputTextarea id="nomeRecursos" rows="1" cols="255" value="#{REEditar.requisitosEspeciais.descricao}" counter="displaynomeRecursos" maxlength="255" counterTemplate="{0} caracteres restantes." autoResize="false" />
+                            <h:outputText id="displaynomeRecursos" />
+                        </h:panelGrid>
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel for="valor" value="Investimento:" />
+                            <h:inputText id="valor"  value="#{REEditar.requisitosEspeciais.valor}">
+                                <f:convertNumber pattern="#,##0.00"></f:convertNumber>
+                                <p:ajax update="valor" process="valor" event="change" />
+                            </h:inputText>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" cellpadding="5">
+                            <p:commandButton value="SALVAR" actionListener="#{REEditar.cadastrarRecursoEspecial()}"/>
+                        </h:panelGrid>
+                    </p:dialog>
+
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+
+</html>

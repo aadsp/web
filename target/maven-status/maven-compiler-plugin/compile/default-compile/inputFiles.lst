@@ -27,7 +27,9 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\Index.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\TAPEscopo.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\utils\GeradorDeSenha.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\PessoalEditar.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\REConsultar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\EAPAtividade.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\ProjetoRecursosAdicionaisModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\HeaderTemplate.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\contributors\StakeholderEditar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\ResponsavelModel.java
@@ -61,10 +63,12 @@ G:\PROJETO TCC\web\src\main\java\org\aadsp\utils\ControleDeAcesso.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\utils\Email.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\PatrocinadorModel.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\EAPTipoModel.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\project\REEditar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\FuncaoConsultar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\contributors\StakeholderCadastrar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\FuncaoCadastrar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\model\TAPEscopoAreaModel.java
+G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\ProjetoRecursosAdicionais.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\annotations\Projeto.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\adm\AcessoEditar.java
 G:\PROJETO TCC\web\src\main\java\org\aadsp\controller\named\contributors\StakeholderConsultar.java
