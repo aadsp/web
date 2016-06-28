@@ -9,8 +9,8 @@ import javax.inject.Named;
 import javax.mail.internet.ParseException;
 import org.aadsp.annotations.Funcao;
 import org.aadsp.annotations.Usuario;
-import org.aadsp.interfaces.ABaseNamed;
-import org.aadsp.interfaces.ICadastro;
+import org.aadsp.framework.ABaseNamed;
+import org.aadsp.framework.ICadastro;
 import org.aadsp.utils.Mensageiro;
 
 /**

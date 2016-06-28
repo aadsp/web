@@ -2,48 +2,11 @@ package org.aadsp.annotations.model;
 
 import java.util.List;
 import org.aadsp.annotations.EAPTipo;
-import org.aadsp.interfaces.ICRUD;
-import org.aadsp.utils.FactoryHibernate;
+import org.aadsp.framework.ABaseModel;
 import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
-public class EAPTipoModel implements ICRUD
+public class EAPTipoModel extends ABaseModel
 {
-
-    private final Session sessao;
-
-    public EAPTipoModel()
-    {
-        this.sessao = FactoryHibernate.getSessionFactory().openSession();
-    }
-
-    @Override
-    public void salvar(Object obj)
-    {
-        Transaction transacao = sessao.beginTransaction();
-        sessao.save(obj);
-        transacao.commit();
-        sessao.close();
-    }
-
-    @Override
-    public void atualizar(Object obj)
-    {
-        Transaction transacao = sessao.beginTransaction();
-        sessao.update(obj);
-        transacao.commit();
-        sessao.close();
-    }
-
-    @Override
-    public void excluir(Object obj)
-    {
-        Transaction transacao = sessao.beginTransaction();
-        sessao.delete(obj);
-        transacao.commit();
-        sessao.close();
-    }
 
     public EAPTipo consultarPorID(EAPTipo eapTipo)
     {

@@ -11,7 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.aadsp.annotations.model.ColaboradorModel;
-import org.aadsp.interfaces.IAnnotations;
+import org.aadsp.framework.IAnnotations;
+import org.aadsp.framework.IFilter;
 
 @Entity
 @Table(name = "COLABORADOR.COLABORADOR_AADSP_COLABORADOR")

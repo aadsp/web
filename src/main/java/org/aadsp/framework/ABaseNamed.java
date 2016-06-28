@@ -1,4 +1,4 @@
-package org.aadsp.interfaces;
+package org.aadsp.framework;
 
 import java.io.Serializable;
 

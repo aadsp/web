@@ -12,7 +12,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import org.aadsp.annotations.Funcao;
 import org.aadsp.annotations.Usuario;
-import org.aadsp.interfaces.ABaseNamed;
+import org.aadsp.framework.ABaseNamed;
 import org.aadsp.utils.Criptografia;
 import org.aadsp.utils.Email;
 import org.aadsp.utils.GeradorDeSenha;

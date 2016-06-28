@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import org.aadsp.annotations.model.DocumentoRequisitosTipoModel;
-import org.aadsp.interfaces.IAnnotations;
+import org.aadsp.framework.IAnnotations;
 
 @Entity
 @Table(name = "REQUISITOS.REQUISITOS_AADSP_DOCUMENTO_REQUISITOS_TIPO")

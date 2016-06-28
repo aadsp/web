@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import org.aadsp.annotations.model.TAPModel;
-import org.aadsp.interfaces.IAnnotations;
+import org.aadsp.framework.IAnnotations;
 
 /**
  * Classe que representa a tabela do banco

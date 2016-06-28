@@ -9,7 +9,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import net.sf.jasperreports.engine.JRException;
 import org.aadsp.annotations.Projeto;
-import org.aadsp.interfaces.ABaseNamed;
+import org.aadsp.framework.ABaseNamed;
 import org.aadsp.utils.Criptografia;
 import org.aadsp.utils.Filtro;
 import org.aadsp.utils.Mensageiro;

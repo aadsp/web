@@ -3,48 +3,11 @@ package org.aadsp.annotations.model;
 import java.util.List;
 import org.aadsp.annotations.Projeto;
 import org.aadsp.annotations.ProjetoCronograma;
-import org.aadsp.interfaces.ICRUD;
-import org.aadsp.utils.FactoryHibernate;
+import org.aadsp.framework.ABaseModel;
 import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
-public class ProjetoCronogramaModel implements ICRUD
+public class ProjetoCronogramaModel extends ABaseModel
 {
-
-    private final Session sessao;
-
-    public ProjetoCronogramaModel()
-    {
-        this.sessao = FactoryHibernate.getSessionFactory().openSession();
-    }
-
-    @Override
-    public void salvar(Object obj)
-    {
-        Transaction transacao = sessao.beginTransaction();
-        sessao.save(obj);
-        transacao.commit();
-        sessao.close();
-    }
-
-    @Override
-    public void atualizar(Object obj)
-    {
-        Transaction transacao = sessao.beginTransaction();
-        sessao.update(obj);
-        transacao.commit();
-        sessao.close();
-    }
-
-    @Override
-    public void excluir(Object obj)
-    {
-        Transaction transacao = sessao.beginTransaction();
-        sessao.delete(obj);
-        transacao.commit();
-        sessao.close();
-    }
 
     public ProjetoCronograma consultarPorID(ProjetoCronograma projetoCronograma)
     {
@@ -76,13 +39,13 @@ public class ProjetoCronogramaModel implements ICRUD
             sessao.close();
         }
     }
-    
+
     public List<ProjetoCronograma> listarPorProjeto(ProjetoCronograma projetoCronograma) throws Exception
     {
         try
         {
             Query consulta = sessao.createQuery("Select c from ProjetoCronograma c join c.projeto p where p.ID = :ID order by c.dataInicio asc");
-             consulta.setInteger("ID", projetoCronograma.getProjeto().getID());
+            consulta.setInteger("ID", projetoCronograma.getProjeto().getID());
             return consulta.list();
         } catch (Exception e)
         {
@@ -92,7 +55,7 @@ public class ProjetoCronogramaModel implements ICRUD
             sessao.close();
         }
     }
-    
+
     public boolean verificarPeriodoInProjeto(ProjetoCronograma projetoCronograma)
     {
         try
@@ -102,11 +65,11 @@ public class ProjetoCronogramaModel implements ICRUD
             consulta.setDate("dataInicio", projetoCronograma.getDataInicio());
             consulta.setDate("dataTermino", projetoCronograma.getDataTermino());
             Projeto projeto = (Projeto) consulta.uniqueResult();
-            if(projeto != null)
+            if (projeto != null)
             {
-               return true;
+                return true;
             }
-            
+
         } catch (Exception e)
         {
             throw e;

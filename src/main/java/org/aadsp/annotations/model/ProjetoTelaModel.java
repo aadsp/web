@@ -2,48 +2,11 @@ package org.aadsp.annotations.model;
 
 import java.util.List;
 import org.aadsp.annotations.ProjetoTela;
-import org.aadsp.interfaces.ICRUD;
-import org.aadsp.utils.FactoryHibernate;
+import org.aadsp.framework.ABaseModel;
 import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
-public class ProjetoTelaModel implements ICRUD
+public class ProjetoTelaModel extends ABaseModel
 {
-
-    private final Session sessao;
-
-    public ProjetoTelaModel()
-    {
-        this.sessao = FactoryHibernate.getSessionFactory().openSession();
-    }
-
-    @Override
-    public void salvar(Object obj)
-    {
-        Transaction transacao = sessao.beginTransaction();
-        sessao.save(obj);
-        transacao.commit();
-        sessao.close();
-    }
-
-    @Override
-    public void atualizar(Object obj)
-    {
-        Transaction transacao = sessao.beginTransaction();
-        sessao.update(obj);
-        transacao.commit();
-        sessao.close();
-    }
-
-    @Override
-    public void excluir(Object obj)
-    {
-        Transaction transacao = sessao.beginTransaction();
-        sessao.delete(obj);
-        transacao.commit();
-        sessao.close();
-    }
 
     public ProjetoTela consultarPorID(ProjetoTela projetoTela)
     {
@@ -76,7 +39,7 @@ public class ProjetoTelaModel implements ICRUD
             sessao.close();
         }
     }
-    
+
     public List<ProjetoTela> listarPorProjeto(ProjetoTela projetoTela) throws Exception
     {
         try
@@ -92,7 +55,7 @@ public class ProjetoTelaModel implements ICRUD
             sessao.close();
         }
     }
-    
+
     public List<ProjetoTela> listarPorFiltro(String filtro) throws Exception
     {
         try

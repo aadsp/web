@@ -3,8 +3,8 @@ package org.aadsp.controller.named.adm;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import org.aadsp.annotations.Funcao;
-import org.aadsp.interfaces.ABaseNamed;
-import org.aadsp.interfaces.ICadastro;
+import org.aadsp.framework.ABaseNamed;
+import org.aadsp.framework.ICadastro;
 import org.aadsp.utils.Mensageiro;
 
 /**

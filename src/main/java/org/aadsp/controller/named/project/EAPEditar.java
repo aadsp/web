@@ -13,7 +13,7 @@ import org.aadsp.annotations.EAPAtividade;
 import org.aadsp.annotations.EAPPacote;
 import org.aadsp.annotations.EAPTipo;
 import org.aadsp.annotations.Projeto;
-import org.aadsp.interfaces.ABaseNamed;
+import org.aadsp.framework.ABaseNamed;
 import org.aadsp.utils.Criptografia;
 import org.aadsp.utils.Mensageiro;
 import org.aadsp.utils.Response;

@@ -1,4 +1,4 @@
-package org.aadsp.interfaces;
+package org.aadsp.framework;
 
 /**
  * Classe para tipificar o controle de cadastros pelos beans

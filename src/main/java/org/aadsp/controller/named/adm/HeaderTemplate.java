@@ -7,7 +7,7 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.aadsp.annotations.Usuario;
-import org.aadsp.interfaces.ABaseNamed;
+import org.aadsp.framework.ABaseNamed;
 import org.aadsp.utils.Mensageiro;
 
 /**

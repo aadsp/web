@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import org.aadsp.annotations.model.EAPTipoModel;
-import org.aadsp.interfaces.IAnnotations;
+import org.aadsp.framework.IAnnotations;
 
 @Entity
 @Table(name = "PROJETO.PROJETO_AADSP_DIAGRAMA_EAP_TIPO")

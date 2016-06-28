@@ -21,7 +21,7 @@ import org.aadsp.annotations.TAPEscopo;
 import org.aadsp.annotations.TAPEscopoArea;
 import org.aadsp.annotations.TAPEscopoTipo;
 import org.aadsp.annotations.Usuario;
-import org.aadsp.interfaces.ABaseNamed;
+import org.aadsp.framework.ABaseNamed;
 import org.aadsp.utils.Criptografia;
 import org.aadsp.utils.Mensageiro;
 import org.aadsp.utils.Response;

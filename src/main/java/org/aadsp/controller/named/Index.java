@@ -5,7 +5,7 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import javax.mail.MessagingException;
 import org.aadsp.annotations.Usuario;
-import org.aadsp.interfaces.ABaseNamed;
+import org.aadsp.framework.ABaseNamed;
 import org.aadsp.utils.Email;
 import org.aadsp.utils.GeradorDeSenha;
 import org.aadsp.utils.Mensageiro;

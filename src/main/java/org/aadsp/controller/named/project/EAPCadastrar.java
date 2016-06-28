@@ -11,8 +11,8 @@ import javax.inject.Named;
 import org.aadsp.annotations.EAP;
 import org.aadsp.annotations.EAPTipo;
 import org.aadsp.annotations.Projeto;
-import org.aadsp.interfaces.ABaseNamed;
-import org.aadsp.interfaces.ICadastro;
+import org.aadsp.framework.ABaseNamed;
+import org.aadsp.framework.ICadastro;
 import org.aadsp.utils.Mensageiro;
 
 /**

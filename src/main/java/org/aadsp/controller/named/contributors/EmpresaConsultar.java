@@ -6,7 +6,7 @@ import java.util.Map;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import org.aadsp.annotations.Empresa;
-import org.aadsp.interfaces.ABaseNamed;
+import org.aadsp.framework.ABaseNamed;
 import org.aadsp.utils.Criptografia;
 import org.aadsp.utils.Filtro;
 import org.aadsp.utils.Mensageiro;

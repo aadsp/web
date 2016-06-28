@@ -1,4 +1,4 @@
-package org.aadsp.interfaces;
+package org.aadsp.framework;
 
 /**
  * Classe para definir o tipo de anotação do projeto

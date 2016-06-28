@@ -20,7 +20,7 @@ import org.aadsp.annotations.DocumentoRequisitos;
 import org.aadsp.annotations.Projeto;
 import org.aadsp.annotations.ProjetoTela;
 import org.aadsp.annotations.RequisitosHistoria;
-import org.aadsp.interfaces.ABaseNamed;
+import org.aadsp.framework.ABaseNamed;
 import org.aadsp.utils.Criptografia;
 import org.aadsp.utils.Mensageiro;
 import org.aadsp.utils.Response;

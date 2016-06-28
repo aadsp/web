@@ -1,4 +1,3 @@
-org\aadsp\interfaces\IAnnotations.class
 org\aadsp\controller\named\adm\FuncaoCadastrar.class
 org\aadsp\utils\Session.class
 org\aadsp\annotations\Patrocinador.class
@@ -17,7 +16,6 @@ org\aadsp\annotations\Projeto.class
 org\aadsp\annotations\TAPEscopoArea.class
 org\aadsp\annotations\model\DiagramaUMLTipoModel.class
 org\aadsp\controller\named\project\TAPCadastrar.class
-org\aadsp\interfaces\ABaseNamed.class
 org\aadsp\annotations\TAPEscopo.class
 org\aadsp\annotations\Colaborador.class
 org\aadsp\controller\named\project\EAPCadastrar.class
@@ -40,7 +38,6 @@ org\aadsp\controller\named\project\ProjetoConsultar.class
 org\aadsp\annotations\model\PatrocinadorModel.class
 org\aadsp\annotations\model\DocumentoRequisitosTipoModel.class
 org\aadsp\annotations\Responsavel.class
-org\aadsp\interfaces\IConsulta.class
 org\aadsp\controller\named\project\requisitos\DocumentoRequisitosCadastrar.class
 org\aadsp\controller\named\project\ReunioesConsultar.class
 org\aadsp\utils\GeradorDeSenha.class
@@ -76,7 +73,6 @@ org\aadsp\controller\named\Index.class
 org\aadsp\annotations\model\StakeholderModel.class
 org\aadsp\annotations\TAP.class
 org\aadsp\controller\named\project\ProjetoEditar.class
-org\aadsp\interfaces\ICRUD.class
 org\aadsp\controller\named\adm\AcessoCadastrar.class
 org\aadsp\controller\named\adm\PessoalEditar.class
 org\aadsp\annotations\EAPPacote.class
@@ -101,7 +97,6 @@ org\aadsp\annotations\model\TAPEscopoTipoModel.class
 org\aadsp\controller\named\project\requisitos\DocumentoRequisitosConsultar.class
 org\aadsp\utils\RelatorioIReport.class
 org\aadsp\annotations\model\ResponsavelModel.class
-org\aadsp\interfaces\ICadastro.class
 org\aadsp\annotations\model\ReuniaoAtaModel.class
 org\aadsp\controller\named\project\ATACadastrar.class
 org\aadsp\annotations\StakeholderTAP.class

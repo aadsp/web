@@ -11,7 +11,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.aadsp.annotations.model.DiagramaUMLModel;
 import org.aadsp.annotations.model.PaginaModel;
-import org.aadsp.interfaces.IAnnotations;
+import org.aadsp.framework.IAnnotations;
 
 @Entity
 @Table(name = "PROJETO.PROJETO_AADSP_DIAGRAMA_UML")

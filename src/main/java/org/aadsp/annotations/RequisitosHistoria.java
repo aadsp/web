@@ -11,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.aadsp.annotations.model.RequisitosHistoriaModel;
-import org.aadsp.interfaces.IAnnotations;
+import org.aadsp.framework.IAnnotations;
 
 @Entity
 @Table(name = "REQUISITOS.REQUISITOS_AADSP_DOCUMENTO_REQUISITOS_HISTORIA_DE_USUARIO")

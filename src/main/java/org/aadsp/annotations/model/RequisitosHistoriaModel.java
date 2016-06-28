@@ -2,48 +2,11 @@ package org.aadsp.annotations.model;
 
 import java.util.List;
 import org.aadsp.annotations.RequisitosHistoria;
-import org.aadsp.interfaces.ICRUD;
-import org.aadsp.utils.FactoryHibernate;
+import org.aadsp.framework.ABaseModel;
 import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
-public class RequisitosHistoriaModel implements ICRUD
+public class RequisitosHistoriaModel extends ABaseModel
 {
-
-    private final Session sessao;
-
-    public RequisitosHistoriaModel()
-    {
-        this.sessao = FactoryHibernate.getSessionFactory().openSession();
-    }
-
-    @Override
-    public void salvar(Object obj)
-    {
-        Transaction transacao = sessao.beginTransaction();
-        sessao.save(obj);
-        transacao.commit();
-        sessao.close();
-    }
-
-    @Override
-    public void atualizar(Object obj)
-    {
-        Transaction transacao = sessao.beginTransaction();
-        sessao.update(obj);
-        transacao.commit();
-        sessao.close();
-    }
-
-    @Override
-    public void excluir(Object obj)
-    {
-        Transaction transacao = sessao.beginTransaction();
-        sessao.delete(obj);
-        transacao.commit();
-        sessao.close();
-    }
 
     public RequisitosHistoria consultarPorID(RequisitosHistoria requisitos)
     {
@@ -76,7 +39,7 @@ public class RequisitosHistoriaModel implements ICRUD
             sessao.close();
         }
     }
-    
+
     public List<RequisitosHistoria> listarPorDocumentoRequisitos(RequisitosHistoria requisitos) throws Exception
     {
         try

@@ -3,48 +3,11 @@ package org.aadsp.annotations.model;
 import java.util.List;
 import org.aadsp.annotations.Pagina;
 import org.aadsp.annotations.Patrocinador;
-import org.aadsp.interfaces.ICRUD;
-import org.aadsp.utils.FactoryHibernate;
+import org.aadsp.framework.ABaseModel;
 import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
-public class PatrocinadorModel implements ICRUD
+public class PatrocinadorModel extends ABaseModel
 {
-
-    private final Session sessao;
-
-    public PatrocinadorModel()
-    {
-        this.sessao = FactoryHibernate.getSessionFactory().openSession();
-    }
-
-    @Override
-    public void salvar(Object obj)
-    {
-        Transaction transacao = sessao.beginTransaction();
-        sessao.save(obj);
-        transacao.commit();
-        sessao.close();
-    }
-
-    @Override
-    public void atualizar(Object obj)
-    {
-        Transaction transacao = sessao.beginTransaction();
-        sessao.update(obj);
-        transacao.commit();
-        sessao.close();
-    }
-
-    @Override
-    public void excluir(Object obj)
-    {
-        Transaction transacao = sessao.beginTransaction();
-        sessao.delete(obj);
-        transacao.commit();
-        sessao.close();
-    }
 
     public Patrocinador consultarPorID(Pagina pagina)
     {

@@ -11,11 +11,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.aadsp.annotations.model.AcessoModel;
 import org.aadsp.annotations.model.DiagramaUMLTipoModel;
-import org.aadsp.interfaces.IAnnotations;
+import org.aadsp.framework.IAnnotations;
 
 /**
- * Classe de Entidade ACESSO.ACESSO, Representa o acesso por meio da função com
- * a página
  *
  * @author Felipe Coelho
  * @version 24/04/2016
