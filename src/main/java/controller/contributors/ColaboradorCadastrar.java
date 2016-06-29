@@ -8,7 +8,7 @@ import java.util.Map;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.mail.internet.ParseException;
-import annotations.acesso.Colaborador;
+import annotations.acesso.colaborador.Colaborador;
 import annotations.acesso.Usuario;
 import interfaces.ABaseNamed;
 import interfaces.ICadastro;

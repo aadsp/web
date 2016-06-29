@@ -11,7 +11,7 @@ import model.projeto.EAPTipoModel;
 import interfaces.IAnnotations;
 
 @Entity
-@Table(name = "PROJETO.PROJETO_AADSP_DIAGRAMA_EAP_TIPO")
+@Table(name = "PROJETO.EAP_TIPO")
 public class EAPTipo implements Serializable, IAnnotations
 {
 

@@ -14,7 +14,7 @@ import model.acesso.PaginaModel;
 import interfaces.IAnnotations;
 
 @Entity
-@Table(name = "PROJETO.PROJETO_AADSP_DIAGRAMA_UML")
+@Table(name = "PROJETO.DIAGRAMA_UML")
 public class DiagramaUML implements Serializable, IAnnotations
 {
 

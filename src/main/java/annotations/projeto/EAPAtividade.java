@@ -13,7 +13,7 @@ import model.projeto.EAPAtividadeModel;
 import interfaces.IAnnotations;
 
 @Entity
-@Table(name = "PROJETO.PROJETO_AADSP_DIAGRAMA_EAP_ATIVIDADE")
+@Table(name = "PROJETO.EAP_ATIVIDADE")
 public class EAPAtividade implements Serializable, IAnnotations
 {
 

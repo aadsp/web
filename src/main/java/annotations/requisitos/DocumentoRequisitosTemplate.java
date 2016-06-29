@@ -12,7 +12,7 @@ import model.acesso.PaginaModel;
 import interfaces.IAnnotations;
 
 @Entity
-@Table(name = "REQUISITOS.REQUISITOS_AADSP_DOCUMENTO_REQUISITOS_TEMPLATE")
+@Table(name = "REQUISITOS.DOCUMENTO_REQUISITOS_TEMPLATE")
 public class DocumentoRequisitosTemplate implements Serializable, IAnnotations
 {
 

@@ -11,7 +11,7 @@ import model.acesso.PaginaModel;
 import interfaces.IAnnotations;
 
 @Entity
-@Table(name = "ACESSO.ACESSO_AADSP_PAGINA")
+@Table(name = "ACESSO.PAGINA")
 public class Pagina implements Serializable, IAnnotations
 {
 

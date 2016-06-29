@@ -11,7 +11,7 @@ import model.tap.TAPEscopoTipoModel;
 import interfaces.IAnnotations;
 
 @Entity
-@Table(name = "TAP.TAP_AADSP_ESCOPO_TIPO")
+@Table(name = "TAP.ESCOPO_TIPO")
 public class TAPEscopoTipo implements Serializable, IAnnotations
 {
 

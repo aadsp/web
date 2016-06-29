@@ -13,7 +13,7 @@ import model.projeto.EAPPacoteModel;
 import interfaces.IAnnotations;
 
 @Entity
-@Table(name = "PROJETO.PROJETO_AADSP_DIAGRAMA_EAP_PACOTE")
+@Table(name = "PROJETO.EAP_PACOTE")
 public class EAPPacote implements Serializable, IAnnotations
 {
 

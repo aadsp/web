@@ -17,7 +17,7 @@ import interfaces.IAnnotations;
  * @author Felipe
  */
 @Entity
-@Table(name = "TAP.TAP_AADSP_TAP")
+@Table(name = "TAP.TAP")
 public class TAP implements Serializable, IAnnotations
 {
 

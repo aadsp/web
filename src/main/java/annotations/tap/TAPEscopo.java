@@ -13,7 +13,7 @@ import model.tap.TAPEscopoModel;
 import interfaces.IAnnotations;
 
 @Entity
-@Table(name = "TAP.TAP_AADSP_ESCOPO")
+@Table(name = "TAP.ESCOPO")
 public class TAPEscopo implements Serializable, IAnnotations
 {
 

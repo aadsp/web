@@ -1,6 +1,6 @@
 package annotations.projeto;
 
-import annotations.acesso.Colaborador;
+import annotations.acesso.colaborador.Colaborador;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
@@ -15,7 +15,7 @@ import model.projeto.ReuniaoAtaModel;
 import interfaces.IAnnotations;
 
 @Entity
-@Table(name = "PROJETO.PROJETO_AADSP_ATA")
+@Table(name = "PROJETO.ATA")
 public class ReuniaoAta implements Serializable, IAnnotations
 {
 

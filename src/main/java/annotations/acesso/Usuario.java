@@ -1,8 +1,5 @@
 package annotations.acesso;
 
-import annotations.acesso.Pagina;
-import annotations.acesso.Funcao;
-import annotations.acesso.Acesso;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
@@ -24,7 +21,7 @@ import utils.Criptografia;
 import utils.Mensageiro;
 
 @Entity
-@Table(name = "ACESSO.ACESSO_AADSP_USUARIO")
+@Table(name = "ACESSO.USUARIO")
 public class Usuario implements Serializable, IAnnotations
 {
 

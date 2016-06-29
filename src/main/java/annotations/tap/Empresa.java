@@ -11,7 +11,7 @@ import model.tap.EmpresaModel;
 import interfaces.IAnnotations;
 
 @Entity
-@Table(name = "TAP.TAP_AADSP_EMPRESA")
+@Table(name = "TAP.EMPRESA")
 public class Empresa implements Serializable, IAnnotations
 {
 

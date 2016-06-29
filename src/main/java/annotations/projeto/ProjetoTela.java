@@ -10,12 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import model.acesso.PaginaModel;
 import model.projeto.ProjetoTelaModel;
 import interfaces.IAnnotations;
 
 @Entity
-@Table(name = "PROJETO.PROJETO_AADSP_PROJETO_TELAS")
+@Table(name = "PROJETO.TELAS")
 public class ProjetoTela implements Serializable, IAnnotations
 {
 

@@ -14,7 +14,7 @@ import model.tap.StakeholderTAPModel;
 import interfaces.IAnnotations;
 
 @Entity
-@Table(name = "TAP.TAP_AADSP_STAKEHOLDER_TAP")
+@Table(name = "TAP.STAKEHOLDER_TAP")
 public class StakeholderTAP implements Serializable, IAnnotations
 {
 

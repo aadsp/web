@@ -1,7 +1,7 @@
-package annotations.acesso;
+package annotations.acesso.colaborador;
 
-import annotations.acesso.Usuario;
 import annotations.acesso.Funcao;
+import annotations.acesso.Usuario;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
@@ -12,11 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import model.acesso.ColaboradorModel;
+import model.colaborador.ColaboradorModel;
 import interfaces.IAnnotations;
 
 @Entity
-@Table(name = "COLABORADOR.COLABORADOR_AADSP_COLABORADOR")
+@Table(name = "COLABORADOR.COLABORADOR")
 public class Colaborador implements Serializable, IAnnotations
 {
 

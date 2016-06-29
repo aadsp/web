@@ -15,7 +15,7 @@ import model.acesso.PaginaModel;
 import interfaces.IAnnotations;
 
 @Entity
-@Table(name = "PROJETO.PROJETO_AADSP_DIAGRAMA_EAP")
+@Table(name = "PROJETO.EAP")
 public class EAP implements Serializable, IAnnotations
 {
 

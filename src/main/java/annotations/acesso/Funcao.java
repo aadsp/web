@@ -11,7 +11,7 @@ import model.acesso.FuncaoModel;
 import interfaces.IAnnotations;
 
 @Entity
-@Table(name = "ACESSO.ACESSO_AADSP_FUNCAO")
+@Table(name = "ACESSO.FUNCAO")
 public class Funcao implements Serializable, IAnnotations
 {
 

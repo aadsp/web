@@ -14,7 +14,7 @@ import model.projeto.ProjetoCronogramaModel;
 import interfaces.IAnnotations;
 
 @Entity
-@Table(name = "PROJETO.PROJETO_AADSP_CRONOGRAMA")
+@Table(name = "PROJETO.CRONOGRAMA")
 public class ProjetoCronograma implements Serializable, IAnnotations
 {
 

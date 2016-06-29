@@ -1,8 +1,5 @@
 package annotations.tap;
 
-import annotations.tap.Empresa;
-import annotations.tap.Stakeholder;
-import annotations.tap.TAP;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
@@ -16,7 +13,7 @@ import model.tap.PatrocinadorModel;
 import interfaces.IAnnotations;
 
 @Entity
-@Table(name = "TAP.TAP_AADSP_PATROCINADOR")
+@Table(name = "TAP.PATROCINADOR")
 public class Patrocinador implements Serializable, IAnnotations
 {
 

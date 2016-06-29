@@ -15,7 +15,7 @@ import model.requisitos.DocumentoRequisitosModel;
 import interfaces.IAnnotations;
 
 @Entity
-@Table(name = "REQUISITOS.REQUISITOS_AADSP_DOCUMENTO_REQUISITOS")
+@Table(name = "REQUISITOS.DOCUMENTO_REQUISITOS")
 public class DocumentoRequisitos implements Serializable, IAnnotations
 {
 

@@ -15,7 +15,7 @@ import model.projeto.ResponsavelModel;
 import interfaces.IAnnotations;
 
 @Entity
-@Table(name = "TAP.TAP_AADSP_RESPONSAVEL")
+@Table(name = "TAP.RESPONSAVEL")
 public class Responsavel implements Serializable, IAnnotations
 {
 

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import annotations.acesso.Colaborador;
+import annotations.acesso.colaborador.Colaborador;
 import interfaces.ABaseNamed;
 import utils.Criptografia;
 import utils.Filtro;

@@ -11,7 +11,7 @@ import model.projeto.DiagramaUMLTipoModel;
 import interfaces.IAnnotations;
 
 @Entity
-@Table(name = "PROJETO.PROJETO_AADSP_DIAGRAMA_UML_TIPO")
+@Table(name = "PROJETO.DIAGRAMA_UML_TIPO")
 public class DiagramaUMLTipo implements Serializable, IAnnotations
 {
 

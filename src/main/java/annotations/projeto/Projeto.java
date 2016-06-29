@@ -15,7 +15,7 @@ import model.projeto.ProjetoModel;
 import interfaces.IAnnotations;
 
 @Entity
-@Table(name = "PROJETO.PROJETO_AADSP_PROJETO")
+@Table(name = "PROJETO.PROJETO")
 public class Projeto implements Serializable, IAnnotations
 {
 

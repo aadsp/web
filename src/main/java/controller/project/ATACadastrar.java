@@ -7,7 +7,7 @@ import java.util.Map;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.mail.MessagingException;
-import annotations.acesso.Colaborador;
+import annotations.acesso.colaborador.Colaborador;
 import annotations.projeto.Projeto;
 import annotations.projeto.ReuniaoAta;
 import annotations.acesso.Usuario;

@@ -19,7 +19,7 @@ import interfaces.IAnnotations;
  * @version 24/04/2016
  */
 @Entity
-@Table(name = "ACESSO.ACESSO_AADSP_ACESSO")
+@Table(name = "ACESSO.ACESSO")
 public class Acesso implements Serializable, IAnnotations
 {
 

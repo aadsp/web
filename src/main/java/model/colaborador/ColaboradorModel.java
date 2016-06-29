@@ -1,7 +1,7 @@
-package model.acesso;
+package model.colaborador;
 
 import java.util.List;
-import annotations.acesso.Colaborador;
+import annotations.acesso.colaborador.Colaborador;
 import interfaces.ABaseModel;
 import org.hibernate.Query;
 
