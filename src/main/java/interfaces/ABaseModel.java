@@ -15,7 +15,7 @@ import org.hibernate.Transaction;
  */
 public abstract class ABaseModel implements ICRUD
 {
-
+    
     @Override
     public void salvar(Object obj)
     {
@@ -44,5 +44,4 @@ public abstract class ABaseModel implements ICRUD
     }
 
     public final Session sessao = FactoryHibernate.getSessionFactory().openSession();
-;
 }

@@ -15,7 +15,7 @@ import model.projeto.EquipeModel;
 import interfaces.IAnnotations;
 
 @Entity
-@Table(name = "TAP.TAP_AADSP_EQUIPE")
+@Table(name = "TAP.EQUIPE")
 public class Equipe implements Serializable, IAnnotations
 {
 

@@ -11,7 +11,7 @@
        RA.descricao
       ,RA.dataCadastro
       ,RA.valor
-  FROM AADSP.PROJETO.PROJETO_AADSP_PROJETO_RECUROS_ADICIONAIS RA
+  FROM AADSP.PROJETO.RECURSOS_ADICIONAIS RA
   WHERE RA.ID_projeto = $P{ID_projeto}]]>
 	</queryString>
 	<field name="descricao" class="java.lang.String"/>

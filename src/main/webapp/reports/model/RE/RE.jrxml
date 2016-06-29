@@ -14,10 +14,10 @@
 P.ID_projeto,
 T.nome titulo,
 p.investimento valorProjeto,
-(SELECT isnull(sum(isnull(valor,0.00)),0.00) FROM PROJETO.PROJETO_AADSP_PROJETO_RECUROS_ADICIONAIS RA
+(SELECT isnull(sum(isnull(valor,0.00)),0.00) FROM PROJETO.RECURSOS_ADICIONAIS RA
 	WHERE RA.ID_projeto = P.ID_projeto) valorTotal
-FROM PROJETO.PROJETO_AADSP_PROJETO P
-INNER JOIN TAP.TAP_AADSP_TAP T
+FROM PROJETO.PROJETO P
+INNER JOIN TAP.TAP T
 ON T.ID_tap = P.ID_tap
 where P.ID_projeto = $P{ID_projeto}]]>
 	</queryString>

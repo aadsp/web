@@ -4,7 +4,7 @@ import java.util.Date;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.mail.internet.ParseException;
-import annotations.acesso.colaborador.Colaborador;
+import annotations.colaborador.Colaborador;
 import interfaces.ABaseNamed;
 import utils.Criptografia;
 import utils.Mensageiro;

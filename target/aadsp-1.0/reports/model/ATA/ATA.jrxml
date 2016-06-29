@@ -14,10 +14,10 @@ A.dataRealizacao horaRealizacao,
 U.nome organizador,
 cast(a.pauta as varchar(1000)) pauta,
 cast(a.assuntosTratados as varchar(8000))assuntosTratados
-FROM PROJETO.PROJETO_AADSP_ATA A
-INNER JOIN COLABORADOR.COLABORADOR_AADSP_COLABORADOR C
+FROM PROJETO.ATA A
+INNER JOIN COLABORADOR.COLABORADOR C
 ON A.ID_colaborador = C.ID_colaborador
-INNER JOIN ACESSO.ACESSO_AADSP_USUARIO U
+INNER JOIN ACESSO.USUARIO U
 ON U.ID_usuario = C.ID_usuario
 WHERE A.ID_ata = $P{ID_ata}]]>
 	</queryString>

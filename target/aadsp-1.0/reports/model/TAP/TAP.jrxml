@@ -21,7 +21,7 @@ dataHomologacao,
 custo,
 riscosIniciais,
 restricoes
-FROM TAP.TAP_AADSP_TAP WHERE ID_tap = $P{ID_tap}]]>
+FROM TAP.TAP WHERE ID_tap = $P{ID_tap}]]>
 	</queryString>
 	<field name="ID_tap" class="java.lang.Integer"/>
 	<field name="nome" class="java.lang.String"/>

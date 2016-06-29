@@ -7,10 +7,10 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT F.descricao FROM TAP.TAP_AADSP_EQUIPE E
-INNER JOIN ACESSO.ACESSO_AADSP_FUNCAO F
+		<![CDATA[SELECT F.descricao FROM TAP.EQUIPE E
+INNER JOIN ACESSO.FUNCAO F
 ON E.ID_funcao = F.ID_funcao
-INNER JOIN TAP.TAP_AADSP_TAP T
+INNER JOIN TAP.TAP T
 ON T.ID_tap = E.ID_tap
 WHERE T.ID_tap = $P{ID_tap}]]>
 	</queryString>

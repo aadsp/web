@@ -18,8 +18,8 @@ p.dataTermino projDataTermino,
 t.dataInicio tapDataInicio,
 t.dataFim tapDataTermino
 FROM
-TAP.TAP_AADSP_TAP T
-INNER JOIN PROJETO.PROJETO_AADSP_PROJETO P
+TAP.TAP T
+INNER JOIN PROJETO.PROJETO P
 ON T.ID_tap = P.ID_tap
 WHERE P.ID_projeto = $P{ID_projeto}]]>
 	</queryString>

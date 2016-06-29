@@ -7,8 +7,8 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT S.nome, S.cpf, S.email FROM TAP.TAP_AADSP_STAKEHOLDER S
-INNER JOIN TAP.TAP_AADSP_STAKEHOLDER_TAP ST
+		<![CDATA[SELECT S.nome, S.cpf, S.email FROM TAP.STAKEHOLDER S
+INNER JOIN TAP.STAKEHOLDER_TAP ST
 ON S.ID_stakeholder = ST.ID_stakeholder
 WHERE ST.ID_tap = $P{ID_tap}]]>
 	</queryString>

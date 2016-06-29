@@ -1,6 +1,6 @@
 package annotations.projeto;
 
-import annotations.acesso.colaborador.Colaborador;
+import annotations.colaborador.Colaborador;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
