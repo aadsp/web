@@ -53,6 +53,7 @@ G:\PROJETO TCC\web\src\main\java\controller\adm\FuncaoEditar.java
 G:\PROJETO TCC\web\src\main\java\annotations\projeto\EAPTipo.java
 G:\PROJETO TCC\web\src\main\java\annotations\acesso\Acesso.java
 G:\PROJETO TCC\web\src\main\java\interfaces\IFilter.java
+G:\PROJETO TCC\web\src\main\java\model\projeto\PontoComplexidadeNivelModel.java
 G:\PROJETO TCC\web\src\main\java\model\tap\EmpresaModel.java
 G:\PROJETO TCC\web\src\main\java\annotations\tap\Empresa.java
 G:\PROJETO TCC\web\src\main\java\controller\adm\AlterarSenha.java
@@ -81,6 +82,7 @@ G:\PROJETO TCC\web\src\main\java\interfaces\IConsulta.java
 G:\PROJETO TCC\web\src\main\java\controller\project\ATAConsultar.java
 G:\PROJETO TCC\web\src\main\java\controller\adm\AcessoEditar.java
 G:\PROJETO TCC\web\src\main\java\controller\adm\FuncaoCadastrar.java
+G:\PROJETO TCC\web\src\main\java\annotations\projeto\PontoComplexidadeNivel.java
 G:\PROJETO TCC\web\src\main\java\model\requisitos\DocumentoRequisitosTemplateModel.java
 G:\PROJETO TCC\web\src\main\java\model\acesso\AcessoModel.java
 G:\PROJETO TCC\web\src\main\java\controller\contributors\StakeholderCadastrar.java

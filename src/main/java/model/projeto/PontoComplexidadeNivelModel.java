@@ -1,20 +1,21 @@
-package model.acesso;
+package model.projeto;
 
 import java.util.List;
 import annotations.acesso.Pagina;
+import annotations.projeto.PontoComplexidadeNivel;
 import interfaces.ABaseModel;
 import org.hibernate.Query;
 
-public class PaginaModel extends ABaseModel
+public class PontoComplexidadeNivelModel extends ABaseModel
 {
 
-    public Pagina consultarPorID(Pagina pagina)
+    public PontoComplexidadeNivel consultarPorID(PontoComplexidadeNivel pontoComplexidadeNivel)
     {
         try
         {
-            Query consulta = sessao.createQuery("from Pagina where ID = :ID");
-            consulta.setInteger("ID", pagina.getID());
-            return (Pagina) consulta.uniqueResult();
+            Query consulta = sessao.createQuery("from PontoComplexidadeNivel where ID = :ID");
+            consulta.setInteger("ID", pontoComplexidadeNivel.getID());
+            return (PontoComplexidadeNivel) consulta.uniqueResult();
         } catch (Exception e)
         {
             throw e;
@@ -25,11 +26,11 @@ public class PaginaModel extends ABaseModel
 
     }
 
-    public List<Pagina> listar() throws Exception
+    public List<PontoComplexidadeNivel> listar() throws Exception
     {
         try
         {
-            Query consulta = sessao.createQuery("from Pagina");
+            Query consulta = sessao.createQuery("from PontoComplexidadeNivel");
             return consulta.list();
         } catch (Exception e)
         {
@@ -40,11 +41,11 @@ public class PaginaModel extends ABaseModel
         }
     }
 
-    public List<Pagina> listarPorFiltro(String filtro) throws Exception
+    public List<PontoComplexidadeNivel> listarPorFiltro(String filtro) throws Exception
     {
         try
         {
-            Query consulta = sessao.createQuery("from Pagina where " + filtro);
+            Query consulta = sessao.createQuery("from PontoComplexidadeNivel where " + filtro);
             return consulta.list();
         } catch (Exception e)
         {

@@ -1,4 +1,4 @@
-package annotations.acesso;
+package annotations.projeto;
 
 import java.io.Serializable;
 import java.util.List;
@@ -7,20 +7,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import model.acesso.PaginaModel;
 import interfaces.IAnnotations;
+import model.projeto.PontoComplexidadeNivelModel;
 
 @Entity
-@Table(name = "ACESSO.PAGINA")
-public class Pagina implements Serializable, IAnnotations
+@Table(name = "PROJETO.PONTO_COMPLEXIDADE_NIVEL")
+public class PontoComplexidadeNivel implements Serializable, IAnnotations
 {
 
     @Id
     @GeneratedValue
-    @Column(name = "ID_pagina")
+    @Column(name = "ID_complexidadeNivel")
     private Integer ID;
-    @Column(name = "nome",length = 60)
-    private String nome;
+    @Column(name = "descricao", length = 50)
+    private String descricao;
 
     public Integer getID()
     {
@@ -32,58 +32,52 @@ public class Pagina implements Serializable, IAnnotations
         this.ID = ID;
     }
 
-    public String getNome()
+    public String getDescricao()
     {
-        return nome;
+        return descricao;
     }
 
-    public void setNome(String nome)
+    public void setDescricao(String descricao)
     {
-        this.nome = nome;
+        this.descricao = descricao;
     }
 
     @Override
     public void cadastrar()
     {
-        PaginaModel model = new PaginaModel();
+        PontoComplexidadeNivelModel model = new PontoComplexidadeNivelModel();
         model.salvar(this);
     }
 
     @Override
     public void excluir()
     {
-        PaginaModel model = new PaginaModel();
+        PontoComplexidadeNivelModel model = new PontoComplexidadeNivelModel();
         model.excluir(this);
     }
 
     @Override
     public void editar()
     {
-        PaginaModel model = new PaginaModel();
+        PontoComplexidadeNivelModel model = new PontoComplexidadeNivelModel();
         model.atualizar(this);
     }
 
-    public String consultarNomePagina(Pagina pagina)
+    public List<PontoComplexidadeNivel> listar() throws Exception
     {
-        PaginaModel model = new PaginaModel();
-        return model.consultarPorID(pagina).nome;
-    }
-
-    public List<Pagina> listar() throws Exception
-    {
-        PaginaModel model = new PaginaModel();
+        PontoComplexidadeNivelModel model = new PontoComplexidadeNivelModel();
         return model.listar();
     }
 
-    public Pagina consultarPorID() throws Exception
+    public PontoComplexidadeNivel consultarPorID() throws Exception
     {
-        PaginaModel model = new PaginaModel();
+        PontoComplexidadeNivelModel model = new PontoComplexidadeNivelModel();
         return model.consultarPorID(this);
     }
 
-    public List<Pagina> listarPorFiltro(String filtro) throws Exception
+    public List<PontoComplexidadeNivel> listarPorFiltro(String filtro) throws Exception
     {
-        PaginaModel model = new PaginaModel();
+        PontoComplexidadeNivelModel model = new PontoComplexidadeNivelModel();
         return model.listarPorFiltro(filtro);
     }
 
