@@ -55,7 +55,7 @@ public class DEEConsultar extends ABaseNamed
     {
         try
         {
-            Response.redirect("/web/faces/views/projetos/DEEditar.xhtml?Projeto=" + Criptografia.codificarParaBase64(projeto.getID().toString()));
+            Response.redirect("/web/faces/views/projetos/DEEEditar.xhtml?Projeto=" + Criptografia.codificarParaBase64(projeto.getID().toString()));
         } catch (Exception e)
         {
             Mensageiro.mensagemError("Erro ao selecionar Projeto!!");

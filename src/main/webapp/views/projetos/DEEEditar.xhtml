@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link href="../../bootstrap/css/bootstrap-general.css" rel="stylesheet"/>
+        <script type="text/javascript" src="../../primefaces/js/showcase.js"></script>
+    </h:head>
+    <h:body>
+        <ui:composition template="template/template.xhtml">
+            <ui:define name="content">
+                <h:form id="form">
+                    <p:growl id="growl" showDetail="true" sticky="true" /> 
+                    <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+                    <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                        <img src="../../img/loading.gif" alt=""/>
+                    </p:dialog>
+                    <div class="margin-right-left-20">
+                        <div>
+                            <h3>DEE - DOCUMENTO DE ESTIMATIVA DE ESCOPO</h3>
+                            <h4><a class="label label-info">Título do Projeto:</a></h4>
+                            <h4><a class="label label-label">#{DEEEditar.projeto.tap.nome.toUpperCase()}</a></h4>
+                            <div class="right">
+                                <a class="btn btn" href="DEEConsultar.xhtml">VOLTAR</a>
+                            </div>
+                            <p><strong>DETALHAMENTO</strong></p>
+                            <div>
+                            </div>
+                            <div class="space-40"></div>
+                            <div class="control-group">
+                                <p:menubar>
+                                    <p:submenu label="ADICIONAR INFORMAÇÕES" style="float: right">
+                                        <p:menuitem value="Tipo de Elemento de Dados" onclick="PF('viabilidadeDoProjeto').show();" icon="ui-icon-document" />
+
+                                    </p:submenu>
+                                </p:menubar>  
+                                <p:tabView dynamic="true" cache="true">
+                                    <p:tab title="Valores calculado de ponto de função">
+                                        <h:panelGrid columns="2" cellpadding="5">
+
+                                        </h:panelGrid>
+                                    </p:tab>
+                                    <p:tab title="Valores base para cálculo">
+                                        <h:panelGrid columns="2" cellpadding="5">
+
+                                            <p:dataTable  style="text-align:center" var="arquivosInternos" value="#{DEEEditar.listarTable1()}">
+                                                <f:facet name="header">
+                                                    <a style="color:#ffffff" class="label label-label">Complexidade de Arquivos Lógicos Internos e Arquivos de Interface Externa:</a>
+                                                </f:facet>
+                                                <p:column headerText="Tipos de Elementos de Registros">
+                                                    <h:outputText value="min: #{arquivosInternos.minTER} | max: #{arquivosInternos.maxTER}" />
+                                                </p:column>
+                                                <p:column headerText="Tipos de Elementos de Dados">
+                                                    <h:outputText value="#{arquivosInternos.minTED} a #{arquivosInternos.maxTED}" />
+                                                </p:column>
+                                                <p:column headerText="Nível">
+                                                    <h:outputText value="#{arquivosInternos.nivel.descricao}" />
+                                                </p:column>
+                                            </p:dataTable>
+
+                                            <p:dataTable  style="text-align:center" var="entradasExternas" value="#{DEEEditar.listarTable2()}">
+                                                <f:facet name="header">
+                                                    <a style="color:#ffffff" class="label label-label">Complexidade de Entradas Externas e Entradas das Consultas Externas</a>
+                                                </f:facet>
+                                                <p:column headerText="Tipos de Arquivos Referenciados">
+                                                    <h:outputText value="min: #{entradasExternas.minTAR} | max: #{entradasExternas.maxTAR}" />
+                                                </p:column>
+                                                <p:column headerText="Tipos de Elementos de Dados">
+                                                    <h:outputText value="#{entradasExternas.minTED} a #{entradasExternas.maxTED}" />
+                                                </p:column>
+                                                <p:column headerText="Nível">
+                                                    <h:outputText value="#{entradasExternas.nivel.descricao}" />
+                                                </p:column>
+                                            </p:dataTable>
+
+                                            <p:dataTable  style="text-align:center" var="saidasExternas" value="#{DEEEditar.listarTable3()}">
+                                                <f:facet name="header">
+                                                    <a style="color:#ffffff" class="label label-label">Complexidade de Saídas Externas e Saídas das Consultas Externas</a>
+                                                </f:facet>
+                                                <p:column headerText="Tipos de Arquivos Referenciados">
+                                                    <h:outputText value="min: #{saidasExternas.minTAR} | max: #{saidasExternas.maxTAR}" />
+                                                </p:column>
+                                                <p:column headerText="Tipos de Elementos de Dados">
+                                                    <h:outputText value="#{saidasExternas.minTED} a #{saidasExternas.maxTED}" />
+                                                </p:column>
+                                                <p:column headerText="Nível">
+                                                    <h:outputText value="#{saidasExternas.nivel.descricao}" />
+                                                </p:column>
+                                            </p:dataTable>
+
+                                            <p:dataTable  style="text-align:center" var="contribuicao" value="#{DEEEditar.listarTable4()}">
+                                                <f:facet name="header">
+                                                    <a style="color:#ffffff" class="label label-label">Contribuições (pesos) das complexidades</a>
+                                                </f:facet>
+                                                <p:columnGroup type="header">
+                                                    <p:row>
+                                                        <p:column headerText=" Complexidades " />
+                                                        <p:column colspan="5" headerText="Contribuições (pesos)" />
+                                                    </p:row>
+                                                </p:columnGroup>
+                                                <p:column headerText="Nível">
+                                                    <h:outputText value="#{contribuicao.nivel.descricao}" />
+                                                </p:column>
+                                                <p:column headerText="ALI">
+                                                    <h:outputText value="#{contribuicao.ALI}" />
+                                                </p:column>
+                                               <p:column headerText="AIE">
+                                                   <h:outputText value="#{contribuicao.AIE}" />
+                                                </p:column>
+                                                 <p:column headerText="EE">
+                                                     <h:outputText value="#{contribuicao.EE}" />
+                                                </p:column>
+                                                 <p:column headerText="SE">
+                                                     <h:outputText value="#{contribuicao.SE}" />
+                                                </p:column>
+                                                 <p:column headerText="CE">
+                                                     <h:outputText value="#{contribuicao.CE}" />
+                                                </p:column>
+                                                
+                                            </p:dataTable>
+
+                                        </h:panelGrid>
+                                    </p:tab>
+                                </p:tabView>
+                            </div>
+                            <div class="space-20"></div>
+                        </div>
+                    </div>
+                    <div class="space-50"></div>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
