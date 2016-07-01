@@ -47,6 +47,7 @@
         <mapping class="annotations.projeto.PontoComplexidadeEntradasExternas" />
         <mapping class="annotations.projeto.PontoComplexidadeSaidasExternas" />
         <mapping class="annotations.projeto.PontoComplexidadeContribuicao" />
+        <mapping class="annotations.projeto.PontoGrauDeInfluencia" />
         <mapping class="annotations.tap.Empresa" />
         <mapping class="annotations.tap.Patrocinador" />
         <mapping class="annotations.tap.Stakeholder" />

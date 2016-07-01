@@ -110,8 +110,10 @@ G:\PROJETO TCC\web\src\main\java\controller\project\ProjetoConsultar.java
 G:\PROJETO TCC\web\src\main\java\annotations\requisitos\DocumentoRequisitosTipo.java
 G:\PROJETO TCC\web\src\main\java\model\requisitos\DocumentoRequisitosTipoModel.java
 G:\PROJETO TCC\web\src\main\java\model\tap\StakeholderTAPModel.java
+G:\PROJETO TCC\web\src\main\java\annotations\projeto\PontoGrauDeInfluencia.java
 G:\PROJETO TCC\web\src\main\java\utils\RelatorioIReport.java
 G:\PROJETO TCC\web\src\main\java\controller\project\ReunioesConsultar.java
+G:\PROJETO TCC\web\src\main\java\model\projeto\PontoGrauDeInfluencialModel.java
 G:\PROJETO TCC\web\src\main\java\model\tap\TAPModel.java
 G:\PROJETO TCC\web\src\main\java\controller\project\TAPCadastrar.java
 G:\PROJETO TCC\web\src\main\java\model\tap\PatrocinadorModel.java

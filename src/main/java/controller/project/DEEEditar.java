@@ -4,6 +4,7 @@ import annotations.projeto.PontoComplexidadeArquivosInternos;
 import annotations.projeto.PontoComplexidadeContribuicao;
 import annotations.projeto.PontoComplexidadeEntradasExternas;
 import annotations.projeto.PontoComplexidadeSaidasExternas;
+import annotations.projeto.PontoGrauDeInfluencia;
 import annotations.projeto.Projeto;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -29,6 +30,7 @@ public class DEEEditar extends ABaseNamed
         this.tabela2 = new PontoComplexidadeEntradasExternas();
         this.tabela3 = new PontoComplexidadeSaidasExternas();
         this.tabela4 = new PontoComplexidadeContribuicao();
+        this.tabela5 = new PontoGrauDeInfluencia();
         this.projeto = new Projeto();
         carregarDadosIniciais();
     }
@@ -75,7 +77,7 @@ public class DEEEditar extends ABaseNamed
             return tabela2.listar();
         } catch (Exception e)
         {
-            Mensageiro.mensagemInfo("Não foi possível construir os dados de base da tabela 1");
+            Mensageiro.mensagemInfo("Não foi possível construir os dados de base da tabela 2");
         }
         return null;
     }
@@ -87,19 +89,31 @@ public class DEEEditar extends ABaseNamed
             return tabela3.listar();
         } catch (Exception e)
         {
-            Mensageiro.mensagemInfo("Não foi possível construir os dados de base da tabela 1");
+            Mensageiro.mensagemInfo("Não foi possível construir os dados de base da tabela 3");
         }
         return null;
     }
     
-     public List<PontoComplexidadeContribuicao> listarTable4()
+    public List<PontoComplexidadeContribuicao> listarTable4()
     {
         try
         {
             return tabela4.listar();
         } catch (Exception e)
         {
-            Mensageiro.mensagemInfo("Não foi possível construir os dados de base da tabela 1");
+            Mensageiro.mensagemInfo("Não foi possível construir os dados de base da tabela 4");
+        }
+        return null;
+    }
+    
+    public List<PontoGrauDeInfluencia> listarTable5()
+    {
+        try
+        {
+            return tabela5.listar();
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemInfo("Não foi possível construir os dados de base da tabela 5");
         }
         return null;
     }
@@ -108,5 +122,6 @@ public class DEEEditar extends ABaseNamed
     private PontoComplexidadeEntradasExternas tabela2;
     private PontoComplexidadeSaidasExternas tabela3;
     private PontoComplexidadeContribuicao tabela4;
+    private PontoGrauDeInfluencia tabela5;
     private Projeto projeto;
 }

@@ -44,7 +44,7 @@
                                         </h:panelGrid>
                                     </p:tab>
                                     <p:tab title="Valores base para cálculo">
-                                        <h:panelGrid columns="2" cellpadding="5">
+                                        <h:panelGrid columns="3" cellpadding="5">
 
                                             <p:dataTable  style="text-align:center" var="arquivosInternos" value="#{DEEEditar.listarTable1()}">
                                                 <f:facet name="header">
@@ -60,7 +60,9 @@
                                                     <h:outputText value="#{arquivosInternos.nivel.descricao}" />
                                                 </p:column>
                                             </p:dataTable>
-
+                                            
+                                            
+                                            
                                             <p:dataTable  style="text-align:center" var="entradasExternas" value="#{DEEEditar.listarTable2()}">
                                                 <f:facet name="header">
                                                     <a style="color:#ffffff" class="label label-label">Complexidade de Entradas Externas e Entradas das Consultas Externas</a>
@@ -75,6 +77,8 @@
                                                     <h:outputText value="#{entradasExternas.nivel.descricao}" />
                                                 </p:column>
                                             </p:dataTable>
+                                            
+                                            
 
                                             <p:dataTable  style="text-align:center" var="saidasExternas" value="#{DEEEditar.listarTable3()}">
                                                 <f:facet name="header">
@@ -91,6 +95,7 @@
                                                 </p:column>
                                             </p:dataTable>
 
+                                            
                                             <p:dataTable  style="text-align:center" var="contribuicao" value="#{DEEEditar.listarTable4()}">
                                                 <f:facet name="header">
                                                     <a style="color:#ffffff" class="label label-label">Contribuições (pesos) das complexidades</a>
@@ -119,8 +124,20 @@
                                                  <p:column headerText="CE">
                                                      <h:outputText value="#{contribuicao.CE}" />
                                                 </p:column>
-                                                
                                             </p:dataTable>
+                                            
+                                            <p:dataTable  style="text-align:center" var="grauInfluencia" value="#{DEEEditar.listarTable5()}">
+                                                <f:facet name="header">
+                                                    <a style="color:#ffffff" class="label label-label">Graus de influência</a>
+                                                </f:facet>
+                                                <p:column headerText="Grau">
+                                                    <h:outputText value="#{grauInfluencia.grau}" />
+                                                </p:column>
+                                                <p:column headerText="Descrição">
+                                                    <h:outputText value="#{grauInfluencia.descricao.toUpperCase()}" />
+                                                </p:column>
+                                            </p:dataTable>
+                                            
 
                                         </h:panelGrid>
                                     </p:tab>
