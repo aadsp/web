@@ -33,7 +33,7 @@
                             <div class="control-group">
                                 <p:menubar>
                                     <p:submenu label="ADICIONAR INFORMAÇÕES" style="float: right">
-                                        <p:menuitem value="Tipo de Elemento de Dados" onclick="PF('viabilidadeDoProjeto').show();" icon="ui-icon-document" />
+                                        <p:menuitem value="Funções Tipo Dados" onclick="PF('funcaoTipoDeDados').show();" icon="ui-icon-document" />
 
                                     </p:submenu>
                                 </p:menubar>  
@@ -46,7 +46,7 @@
                                     <p:tab title="Valores base para cálculo">
                                         <h:panelGrid columns="3" cellpadding="5">
 
-                                            <p:dataTable  style="text-align:center" var="arquivosInternos" value="#{DEEEditar.listarTable1()}">
+                                            <p:dataTable  style="text-align:center" var="arquivosInternos" value="#{DEEEditar.tabela1.listar()}">
                                                 <f:facet name="header">
                                                     <a style="color:#ffffff" class="label label-label">Complexidade de Arquivos Lógicos Internos e Arquivos de Interface Externa:</a>
                                                 </f:facet>
@@ -60,10 +60,10 @@
                                                     <h:outputText value="#{arquivosInternos.nivel.descricao}" />
                                                 </p:column>
                                             </p:dataTable>
-                                            
-                                            
-                                            
-                                            <p:dataTable  style="text-align:center" var="entradasExternas" value="#{DEEEditar.listarTable2()}">
+
+
+
+                                            <p:dataTable  style="text-align:center" var="entradasExternas" value="#{DEEEditar.tabela2.listar()}">
                                                 <f:facet name="header">
                                                     <a style="color:#ffffff" class="label label-label">Complexidade de Entradas Externas e Entradas das Consultas Externas</a>
                                                 </f:facet>
@@ -77,10 +77,10 @@
                                                     <h:outputText value="#{entradasExternas.nivel.descricao}" />
                                                 </p:column>
                                             </p:dataTable>
-                                            
-                                            
 
-                                            <p:dataTable  style="text-align:center" var="saidasExternas" value="#{DEEEditar.listarTable3()}">
+
+
+                                            <p:dataTable  style="text-align:center" var="saidasExternas" value="#{DEEEditar.tabela3.listar()}">
                                                 <f:facet name="header">
                                                     <a style="color:#ffffff" class="label label-label">Complexidade de Saídas Externas e Saídas das Consultas Externas</a>
                                                 </f:facet>
@@ -95,8 +95,8 @@
                                                 </p:column>
                                             </p:dataTable>
 
-                                            
-                                            <p:dataTable  style="text-align:center" var="contribuicao" value="#{DEEEditar.listarTable4()}">
+
+                                            <p:dataTable  style="text-align:center" var="contribuicao" value="#{DEEEditar.tabela4.listar()}">
                                                 <f:facet name="header">
                                                     <a style="color:#ffffff" class="label label-label">Contribuições (pesos) das complexidades</a>
                                                 </f:facet>
@@ -112,21 +112,21 @@
                                                 <p:column headerText="ALI">
                                                     <h:outputText value="#{contribuicao.ALI}" />
                                                 </p:column>
-                                               <p:column headerText="AIE">
-                                                   <h:outputText value="#{contribuicao.AIE}" />
+                                                <p:column headerText="AIE">
+                                                    <h:outputText value="#{contribuicao.AIE}" />
                                                 </p:column>
-                                                 <p:column headerText="EE">
-                                                     <h:outputText value="#{contribuicao.EE}" />
+                                                <p:column headerText="EE">
+                                                    <h:outputText value="#{contribuicao.EE}" />
                                                 </p:column>
-                                                 <p:column headerText="SE">
-                                                     <h:outputText value="#{contribuicao.SE}" />
+                                                <p:column headerText="SE">
+                                                    <h:outputText value="#{contribuicao.SE}" />
                                                 </p:column>
-                                                 <p:column headerText="CE">
-                                                     <h:outputText value="#{contribuicao.CE}" />
+                                                <p:column headerText="CE">
+                                                    <h:outputText value="#{contribuicao.CE}" />
                                                 </p:column>
                                             </p:dataTable>
-                                            
-                                            <p:dataTable  style="text-align:center" var="grauInfluencia" value="#{DEEEditar.listarTable5()}">
+
+                                            <p:dataTable  style="text-align:center" var="grauInfluencia" value="#{DEEEditar.tabela5.listar()}">
                                                 <f:facet name="header">
                                                     <a style="color:#ffffff" class="label label-label">Graus de influência</a>
                                                 </f:facet>
@@ -137,7 +137,7 @@
                                                     <h:outputText value="#{grauInfluencia.descricao.toUpperCase()}" />
                                                 </p:column>
                                             </p:dataTable>
-                                            
+
 
                                         </h:panelGrid>
                                     </p:tab>
@@ -148,6 +148,12 @@
                     </div>
                     <div class="space-50"></div>
                 </h:form>
+
+                <!--  Modais da tela-->
+                <p:dialog header="Contar Funções Tipo Dados" showEffect="explode" widgetVar="funcaoTipoDeDados" modal="true" width="600" height="350" resizable="false">
+                    
+                </p:dialog>
+
             </ui:define>
         </ui:composition>
     </h:body>
