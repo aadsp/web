@@ -41,9 +41,11 @@ G:\PROJETO TCC\web\src\main\java\utils\Filtro.java
 G:\PROJETO TCC\web\src\main\java\annotations\tap\Patrocinador.java
 G:\PROJETO TCC\web\src\main\java\model\projeto\ProjetoModel.java
 G:\PROJETO TCC\web\src\main\java\annotations\colaborador\Colaborador.java
+G:\PROJETO TCC\web\src\main\java\model\projeto\PontoTipoTransacaoTipoModel.java
 G:\PROJETO TCC\web\src\main\java\annotations\projeto\Projeto.java
 G:\PROJETO TCC\web\src\main\java\annotations\projeto\ProjetoTela.java
 G:\PROJETO TCC\web\src\main\java\interfaces\IAnnotations.java
+G:\PROJETO TCC\web\src\main\java\model\projeto\PontoContarTipoTransacaoModel.java
 G:\PROJETO TCC\web\src\main\java\model\projeto\ReuniaoAtaModel.java
 G:\PROJETO TCC\web\src\main\java\model\projeto\EquipeModel.java
 G:\PROJETO TCC\web\src\main\java\utils\Session.java
@@ -111,9 +113,11 @@ G:\PROJETO TCC\web\src\main\java\annotations\requisitos\DocumentoRequisitosTipo.
 G:\PROJETO TCC\web\src\main\java\model\requisitos\DocumentoRequisitosTipoModel.java
 G:\PROJETO TCC\web\src\main\java\model\tap\StakeholderTAPModel.java
 G:\PROJETO TCC\web\src\main\java\annotations\projeto\PontoGrauDeInfluencia.java
+G:\PROJETO TCC\web\src\main\java\annotations\projeto\PontoTipoTransacaoTipo.java
 G:\PROJETO TCC\web\src\main\java\utils\RelatorioIReport.java
 G:\PROJETO TCC\web\src\main\java\controller\project\ReunioesConsultar.java
 G:\PROJETO TCC\web\src\main\java\model\projeto\PontoGrauDeInfluencialModel.java
+G:\PROJETO TCC\web\src\main\java\annotations\projeto\PontoContarTipoTransacao.java
 G:\PROJETO TCC\web\src\main\java\model\tap\TAPModel.java
 G:\PROJETO TCC\web\src\main\java\controller\project\TAPCadastrar.java
 G:\PROJETO TCC\web\src\main\java\model\tap\PatrocinadorModel.java
