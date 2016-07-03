@@ -6,6 +6,7 @@ import annotations.projeto.PontoComplexidadeEntradasExternas;
 import annotations.projeto.PontoComplexidadeSaidasExternas;
 import annotations.projeto.PontoContarTipoDadosFuncao;
 import annotations.projeto.PontoContarTipoTransacao;
+import annotations.projeto.PontoDeFuncaoNaoAjustados;
 import annotations.projeto.PontoGrauDeInfluencia;
 import annotations.projeto.PontoTipoDadosTipo;
 import annotations.projeto.PontoTipoTransacaoTipo;
@@ -47,11 +48,13 @@ public class DEEEditar extends ABaseNamed
             this.contarTipoTransacao = new PontoContarTipoTransacao();
             this.contarTipoDadosFuncao = new PontoContarTipoDadosFuncao();
             this.complexidadeContribuicao = new PontoComplexidadeContribuicao();
-
+            
+            
             this.projeto.setID(Integer.parseInt(Criptografia.decodificarBase64(Response.getParametroURL("Projeto"))));
             this.projeto = projeto.consultarPorID();
             this.contarTipoTransacao.setProjeto(projeto);
             this.contarTipoDadosFuncao.setProjeto(projeto);
+            this.pontoDeFuncaoNaoAjustados = new PontoDeFuncaoNaoAjustados(contarTipoTransacao,contarTipoDadosFuncao);
         } catch (Exception e)
         {
             Mensageiro.mensagemError("Não foi possível carregar os dados iniciais da página");
@@ -143,6 +146,15 @@ public class DEEEditar extends ABaseNamed
             Mensageiro.mensagemError("Não foi possivel realizar esta operação!");
         }
     }
+    
+    public int getTotalPontosDeFuncao() throws Exception
+    {
+        int valor = 0;
+        for(PontoDeFuncaoNaoAjustados obj:pontoDeFuncaoNaoAjustados.calcularPontoDeFuncaoPorProjeto()){
+            valor += (obj.getAIE() + obj.getALI() + obj.getCE() + obj.getEE() + obj.getSE());
+         }
+        return valor;
+    }
 
     // <editor-fold defaultstate="collapsed" desc="Variaveis"> 
     private int tipoTransacaoSelecionada;
@@ -152,6 +164,7 @@ public class DEEEditar extends ABaseNamed
     private PontoContarTipoTransacao contarTipoTransacao;
     private PontoContarTipoDadosFuncao contarTipoDadosFuncao;
     private PontoComplexidadeContribuicao complexidadeContribuicao;
+    private PontoDeFuncaoNaoAjustados pontoDeFuncaoNaoAjustados;
 
     private PontoComplexidadeArquivosInternos tabela1;
     private PontoComplexidadeEntradasExternas tabela2;
@@ -160,13 +173,26 @@ public class DEEEditar extends ABaseNamed
     private PontoGrauDeInfluencia tabela5;
     private Projeto projeto;
 
+    
+
+    // </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="Acessores">
     public PontoComplexidadeContribuicao getComplexidadeContribuicao()
     {
         return complexidadeContribuicao;
     }
+    
+    public PontoDeFuncaoNaoAjustados getPontoDeFuncaoNaoAjustados()
+    {
+        return pontoDeFuncaoNaoAjustados;
+    }
 
-    // </editor-fold>
-    // <editor-fold defaultstate="collapsed" desc="Acessores">
+    public void setPontoDeFuncaoNaoAjustados(PontoDeFuncaoNaoAjustados pontoDeFuncaoNaoAjustados)
+    {
+        this.pontoDeFuncaoNaoAjustados = pontoDeFuncaoNaoAjustados;
+    }
+    
+    
     public void setComplexidadeContribuicao(PontoComplexidadeContribuicao complexidadeContribuicao)
     {
         this.complexidadeContribuicao = complexidadeContribuicao;

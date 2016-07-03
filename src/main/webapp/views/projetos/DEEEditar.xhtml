@@ -39,43 +39,49 @@
                                 </p:menubar>  
                                 <p:tabView dynamic="true" cache="true">
                                     <p:tab title="Pontos de Função por Complexidade">
-                                        <p:dataTable  style="text-align:center" var="contribuicao" value="#{DEEEditar.tabela4.listar()}">
-                                                <f:facet name="header">
-                                                    <a style="color:#ffffff" class="label label-label">Calcular os Pontos de Função Não Ajustados</a>
-                                                </f:facet>
-                                                <p:columnGroup type="header">
-                                                    <p:row>
-                                                        <p:column headerText="Complexidades" />
-                                                        <p:column colspan="5" headerText="Contribuições (pesos)" />
-                                                    </p:row>
-                                                    <p:row>
-                                                        <p:column headerText="Nível" />
-                                                        <p:column headerText="ALI" />
-                                                        <p:column headerText="AIE" />
-                                                        <p:column headerText="EE" />
-                                                        <p:column headerText="SE" />
-                                                        <p:column headerText="CE" />
-                                                    </p:row>
-                                                </p:columnGroup>
-                                                <p:column headerText="Nível">
-                                                    <h:outputText value="#{contribuicao.nivel.descricao}" />
-                                                </p:column>
-                                                <p:column headerText="ALI">
-                                                    <h:outputText value="#{contribuicao.ALI}" />
-                                                </p:column>
-                                                <p:column headerText="AIE">
-                                                    <h:outputText value="#{contribuicao.AIE}" />
-                                                </p:column>
-                                                <p:column headerText="EE">
-                                                    <h:outputText value="#{contribuicao.EE}" />
-                                                </p:column>
-                                                <p:column headerText="SE">
-                                                    <h:outputText value="#{contribuicao.SE}" />
-                                                </p:column>
-                                                <p:column headerText="CE">
-                                                    <h:outputText value="#{contribuicao.CE}" />
-                                                </p:column>
-                                            </p:dataTable>
+                                        <p:dataTable  style="text-align:center" var="contribuicao" resizableColumns="true" value="#{DEEEditar.pontoDeFuncaoNaoAjustados.calcularPontoDeFuncaoPorProjeto()}">
+                                            <f:facet name="header">
+                                                <a style="color:#ffffff" class="label label-label">Calcular os Pontos de Função Não Ajustados</a>
+                                            </f:facet>
+                                            <p:columnGroup type="header">
+                                                <p:row>
+                                                    <p:column headerText="Complexidades" />
+                                                    <p:column colspan="5" headerText="Contribuições (pesos)" />
+                                                </p:row>
+                                                <p:row>
+                                                    <p:column headerText="Nível" />
+                                                    <p:column headerText="ALI" />
+                                                    <p:column headerText="AIE" />
+                                                    <p:column headerText="EE" />
+                                                    <p:column headerText="SE" />
+                                                    <p:column headerText="CE" />
+                                                </p:row>
+                                            </p:columnGroup>
+
+                                            <p:column headerText="Nível">
+                                                <h:outputText value="#{contribuicao.nivel.descricao}" />
+                                            </p:column>
+                                            <p:column headerText="ALI">
+                                                <h:outputText value="#{contribuicao.ALI}" />
+                                            </p:column>
+                                            <p:column headerText="AIE">
+                                                <h:outputText value="#{contribuicao.AIE}" />
+                                            </p:column>
+                                            <p:column headerText="EE">
+                                                <h:outputText value="#{contribuicao.EE}" />
+                                            </p:column>
+                                            <p:column headerText="SE">
+                                                <h:outputText value="#{contribuicao.SE}" />
+                                            </p:column>
+                                            <p:column headerText="CE">
+                                                <h:outputText value="#{contribuicao.CE}" />
+                                            </p:column>
+                                            <f:facet name="footer">
+                                                <h:outputText value="Total de Pontos de Função: " />
+                                                <h:outputText value="#{DEEEditar.totalPontosDeFuncao}" />
+                                                <h:outputText value=" não ajustados. " />
+                                            </f:facet>
+                                        </p:dataTable>
 
                                     </p:tab>
                                     <p:tab title="Funções Tipo de Dados">
@@ -199,6 +205,7 @@
                                                 <p:column headerText="CE">
                                                     <h:outputText value="#{contribuicao.CE}" />
                                                 </p:column>
+
                                             </p:dataTable>
 
                                             <p:dataTable  style="text-align:center" var="grauInfluencia" value="#{DEEEditar.tabela5.listar()}">

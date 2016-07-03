@@ -73,6 +73,7 @@ G:\PROJETO TCC\web\src\main\java\utils\TemplateEmail.java
 G:\PROJETO TCC\web\src\main\java\interfaces\ICRUD.java
 G:\PROJETO TCC\web\src\main\java\controller\project\ProjetoEditar.java
 G:\PROJETO TCC\web\src\main\java\model\acesso\PaginaModel.java
+G:\PROJETO TCC\web\src\main\java\annotations\projeto\PontoDeFuncaoNaoAjustados.java
 G:\PROJETO TCC\web\src\main\java\annotations\acesso\Usuario.java
 G:\PROJETO TCC\web\src\main\java\controller\project\ProjetoCadastrar.java
 G:\PROJETO TCC\web\src\main\java\controller\adm\AcessoCadastrar.java
