@@ -12,7 +12,7 @@ public class PontoContarTipoDadosFuncaoModel extends ABaseModel
     {
         try
         {
-            Query consulta = sessao.createQuery("from PontoTipoTransacaoTipo where ID = :ID");
+            Query consulta = sessao.createQuery("from PontoContarTipoDadosFuncao where ID = :ID");
             consulta.setInteger("ID", pontoContarTipoDadosFuncao.getID());
             return (PontoContarTipoDadosFuncao) consulta.uniqueResult();
         } catch (Exception e)
@@ -31,6 +31,23 @@ public class PontoContarTipoDadosFuncaoModel extends ABaseModel
         {
             Query consulta = sessao.createQuery("from PontoContarTipoDadosFuncao");
             return consulta.list();
+        } catch (Exception e)
+        {
+            throw e;
+        } finally
+        {
+            sessao.close();
+        }
+    }
+
+    public int contarQtdItens(PontoContarTipoDadosFuncao pontoContarTipoDadosFuncao, int sigla)
+    {
+        try
+        {
+            Query consulta = sessao.createQuery("select count(tp) from PontoContarTipoDadosFuncao tp where tp.projeto.id = :ID  and tp.tipoDados.sigla = :sigla");
+            consulta.setInteger("ID", pontoContarTipoDadosFuncao.getID());
+            consulta.setInteger("sigla", sigla);
+            return (int) consulta.uniqueResult();
         } catch (Exception e)
         {
             throw e;
@@ -60,7 +77,7 @@ public class PontoContarTipoDadosFuncaoModel extends ABaseModel
     {
         try
         {
-            Query consulta = sessao.createQuery("from PontoContarTipoTransacao where " + filtro);
+            Query consulta = sessao.createQuery("from PontoContarTipoDadosFuncao where " + filtro);
             return consulta.list();
         } catch (Exception e)
         {

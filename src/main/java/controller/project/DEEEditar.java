@@ -46,6 +46,7 @@ public class DEEEditar extends ABaseNamed
             this.projeto = new Projeto();
             this.contarTipoTransacao = new PontoContarTipoTransacao();
             this.contarTipoDadosFuncao = new PontoContarTipoDadosFuncao();
+            this.complexidadeContribuicao = new PontoComplexidadeContribuicao();
 
             this.projeto.setID(Integer.parseInt(Criptografia.decodificarBase64(Response.getParametroURL("Projeto"))));
             this.projeto = projeto.consultarPorID();
@@ -119,7 +120,7 @@ public class DEEEditar extends ABaseNamed
             Mensageiro.mensagemError("Não foi possivel realizar esta operação!");
         }
     }
-    
+
     public void contarFuncaoTipoDadosSalvar()
     {
         try
@@ -150,6 +151,7 @@ public class DEEEditar extends ABaseNamed
     private Map<String, Integer> tipoDadosTipo;
     private PontoContarTipoTransacao contarTipoTransacao;
     private PontoContarTipoDadosFuncao contarTipoDadosFuncao;
+    private PontoComplexidadeContribuicao complexidadeContribuicao;
 
     private PontoComplexidadeArquivosInternos tabela1;
     private PontoComplexidadeEntradasExternas tabela2;
@@ -158,13 +160,23 @@ public class DEEEditar extends ABaseNamed
     private PontoGrauDeInfluencia tabela5;
     private Projeto projeto;
 
+    public PontoComplexidadeContribuicao getComplexidadeContribuicao()
+    {
+        return complexidadeContribuicao;
+    }
+
+    // </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="Acessores">
+    public void setComplexidadeContribuicao(PontoComplexidadeContribuicao complexidadeContribuicao)
+    {
+        this.complexidadeContribuicao = complexidadeContribuicao;
+    }
+
     public int getTipoDadosSelecionado()
     {
         return tipoDadosSelecionado;
     }
 
-    // </editor-fold>
-    // <editor-fold defaultstate="collapsed" desc="Acessores">
     public void setTipoDadosSelecionado(int tipoDadosSelecionado)
     {
         this.tipoDadosSelecionado = tipoDadosSelecionado;

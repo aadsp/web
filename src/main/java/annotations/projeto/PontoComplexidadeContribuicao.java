@@ -11,7 +11,6 @@ import interfaces.IAnnotations;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import model.projeto.PontoComplexidadeContribuicaoModel;
-import model.projeto.PontoComplexidadeSaidasExternasModel;
 
 @Entity
 @Table(name = "PROJETO.PONTO_COMPLEXIDADE_CONTRIBUICAO")
