@@ -77,6 +77,7 @@ G:\PROJETO TCC\web\src\main\java\annotations\acesso\Usuario.java
 G:\PROJETO TCC\web\src\main\java\controller\project\ProjetoCadastrar.java
 G:\PROJETO TCC\web\src\main\java\controller\adm\AcessoCadastrar.java
 G:\PROJETO TCC\web\src\main\java\interfaces\ABaseModel.java
+G:\PROJETO TCC\web\src\main\java\annotations\projeto\PontoTipoDadosTipo.java
 G:\PROJETO TCC\web\src\main\java\annotations\projeto\ReuniaoAta.java
 G:\PROJETO TCC\web\src\main\java\controller\adm\PessoalEditar.java
 G:\PROJETO TCC\web\src\main\java\controller\index\Index.java
@@ -103,6 +104,7 @@ G:\PROJETO TCC\web\src\main\java\model\projeto\ProjetoCronogramaModel.java
 G:\PROJETO TCC\web\src\main\java\model\tap\TAPEscopoModel.java
 G:\PROJETO TCC\web\src\main\java\model\colaborador\ColaboradorModel.java
 G:\PROJETO TCC\web\src\main\java\annotations\tap\TAPEscopoTipo.java
+G:\PROJETO TCC\web\src\main\java\annotations\projeto\PontoContarTipoDadosFuncao.java
 G:\PROJETO TCC\web\src\main\java\controller\adm\FuncaoConsultar.java
 G:\PROJETO TCC\web\src\main\java\controller\project\ATAEditar.java
 G:\PROJETO TCC\web\src\main\java\model\requisitos\RequisitosHistoriaModel.java
@@ -124,12 +126,14 @@ G:\PROJETO TCC\web\src\main\java\model\tap\PatrocinadorModel.java
 G:\PROJETO TCC\web\src\main\java\controller\requisitos\DocumentoRequisitosCadastrar.java
 G:\PROJETO TCC\web\src\main\java\utils\Mensageiro.java
 G:\PROJETO TCC\web\src\main\java\controller\adm\PessoalCadastrar.java
+G:\PROJETO TCC\web\src\main\java\model\projeto\PontoTipoDadosTipoModel.java
 G:\PROJETO TCC\web\src\main\java\controller\project\DEEEditar.java
 G:\PROJETO TCC\web\src\main\java\annotations\projeto\DiagramaUML.java
 G:\PROJETO TCC\web\src\main\java\controller\adm\AlterarImagem.java
 G:\PROJETO TCC\web\src\main\java\controller\adm\PaginalConsultar.java
 G:\PROJETO TCC\web\src\main\java\annotations\projeto\DiagramaUMLTipo.java
 G:\PROJETO TCC\web\src\main\java\controller\adm\HeaderTemplate.java
+G:\PROJETO TCC\web\src\main\java\model\projeto\PontoContarTipoDadosFuncaoModel.java
 G:\PROJETO TCC\web\src\main\java\model\projeto\DiagramaUMLTipoModel.java
 G:\PROJETO TCC\web\src\main\java\settings\DadosEmail.java
 G:\PROJETO TCC\web\src\main\java\annotations\projeto\EAPPacote.java

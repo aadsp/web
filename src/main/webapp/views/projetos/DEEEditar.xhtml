@@ -34,12 +34,28 @@
                                 <p:menubar>
                                     <p:submenu label="ADICIONAR INFORMAÇÕES" style="float: right">
                                         <p:menuitem value="Funções de Transação" onclick="PF('funcaoTipoTransacao').show();" icon="ui-icon-document" />
-
+                                        <p:menuitem value="Funções de Dados" onclick="PF('funcaoTipoDados').show();" icon="ui-icon-document" />
                                     </p:submenu>
                                 </p:menubar>  
                                 <p:tabView dynamic="true" cache="true">
-                                    <p:tab title="Funções Tipo Transação do Projeto">
-                                        <h:panelGrid columns="2" cellpadding="5">
+                                    <p:tab title="Funções Tipo de Dados">
+                                        <h:panelGrid columns="1" cellpadding="5">
+                                            <p:dataTable  style="text-align:center" var="funcaoTipoDados" value="#{DEEEditar.contarTipoDadosFuncao.listarPorProjeto()}">
+                                                <p:column headerText="Funções Tipo de Dados">
+                                                    <h:outputText value="#{funcaoTipoDados.tipoDados.sigla}  #{funcaoTipoDados.valorTipoDados} (#{funcaoTipoDados.descricaoTipoDados})" />
+                                                </p:column>
+                                                <p:column headerText="TED">
+                                                    <h:outputText value="#{funcaoTipoDados.valorTED} (#{funcaoTipoDados.descricaoTED})" />
+                                                </p:column>
+                                                <p:column headerText="TER">
+                                                    <h:outputText value="#{funcaoTipoDados.valorTER} (#{funcaoTipoDados.descricaoTER})" />
+                                                </p:column>
+                                                
+                                            </p:dataTable>
+                                        </h:panelGrid>
+                                    </p:tab>
+                                    <p:tab title="Funções Tipo Transação">
+                                        <h:panelGrid columns="1" cellpadding="5">
                                             <p:dataTable  style="text-align:center" var="funcaoTipoTransacao" value="#{DEEEditar.contarTipoTransacao.listarPorProjeto()}">
                                                 <p:column headerText="Tipo Transação">
                                                     <h:outputText value="#{funcaoTipoTransacao.tipoTransacao.sigla}  #{funcaoTipoTransacao.valorTipoTransacao} (#{funcaoTipoTransacao.descricaoTipoTransacao})" />
@@ -198,6 +214,45 @@
                         </h:panelGrid>
                         <h:panelGrid columns="1" cellpadding="5">
                             <p:commandButton value="SALVAR" update="growl" actionListener="#{DEEEditar.contarFuncaoTipoTransacaoSalvar()}" />
+                        </h:panelGrid>
+                    </p:dialog>
+                    
+                    <p:dialog header="CONTAR FUNÇÕES TIPO DE DADOS " showEffect="explode" widgetVar="funcaoTipoDados" modal="true" width="800" height="400" resizable="false">
+                        <h:panelGrid columns="1" cellpadding="5">
+                            <p:outputLabel id="infoContarTipoDeDados" value="As Funções Tipo Dados representam as funcionalidades fornecidas pelo sistema ao usuário, para atender às necessidades referentes aos dados que o sistema irá manipular" />
+                        </h:panelGrid>
+                        <h:panelGrid columns="2" cellpadding="5">
+
+                            <p:outputLabel for="tipoDeDados" value="Funções Tipo de Dados:" />
+                            <p:selectOneMenu id="tipoDeDados"  value="#{DEEEditar.tipoDadosSelecionado}" style="width:200px">
+                                <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
+                                <f:selectItems value="#{DEEEditar.tipoDados}" />
+                            </p:selectOneMenu>
+
+                            <p:outputLabel for="valorTipoDeDados" value="Valor:" />
+                            <p:inputMask id="valorTipoDeDados" mask="9?999" value="#{DEEEditar.contarTipoDadosFuncao.valorTipoDados}"/>
+
+                            <p:outputLabel for="descricaoTipoDeDados" value="Descrição do item:" />
+                            <p:inputText id="descricaoTipoDeDados" maxlength="100" value="#{DEEEditar.contarTipoDadosFuncao.descricaoTipoDados}"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <p:outputLabel for="valorTipoDadosTED" value="Valor TED:" />
+                                <p:inputMask id="valorTipoDadosTED" mask="9?999" value="#{DEEEditar.contarTipoDadosFuncao.valorTED}"/>
+
+                                <p:outputLabel for="descricaoTipoDadosTED" value="Descrição do TED:" />
+                                <p:inputText id="descricaoTipoDadosTED" maxlength="100" value="#{DEEEditar.contarTipoDadosFuncao.descricaoTED}"/>
+                            </h:panelGrid>
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <p:outputLabel for="valorTER" value="Valor TER:" />
+                                <p:inputMask id="valorTER" mask="9?999" value="#{DEEEditar.contarTipoDadosFuncao.valorTER}"/>
+
+                                <p:outputLabel for="descricaoTER" value="Descrição do TER:" />
+                                <p:inputText id="descricaoTER" maxlength="100" value="#{DEEEditar.contarTipoDadosFuncao.descricaoTER}"/>
+                            </h:panelGrid>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" cellpadding="5">
+                            <p:commandButton value="SALVAR" update="growl" actionListener="#{DEEEditar.contarFuncaoTipoDadosSalvar()}" />
                         </h:panelGrid>
                     </p:dialog>
                 </h:form>

@@ -4,8 +4,10 @@ import annotations.projeto.PontoComplexidadeArquivosInternos;
 import annotations.projeto.PontoComplexidadeContribuicao;
 import annotations.projeto.PontoComplexidadeEntradasExternas;
 import annotations.projeto.PontoComplexidadeSaidasExternas;
+import annotations.projeto.PontoContarTipoDadosFuncao;
 import annotations.projeto.PontoContarTipoTransacao;
 import annotations.projeto.PontoGrauDeInfluencia;
+import annotations.projeto.PontoTipoDadosTipo;
 import annotations.projeto.PontoTipoTransacaoTipo;
 import annotations.projeto.Projeto;
 import javax.faces.view.ViewScoped;
@@ -43,10 +45,12 @@ public class DEEEditar extends ABaseNamed
             this.tabela5 = new PontoGrauDeInfluencia();
             this.projeto = new Projeto();
             this.contarTipoTransacao = new PontoContarTipoTransacao();
+            this.contarTipoDadosFuncao = new PontoContarTipoDadosFuncao();
 
             this.projeto.setID(Integer.parseInt(Criptografia.decodificarBase64(Response.getParametroURL("Projeto"))));
             this.projeto = projeto.consultarPorID();
             this.contarTipoTransacao.setProjeto(projeto);
+            this.contarTipoDadosFuncao.setProjeto(projeto);
         } catch (Exception e)
         {
             Mensageiro.mensagemError("Não foi possível carregar os dados iniciais da página");
@@ -73,11 +77,31 @@ public class DEEEditar extends ABaseNamed
         return null;
     }
 
+    public Map<String, Integer> getTipoDados()
+    {
+        try
+        {
+            this.tipoDadosTipo = new HashMap<>();
+            PontoTipoDadosTipo tipoElemento = new PontoTipoDadosTipo();
+            for (PontoTipoDadosTipo obj : tipoElemento.listar())
+            {
+                this.tipoDadosTipo.put(obj.getSigla() + " - " + obj.getDescricao(), obj.getID());
+            }
+
+            return tipoDadosTipo;
+
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemError("Não foi possível consultar os tipos de dados no banco de dados!");
+        }
+        return null;
+    }
+
     public void contarFuncaoTipoTransacaoSalvar()
     {
         try
         {
-            if(tipoTransacaoSelecionada != 0)
+            if (tipoTransacaoSelecionada != 0)
             {
                 PontoTipoTransacaoTipo pontoTransacao = new PontoTipoTransacaoTipo();
                 pontoTransacao.setID(tipoTransacaoSelecionada);
@@ -86,9 +110,32 @@ public class DEEEditar extends ABaseNamed
                 contarTipoTransacao.cadastrar();
 
                 Response.redirect("/web/faces/views/projetos/DEEEditar.xhtml?Projeto=" + Criptografia.codificarParaBase64(projeto.getID().toString()));
-            }else
+            } else
             {
                 Mensageiro.mensagemInfo("Não foi selecionado o tipo de transação!");
+            }
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemError("Não foi possivel realizar esta operação!");
+        }
+    }
+    
+    public void contarFuncaoTipoDadosSalvar()
+    {
+        try
+        {
+            if (tipoDadosSelecionado != 0)
+            {
+                PontoTipoDadosTipo pontoDados = new PontoTipoDadosTipo();
+                pontoDados.setID(tipoDadosSelecionado);
+                contarTipoDadosFuncao.setTipoDados(pontoDados);
+                contarTipoDadosFuncao.setProjeto(projeto);
+                contarTipoDadosFuncao.cadastrar();
+
+                Response.redirect("/web/faces/views/projetos/DEEEditar.xhtml?Projeto=" + Criptografia.codificarParaBase64(projeto.getID().toString()));
+            } else
+            {
+                Mensageiro.mensagemInfo("Não foi selecionado o tipo de dados!");
             }
         } catch (Exception e)
         {
@@ -98,8 +145,11 @@ public class DEEEditar extends ABaseNamed
 
     // <editor-fold defaultstate="collapsed" desc="Variaveis"> 
     private int tipoTransacaoSelecionada;
+    private int tipoDadosSelecionado;
     private Map<String, Integer> tipoTransacaoMap;
+    private Map<String, Integer> tipoDadosTipo;
     private PontoContarTipoTransacao contarTipoTransacao;
+    private PontoContarTipoDadosFuncao contarTipoDadosFuncao;
 
     private PontoComplexidadeArquivosInternos tabela1;
     private PontoComplexidadeEntradasExternas tabela2;
@@ -108,8 +158,28 @@ public class DEEEditar extends ABaseNamed
     private PontoGrauDeInfluencia tabela5;
     private Projeto projeto;
 
+    public int getTipoDadosSelecionado()
+    {
+        return tipoDadosSelecionado;
+    }
+
     // </editor-fold>
     // <editor-fold defaultstate="collapsed" desc="Acessores">
+    public void setTipoDadosSelecionado(int tipoDadosSelecionado)
+    {
+        this.tipoDadosSelecionado = tipoDadosSelecionado;
+    }
+
+    public PontoContarTipoDadosFuncao getContarTipoDadosFuncao()
+    {
+        return contarTipoDadosFuncao;
+    }
+
+    public void setContarTipoDadosFuncao(PontoContarTipoDadosFuncao contarTipoDadosFuncao)
+    {
+        this.contarTipoDadosFuncao = contarTipoDadosFuncao;
+    }
+
     public PontoContarTipoTransacao getContarTipoTransacao()
     {
         return contarTipoTransacao;

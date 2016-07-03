@@ -24,11 +24,14 @@
         <property name="c3po.idle_test_period">3000</property>
     
         <!--Mapeando as tabelas do banco de dados-->
+        <!-- ACESSO -->
         <mapping class="annotations.acesso.Acesso" />
         <mapping class="annotations.acesso.Funcao" />
         <mapping class="annotations.acesso.Pagina" />
         <mapping class="annotations.acesso.Usuario" />
+        <!-- COLABORADOR -->
         <mapping class="annotations.colaborador.Colaborador" />
+        <!-- PROJETO -->
         <mapping class="annotations.projeto.DiagramaUML" />
         <mapping class="annotations.projeto.DiagramaUMLTipo" />
         <mapping class="annotations.projeto.EAP" />
@@ -50,6 +53,10 @@
         <mapping class="annotations.projeto.PontoGrauDeInfluencia" />
         <mapping class="annotations.projeto.PontoTipoTransacaoTipo" />
         <mapping class="annotations.projeto.PontoContarTipoTransacao" />
+        <mapping class="annotations.projeto.PontoTipoDadosTipo" />
+        <mapping class="annotations.projeto.PontoContarTipoDadosFuncao" />
+        <mapping class="annotations.projeto.PontoTipoDadosTipo" />
+        <!-- TAP -->
         <mapping class="annotations.tap.Empresa" />
         <mapping class="annotations.tap.Patrocinador" />
         <mapping class="annotations.tap.Stakeholder" />
@@ -58,6 +65,7 @@
         <mapping class="annotations.tap.TAPEscopo" />
         <mapping class="annotations.tap.TAPEscopoArea" />
         <mapping class="annotations.tap.TAPEscopoTipo" />
+        <!-- REQUISITOS -->
         <mapping class="annotations.requisitos.DocumentoRequisitos" />
         <mapping class="annotations.requisitos.DocumentoRequisitosTemplate" />
         <mapping class="annotations.requisitos.DocumentoRequisitosTipo" />
