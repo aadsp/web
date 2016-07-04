@@ -213,6 +213,19 @@ public class DEEEditar extends ABaseNamed
         }
 
     }
+    
+    public void remvoerFuncaoTipoTransacao(PontoContarTipoTransacao funcaoTipoTransacao)
+    {
+        try
+        {
+            funcaoTipoTransacao.excluir();
+            Response.redirect("/web/faces/views/projetos/DEEEditar.xhtml?Projeto=" + Criptografia.codificarParaBase64(projeto.getID().toString()));
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemError("Não foi possível excluir a função de tipo transação selecionada!");
+        }
+
+    }
 
    public void remvoerFatorDeAjuste(PontoContarFatorDeAjuste fatorDeAjuste)
     {
