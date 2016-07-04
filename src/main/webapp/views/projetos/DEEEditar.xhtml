@@ -79,10 +79,20 @@
                                                 <h:outputText value="#{contribuicao.CE}" />
                                             </p:column>
                                             <f:facet name="footer">
-                                                <h:outputText value="TOTAL DE PONTOS DE FUNÇÃO NAO AJUSTADOS: " />
+                                                <h:outputText value="TOTAL DE PONTOS DE FUNÇÃO NAO AJUSTADOS =  " />
                                                 <h:outputText style="font-size:25px; color: #ff3333" value="#{DEEEditar.totalPontosDeFuncao}" />
-
+                                                <br />
+                                                <h:outputText value="  VFA = (GIT * 0,01) + 0,65 = " />
+                                                <h:outputText style="font-size:25px; color: #3333ff" value="#{DEEEditar.calcularVFA()}" >
+                                                    <f:convertNumber  pattern="#0.00"/>
+                                                </h:outputText>
+                                                <hr />
+                                                <h:outputText value="TOTAL DE PONTOS AJUSTADOS = " />
+                                                <h:outputText style="font-size:25px; color: #3333ff" value="#{DEEEditar.calcularPFA()}" >
+                                                    <f:convertNumber  pattern="#0.00"/>
+                                                </h:outputText>
                                             </f:facet>
+                                            
                                         </p:dataTable>
 
                                     </p:tab>
@@ -149,6 +159,15 @@
                                                     </f:facet>
                                                     <p:commandButton icon="ui-icon-close" actionListener="#{DEEEditar.removerCaracteristica(fatorDeAjuste)}"/>
                                                 </p:column>
+                                                <f:facet name="footer">
+                                                    <h:outputText value="GRAU DE INFLUÊNCIA TOTAL (GIT) = " />
+                                                    <h:outputText style="font-size:25px; color: #3333ff" value="#{DEEEditar.calcularTotalDeInfluencia()}" />
+                                                    <br />
+                                                    <h:outputText value="VFA = (GIT * 0,01) + 0,65 = " />
+                                                    <h:outputText style="font-size:25px; color: #3333ff" value="#{DEEEditar.calcularVFA()}" >
+                                                        <f:convertNumber  pattern="#0.00"/>
+                                                    </h:outputText>
+                                                </f:facet>
                                             </p:dataTable>
                                         </h:panelGrid>
 
@@ -376,8 +395,8 @@
                         </h:panelGrid>
                     </p:dialog>
 
-                  
-                     <p:dialog header="CADASTRO DE CARACTERÍSTICA DO SISTEMA " showEffect="explode" widgetVar="caracteristicaDoSistema" modal="true" width="800" height="350" resizable="false">
+
+                    <p:dialog header="CADASTRO DE CARACTERÍSTICA DO SISTEMA " showEffect="explode" widgetVar="caracteristicaDoSistema" modal="true" width="800" height="350" resizable="false">
                         <h:panelGrid columns="1" cellpadding="5">
                             <p:outputLabel id="infoCaracteristicas" value="Para calcular o fator de ajuste, devem ser cosideradas 14 características descritas na aba de valor base das características" />
                         </h:panelGrid>

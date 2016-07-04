@@ -257,6 +257,51 @@ public class DEEEditar extends ABaseNamed
         }
 
     }
+    
+    public int calcularTotalDeInfluencia()
+    {
+        int total= 0;
+        try
+        {
+            for(PontoContarFatorDeAjuste obj :pontoContarFatorDeAjuste.listarPorProjeto())
+            {
+                total += obj.getPontoGrauDeInfluencia().getGrau();
+            }
+            
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemError("Não foi possível realizar o calculo do ponto de função informado!");
+        }
+        return total;
+    }
+    
+    public double calcularVFA()
+    {
+        double total= 0;
+        try
+        {
+          total =  (this.calcularTotalDeInfluencia() * 0.01) + 0.65 ;
+            
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemError("Não foi possível realizar o calculo do ponto de função informado!");
+        }
+        return total;
+    }
+    
+    public double calcularPFA()
+    {
+        double total= 0;
+        try
+        {
+          total =  this.getTotalPontosDeFuncao() * calcularVFA();
+            
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemError("Não foi possível realizar o calculo do ponto de função informado!");
+        }
+        return total;
+    }
 
     // <editor-fold defaultstate="collapsed" desc="Variaveis"> 
     private int tipoTransacaoSelecionada;
