@@ -134,8 +134,7 @@ public class ProjetoEditar extends ABaseNamed
     {
         try
         {
-            int IDProjeto = Integer.parseInt(Criptografia.decodificarBase64(Response.getParametroURL("Projeto")));
-            this.projeto.setID(IDProjeto);
+            this.projeto.setID(Integer.parseInt(Criptografia.decodificarBase64(Response.getParametroURL("Projeto"))));
             this.projeto = projeto.consultarPorID();
         } catch (Exception e)
         {
@@ -221,7 +220,6 @@ public class ProjetoEditar extends ABaseNamed
         this.requisito = requisito;
     }
 
-   
     private Projeto projeto;
     private RequisitosHistoria requisito;
     private BarChartModel graficoCusto;

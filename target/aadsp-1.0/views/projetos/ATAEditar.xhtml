@@ -12,60 +12,61 @@
     <h:body>
         <ui:composition template="template/template.xhtml">
             <ui:define name="content">
-            <h:form id="form">
-                <p:growl id="growl" showDetail="true" sticky="true" /> 
-                <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
-                <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
-                    <img src="../../img/loading.gif" alt=""/>
-                </p:dialog>
-                <div class="margin-right-left-20">
-                    <div>
-                        <h3>ATA DE REUNIÃO</h3>
-                        <div class="right">
+                <h:form id="form">
+                    <p:growl id="growl" showDetail="true" sticky="true" /> 
+                    <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+                    <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                        <img src="../../img/loading.gif" alt=""/>
+                    </p:dialog>
+                    <div class="margin-right-left-20">
+                        <div>
+                            <h3>ATA DE REUNIÃO</h3>
+                            <h4><a class="label label-info">Título do Projeto:</a></h4>
+                            <h4><a class="label label-label">#{ATAEditar.reuniaoAta.projeto.tap.nome.toUpperCase()}</a></h4>
+                            <div class="right">
+                                <p:commandButton class="btn btn" value="VOLTAR" actionListener="#{ATAEditar.voltar()}"/>
+                            </div>
+                            <p><strong>DETALHAMENTO</strong></p>
+                            <div>
+                            </div>
+                            <div class="space-40"></div>
+                            <div class="control-group">   
+                                <p:tabView dynamic="true" cache="true">
+                                    <p:tab title="Dados Gerais">
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <p:outputLabel for="titulo" value="Título:" />  
+                                            <p:inputText id="titulo" maxlength="250" value="#{ATAEditar.reuniaoAta.titulo}"/>
+                                            <p:outputLabel for="dataRealizacao" value="Data realização" />
+                                            <p:calendar id="dataRealizacao" value="#{ATAEditar.dataRealizacao}" pattern="dd/MM/yyyy HH:mm:ss" mask="true" />
 
-                            <p:commandButton class="btn btn" value="VOLTAR" actionListener="#{ATAEditar.voltar()}"/>
+                                            <p:outputLabel for="organizador" value="Organizador:" />
+                                            <p:outputLabel id="organizador" value="#{ATAEditar.reuniaoAta.colaborador.usuario.nome}" />
+                                        </h:panelGrid>
+                                    </p:tab>
+                                    <p:tab title="Dados iniciais">
+                                        <h:panelGrid columns="1" cellpadding="5">
+                                            <p:outputLabel for="dadosIniciais" value="Pauta:" />
+                                            <p:inputTextarea id="dadosIniciais" rows="1" cols="1000" required="true" value="#{ATAEditar.reuniaoAta.pauta}" counter="displaydadosIniciais" maxlength="800" counterTemplate="{0} caracteres restantes." autoResize="false" />
+                                            <h:outputText id="displaydadosIniciais" />
+
+                                        </h:panelGrid>
+                                    </p:tab>
+                                    <p:tab title="Discussões">
+                                        <h:panelGrid columns="1" cellpadding="5">
+                                            <p:outputLabel for="discussao" value="Assuntos tratados:" />
+                                            <p:inputTextarea id="discussao" rows="1" cols="7000" required="true" value="#{ATAEditar.reuniaoAta.assuntosTratados}" counter="displaydiscussao" maxlength="7000" counterTemplate="{0} caracteres restantes." autoResize="false" />
+                                            <h:outputText id="displaydiscussao" />
+                                        </h:panelGrid>
+                                    </p:tab>
+                                </p:tabView>
+                            </div>
+                            <div class="space-20"></div>
+                            <p:commandButton class="btn btn-success" value="SALVAR" update="growl" actionListener="#{ATAEditar.editar()}"/>
+                            <p:commandButton class="btn btn-danger" value="EXCLUIR" update="growl" actionListener="#{ATAEditar.excluir()}"/>
                         </div>
-                        <p><strong>DETALHAMENTO</strong></p>
-                    <div>
-                </div>
-                <div class="space-40"></div>
-                <div class="control-group">   
-                <p:tabView dynamic="true" cache="true">
-                  <p:tab title="Dados Gerais">
-                   <h:panelGrid columns="2" cellpadding="5">
-                     <p:outputLabel for="titulo" value="Título:" />  
-                     <p:inputText id="titulo" maxlength="250" value="#{ATAEditar.reuniaoAta.titulo}"/>
-                     <p:outputLabel for="dataRealizacao" value="Data realização" />
-                     <p:calendar id="dataRealizacao" value="#{ATAEditar.dataRealizacao}" pattern="dd/MM/yyyy HH:mm:ss" mask="true" />
-                     
-                      <p:outputLabel for="organizador" value="Organizador:" />
-                      <p:outputLabel id="organizador" value="#{ATAEditar.reuniaoAta.colaborador.usuario.nome}" />
-                   </h:panelGrid>
-                  </p:tab>
-                  <p:tab title="Dados iniciais">
-                      <h:panelGrid columns="1" cellpadding="5">
-                          <p:outputLabel for="dadosIniciais" value="Pauta:" />
-                          <p:inputTextarea id="dadosIniciais" rows="1" cols="1000" required="true" value="#{ATAEditar.reuniaoAta.pauta}" counter="displaydadosIniciais" maxlength="800" counterTemplate="{0} caracteres restantes." autoResize="false" />
-                      <h:outputText id="displaydadosIniciais" />
-                          
-                      </h:panelGrid>
-                  </p:tab>
-                  <p:tab title="Discussões">
-                      <h:panelGrid columns="1" cellpadding="5">
-                          <p:outputLabel for="discussao" value="Assuntos tratados:" />
-                          <p:inputTextarea id="discussao" rows="1" cols="7000" required="true" value="#{ATAEditar.reuniaoAta.assuntosTratados}" counter="displaydiscussao" maxlength="7000" counterTemplate="{0} caracteres restantes." autoResize="false" />
-                      <h:outputText id="displaydiscussao" />
-                      </h:panelGrid>
-                  </p:tab>
-                </p:tabView>
-                </div>
-                <div class="space-20"></div>
-                <p:commandButton class="btn btn-success" value="SALVAR" update="growl" actionListener="#{ATAEditar.editar()}"/>
-                <p:commandButton class="btn btn-danger" value="EXCLUIR" update="growl" actionListener="#{ATAEditar.excluir()}"/>
                     </div>
-                </div>
-                <div class="space-50"></div>
-            </h:form>
+                    <div class="space-50"></div>
+                </h:form>
             </ui:define>
         </ui:composition>
     </h:body>

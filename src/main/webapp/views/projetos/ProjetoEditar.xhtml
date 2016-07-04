@@ -21,6 +21,8 @@
                     <div class="margin-right-left-20">
                         <div>
                             <h3>PROJETO</h3>
+                            <h4><a class="label label-info">Título do Projeto:</a></h4>
+                            <h4><a class="label label-label">#{projetoEditar.projeto.tap.nome.toUpperCase()}</a></h4>
                             <div class="right">
                                 <a class="btn btn" href="ProjetoConsultar.xhtml">VOLTAR</a>
                             </div>
@@ -32,7 +34,7 @@
                                 <p:menubar>
                                     <p:submenu label="ADICIONAR INFORMAÇÕES" style="float: right">
                                         <p:menuitem value="Viabilidade" onclick="PF('viabilidadeDoProjeto').show();" icon="ui-icon-document" />
-                                        
+
                                     </p:submenu>
                                 </p:menubar>    
                                 <p:tabView scrollable="true">
@@ -86,7 +88,7 @@
                     <div class="space-50"></div>
 
                     <!--Modal região -->
-                    
+
                 </h:form>
             </ui:define>
         </ui:composition>

@@ -19,7 +19,6 @@ import utils.Mensageiro;
 import utils.Response;
 import org.primefaces.model.diagram.Connection;
 import org.primefaces.model.diagram.DefaultDiagramModel;
-import org.primefaces.model.diagram.DiagramModel;
 import org.primefaces.model.diagram.Element;
 import org.primefaces.model.diagram.endpoint.DotEndPoint;
 import org.primefaces.model.diagram.endpoint.EndPointAnchor;
@@ -323,7 +322,7 @@ public class EAPEditar extends ABaseNamed
             visualizacaoEAP = new DefaultDiagramModel();
             visualizacaoEAP.setMaxConnections(-1);
 
-            Element elementEAP = new Element("  "+eap.getEapTipo().getDescricao()+"  ", "20em", "6em");
+            Element elementEAP = new Element("  " + eap.getEapTipo().getDescricao() + "  ", "20em", "6em");
             elementEAP.addEndPoint(new DotEndPoint(EndPointAnchor.BOTTOM));
 
             visualizacaoEAP.addElement(elementEAP);
@@ -336,7 +335,7 @@ public class EAPEditar extends ABaseNamed
             for (EAPPacote obj : listaPacote)
             {
 
-                Element elementPacote = new Element("  "+obj.getDescricao()+"  ", posicaoPacote + "em", "18em");
+                Element elementPacote = new Element("  " + obj.getDescricao() + "  ", posicaoPacote + "em", "18em");
                 elementPacote.addEndPoint(new DotEndPoint(EndPointAnchor.TOP));
                 elementPacote.addEndPoint(new DotEndPoint(EndPointAnchor.BOTTOM));
 
@@ -350,14 +349,15 @@ public class EAPEditar extends ABaseNamed
                 listaAtividades = atividade.listarPorEAP();
                 for (EAPAtividade objAtividade : listaAtividades)
                 {
-                    if(objAtividade.getEapPacote().getID() == obj.getID()){
-                    Element elementAtividade = new Element("  "+objAtividade.getDescricao()+"  ", posicaoPacote + "em", posicaoAtividade+"em");
-                    elementAtividade.addEndPoint(new DotEndPoint(EndPointAnchor.LEFT));
-                    
-                    visualizacaoEAP.connect(new Connection(elementPacote.getEndPoints().get(1), elementAtividade.getEndPoints().get(0)));
-                    visualizacaoEAP.addElement(elementAtividade);
-                    
-                    posicaoAtividade += 10;
+                    if (objAtividade.getEapPacote().getID() == obj.getID())
+                    {
+                        Element elementAtividade = new Element("  " + objAtividade.getDescricao() + "  ", posicaoPacote + "em", posicaoAtividade + "em");
+                        elementAtividade.addEndPoint(new DotEndPoint(EndPointAnchor.LEFT));
+
+                        visualizacaoEAP.connect(new Connection(elementPacote.getEndPoints().get(1), elementAtividade.getEndPoints().get(0)));
+                        visualizacaoEAP.addElement(elementAtividade);
+
+                        posicaoAtividade += 10;
                     }
                 }
 
