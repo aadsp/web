@@ -1,9 +1,11 @@
 package controller.project;
 
+import annotations.projeto.PontoCaracteristicaGeraisDosSistemas;
 import annotations.projeto.PontoComplexidadeArquivosInternos;
 import annotations.projeto.PontoComplexidadeContribuicao;
 import annotations.projeto.PontoComplexidadeEntradasExternas;
 import annotations.projeto.PontoComplexidadeSaidasExternas;
+import annotations.projeto.PontoContarFatorDeAjuste;
 import annotations.projeto.PontoContarTipoDadosFuncao;
 import annotations.projeto.PontoContarTipoTransacao;
 import annotations.projeto.PontoDeFuncaoNaoAjustados;
@@ -48,13 +50,15 @@ public class DEEEditar extends ABaseNamed
             this.contarTipoTransacao = new PontoContarTipoTransacao();
             this.contarTipoDadosFuncao = new PontoContarTipoDadosFuncao();
             this.complexidadeContribuicao = new PontoComplexidadeContribuicao();
-            
-            
+            this.pontoCaracteristicaGeraisDosSistemas = new PontoCaracteristicaGeraisDosSistemas();
+
             this.projeto.setID(Integer.parseInt(Criptografia.decodificarBase64(Response.getParametroURL("Projeto"))));
             this.projeto = projeto.consultarPorID();
             this.contarTipoTransacao.setProjeto(projeto);
             this.contarTipoDadosFuncao.setProjeto(projeto);
-            this.pontoDeFuncaoNaoAjustados = new PontoDeFuncaoNaoAjustados(contarTipoTransacao,contarTipoDadosFuncao);
+            this.pontoDeFuncaoNaoAjustados = new PontoDeFuncaoNaoAjustados(contarTipoTransacao, contarTipoDadosFuncao);
+            this.pontoContarFatorDeAjuste = new PontoContarFatorDeAjuste();
+            this.pontoContarFatorDeAjuste.setProjeto(projeto);
         } catch (Exception e)
         {
             Mensageiro.mensagemError("Não foi possível carregar os dados iniciais da página");
@@ -77,6 +81,46 @@ public class DEEEditar extends ABaseNamed
         } catch (Exception e)
         {
             Mensageiro.mensagemError("Não foi possível consultar os tipos de transação no banco de dados!");
+        }
+        return null;
+    }
+
+    public Map<String, Integer> getGrauDeInfluencia()
+    {
+        try
+        {
+            this.grauDeInfluenciaMap = new HashMap<>();
+            PontoGrauDeInfluencia grau = new PontoGrauDeInfluencia();
+            for (PontoGrauDeInfluencia obj : grau.listar())
+            {
+                this.grauDeInfluenciaMap.put(obj.getGrau() + " - " + obj.getDescricao(), obj.getID());
+            }
+
+            return grauDeInfluenciaMap;
+
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemError("Não foi possível consultar os tipos de graus de influência!");
+        }
+        return null;
+    }
+
+    public Map<String, Integer> getCaracteristicasDosSistemas()
+    {
+        try
+        {
+            this.caracteristicaGeraisDosSistemasMap = new HashMap<>();
+            PontoCaracteristicaGeraisDosSistemas ponto = new PontoCaracteristicaGeraisDosSistemas();
+            for (PontoCaracteristicaGeraisDosSistemas obj : ponto.listar())
+            {
+                this.caracteristicaGeraisDosSistemasMap.put(obj.getValor(), obj.getID());
+            }
+
+            return caracteristicaGeraisDosSistemasMap;
+
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemError("Não foi possível consultar as caracteristicas gerais dos sistemas!");
         }
         return null;
     }
@@ -146,25 +190,89 @@ public class DEEEditar extends ABaseNamed
             Mensageiro.mensagemError("Não foi possivel realizar esta operação!");
         }
     }
-    
+
     public int getTotalPontosDeFuncao() throws Exception
     {
         int valor = 0;
-        for(PontoDeFuncaoNaoAjustados obj:pontoDeFuncaoNaoAjustados.calcularPontoDeFuncaoPorProjeto()){
+        for (PontoDeFuncaoNaoAjustados obj : pontoDeFuncaoNaoAjustados.calcularPontoDeFuncaoPorProjeto())
+        {
             valor += (obj.getAIE() + obj.getALI() + obj.getCE() + obj.getEE() + obj.getSE());
-         }
+        }
         return valor;
+    }
+
+    public void remvoerFuncaoTipoDeDados(PontoContarTipoDadosFuncao funcaoTipoDados)
+    {
+        try
+        {
+            funcaoTipoDados.excluir();
+            Response.redirect("/web/faces/views/projetos/DEEEditar.xhtml?Projeto=" + Criptografia.codificarParaBase64(projeto.getID().toString()));
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemError("Não foi possível excluir a função de tipo de dados selecionada!");
+        }
+
+    }
+
+   public void remvoerFatorDeAjuste(PontoContarFatorDeAjuste fatorDeAjuste)
+    {
+        try
+        {
+            fatorDeAjuste.excluir();
+            Response.redirect("/web/faces/views/projetos/DEEEditar.xhtml?Projeto=" + Criptografia.codificarParaBase64(projeto.getID().toString()));
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemError("Não foi possível excluir a função de tipo de dados selecionada!");
+        }
+
+    }
+
+    public void caracteristicaDoSistemaSalvar()
+    {
+        try
+        {
+            PontoCaracteristicaGeraisDosSistemas pontoCaracteristica = new PontoCaracteristicaGeraisDosSistemas();
+            pontoCaracteristica.setID(caracteristicaSelecionada);
+            PontoGrauDeInfluencia grau = new PontoGrauDeInfluencia();
+            grau.setID(grauDeInfluenciaSelecionado);
+            pontoContarFatorDeAjuste.setCaracteristicaGeraisDosSistemas(pontoCaracteristica);
+            pontoContarFatorDeAjuste.setPontoGrauDeInfluencia(grau);
+            pontoContarFatorDeAjuste.cadastrar();
+            Response.redirect("/web/faces/views/projetos/DEEEditar.xhtml?Projeto=" + Criptografia.codificarParaBase64(projeto.getID().toString()));
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemError("Não foi possível realizar esta operação!");
+        }
+    }
+
+    public void removerCaracteristica(PontoContarFatorDeAjuste pontoContarFA)
+    {
+        try
+        {
+            pontoContarFA.excluir();
+            Response.redirect("/web/faces/views/projetos/DEEEditar.xhtml?Projeto=" + Criptografia.codificarParaBase64(projeto.getID().toString()));
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemError("Não foi possível excluir a função de tipo transação selecionada!");
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="Variaveis"> 
     private int tipoTransacaoSelecionada;
     private int tipoDadosSelecionado;
+    private int caracteristicaSelecionada;
+    private int grauDeInfluenciaSelecionado;
     private Map<String, Integer> tipoTransacaoMap;
     private Map<String, Integer> tipoDadosTipo;
     private PontoContarTipoTransacao contarTipoTransacao;
     private PontoContarTipoDadosFuncao contarTipoDadosFuncao;
     private PontoComplexidadeContribuicao complexidadeContribuicao;
     private PontoDeFuncaoNaoAjustados pontoDeFuncaoNaoAjustados;
+    private PontoCaracteristicaGeraisDosSistemas pontoCaracteristicaGeraisDosSistemas;
+    private Map<String, Integer> caracteristicaGeraisDosSistemasMap;
+    private Map<String, Integer> grauDeInfluenciaMap;
+    private PontoContarFatorDeAjuste pontoContarFatorDeAjuste;
 
     private PontoComplexidadeArquivosInternos tabela1;
     private PontoComplexidadeEntradasExternas tabela2;
@@ -173,15 +281,53 @@ public class DEEEditar extends ABaseNamed
     private PontoGrauDeInfluencia tabela5;
     private Projeto projeto;
 
-    
-
     // </editor-fold>
     // <editor-fold defaultstate="collapsed" desc="Acessores">
+    public int getGrauDeInfluenciaSelecionado()
+    {
+        return grauDeInfluenciaSelecionado;
+    }
+
+    public void setGrauDeInfluenciaSelecionado(int grauDeInfluenciaSelecionado)
+    {
+        this.grauDeInfluenciaSelecionado = grauDeInfluenciaSelecionado;
+    }
+
+    public PontoContarFatorDeAjuste getPontoContarFatorDeAjuste()
+    {
+        return pontoContarFatorDeAjuste;
+    }
+
+    public void setPontoContarFatorDeAjuste(PontoContarFatorDeAjuste pontoContarFatorDeAjuste)
+    {
+        this.pontoContarFatorDeAjuste = pontoContarFatorDeAjuste;
+    }
+
+    public int getCaracteristicaSelecionada()
+    {
+        return caracteristicaSelecionada;
+    }
+
+    public void setCaracteristicaSelecionada(int caracteristicaSelecionada)
+    {
+        this.caracteristicaSelecionada = caracteristicaSelecionada;
+    }
+
+    public PontoCaracteristicaGeraisDosSistemas getPontoCaracteristicaGeraisDosSistemas()
+    {
+        return pontoCaracteristicaGeraisDosSistemas;
+    }
+
+    public void setPontoCaracteristicaGeraisDosSistemas(PontoCaracteristicaGeraisDosSistemas pontoCaracteristicaGeraisDosSistemas)
+    {
+        this.pontoCaracteristicaGeraisDosSistemas = pontoCaracteristicaGeraisDosSistemas;
+    }
+
     public PontoComplexidadeContribuicao getComplexidadeContribuicao()
     {
         return complexidadeContribuicao;
     }
-    
+
     public PontoDeFuncaoNaoAjustados getPontoDeFuncaoNaoAjustados()
     {
         return pontoDeFuncaoNaoAjustados;
@@ -191,8 +337,7 @@ public class DEEEditar extends ABaseNamed
     {
         this.pontoDeFuncaoNaoAjustados = pontoDeFuncaoNaoAjustados;
     }
-    
-    
+
     public void setComplexidadeContribuicao(PontoComplexidadeContribuicao complexidadeContribuicao)
     {
         this.complexidadeContribuicao = complexidadeContribuicao;

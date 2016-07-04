@@ -171,9 +171,7 @@ public class PontoContarTipoDadosFuncao implements Serializable, IAnnotations
         PontoContarTipoDadosFuncaoModel model = new PontoContarTipoDadosFuncaoModel();
         return model.consultarPorID(this);
     }
-    
-    
-    
+
     public List<PontoContarTipoDadosFuncao> listarPorFiltro(String filtro) throws Exception
     {
         PontoContarTipoDadosFuncaoModel model = new PontoContarTipoDadosFuncaoModel();

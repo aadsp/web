@@ -56,6 +56,8 @@
         <mapping class="annotations.projeto.PontoTipoDadosTipo" />
         <mapping class="annotations.projeto.PontoContarTipoDadosFuncao" />
         <mapping class="annotations.projeto.PontoTipoDadosTipo" />
+        <mapping class="annotations.projeto.PontoCaracteristicaGeraisDosSistemas" />
+        <mapping class="annotations.projeto.PontoContarFatorDeAjuste" />
         <!-- TAP -->
         <mapping class="annotations.tap.Empresa" />
         <mapping class="annotations.tap.Patrocinador" />

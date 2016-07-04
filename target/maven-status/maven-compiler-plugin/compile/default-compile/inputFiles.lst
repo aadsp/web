@@ -92,6 +92,7 @@ G:\PROJETO TCC\web\src\main\java\controller\project\ATAConsultar.java
 G:\PROJETO TCC\web\src\main\java\controller\adm\AcessoEditar.java
 G:\PROJETO TCC\web\src\main\java\controller\adm\FuncaoCadastrar.java
 G:\PROJETO TCC\web\src\main\java\model\projeto\PontoComplexidadeEntradasExternasModel.java
+G:\PROJETO TCC\web\src\main\java\model\projeto\PontoContarFatorDeAjusteModel.java
 G:\PROJETO TCC\web\src\main\java\annotations\projeto\PontoComplexidadeNivel.java
 G:\PROJETO TCC\web\src\main\java\model\requisitos\DocumentoRequisitosTemplateModel.java
 G:\PROJETO TCC\web\src\main\java\model\acesso\AcessoModel.java
@@ -123,9 +124,12 @@ G:\PROJETO TCC\web\src\main\java\model\projeto\PontoGrauDeInfluencialModel.java
 G:\PROJETO TCC\web\src\main\java\annotations\projeto\PontoContarTipoTransacao.java
 G:\PROJETO TCC\web\src\main\java\model\tap\TAPModel.java
 G:\PROJETO TCC\web\src\main\java\controller\project\TAPCadastrar.java
+G:\PROJETO TCC\web\src\main\java\model\projeto\PontoCaracteristicaGeraisDosSistemasModel.java
 G:\PROJETO TCC\web\src\main\java\model\tap\PatrocinadorModel.java
 G:\PROJETO TCC\web\src\main\java\controller\requisitos\DocumentoRequisitosCadastrar.java
 G:\PROJETO TCC\web\src\main\java\utils\Mensageiro.java
+G:\PROJETO TCC\web\src\main\java\annotations\projeto\PontoCaracteristicaGeraisDosSistemas.java
+G:\PROJETO TCC\web\src\main\java\annotations\projeto\PontoContarFatorDeAjuste.java
 G:\PROJETO TCC\web\src\main\java\controller\adm\PessoalCadastrar.java
 G:\PROJETO TCC\web\src\main\java\model\projeto\PontoTipoDadosTipoModel.java
 G:\PROJETO TCC\web\src\main\java\controller\project\DEEEditar.java

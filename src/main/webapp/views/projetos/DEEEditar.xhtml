@@ -35,11 +35,13 @@
                                     <p:submenu label="ADICIONAR INFORMAÇÕES" style="float: right">
                                         <p:menuitem value="Funções de Transação" onclick="PF('funcaoTipoTransacao').show();" icon="ui-icon-document" />
                                         <p:menuitem value="Funções de Dados" onclick="PF('funcaoTipoDados').show();" icon="ui-icon-document" />
+                                        <p:menuitem value="Caract. do Sistema" onclick="PF('caracteristicaDoSistema').show();" icon="ui-icon-document" />
+
                                     </p:submenu>
                                 </p:menubar>  
-                                <p:tabView dynamic="true" cache="true">
-                                    <p:tab title="Pontos de Função por Complexidade">
-                                        <p:dataTable  style="text-align:center" var="contribuicao" resizableColumns="true" value="#{DEEEditar.pontoDeFuncaoNaoAjustados.calcularPontoDeFuncaoPorProjeto()}">
+                                <p:tabView  dynamic="true" cache="true">
+                                    <p:tab title="Pontos de Função/Complexidade">
+                                        <p:dataTable  style="text-align:center" var="contribuicao" resizableColumns="true"  value="#{DEEEditar.pontoDeFuncaoNaoAjustados.calcularPontoDeFuncaoPorProjeto()}">
                                             <f:facet name="header">
                                                 <a style="color:#ffffff" class="label label-label">Calcular os Pontos de Função Não Ajustados</a>
                                             </f:facet>
@@ -49,7 +51,7 @@
                                                     <p:column colspan="5" headerText="Contribuições (pesos)" />
                                                 </p:row>
                                                 <p:row>
-                                                    <p:column headerText="Nível" />
+                                                    <p:column headerText="Nível"  />
                                                     <p:column headerText="ALI" />
                                                     <p:column headerText="AIE" />
                                                     <p:column headerText="EE" />
@@ -61,32 +63,32 @@
                                             <p:column headerText="Nível">
                                                 <h:outputText value="#{contribuicao.nivel.descricao}" />
                                             </p:column>
-                                            <p:column headerText="ALI">
+                                            <p:column headerText="ALI" >
                                                 <h:outputText value="#{contribuicao.ALI}" />
                                             </p:column>
-                                            <p:column headerText="AIE">
+                                            <p:column headerText="AIE" >
                                                 <h:outputText value="#{contribuicao.AIE}" />
                                             </p:column>
-                                            <p:column headerText="EE">
+                                            <p:column headerText="EE" >
                                                 <h:outputText value="#{contribuicao.EE}" />
                                             </p:column>
-                                            <p:column headerText="SE">
+                                            <p:column headerText="SE" >
                                                 <h:outputText value="#{contribuicao.SE}" />
                                             </p:column>
-                                            <p:column headerText="CE">
+                                            <p:column headerText="CE" >
                                                 <h:outputText value="#{contribuicao.CE}" />
                                             </p:column>
                                             <f:facet name="footer">
-                                                <h:outputText value="Total de Pontos de Função: " />
-                                                <h:outputText value="#{DEEEditar.totalPontosDeFuncao}" />
-                                                <h:outputText value=" não ajustados. " />
+                                                <h:outputText value="TOTAL DE PONTOS DE FUNÇÃO NAO AJUSTADOS: " />
+                                                <h:outputText style="font-size:25px; color: #ff3333" value="#{DEEEditar.totalPontosDeFuncao}" />
+
                                             </f:facet>
                                         </p:dataTable>
 
                                     </p:tab>
                                     <p:tab title="Funções Tipo de Dados">
                                         <h:panelGrid columns="1" cellpadding="5">
-                                            <p:dataTable  style="text-align:center" var="funcaoTipoDados" value="#{DEEEditar.contarTipoDadosFuncao.listarPorProjeto()}">
+                                            <p:dataTable  style="text-align:center" var="funcaoTipoDados" resizableColumns="true" value="#{DEEEditar.contarTipoDadosFuncao.listarPorProjeto()}">
                                                 <p:column headerText="Funções Tipo de Dados">
                                                     <h:outputText value="#{funcaoTipoDados.tipoDados.sigla}  #{funcaoTipoDados.valorTipoDados} (#{funcaoTipoDados.descricaoTipoDados})" />
                                                 </p:column>
@@ -96,13 +98,18 @@
                                                 <p:column headerText="TER">
                                                     <h:outputText value="#{funcaoTipoDados.valorTER} (#{funcaoTipoDados.descricaoTER})" />
                                                 </p:column>
-
+                                                <p:column >
+                                                    <f:facet name="header">
+                                                        <h:outputText value="remover" />
+                                                    </f:facet>
+                                                    <p:commandButton icon="ui-icon-close" actionListener="#{DEEEditar.remvoerFuncaoTipoDeDados(funcaoTipoDados)}"/>
+                                                </p:column>
                                             </p:dataTable>
                                         </h:panelGrid>
                                     </p:tab>
                                     <p:tab title="Funções Tipo Transação">
                                         <h:panelGrid columns="1" cellpadding="5">
-                                            <p:dataTable  style="text-align:center" var="funcaoTipoTransacao" value="#{DEEEditar.contarTipoTransacao.listarPorProjeto()}">
+                                            <p:dataTable  style="text-align:center" var="funcaoTipoTransacao" resizableColumns="true" value="#{DEEEditar.contarTipoTransacao.listarPorProjeto()}">
                                                 <p:column headerText="Tipo Transação">
                                                     <h:outputText value="#{funcaoTipoTransacao.tipoTransacao.sigla}  #{funcaoTipoTransacao.valorTipoTransacao} (#{funcaoTipoTransacao.descricaoTipoTransacao})" />
                                                 </p:column>
@@ -112,14 +119,43 @@
                                                 <p:column headerText="TAR">
                                                     <h:outputText value="#{funcaoTipoTransacao.valorTAR} (#{funcaoTipoTransacao.descricaoTAR})" />
                                                 </p:column>
-
+                                                <p:column  >
+                                                    <f:facet name="header">
+                                                        <h:outputText value="remover" />
+                                                    </f:facet>
+                                                    <p:commandButton icon="ui-icon-close" actionListener="#{DEEEditar.remvoerFuncaoTipoTransacao(funcaoTipoTransacao)}"/>
+                                                </p:column>
                                             </p:dataTable>
                                         </h:panelGrid>
                                     </p:tab>
+                                    <p:tab title="Características Gerais do Sistema">
+                                        <h:panelGrid columns="1" cellpadding="5">
+                                            <p:dataTable  style="text-align:center" var="fatorDeAjuste" resizableColumns="true" value="#{DEEEditar.pontoContarFatorDeAjuste.listarPorProjeto()}">
+                                                <f:facet name="header">
+                                                    <a style="color:#ffffff" class="label label-label">Complexidade de Arquivos Lógicos Internos e Arquivos de Interface Externa:</a>
+                                                </f:facet>
+                                                <p:column headerText="Características Gerais do Sistema">
+                                                    <h:outputText value="#{fatorDeAjuste.caracteristicaGeraisDosSistemas.valor.toUpperCase()} " />
+                                                </p:column>
+                                                <p:column headerText="Nível">
+                                                    <h:outputText value="#{fatorDeAjuste.pontoGrauDeInfluencia.grau} - #{fatorDeAjuste.pontoGrauDeInfluencia.descricao}" />
+                                                </p:column>
+                                                <p:column headerText="Justificativa">
+                                                    <textarea disabled="true"> #{fatorDeAjuste.justificativa}</textarea>
+                                                </p:column>
+                                                <p:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="remover" />
+                                                    </f:facet>
+                                                    <p:commandButton icon="ui-icon-close" actionListener="#{DEEEditar.removerCaracteristica(fatorDeAjuste)}"/>
+                                                </p:column>
+                                            </p:dataTable>
+                                        </h:panelGrid>
+
+                                    </p:tab>
                                     <p:tab title="Valores base para cálculo">
                                         <h:panelGrid columns="3" cellpadding="5">
-
-                                            <p:dataTable  style="text-align:center" var="arquivosInternos" value="#{DEEEditar.tabela1.listar()}">
+                                            <p:dataTable  style="text-align:center" var="arquivosInternos" resizableColumns="true" value="#{DEEEditar.tabela1.listar()}">
                                                 <f:facet name="header">
                                                     <a style="color:#ffffff" class="label label-label">Complexidade de Arquivos Lógicos Internos e Arquivos de Interface Externa:</a>
                                                 </f:facet>
@@ -136,7 +172,7 @@
 
 
 
-                                            <p:dataTable  style="text-align:center" var="entradasExternas" value="#{DEEEditar.tabela2.listar()}">
+                                            <p:dataTable  style="text-align:center" var="entradasExternas" resizableColumns="true" value="#{DEEEditar.tabela2.listar()}">
                                                 <f:facet name="header">
                                                     <a style="color:#ffffff" class="label label-label">Complexidade de Entradas Externas e Entradas das Consultas Externas</a>
                                                 </f:facet>
@@ -153,7 +189,7 @@
 
 
 
-                                            <p:dataTable  style="text-align:center" var="saidasExternas" value="#{DEEEditar.tabela3.listar()}">
+                                            <p:dataTable  style="text-align:center" var="saidasExternas" resizableColumns="true" value="#{DEEEditar.tabela3.listar()}">
                                                 <f:facet name="header">
                                                     <a style="color:#ffffff" class="label label-label">Complexidade de Saídas Externas e Saídas das Consultas Externas</a>
                                                 </f:facet>
@@ -169,7 +205,7 @@
                                             </p:dataTable>
 
 
-                                            <p:dataTable  style="text-align:center" var="contribuicao" value="#{DEEEditar.tabela4.listar()}">
+                                            <p:dataTable  style="text-align:center" var="contribuicao" resizableColumns="true" value="#{DEEEditar.tabela4.listar()}">
                                                 <f:facet name="header">
                                                     <a style="color:#ffffff" class="label label-label">Contribuições (pesos) das complexidades</a>
                                                 </f:facet>
@@ -208,7 +244,7 @@
 
                                             </p:dataTable>
 
-                                            <p:dataTable  style="text-align:center" var="grauInfluencia" value="#{DEEEditar.tabela5.listar()}">
+                                            <p:dataTable  style="text-align:center" var="grauInfluencia" resizableColumns="true" value="#{DEEEditar.tabela5.listar()}">
                                                 <f:facet name="header">
                                                     <a style="color:#ffffff" class="label label-label">Graus de influência</a>
                                                 </f:facet>
@@ -223,6 +259,35 @@
 
                                         </h:panelGrid>
                                     </p:tab>
+                                    <p:tab title="Valor base das Características">
+                                        <h:panelGrid columns="1" cellpadding="5">
+                                            <p:dataTable  style="text-align:center" var="caracteristica" resizableColumns="true" value="#{DEEEditar.pontoCaracteristicaGeraisDosSistemas.listar()}">
+                                                <p:column style="width:16px">
+                                                    <p:rowToggler />
+                                                </p:column>
+                                                <p:column id="valor" headerText="Características Gerais do Sistema">
+                                                    <h:outputText value="#{caracteristica.valor} " />
+                                                </p:column>
+                                                <p:rowExpansion>
+                                                    <p:panelGrid  columns="2"  >
+                                                        <h:outputText value="Descrição geral:" />
+                                                        <p:column  headerText="Descrição Geral" >
+                                                            <textarea disabled="true"> #{caracteristica.descricaoGeral}</textarea>
+                                                        </p:column>
+                                                        <h:outputText value="Descrição detalhada:"/>
+                                                        <p:column  headerText="Descrição detalhada" >
+                                                            <textarea disabled="true">#{caracteristica.itensObservados}</textarea>
+                                                        </p:column>
+                                                        <h:outputText value="Pontuação:"/>
+                                                        <p:column  headerText="Descrição detalhada" >
+                                                            <textarea disabled="true">#{caracteristica.pontosObservados}</textarea>
+                                                        </p:column>
+
+                                                    </p:panelGrid>
+                                                </p:rowExpansion>
+                                            </p:dataTable>
+                                        </h:panelGrid>
+                                    </p:tab>
                                 </p:tabView>
                             </div>
                             <div class="space-20"></div>
@@ -232,7 +297,7 @@
 
 
                     <!--  Modais da tela-->
-                    <p:dialog header="CONTAR FUNÇÕES TIPO TRANSAÇÃO" showEffect="explode" widgetVar="funcaoTipoTransacao" modal="true" width="800" height="400" resizable="false">
+                    <p:dialog header="CONTAR FUNÇÕES TIPO TRANSAÇÃO" showEffect="explode" widgetVar="funcaoTipoTransacao" modal="true" width="800" height="350" resizable="false">
                         <h:panelGrid columns="1" cellpadding="5">
                             <p:outputLabel id="infoContarFuncoes" value="As Funções Tipo Transação representam as funcionalidades de processamento dos
                                            dados fornecidas pelo sistema ao usuário" />
@@ -272,7 +337,7 @@
                         </h:panelGrid>
                     </p:dialog>
 
-                    <p:dialog header="CONTAR FUNÇÕES TIPO DE DADOS " showEffect="explode" widgetVar="funcaoTipoDados" modal="true" width="800" height="400" resizable="false">
+                    <p:dialog header="CONTAR FUNÇÕES TIPO DE DADOS " showEffect="explode" widgetVar="funcaoTipoDados" modal="true" width="800" height="350" resizable="false">
                         <h:panelGrid columns="1" cellpadding="5">
                             <p:outputLabel id="infoContarTipoDeDados" value="As Funções Tipo Dados representam as funcionalidades fornecidas pelo sistema ao usuário, para atender às necessidades referentes aos dados que o sistema irá manipular" />
                         </h:panelGrid>
@@ -308,6 +373,35 @@
                         </h:panelGrid>
                         <h:panelGrid columns="1" cellpadding="5">
                             <p:commandButton value="SALVAR" update="growl" actionListener="#{DEEEditar.contarFuncaoTipoDadosSalvar()}" />
+                        </h:panelGrid>
+                    </p:dialog>
+
+                  
+                     <p:dialog header="CADASTRO DE CARACTERÍSTICA DO SISTEMA " showEffect="explode" widgetVar="caracteristicaDoSistema" modal="true" width="800" height="350" resizable="false">
+                        <h:panelGrid columns="1" cellpadding="5">
+                            <p:outputLabel id="infoCaracteristicas" value="Para calcular o fator de ajuste, devem ser cosideradas 14 características descritas na aba de valor base das características" />
+                        </h:panelGrid>
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel for="valorCaracteristicas" value="Características Gerais do Sistema:" />
+                            <p:selectOneMenu id="valorCaracteristicas"  value="#{DEEEditar.caracteristicaSelecionada}" >
+                                <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
+                                <f:selectItems value="#{DEEEditar.caracteristicasDosSistemas}" />
+                            </p:selectOneMenu>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" cellpadding="5">
+                            <p:outputLabel for="justificativa" value="Justificativa:" />
+                            <p:inputTextarea id="justificativa" rows="1" cols="1000"  value="#{DEEEditar.pontoContarFatorDeAjuste.justificativa}" counter="displayjustificativa" maxlength="1000" counterTemplate="{0} caracteres restantes." autoResize="false" />
+                            <h:outputText id="displayjustificativa" />
+                        </h:panelGrid>
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel for="grauDeInfluencia" value="Graus de Influência:" />
+                            <p:selectOneMenu id="grauDeInfluencia"  value="#{DEEEditar.grauDeInfluenciaSelecionado}" >
+                                <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
+                                <f:selectItems value="#{DEEEditar.grauDeInfluencia}" />
+                            </p:selectOneMenu>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" cellpadding="5">
+                            <p:commandButton value="SALVAR" update="growl" actionListener="#{DEEEditar.caracteristicaDoSistemaSalvar()}" />
                         </h:panelGrid>
                     </p:dialog>
                 </h:form>
