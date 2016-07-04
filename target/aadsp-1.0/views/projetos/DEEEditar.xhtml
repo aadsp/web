@@ -41,7 +41,7 @@
                                 </p:menubar>  
                                 <p:tabView  dynamic="true" cache="true">
                                     <p:tab title="Pontos de Função/Complexidade">
-                                        <p:dataTable  style="text-align:center" var="contribuicao" resizableColumns="true"  value="#{DEEEditar.pontoDeFuncaoNaoAjustados.calcularPontoDeFuncaoPorProjeto()}">
+                                        <p:dataTable  style="text-align:center" var="contribuicao" emptyMessage="Nenhum Registro Encontrado!" resizableColumns="true"  value="#{DEEEditar.pontoDeFuncaoNaoAjustados.calcularPontoDeFuncaoPorProjeto()}">
                                             <f:facet name="header">
                                                 <a style="color:#ffffff" class="label label-label">Calcular os Pontos de Função Não Ajustados</a>
                                             </f:facet>
@@ -98,7 +98,7 @@
                                     </p:tab>
                                     <p:tab title="Funções Tipo de Dados">
                                         <h:panelGrid columns="1" cellpadding="5">
-                                            <p:dataTable  style="text-align:center" var="funcaoTipoDados" resizableColumns="true" value="#{DEEEditar.contarTipoDadosFuncao.listarPorProjeto()}">
+                                            <p:dataTable  style="text-align:center" var="funcaoTipoDados" emptyMessage="Nenhum Registro Encontrado!" resizableColumns="true" value="#{DEEEditar.contarTipoDadosFuncao.listarPorProjeto()}">
                                                 <p:column headerText="Funções Tipo de Dados">
                                                     <h:outputText value="#{funcaoTipoDados.tipoDados.sigla}  #{funcaoTipoDados.valorTipoDados} (#{funcaoTipoDados.descricaoTipoDados})" />
                                                 </p:column>
@@ -119,7 +119,7 @@
                                     </p:tab>
                                     <p:tab title="Funções Tipo Transação">
                                         <h:panelGrid columns="1" cellpadding="5">
-                                            <p:dataTable  style="text-align:center" var="funcaoTipoTransacao" resizableColumns="true" value="#{DEEEditar.contarTipoTransacao.listarPorProjeto()}">
+                                            <p:dataTable  style="text-align:center" var="funcaoTipoTransacao" emptyMessage="Nenhum Registro Encontrado!" resizableColumns="true" value="#{DEEEditar.contarTipoTransacao.listarPorProjeto()}">
                                                 <p:column headerText="Tipo Transação">
                                                     <h:outputText value="#{funcaoTipoTransacao.tipoTransacao.sigla}  #{funcaoTipoTransacao.valorTipoTransacao} (#{funcaoTipoTransacao.descricaoTipoTransacao})" />
                                                 </p:column>
@@ -140,9 +140,9 @@
                                     </p:tab>
                                     <p:tab title="Características Gerais do Sistema">
                                         <h:panelGrid columns="1" cellpadding="5">
-                                            <p:dataTable  style="text-align:center" var="fatorDeAjuste" resizableColumns="true" value="#{DEEEditar.pontoContarFatorDeAjuste.listarPorProjeto()}">
+                                            <p:dataTable  style="text-align:center" var="fatorDeAjuste" emptyMessage="Nenhum Registro Encontrado!" resizableColumns="true" value="#{DEEEditar.pontoContarFatorDeAjuste.listarPorProjeto()}">
                                                 <f:facet name="header">
-                                                    <a style="color:#ffffff" class="label label-label">Complexidade de Arquivos Lógicos Internos e Arquivos de Interface Externa:</a>
+                                                    <a style="color:#ffffff" class="label label-label">Calcular Valor do Fator de Ajuste</a>
                                                 </f:facet>
                                                 <p:column headerText="Características Gerais do Sistema">
                                                     <h:outputText value="#{fatorDeAjuste.caracteristicaGeraisDosSistemas.valor.toUpperCase()} " />
@@ -174,7 +174,7 @@
                                     </p:tab>
                                     <p:tab title="Valores base para cálculo">
                                         <h:panelGrid columns="3" cellpadding="5">
-                                            <p:dataTable  style="text-align:center" var="arquivosInternos" resizableColumns="true" value="#{DEEEditar.tabela1.listar()}">
+                                            <p:dataTable  style="text-align:center" var="arquivosInternos" emptyMessage="Nenhum Registro Encontrado!" resizableColumns="true" value="#{DEEEditar.tabela1.listar()}">
                                                 <f:facet name="header">
                                                     <a style="color:#ffffff" class="label label-label">Complexidade de Arquivos Lógicos Internos e Arquivos de Interface Externa:</a>
                                                 </f:facet>
@@ -191,7 +191,7 @@
 
 
 
-                                            <p:dataTable  style="text-align:center" var="entradasExternas" resizableColumns="true" value="#{DEEEditar.tabela2.listar()}">
+                                            <p:dataTable  style="text-align:center" emptyMessage="Nenhum Registro Encontrado!" var="entradasExternas" resizableColumns="true" value="#{DEEEditar.tabela2.listar()}">
                                                 <f:facet name="header">
                                                     <a style="color:#ffffff" class="label label-label">Complexidade de Entradas Externas e Entradas das Consultas Externas</a>
                                                 </f:facet>
@@ -208,7 +208,7 @@
 
 
 
-                                            <p:dataTable  style="text-align:center" var="saidasExternas" resizableColumns="true" value="#{DEEEditar.tabela3.listar()}">
+                                            <p:dataTable  style="text-align:center" emptyMessage="Nenhum Registro Encontrado!" var="saidasExternas" resizableColumns="true" value="#{DEEEditar.tabela3.listar()}">
                                                 <f:facet name="header">
                                                     <a style="color:#ffffff" class="label label-label">Complexidade de Saídas Externas e Saídas das Consultas Externas</a>
                                                 </f:facet>
@@ -224,7 +224,7 @@
                                             </p:dataTable>
 
 
-                                            <p:dataTable  style="text-align:center" var="contribuicao" resizableColumns="true" value="#{DEEEditar.tabela4.listar()}">
+                                            <p:dataTable  style="text-align:center" emptyMessage="Nenhum Registro Encontrado!" var="contribuicao" resizableColumns="true" value="#{DEEEditar.tabela4.listar()}">
                                                 <f:facet name="header">
                                                     <a style="color:#ffffff" class="label label-label">Contribuições (pesos) das complexidades</a>
                                                 </f:facet>
@@ -263,7 +263,7 @@
 
                                             </p:dataTable>
 
-                                            <p:dataTable  style="text-align:center" var="grauInfluencia" resizableColumns="true" value="#{DEEEditar.tabela5.listar()}">
+                                            <p:dataTable  style="text-align:center" var="grauInfluencia" emptyMessage="Nenhum Registro Encontrado!" resizableColumns="true" value="#{DEEEditar.tabela5.listar()}">
                                                 <f:facet name="header">
                                                     <a style="color:#ffffff" class="label label-label">Graus de influência</a>
                                                 </f:facet>
@@ -280,7 +280,7 @@
                                     </p:tab>
                                     <p:tab title="Valor base das Características">
                                         <h:panelGrid columns="1" cellpadding="5">
-                                            <p:dataTable  style="text-align:center" var="caracteristica" resizableColumns="true" value="#{DEEEditar.pontoCaracteristicaGeraisDosSistemas.listar()}">
+                                            <p:dataTable  style="text-align:center" var="caracteristica" emptyMessage="Nenhum Registro Encontrado!" resizableColumns="true" value="#{DEEEditar.pontoCaracteristicaGeraisDosSistemas.listar()}">
                                                 <p:column style="width:16px">
                                                     <p:rowToggler />
                                                 </p:column>

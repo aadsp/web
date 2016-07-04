@@ -41,7 +41,7 @@ public class PontoDeFuncaoNaoAjustados
             {
                 verficacaoComplexidadeTiposDados(obj1, pontoFuncao, obj);
             }
-            for(PontoContarTipoTransacao obj1: contarTipoTransacao.listar())
+            for(PontoContarTipoTransacao obj1: contarTipoTransacao.listarPorProjeto())
             {
                 verficacaoComplexidadeTiposTransacao(obj1, pontoFuncao, obj);
             }
