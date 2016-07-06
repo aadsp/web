@@ -63,7 +63,7 @@ public class ProjetoConsultar extends ABaseNamed
 
     public void gerarPDF(Projeto projeto) throws JRException, IOException, SQLException
     {
-
+        Mensageiro.mensagemInfo("Funcionalidade em desenvolvimento!");
     }
 
     public Filtro getFiltro()

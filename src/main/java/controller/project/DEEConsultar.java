@@ -66,11 +66,8 @@ public class DEEConsultar extends ABaseNamed
     {
         try
         {
-            RelatorioIReport report = new RelatorioIReport();
-            HashMap map = new HashMap();
-            map.put("ID_projeto", projeto.getID());
-            report.gerarPDF("DEE", map);
-        } catch (JRException | IOException | SQLException e)
+           Mensageiro.mensagemInfo("Funcionalidade em desenvolvimento!");
+        } catch (Exception e)
         {
             Mensageiro.mensagemError("Não possível gerar o relatório em PDF exception:" + e.getMessage());
         }
