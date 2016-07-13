@@ -7,7 +7,7 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["G:\\PROJETO TCC\\web\\src\\main\\webapp\\reports\\model\\RE\\"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA[$P{SUBREPORT_DIR}]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT 

@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import annotations.acesso.Usuario;
 import interfaces.ABaseNamed;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import utils.Mensageiro;
 
 /**
@@ -19,32 +21,36 @@ import utils.Mensageiro;
  */
 @SessionScoped
 @Named
-public class HeaderTemplate extends ABaseNamed
-{
+public class HeaderTemplate extends ABaseNamed {
 
     /**
      * Busca o usuário na sessão para informar seus dados no painel principal
      */
-    public HeaderTemplate()
-    {
-        FacesContext facesContext = FacesContext.getCurrentInstance();
-        HttpServletRequest request = (HttpServletRequest) facesContext.getCurrentInstance().getExternalContext().getRequest();
-        HttpSession session = request.getSession();
-        usuario = (Usuario) session.getAttribute("usuario");
+    public HeaderTemplate() {
+        try {
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            HttpServletRequest request = (HttpServletRequest) facesContext.getCurrentInstance().getExternalContext().getRequest();
+            HttpSession session = request.getSession();
+            usuario = (Usuario) session.getAttribute("usuario");
+            
+        } catch (Exception e) {
+            try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("../../../../web/faces/index.xhtml");
+            } catch (IOException ex) {
+                Logger.getLogger(HeaderTemplate.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
     }
 
-    public String getUsuarioNome()
-    {
+    public String getUsuarioNome() {
         return usuario.getNome();
     }
 
-    public String getImagemUsuario()
-    {
-        if (usuario.getImagem() != null)
-        {
+    public String getImagemUsuario() {
+        if (usuario.getImagem() != null) {
             return "../../../img/user/" + usuario.getImagem();
-        } else
-        {
+        } else {
             return "../../../img/user/usuario.jpg";
         }
     }
@@ -54,13 +60,10 @@ public class HeaderTemplate extends ABaseNamed
      *
      * @return retorna uma string com o nome da função de um usuário
      */
-    public String getUsuarioFuncao()
-    {
-        try
-        {
+    public String getUsuarioFuncao() {
+        try {
             return usuario.consultarFuncao();
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             Mensageiro.mensagemError("Não foi possível localizar os dados!");
         }
         return "";
@@ -72,16 +75,13 @@ public class HeaderTemplate extends ABaseNamed
      *
      * @throws java.io.IOException
      */
-    public void closeSession()
-    {
-        try
-        {
+    public void closeSession() {
+        try {
             FacesContext fc = FacesContext.getCurrentInstance();
             HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
             session.invalidate();
             FacesContext.getCurrentInstance().getExternalContext().redirect("../../../../web/faces/index.xhtml");
-        } catch (IOException e)
-        {
+        } catch (IOException e) {
             Mensageiro.mensagemError("O ocerreu o seguinte erro ao executar esta operação:" + e.getMessage());
         }
     }

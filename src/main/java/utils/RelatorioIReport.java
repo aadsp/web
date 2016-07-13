@@ -35,7 +35,10 @@ public class RelatorioIReport
         String caminhoServidor = FacesContext.getCurrentInstance().getExternalContext().getRealPath("");
 
         InputStream inputStream = new FileInputStream(caminhoServidor + "/reports/model/" + nomeRelatorio + "/" + nomeRelatorio + ".jrxml");
-
+        String SUBREPORT_DIR = (caminhoServidor + "/reports/model/" + nomeRelatorio + "/").replaceAll("'\'", "'\\'"+"'\\'");
+        
+        parameters.put("SUBREPORT_DIR", SUBREPORT_DIR);
+        
         JasperDesign jasperDesign = JRXmlLoader.load(inputStream);
         JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, ConexaoSQLServer.conexao());
