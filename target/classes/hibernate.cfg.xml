@@ -6,7 +6,7 @@
         <!--Configuração de conexão de banco de dados e dialeto SQLServer-->
         <property name="hibernate.connection.driver_class">net.sourceforge.jtds.jdbc.Driver</property>
         <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
-        <property name="hibernate.connection.url">jdbc:jtds:sqlserver://10.10.1.60/AADSP</property>
+        <property name="hibernate.connection.url">jdbc:jtds:sqlserver://10.10.1.60/TESTE_AADSP</property>
         <property name="hibernate.connection.username">useraadsp</property>
         <property name="hibernate.connection.password">cb_aadsp_2016*</property>
         <property name="current_session_context_class">thread</property>
