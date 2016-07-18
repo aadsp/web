@@ -30,9 +30,9 @@ public class PontoComplexidadeContribuicao implements Serializable, IAnnotations
     private int AIE;
     @Column(name = "EE")
     private int EE;
-    @Column(name = "SE")
-    private int CE;
     @Column(name = "CE")
+    private int CE;
+    @Column(name = "SE")
     private int SE;
 
     public PontoComplexidadeNivel getNivel()
