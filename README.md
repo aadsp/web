@@ -1,6 +1,6 @@
 <strong> 
-  <h1>AADSP</h1>
-  <h2>Adaptive Approach for Deployment of Software Process </h2>
+  <h1>T-AADSP</h1>
+  <h2>Tool for Adaptive Approach for Deployment of Software Process </h2>
 </strong> 
  <p>
   O LABRASOFT, Grupo de Pesquisa Laboratório de Desenvolvimento de Software, propõe uma abordagem adaptativa para 
@@ -8,7 +8,7 @@
   a Adaptive Approach for Deployment of Software Process (AADSP). Essa abordagem tem como alicerce práticas 
   inovadoras em conformidade com o modelo MPS-BR, desenvolvido no Brasil pela Softex (SOFTEX, 2012), práticas de métodos 
   ágeis e o guia de conhecimento PMBOK da PMI (Project Management Institute) para gerenciamento de projetos, 
-  sendo adaptativa aos diversos perfis de MPEs.
+  sendo adaptativa aos diversos perfis de MPEs. O T-AADSP é uma ferramenta para auxiliar na implantação da abordagem AADSP nas MPEs.
  </p>
  <p><strong>CONHEÇA MAIS SOBRE A ABORDAGEM AADSP:</strong><a  target="_blank"  href="http://www.labrasoft.ifba.edu.br/aadsp"> Site do AADSP</a></p>
 <hr/> 
