@@ -10,8 +10,8 @@ import javax.inject.Named;
 import annotations.acesso.Acesso;
 import annotations.acesso.Funcao;
 import annotations.acesso.Pagina;
-import interfaces.ABaseNamed;
 import interfaces.ICadastro;
+import interfaces.ABaseNamed;
 import utils.Mensageiro;
 
 /**

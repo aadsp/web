@@ -13,7 +13,6 @@ import interfaces.ABaseNamed;
 import utils.Criptografia;
 import utils.Filtro;
 import utils.Mensageiro;
-import utils.RelatorioIReport;
 import utils.Response;
 
 @ViewScoped

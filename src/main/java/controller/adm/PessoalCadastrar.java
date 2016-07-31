@@ -9,8 +9,8 @@ import javax.inject.Named;
 import javax.mail.internet.ParseException;
 import annotations.acesso.Funcao;
 import annotations.acesso.Usuario;
-import interfaces.ABaseNamed;
 import interfaces.ICadastro;
+import interfaces.ABaseNamed;
 import utils.Mensageiro;
 
 /**

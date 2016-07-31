@@ -3,8 +3,8 @@ package controller.adm;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import annotations.acesso.Funcao;
-import interfaces.ABaseNamed;
 import interfaces.ICadastro;
+import interfaces.ABaseNamed;
 import utils.Mensageiro;
 
 /**

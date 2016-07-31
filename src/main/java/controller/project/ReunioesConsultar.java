@@ -11,6 +11,7 @@ import net.sf.jasperreports.engine.JRException;
 import annotations.projeto.Projeto;
 import interfaces.ABaseNamed;
 import interfaces.IConsulta;
+import interfaces.IFilter;
 import utils.Criptografia;
 import utils.Filtro;
 import utils.Mensageiro;
@@ -83,14 +84,14 @@ public class ReunioesConsultar extends ABaseNamed implements IConsulta
         }
     }
 
-    public Filtro getFiltro()
+    public IFilter getFiltro()
     {
-        return filtro;
+        return (IFilter) filtro;
     }
 
-    public void setFiltro(Filtro filtro)
+    public void setFiltro(IFilter filtro)
     {
-        this.filtro = filtro;
+        this.filtro = (Filtro) filtro;
     }
 
     private Projeto projeto;

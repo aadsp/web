@@ -6,8 +6,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import annotations.acesso.Usuario;
-import interfaces.ABaseNamed;
 import interfaces.ICadastro;
+import interfaces.ABaseNamed;
 import utils.Mensageiro;
 import utils.Session;
 import org.primefaces.event.FileUploadEvent;
@@ -46,7 +46,7 @@ public class AlterarImagem extends ABaseNamed implements ICadastro
 
         } catch (Exception e)
         {
-            Mensageiro.mensagemError("Não foi possível alterar a senha!");
+            Mensageiro.mensagemError("Não foi possível alterar a imagem!");
         }
     }
     

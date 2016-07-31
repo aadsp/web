@@ -9,7 +9,6 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import net.sf.jasperreports.engine.JRException;
 import annotations.projeto.Projeto;
-import annotations.projeto.ProjetoCronograma;
 import interfaces.ABaseNamed;
 import utils.Criptografia;
 import utils.Filtro;

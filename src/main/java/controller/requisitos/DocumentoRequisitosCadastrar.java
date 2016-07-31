@@ -5,8 +5,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.mail.MessagingException;
@@ -14,13 +12,11 @@ import annotations.requisitos.DocumentoRequisitos;
 import annotations.requisitos.DocumentoRequisitosTemplate;
 import annotations.requisitos.DocumentoRequisitosTipo;
 import annotations.projeto.Projeto;
-import annotations.acesso.Usuario;
 import interfaces.ABaseNamed;
 import interfaces.ICadastro;
 import utils.Criptografia;
 import utils.Mensageiro;
 import utils.Response;
-import utils.Session;
 import org.apache.commons.mail.EmailException;
 
 /**

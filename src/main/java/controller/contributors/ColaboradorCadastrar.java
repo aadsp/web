@@ -10,8 +10,8 @@ import javax.inject.Named;
 import javax.mail.internet.ParseException;
 import annotations.colaborador.Colaborador;
 import annotations.acesso.Usuario;
-import interfaces.ABaseNamed;
 import interfaces.ICadastro;
+import interfaces.ABaseNamed;
 import utils.Mensageiro;
 
 

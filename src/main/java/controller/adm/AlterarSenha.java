@@ -3,8 +3,9 @@ package controller.adm;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import annotations.acesso.Usuario;
-import interfaces.ABaseNamed;
 import interfaces.ICadastro;
+import interfaces.ABaseNamed;
+import utils.Criptografia;
 import utils.Mensageiro;
 import utils.Session;
 
@@ -24,7 +25,7 @@ public class AlterarSenha extends ABaseNamed implements ICadastro
             if (senha.equals(RepetirSenha))
             {
                 Usuario usuario = (Usuario) Session.getAttribute("usuario");
-                usuario.setSenha(senha);
+                usuario.setSenha(Criptografia.codificarParaSSH(senha));
                 usuario.editar();
                 Mensageiro.mensagemInfo("Senha alterada com sucesso");
             } else

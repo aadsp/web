@@ -3,8 +3,8 @@ package controller.contributors;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import annotations.tap.Empresa;
-import interfaces.ABaseNamed;
 import interfaces.ICadastro;
+import interfaces.ABaseNamed;
 import utils.Mensageiro;
 
 @ViewScoped

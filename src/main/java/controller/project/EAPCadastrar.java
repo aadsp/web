@@ -11,8 +11,8 @@ import javax.inject.Named;
 import annotations.projeto.EAP;
 import annotations.projeto.EAPTipo;
 import annotations.projeto.Projeto;
-import interfaces.ABaseNamed;
 import interfaces.ICadastro;
+import interfaces.ABaseNamed;
 import utils.Mensageiro;
 
 /**

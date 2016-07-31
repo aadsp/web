@@ -6,12 +6,15 @@ import javax.enterprise.context.SessionScoped;
 import javax.mail.MessagingException;
 import annotations.acesso.Usuario;
 import interfaces.ABaseNamed;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import utils.Email;
 import utils.GeradorDeSenha;
 import utils.Mensageiro;
 import utils.Response;
 import utils.Session;
 import org.apache.commons.mail.EmailException;
+import utils.Criptografia;
 
 /**
  * Classe principal do projeto, etapa de identificação do usuário por login e
@@ -30,9 +33,35 @@ public class Index extends ABaseNamed
      */
     public Index()
     {
-        usuario = new Usuario();
-        usuario.setLogin("");
-        usuario.setSenha("");
+        try
+        {
+            usuario = new Usuario();
+            usuario.setLogin("");
+            usuario.setSenha("");
+            this.senha = new String();
+            this.senha = "";
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemInfo("Ocorreu um erro ao iniciar!!");
+        }
+    }
+
+    public String getSenha()
+    {
+        return senha;
+    }
+
+    public void setSenha(String senha) 
+    {
+        try
+        {
+            this.senha = senha;
+            this.usuario.setSenha(Criptografia.codificarParaSSH(senha));
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e)
+        {
+            Mensageiro.mensagemInfo("Não foi possível aplicar codificação em senha!");
+        }
+
     }
 
     /**
@@ -42,11 +71,18 @@ public class Index extends ABaseNamed
      */
     public Usuario getUsuario()
     {
-        if (usuario == null)
+        try
         {
-            usuario = new Usuario();
-            usuario.setLogin("");
-            usuario.setSenha("");
+            if (usuario == null)
+            {
+                usuario = new Usuario();
+                usuario.setLogin("");
+                usuario.setSenha("");
+            }
+
+        } catch (Exception e)
+        {
+            Mensageiro.mensagemInfo("Ocorreu um erro ao iniciar!!");
         }
         return usuario;
     }
@@ -110,7 +146,7 @@ public class Index extends ABaseNamed
             {
                 String novaSenha = GeradorDeSenha.gerarCombinacaoNumerica();
                 Email.enviarEmailAlteracaoSenha(usuario.getNome(), usuario.getLogin(), novaSenha, usuario.getEmail());
-                usuario.setSenha(novaSenha);
+                usuario.setSenha(Criptografia.codificarParaSSH(novaSenha));
                 usuario.editar();
                 Mensageiro.mensagemInfo("Nova senha enviada para o e-mail do usuário!!");
             } else
@@ -135,6 +171,7 @@ public class Index extends ABaseNamed
         this.emailNovaSenha = emailNovaSenha;
     }
 
+    private String senha;
     private static final long serialVersionUID = 5585493974059809141L;
     private Usuario usuario;
     private String emailNovaSenha;

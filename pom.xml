@@ -18,6 +18,20 @@
     
     <dependencies>
         <dependency>
+            <groupId>framework</groupId>
+            <artifactId>framework</artifactId>
+            <version>1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/framework/target/framework-1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>model</groupId>
+            <artifactId>model</artifactId>
+            <version>1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/model/target/model-1.jar</systemPath>
+        </dependency>
+        <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
             <version>5.3</version>
@@ -26,12 +40,6 @@
             <groupId>org.primefaces.themes</groupId>
             <artifactId>all-themes</artifactId>
             <version>1.0.10</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.4</version>
-            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -139,16 +147,14 @@
         
         <resources>
             <resource>
-                    <directory>src/main/resources</directory>
-                    <includes>
-                            <include>**/*.xml</include>
-                            <include>**/*.properties</include>
-                    </includes>
-                    <filtering>true</filtering>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                    <include>**/*.properties</include>
+                </includes>
+                <filtering>true</filtering>
             </resource>
         </resources>
-
-        
     </build>
     <repositories>
         <repository>
@@ -156,6 +162,12 @@
             <id>PrimeFaces-maven-lib</id>
             <layout>default</layout>
             <name>Repository for library PrimeFaces-maven-lib</name>
+        </repository>
+        <repository>
+            <id>project_lib</id>
+            <name>Repository in project's lib dir</name>
+            <layout>default</layout>
+            <url>file:///${project.basedir}/lib</url>
         </repository>
     </repositories>
 </project>
