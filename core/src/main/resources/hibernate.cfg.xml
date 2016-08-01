@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!--Configuração de conexão de banco de dados e dialeto SQLServer-->
+        <property name="hibernate.connection.driver_class">net.sourceforge.jtds.jdbc.Driver</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+        <property name="hibernate.connection.url">jdbc:jtds:sqlserver://127.0.0.1:1433/AADSP</property>
+        <property name="hibernate.connection.username">sa</property>
+        <property name="hibernate.connection.password">12345</property>
+        <property name="current_session_context_class">thread</property>
+       
+        <!--Configuração de debug-->
+        <property name="show_sql">false</property> 
+        <property name="hibernate.format_sql">true</property> 
+        <property name="hibernate.generate_statistics">false</property> 
+        <property name="hibernate.use_sql_comments">true</property> 
+        <!--Usando as Configurações do C3PO para pool de conexão-->
+        <property name="c3po.min_size">5</property>
+        <property name="c3po.max_size">20</property>
+        <property name="c3po.timeout">300</property>
+        <property name="c3po.max_statements">50</property>
+        <property name="c3po.idle_test_period">3000</property>
+    
+        <!--Mapeando as tabelas do banco de dados-->
+        <!-- ACESSO -->
+        <mapping class="annotations.acesso.Acesso" />
+        <mapping class="annotations.acesso.Funcao" />
+        <mapping class="annotations.acesso.Pagina" />
+        <mapping class="annotations.acesso.Usuario" />
+        <!-- COLABORADOR -->
+        <mapping class="annotations.colaborador.Colaborador" />
+        <!-- PROJETO -->
+        <mapping class="annotations.projeto.DiagramaUML" />
+        <mapping class="annotations.projeto.DiagramaUMLTipo" />
+        <mapping class="annotations.projeto.EAP" />
+        <mapping class="annotations.projeto.EAPAtividade" />
+        <mapping class="annotations.projeto.EAPPacote" />
+        <mapping class="annotations.projeto.EAPTipo" />
+        <mapping class="annotations.projeto.Equipe" />
+        <mapping class="annotations.projeto.Projeto" />
+        <mapping class="annotations.projeto.ProjetoCronograma" />
+        <mapping class="annotations.projeto.ProjetoRecursosAdicionais" />
+        <mapping class="annotations.projeto.ProjetoTela" />
+        <mapping class="annotations.projeto.Responsavel" />
+        <mapping class="annotations.projeto.ReuniaoAta" />
+        <mapping class="annotations.projeto.PontoComplexidadeNivel" />
+        <mapping class="annotations.projeto.PontoComplexidadeArquivosInternos" />
+        <mapping class="annotations.projeto.PontoComplexidadeEntradasExternas" />
+        <mapping class="annotations.projeto.PontoComplexidadeSaidasExternas" />
+        <mapping class="annotations.projeto.PontoComplexidadeContribuicao" />
+        <mapping class="annotations.projeto.PontoGrauDeInfluencia" />
+        <mapping class="annotations.projeto.PontoTipoTransacaoTipo" />
+        <mapping class="annotations.projeto.PontoContarTipoTransacao" />
+        <mapping class="annotations.projeto.PontoTipoDadosTipo" />
+        <mapping class="annotations.projeto.PontoContarTipoDadosFuncao" />
+        <mapping class="annotations.projeto.PontoTipoDadosTipo" />
+        <mapping class="annotations.projeto.PontoCaracteristicaGeraisDosSistemas" />
+        <mapping class="annotations.projeto.PontoContarFatorDeAjuste" />
+        <!-- TAP -->
+        <mapping class="annotations.tap.Empresa" />
+        <mapping class="annotations.tap.Patrocinador" />
+        <mapping class="annotations.tap.Stakeholder" />
+        <mapping class="annotations.tap.StakeholderTAP" />
+        <mapping class="annotations.tap.TAP" />
+        <mapping class="annotations.tap.TAPEscopo" />
+        <mapping class="annotations.tap.TAPEscopoArea" />
+        <mapping class="annotations.tap.TAPEscopoTipo" />
+        <!-- REQUISITOS -->
+        <mapping class="annotations.requisitos.DocumentoRequisitos" />
+        <mapping class="annotations.requisitos.DocumentoRequisitosTemplate" />
+        <mapping class="annotations.requisitos.DocumentoRequisitosTipo" />
+        <mapping class="annotations.requisitos.RequisitosHistoria" />
+    </session-factory>
+</hibernate-configuration>

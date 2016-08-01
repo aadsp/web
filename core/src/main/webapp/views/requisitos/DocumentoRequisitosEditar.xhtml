@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link href="../../bootstrap/css/bootstrap-general.css" rel="stylesheet"/>
+        <script type="text/javascript" src="../../primefaces/js/showcase.js"></script>
+    </h:head>
+    <h:body>
+        <ui:composition template="template/template.xhtml">
+            <ui:define name="content">
+                <h:form id="form">
+                    <p:growl id="growl" showDetail="true" sticky="true" /> 
+                    <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+                    <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                        <img src="../../img/loading.gif" alt=""/>
+                    </p:dialog>
+                    <div class="margin-right-left-20">
+                        <div>
+                            <h3>DOCUMENTO DE REQUISITOS</h3>
+                            <div class="right">
+                                <a class="btn btn" href="DocumentoRequisitosConsultar.xhtml">VOLTAR</a>
+                            </div>
+                            <p><strong>DETALHAMENTO</strong></p>
+                            <div>
+                            </div>
+                            <div class="space-40"></div>
+                            <div class="control-group">  
+                                <p:menubar>
+                                    <p:submenu label="ADICIONAR INFORMAÇÕES" style="float: right">
+                                        <p:menuitem value="Novo requisito" onclick="PF('adicionarRequisitos').show();" icon="ui-icon-document" />
+                                        <p:menuitem value="Diagramas UML" onclick="PF('diagramasUML').show();" icon="ui-icon-document" />
+                                        <p:menuitem value="Projeto de Tela" onclick="PF('projetoDeTela').show();" icon="ui-icon-document" />
+                                    </p:submenu>
+                                </p:menubar>
+                                <p:tabView dynamic="true" cache="true">
+                                    <p:tab title="Dados Gerais">
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <p:outputLabel for="tituloProjeto" value="Título:" />
+                                            <p:outputLabel id="tituloProjeto" value="#{documentoRequisitosEditar.documentoRequisitos.projeto.tap.nome}" />
+                                            <p:outputLabel for="projetojustificativa" value="Justificativa:" />
+                                            <p:outputLabel id="projetojustificativa" value="#{documentoRequisitosEditar.documentoRequisitos.projeto.tap.justificativa}" />
+                                        </h:panelGrid>
+                                    </p:tab>
+                                    <p:tab title="Requisitos">
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <p:dataTable id="tblDocumentoRequisitos" style="text-align:center" var="requisitos" emptyMessage="Nenhum Registro Encontrado!"
+                                                         value="#{documentoRequisitosEditar.listarRequisitos()}"
+                                                         paginator="true" rows="5">
+                                                <p:column width="8">
+                                                    <f:facet name="header">
+                                                        <h:outputText value="código"/>
+                                                    </f:facet>
+                                                    <h:outputText value="RF[#{requisitos.ID}]" />
+                                                </p:column>
+                                                <p:column width="100">
+                                                    <f:facet name="header">
+                                                        <h:outputText value="nome"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{requisitos.descricao}" />
+                                                </p:column>
+                                                <p:column width="10">
+                                                    <p:commandButton icon="ui-icon-close" value="remover" actionListener="#{documentoRequisitosEditar.removerRequisitoProjeto(requisitos)}"/>
+                                                </p:column>
+                                            </p:dataTable>
+                                        </h:panelGrid>
+                                    </p:tab>
+                                    <p:tab title="Diagramas UML">
+                                        <p:dataTable id="tbl" style="text-align:center" var="diagrama" value="#{documentoRequisitosEditar.listarDiagramasUMLDoProjeto()}"
+                                                     paginator="true" rows="10" emptyMessage="Nenhum Registro Encontrado!">
+                                            <p:column width="360">
+                                                <f:facet name="header">
+                                                    <h:outputText value="diagrama" />
+                                                </f:facet>
+                                                <h:outputText value="#{diagrama.diagramaUMLTipo.descricao}" />
+                                            </p:column>
+                                            <p:column style="width:10px;text-align: center" >
+                                                <f:facet name="header">
+                                                    <h:outputText value="detalhar" />
+                                                </f:facet>
+                                                <h:commandLink value="imagem" target="_blank" actionListener="#{documentoRequisitosEditar.selecionarDiagrama(diagrama)}"/>
+                                            </p:column>
+                                            <p:column style="width:10px;text-align: center" >
+                                                <f:facet name="header">
+                                                    <h:outputText value="remover" />
+                                                </f:facet>
+                                                <p:commandButton icon="ui-icon-close" actionListener="#{documentoRequisitosEditar.remvoerDiagramaSelecionado(diagrama)}"/>
+                                            </p:column>
+                                        </p:dataTable>
+                                    </p:tab>
+                                    <p:tab title="Projeto de Tela (mockup)">
+                                        <p:dataTable id="tblProjetoMockup" style="text-align:center" var="mockup" value="#{documentoRequisitosEditar.listarMockupDoProjeto()}"
+                                                     paginator="true" rows="10" emptyMessage="Nenhum Registro Encontrado!">
+                                            <p:column width="80">
+                                                <f:facet name="header">
+                                                    <h:outputText value="código do mockup" />
+                                                </f:facet>
+                                                <h:outputText value="MC[#{mockup.ID}]" />
+                                            </p:column>
+                                            <p:column width="300">
+                                                <f:facet name="header">
+                                                    <h:outputText value="requisito associado" />
+                                                </f:facet>
+                                                <h:outputText value="#{mockup.requisitos.descricao}" />
+                                            </p:column>
+                                            <p:column style="width:10px;text-align: center" >
+                                                <f:facet name="header">
+                                                    <h:outputText value="detalhar" />
+                                                </f:facet>
+                                                <h:commandLink value="imagem" target="_blank" actionListener="#{documentoRequisitosEditar.selecionarMockup(mockup)}"/>
+                                            </p:column>
+
+                                            <p:column style="width:10px;text-align: center" >
+                                                <f:facet name="header">
+                                                    <h:outputText value="remover" />
+                                                </f:facet>
+                                                <p:commandButton icon="ui-icon-close" actionListener="#{documentoRequisitosEditar.removerMockupDoProjeto(mockup)}"/>
+                                            </p:column>
+
+                                        </p:dataTable>
+                                    </p:tab>
+                                </p:tabView>
+                            </div>
+                            <div class="space-20"></div>
+                            <p:commandButton class="btn btn-success" value="SALVAR" update="growl" actionListener="#{ATAEditar.editar()}"/>
+                            <p:commandButton class="btn btn-danger" value="EXCLUIR" update="growl" actionListener="#{ATAEditar.excluir()}"/>
+                        </div>
+                    </div>
+                    <div class="space-50"></div>
+
+                    <!-- Zona de modais do projeto -->
+                    <p:dialog header="Adicionar novo requisito ao projeto" showEffect="explode" widgetVar="adicionarRequisitos" modal="true" width="500" height="350">
+                        <h:panelGrid columns="1" cellpadding="5">
+                            <p:outputLabel for="nomeRequisito" value="Nome do requisito:" />
+                            <p:inputTextarea id="nomeRequisito" rows="1" cols="100" value="#{documentoRequisitosEditar.requisitos.acao}" counter="displayNomeRequisito" maxlength="150"  counterTemplate="{0} caracteres restantes."  autoResize="false"/>
+                            <h:outputText id="displayNomeRequisito" />
+                        </h:panelGrid>
+                        <p:commandButton value="SALVAR" update="growl" actionListener="#{documentoRequisitosEditar.cadastrarRequisitos()}"/>
+                    </p:dialog>
+
+                    <p:dialog header="DIAGRAMAS UML DO PROJETO" showEffect="explode" 
+                              widgetVar="diagramasUML" modal="true" width="800" height="300">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel for="imgDiagramaUML" value="Diagrama UML(imagem):" />
+                            <p:outputLabel id="imgDiagramaUML"  value="#{documentoRequisitosEditar.imagem}"/>
+                            <p:fileUpload fileUploadListener="#{documentoRequisitosEditar.fileUploadImagem}" mode="advanced" dragDropSupport="false"
+                                          update="imgDiagramaUML" sizeLimit="300000" fileLimit="1" allowTypes="/(\.|\/)(jpe?g|png)$/" />
+
+                        </h:panelGrid>
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel for="tipoDiagrama" value="Tipo do diagrama: " />
+                            <p:selectOneMenu id="tipoDiagrama"  value="#{documentoRequisitosEditar.tipoDiagramaSelecionado}" style="width:250px">
+                                <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
+                                <f:selectItems value="#{documentoRequisitosEditar.listarTiposDiagramUML()}" />
+                            </p:selectOneMenu>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" cellpadding="5">
+                            <p:commandButton value="SALVAR" update="growl" actionListener="#{documentoRequisitosEditar.salvarDiagrama()}" />
+                        </h:panelGrid>
+                    </p:dialog>
+
+                    <p:dialog header="PROJETO DE TELA" showEffect="explode" 
+                              widgetVar="projetoDeTela" modal="true" width="800" height="300">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel for="imgProjetoTela" value="Mockup (png ou jpeg):" />
+                            <p:outputLabel id="imgProjetoTela"  value="#{documentoRequisitosEditar.imgProjetoTela}"/>
+                            <p:fileUpload fileUploadListener="#{documentoRequisitosEditar.fileUploadImgProjetoTela}" mode="advanced" dragDropSupport="false"
+                                          update="imgProjetoTela" sizeLimit="300000" fileLimit="1" allowTypes="/(\.|\/)(jpe?g|png)$/" />
+
+                        </h:panelGrid>
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel for="descricaoMockup" value="Descrição:" />
+                            <p:inputTextarea id="descricaoMockup" rows="1" cols="800" required="true" 
+                                             value="#{documentoRequisitosEditar.descricaoProjetoTela}" 
+                                             counter="displayDescricaoMockup" maxlength="800" 
+                                             counterTemplate="{0} caracteres restantes." autoResize="false" />
+                            <h:outputText id="displayDescricaoMockup" />
+
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" cellpadding="5">
+                            <p:commandButton value="SALVAR" update="growl" actionListener="#{documentoRequisitosEditar.salvarProjetoDeTela()}" />
+                        </h:panelGrid>
+                    </p:dialog>
+
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

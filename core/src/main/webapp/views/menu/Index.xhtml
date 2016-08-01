@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <link rel="shortcut icon" href="../../img/favicon.ico"/>
+    </h:head>
+    <h:body>
+        <ui:composition template="template/template.xhtml">
+            <ui:define id="index" name="content">
+                <h:form>
+                    <p:growl id="growl" showDetail="true" sticky="true" />
+                    <div class="space-20"></div>
+                    <div class="margin-right-left-20">
+                        <div class="accordion" id="AccordionRecursosHumanos">
+                            <div class="accordion-group">
+                                <div class="accordion-heading">
+                                    <a class="accordion-toggle alert-info" data-toggle="collapse"
+                                       data-parent="#AccordionRecursosHumanos" href="#novidade1">
+                                        <b>Módulos</b> </a>
+                                </div>
+                                <div id="novidade1" class="accordion-body collapse in">
+                                    <div class="accordion-inner">
+                                        <div style="width:100%; margin: 10px auto auto auto;">
+                                            <div class="widget-painel">
+                                                <div class="height-200">
+                                                    <div class="widget-painel">
+                                                        <div class="height-200">
+                                                            <div class="menu-circle-black-boder" style="background-color: #000;">
+                                                                <div class="top-80">
+                                                                    <a style="color: #ffffff"  href="../projetos/Index.xhtml"><h3>PROJETOS</h3></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="widget-painel">
+                                                <div class="height-200">
+                                                    <div class="widget-painel">
+                                                        <div class="height-200">
+                                                            <div class="menu-circle-black-boder" style="background-color: #333333;">
+                                                                <div class="top-80">
+                                                                    <a style="color: #ffffff" href="../requisitos/Index.xhtml"><h3>REQUISITOS</h3></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="widget-painel">
+                                                <div class="height-200">
+                                                    <div class="widget-painel">
+                                                        <div class="height-200">
+                                                            <div class="menu-circle-black-boder" style="background-color: #666666;">
+                                                                <div class="top-80">
+                                                                    <a style="color: #ffffff" href="#"><h3>MUDANÇA</h3></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="widget-painel">
+                                                <div class="height-200">
+                                                    <div class="widget-painel">
+                                                        <div class="height-200">
+                                                            <div class="menu-circle-black-boder" style="background-color: #999999;">
+                                                                <div class="top-80">
+                                                                    <a style="color: #ffffff" href="../colaboradores/Index.xhtml"><h3>COLABORADOR</h3></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="widget-painel">
+                                                <div class="height-200">
+                                                    <div class="widget-painel">
+                                                        <div class="height-200">
+                                                            <div class="menu-circle-black-boder" style="background-color: #003366">
+                                                                <div class="top-80">
+                                                                    <a style="color: #ffffff" href="#"><h3>TESTES</h3></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="widget-painel">
+                                                <div class="height-200">
+                                                    <div class="widget-painel">
+                                                        <div class="height-200">
+                                                            <div class="menu-circle-black-boder" style="background-color: #003399;">
+                                                                <div class="top-80">
+                                                                    <a style="color: #ffffff" href="#"><h3>REUTILIZAÇÃO</h3></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+     
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="space-20"></div>
+                            <div class="accordion-group">
+                                <div class="accordion-heading">
+                                    <a class="accordion-toggle alert-info" data-toggle="collapse"
+                                       data-parent="#AccordionRecursosHumanos" href="#novidade2"><b>Gráfico</b>
+                                    </a>
+                                </div>
+                                <div id="novidade2" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <p>
+                                            <canvas id="GraficoRadar" style="width:100%;"></canvas>
+
+                                            <script type="text/javascript">
+
+                                                var options = {
+                                                    responsive: true
+                                                };
+
+                                                var data = {
+                                                    labels: ["Projetos", "Requisitos", "Configuração e Mudança", "Colaboradores", "Teste e Qualidade", "Reutilização"],
+                                                    datasets: [
+                                                        {
+                                                            label: "Dados Primários",
+                                                            fillColor: "rgba(220,220,220,0.2)",
+                                                            strokeColor: "#000",
+                                                            angleLineColor: "#000",
+                                                            scaleFontSize: 19,
+                                                            scaleFontColor: "#000",
+                                                            pointColor: "#000",
+                                                            pointStrokeColor: "#000",
+                                                            pointHighlightFill: "#000",
+                                                            pointHighlightStroke: "#000",
+                                                            data: [20, 35, 25, 20, 5, 15]
+                                                        },
+                                                    ]
+                                                };
+
+                                                window.onload = function () {
+
+                                                    var ctx = document.getElementById("GraficoRadar").getContext("2d");
+                                                    var RadarChart = new Chart(ctx).Radar(data, options);
+                                                }
+                                            </script>    
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="space-50"></div>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+    </h:body>
+</html>

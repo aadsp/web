@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link href="../../bootstrap/css/bootstrap-general.css" rel="stylesheet"/>
+        <script type="text/javascript" src="../../primefaces/js/showcase.js"></script>
+
+
+    </h:head>
+    <h:body>
+        <ui:composition template="template/template.xhtml">
+            <ui:define name="content">
+                <h:form id="form">
+                    <p:growl id="growl" showDetail="true" sticky="true" /> 
+                    <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+                    <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                        <img src="../../img/loading.gif" alt=""/>
+                    </p:dialog>
+                    <div class="margin-right-left-20">
+                        <div>
+                            <h3>EAP - ESTRUTURA ANALÍTICA DE PROJETO</h3>
+                            <h4><a class="label label-info">Título do Projeto:</a></h4>
+                            <h4><a class="label label-label">#{EAPEditar.eap.projeto.tap.nome.toUpperCase()}</a></h4>
+                            <div class="right">
+                                <a class="btn btn" href="EAPConsultar.xhtml">VOLTAR</a>
+                            </div>
+                            <p><strong>DETALHAMENTO</strong></p>
+                            <div>
+                            </div>
+                            <div class="space-40"></div>
+                            <div class="control-group">
+                                <p:menubar>
+                                    <p:submenu label="ADICIONAR INFORMAÇÕES" style="float: right">
+                                        <p:menuitem value="Atividade da EAP" onclick="PF('atividadesEAP').show();" icon="ui-icon-document" />
+                                        <p:menuitem value="Pacote de Atividade" onclick="PF('pacoteAtividade').show();" icon="ui-icon-document" />
+                                    </p:submenu>
+                                </p:menubar>
+                                <p:tabView dynamic="true" cache="true">
+                                    <p:tab title="Dados Gerais">
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <h:panelGrid columns="2" cellpadding="5">
+                                                <p:outputLabel for="projeto" value="Projeto: " />
+                                                <p:outputLabel id="projeto" value="#{EAPEditar.eap.projeto.tap.nome}" />
+                                                <p:outputLabel for="tipos" value="EAP Tipo: " />
+                                                <p:selectOneMenu id="tipos"  value="#{EAPEditar.tipoSelecionado}" style="width:150px">
+                                                    <f:selectItem itemLabel="#{EAPEditar.eap.eapTipo.descricao}" itemValue="#{EAPEditar.eap.eapTipo.ID}"/>
+                                                    <f:selectItems value="#{EAPEditar.eapTipos}" />
+                                                </p:selectOneMenu>
+
+                                                <p:outputLabel for="dataCadastro" value="Data Cadastro:" />
+                                                <p:outputLabel id="dataCadastro" value="#{EAPEditar.dataRealizacao}" >
+                                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                                </p:outputLabel>
+                                            </h:panelGrid>
+
+                                        </h:panelGrid>
+                                    </p:tab>
+                                    <p:tab title="Visualização">
+                                        <style type="text/css">
+                                            .ui-diagram-element {
+                                                border:0.1em dotted #000; 
+                                                width:auto; 
+                                                height:5em;
+                                                font-size: 12px; 
+                                                line-height: 1px;
+                                                padding-left: 10px;
+                                                padding-right: 10px; 
+                                                padding-top: 20px; 
+                                                text-align: center;
+                                            }
+                                        </style>
+                                        <div style="height: 400px; overflow-y: scroll">
+                                            <p:diagram value="#{EAPEditar.visualizacaoEAP}" style="width:100%;height:2000px;" styleClass="ui-widget-content" />
+                                        </div>
+                                    </p:tab>
+                                    <p:tab title="Atividades">
+                                        <p:dataTable id="tblAtividadesEAP" style="text-align:center" var="atividade" value="#{EAPEditar.listarAtividadesEAP()}"
+                                                     paginator="true" rows="10" emptyMessage="Nenhum Registro Encontrado!">
+                                            <p:column width="70">
+                                                <f:facet name="header">
+                                                    <h:outputText value="pacote" />
+                                                </f:facet>
+                                                <h:outputText value="#{atividade.eapPacote.descricao}" />
+                                            </p:column>
+                                            <p:column width="255">
+                                                <f:facet name="header">
+                                                    <h:outputText value="atividade" />
+                                                </f:facet>
+                                                <h:outputText value="#{atividade.descricao}" />
+                                            </p:column>
+                                            <p:column style="width:10px;text-align: center" >
+                                                <f:facet name="header">
+                                                    <h:outputText value="remover" />
+                                                </f:facet>
+                                                <p:commandButton icon="ui-icon-close" actionListener="#{EAPEditar.removerAtividade(atividade)}"/>
+                                            </p:column>
+                                        </p:dataTable>
+                                    </p:tab>
+                                    <p:tab title="Pacotes">
+                                        <p:dataTable id="tblPacoteAtividadesEAP" style="text-align:center" var="pacote" value="#{EAPEditar.listarPacotesAtividadesProjeto()}"
+                                                     paginator="true" rows="10" emptyMessage="Nenhum Registro Encontrado!">
+
+                                            <p:column width="300">
+                                                <f:facet name="header">
+                                                    <h:outputText value="pacote" />
+                                                </f:facet>
+                                                <h:outputText value="#{pacote.descricao}" />
+                                            </p:column>
+                                            <p:column style="width:10px;text-align: center" >
+                                                <f:facet name="header">
+                                                    <h:outputText value="remover" />
+                                                </f:facet>
+                                                <p:commandButton icon="ui-icon-close" actionListener="#{EAPEditar.removerPacoteAtividade(pacote)}"/>
+                                            </p:column>
+                                        </p:dataTable>
+                                    </p:tab>
+                                </p:tabView>
+                            </div>
+                            <div class="space-20"></div>
+                            <p:commandButton class="btn btn-success" value="SALVAR" update="growl" actionListener="#{EAPEditar.editar()}"/>
+                            <p:commandButton class="btn btn-danger" value="EXCLUIR" update="growl" actionListener="#{EAPEditar.excluir()}"/>
+                        </div>
+                    </div>
+                    <div class="space-50"></div>
+
+                    <!--Modal região -->
+                    <p:dialog header="NOVA ATIVIDADE DA EAP" showEffect="explode" 
+                              widgetVar="atividadesEAP" modal="true" width="800" height="300">
+                        <h:panelGrid columns="1" cellpadding="5">
+                            <p:outputLabel for="atividade" value="Atividade:" />
+                            <p:inputTextarea id="atividade" rows="1" cols="255" required="false" value="#{EAPEditar.textoAtividade}" counter="descricaoAtividade" maxlength="255" counterTemplate="{0} caracteres restantes." autoResize="false" />
+                            <h:outputText id="descricaoAtividade" />
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" cellpadding="5">
+                            <p:outputLabel for="pacoteDoProjeto" value="Pacote: " />
+                            <p:selectOneMenu id="pacoteDoProjeto"  value="#{EAPEditar.pacoteSelecionado}" style="width:150px">
+                                <f:selectItem itemLabel="Selecionar Pacote" itemValue="" noSelectionOption="true" />
+                                <f:selectItems value="#{EAPEditar.eapPacotesAtividades}" />
+                            </p:selectOneMenu>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" cellpadding="5">
+                            <p:commandButton value="SALVAR" update="growl" actionListener="#{EAPEditar.salvarAtividade()}" />
+                        </h:panelGrid>
+
+                    </p:dialog>
+
+                    <p:dialog header="NOVO PACOTE DE  ATIVIDADE DA EAP" showEffect="explode" 
+                              widgetVar="pacoteAtividade" modal="true" width="800" height="300">
+                        <h:panelGrid columns="1" cellpadding="5">
+                            <p:outputLabel for="descricaoPacote" value="Nome do pacote de Atividade:" />
+                            <p:inputTextarea id="descricaoPacote" rows="1" cols="60" required="false" value="#{EAPEditar.textoPacote}" counter="displaydadosDescricaoPacote" maxlength="60" counterTemplate="{0} caracteres restantes." autoResize="false" />
+                            <h:outputText id="displaydadosDescricaoPacote" />
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" cellpadding="5">
+                            <p:commandButton value="SALVAR" update="growl" actionListener="#{EAPEditar.salvarPacoteAtividade()}" />
+                        </h:panelGrid>
+                    </p:dialog>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
