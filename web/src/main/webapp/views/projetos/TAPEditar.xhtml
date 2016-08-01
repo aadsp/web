@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link href="../../bootstrap/css/bootstrap-general.css" rel="stylesheet"/>
+        <script type="text/javascript" src="../../primefaces/js/showcase.js"></script>
+    </h:head>
+    <h:body>
+        <ui:composition template="template/template.xhtml">
+            <ui:define name="content">
+                <h:form id="form">
+                    <p:growl id="growl" showDetail="true" sticky="true" /> 
+                    <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+                    <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                        <img src="../../img/loading.gif" alt=""/>
+                    </p:dialog>
+                    <div class="margin-right-left-20">
+                        <div>
+                            <h3>TAP - TERMO DE ABERTURA DE PROJETO DE SOFTWARE</h3>
+                            <h4><a class="label label-info">Título do Projeto:</a></h4>
+                            <h4><a class="label label-label">#{TAPEditar.tap.nome.toUpperCase()}</a></h4>
+                            <div class="right">
+                                <a class="btn btn" href="TAPConsultar.xhtml">VOLTAR</a>
+                            </div>
+                            <p><strong>DETALHAMENTO</strong></p>
+                            <div>
+                            </div>
+                            <div class="space-40"></div>
+                            <div class="control-group"> 
+                                <p:menubar>
+                                    <p:submenu label="ADICIONAR INFORMAÇÕES" style="float: right">
+                                        <p:menuitem value="Responsável" onclick="PF('responsavelProjeto').show();" icon="ui-icon-document" />
+                                        <p:menuitem value="Stakeholders" onclick="PF('stakeholdersProjeto').show();" icon="ui-icon-document" />
+                                        <p:menuitem value="Equipe" onclick="PF('equipeProjeto').show();" icon="ui-icon-document" />
+                                        <p:submenu label="Patrocinador" icon="ui-icon-contact">
+                                            <p:menuitem value="Empresa"  onclick="PF('patrocinadorEmpresaProjeto').show();" icon="ui-icon-document" />
+                                            <p:menuitem value="Stakeholders" onclick="PF('patrocinadorStakeholderProjeto').show();" icon="ui-icon-document" />
+                                        </p:submenu>
+                                    </p:submenu>
+                                </p:menubar>    
+                                <p:tabView scrollable="true">
+                                    <p:tab title="Pré-Projeto">
+                                        <h:panelGrid columns="3" cellpadding="5">
+                                            <p:outputLabel for="nomeProjeto" value="Nome do projeto:" />
+                                            <p:inputTextarea id="nomeProjeto" rows="1" cols="400" required="true" value="#{TAPEditar.tap.nome}" counter="displayProjeto" maxlength="250" counterTemplate="{0} caracteres restantes." autoResize="false" />
+                                            <h:outputText id="displayProjeto" />
+
+                                            <p:outputLabel for="justificativa" value="Justificativa:" />
+                                            <p:inputTextarea id="justificativa" rows="1" cols="30" required="true" value="#{TAPEditar.tap.justificativa}" counter="displayJustificativa" maxlength="500" counterTemplate="{0} caracteres restantes."  autoResize="false"/>
+                                            <h:outputText id="displayJustificativa" />
+
+                                            <p:outputLabel for="objetivo" value="Objetivo:" />
+                                            <p:inputTextarea id="objetivo"  rows="1" cols="30" required="true" value="#{TAPEditar.tap.objetivo}" counter="displayObjetivo" maxlength="500" counterTemplate="{0} caracteres restantes."  autoResize="false"/>
+                                            <h:outputText id="displayObjetivo" />
+
+
+                                        </h:panelGrid>
+                                    </p:tab>
+                                    <p:tab title="Stakeholder">
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <p:dataTable id="tblStakeholder" style="text-align:center" var="stakeholder" emptyMessage="Nenhum Registro Encontrado!"
+                                                         value="#{TAPEditar.listarStakeholderTAP()}"
+                                                         paginator="true" rows="5">
+                                                <p:column width="100">
+                                                    <f:facet name="header">
+                                                        <h:outputText value="nome"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{stakeholder.consultarNomeStakeholder()}" />
+                                                </p:column>
+                                                <p:column width="10">
+                                                    <p:commandButton icon="ui-icon-close" value="remover" actionListener="#{TAPEditar.removerStakeholderTAP(stakeholder)}"/>
+                                                </p:column>
+                                            </p:dataTable>
+                                        </h:panelGrid>
+                                    </p:tab>
+
+                                    <p:tab title="Alinhamento">
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <p:outputLabel for="alinhamentoEstrategico" value="Alinhamento estratégico:" />
+                                            <p:inputTextarea id="alinhamentoEstrategico" rows="1" cols="100" value="#{TAPEditar.tap.alinhamentoEstrategico}" counter="displayAlinhamento" maxlength="500" counterTemplate="{0} caracteres restantes."  autoResize="false"/>
+                                            <h:outputText id="displayAlinhamento" />
+                                        </h:panelGrid>
+                                    </p:tab> 
+                                    <p:tab title="Orçamento">
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <p:outputLabel for="custo" value="Orçamento inícial:" />
+                                            <p:inputText id="custo" value="#{TAPEditar.tap.custo}">
+                                                <f:convertNumber pattern="#,##0.00"></f:convertNumber>
+                                                <p:ajax update="custo" process="custo" event="change" />
+                                            </p:inputText>
+
+                                        </h:panelGrid>
+                                    </p:tab>   
+                                    <p:tab title="Cronograma">
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <p:outputLabel for="dataInicio" value="Data de início" />
+                                            <p:calendar id="dataInicio" value="#{TAPEditar.dataInicio}" pattern="dd/MM/yyyy" mask="true" />
+
+                                            <p:outputLabel for="dataTermino" value="Data de término" />
+                                            <p:calendar id="dataTermino" value="#{TAPEditar.dataFim}" pattern="dd/MM/yyyy" mask="true" />
+                                        </h:panelGrid>
+                                    </p:tab>
+
+                                    <p:tab title="Fundamentação">
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <p:outputLabel for="premissas" value="Premissas:" />
+                                            <p:inputTextarea id="premissas" rows="1" cols="400" value="#{TAPEditar.tap.premissas}" counter="displayPremissas" maxlength="250" counterTemplate="{0} caracteres restantes." autoResize="false"/>
+                                            <h:outputText id="displayPremissas" />
+                                        </h:panelGrid>
+                                    </p:tab>  
+
+                                    <p:tab title="Restrições">
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <p:outputLabel for="restricoes" value="Restrições:" />
+                                            <p:inputTextarea id="restricoes" rows="1" cols="30" value="#{TAPEditar.tap.restricoes}" counter="displayrestricoes" maxlength="250" counterTemplate="{0} caracteres restantes." autoResize="false"/>                      
+                                            <h:outputText id="displayrestricoes" />
+                                        </h:panelGrid>
+                                    </p:tab>
+                                    <p:tab title="Levantamento dos Riscos">
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <p:outputLabel for="riscosIniciais" value="Riscos Iniciais:" />
+                                            <p:inputTextarea id="riscosIniciais" rows="1" cols="30" value="#{TAPEditar.tap.riscosIniciais}" counter="displayIniciais" maxlength="300" counterTemplate="{0} caracteres restantes." autoResize="false"/>
+                                            <h:outputText id="displayIniciais" />
+
+                                        </h:panelGrid>
+                                    </p:tab>
+                                    <p:tab title="Responsável">
+                                        <a class="label label-info" style="color:#ffffff;font-size:14px">RESPONSÁVEL:</a>
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <p:dataTable id="tblusuarios" style="text-align:center" var="usuarios" emptyMessage="Nenhum Registro Encontrado!"
+                                                         value="#{TAPEditar.listarResponsaveis()}"
+                                                         paginator="true" rows="5">
+                                                <p:column width="30">
+                                                    <f:facet name="header">
+                                                        <h:outputText value="nome"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{usuarios.nome}" />
+                                                </p:column>
+                                                <p:column width="30">
+                                                    <f:facet name="header">
+                                                        <h:outputText value="função"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{usuarios.consultarFuncao()}" />
+                                                </p:column>
+                                                <p:column width="10">
+                                                    <p:commandButton icon="ui-icon-close" value="remover" actionListener="#{TAPEditar.removerResponsavel(usuario)}"/>
+                                                </p:column> 
+
+                                            </p:dataTable>
+
+                                        </h:panelGrid>
+                                    </p:tab>
+
+                                    <p:tab title="Patrocinador">
+
+                                        <h:panelGrid columns="1" cellpadding="5">
+                                            <a class="label label-info" style="color:#ffffff;font-size:14px">EMPRESAS</a>
+                                            <p:dataTable id="tblEmpresasPatrocinadoras" style="text-align:center" var="empresas" emptyMessage="Nenhum Registro Encontrado!"
+                                                         value="#{TAPEditar.listarEmpresasPatrocinadoras()}"
+                                                         paginator="true" rows="5">
+                                                <p:column width="30">
+                                                    <f:facet name="header">
+                                                        <h:outputText value="razão social"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{empresas.consultarNomeEmpresa()}" />
+                                                </p:column>
+
+                                                <p:column width="10">
+                                                    <p:commandButton icon="ui-icon-close" value="remover" actionListener="#{TAPEditar.removerEmpresaPatrocinadora(empresas)}"/>
+                                                </p:column> 
+
+                                            </p:dataTable>
+
+                                            <a class="label label-info" style="color:#ffffff;font-size:14px">STAKEHOLDERS</a>
+                                            <p:dataTable id="tblStakeholderPatrocinadores" style="text-align:center" var="stakeholder" emptyMessage="Nenhum Registro Encontrado!"
+                                                         value="#{TAPEditar.listarStakeholderPatrocinadores()}"
+                                                         paginator="true" rows="5">
+                                                <p:column width="30">
+                                                    <f:facet name="header">
+                                                        <h:outputText value="nomel"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{stakeholder.consultarNomeStakeholder()}" />
+                                                </p:column>
+                                                <p:column width="10">
+                                                    <p:commandButton icon="ui-icon-close" value="remover" actionListener="#{TAPEditar.removerStakeholderPatrocinador(stakeholder)}"/>
+                                                </p:column> 
+
+                                            </p:dataTable>
+
+                                        </h:panelGrid>
+                                    </p:tab>  
+
+                                    <p:tab title="Equipe">
+                                        <a class="label label-info" style="color:#ffffff;font-size:14px">EQUIPE:</a>
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <p:dataTable id="tblEquipe" style="text-align:center" var="funcao" emptyMessage="Nenhum Registro Encontrado!"
+                                                         value="#{TAPEditar.listarEquipe()}"
+                                                         paginator="true" rows="5">
+                                                <p:column width="100">
+                                                    <f:facet name="header">
+                                                        <h:outputText value="nome"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{funcao.consultarNomeFuncao()}" />
+                                                </p:column>
+                                                <p:column width="10">
+                                                    <p:commandButton icon="ui-icon-close" value="remover" actionListener="#{TAPEditar.removerEquipe(funcao)}"/>
+                                                </p:column>
+                                            </p:dataTable>
+                                        </h:panelGrid>
+                                    </p:tab>
+                                </p:tabView>
+                            </div>
+                            <div class="space-20"></div>
+                            <div>
+                                <p:commandButton class="btn btn-success" value="SALVAR" update="growl" actionListener="#{TAPEditar.editar()}"/>
+                                <p:commandButton class="btn btn-danger" value="EXCLUIR" update="growl" actionListener="#{TAPEditar.excluir()}"/>
+                            </div>  
+
+                        </div>
+                    </div>
+                    <div class="space-50"></div>
+
+                    <!--Modal região -->
+                    <p:dialog header="Adicionar responsável ao projeto" showEffect="explode" widgetVar="responsavelProjeto" modal="true" width="600" height="300">
+                        <p:dataTable id="tblusuarios" style="text-align:center" var="usuarios" emptyMessage="Nenhum Registro Encontrado!"
+                                     value="#{TAPEditar.listarUsuarios()}"
+                                     paginator="true" rows="5">
+                            <p:column width="5">
+                                <f:facet name="header">
+                                    <h:outputText value="ID"/>
+                                </f:facet>
+                                <h:outputText value="#{usuarios.ID}" />
+                            </p:column>
+                            <p:column width="30">
+                                <f:facet name="header">
+                                    <h:outputText value="nome"/>
+                                </f:facet>
+                                <h:outputText value="#{usuarios.nome}" />
+                            </p:column>
+                            <p:column width="30">
+                                <f:facet name="header">
+                                    <h:outputText value="função"/>
+                                </f:facet>
+                                <h:outputText value="#{usuarios.consultarFuncao()}" />
+                            </p:column>
+                            <p:column width="10">
+                                <p:commandButton icon="ui-icon-disk" value="add" actionListener="#{TAPEditar.addResponsavel(usuarios)}"/>
+                            </p:column>    
+                        </p:dataTable>
+                    </p:dialog>
+
+                    <p:dialog header="Adicionar equipe ao projeto" showEffect="explode" widgetVar="equipeProjeto" modal="true" width="500" height="350">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:dataTable id="tblFuncoes" style="text-align:center" var="funcoes" emptyMessage="Nenhum Registro Encontrado!"
+                                         value="#{TAPEditar.listarFuncoes()}"
+                                         paginator="true" rows="5">
+                                <p:column width="100">
+                                    <f:facet name="header">
+                                        <h:outputText value="nome"/>
+                                    </f:facet>
+                                    <h:outputText value="#{funcoes.descricao}" />
+                                </p:column>
+                                <p:column width="10">
+                                    <p:commandButton icon="ui-icon-disk" value="add" actionListener="#{TAPEditar.addFuncoes(funcoes)}"/>
+                                </p:column>
+                            </p:dataTable>
+                        </h:panelGrid>
+                    </p:dialog>
+
+                    <p:dialog header="Adicionar stakeholder ao projeto" showEffect="explode" widgetVar="stakeholdersProjeto" modal="true" width="500" height="350">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:dataTable id="tblStakeholders" style="text-align:center" var="stakeholder" emptyMessage="Nenhum Registro Encontrado!"
+                                         value="#{TAPEditar.listarStakeholders()}"
+                                         paginator="true" rows="5">
+                                <p:column width="100">
+                                    <f:facet name="header">
+                                        <h:outputText value="nome"/>
+                                    </f:facet>
+                                    <h:outputText value="#{stakeholder.nome}" />
+                                </p:column>
+                                <p:column width="10">
+                                    <p:commandButton icon="ui-icon-disk" value="add" actionListener="#{TAPEditar.addStakeholder(stakeholder)}"/>
+                                </p:column>
+                            </p:dataTable>
+                        </h:panelGrid> 
+                    </p:dialog>
+
+                    <p:dialog header="Adicionar empresa patrocinadora do projeto" showEffect="explode" widgetVar="patrocinadorEmpresaProjeto" modal="true" width="600" height="350">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:dataTable id="tblEmpresaPatrocinador" style="text-align:center" var="empresa" emptyMessage="Nenhum Registro Encontrado!"
+                                         value="#{TAPEditar.listarEmpresasPatrocinadora()}"
+                                         paginator="true" rows="5">
+                                <p:column width="50">
+                                    <f:facet name="header">
+                                        <h:outputText value="nome"/>
+                                    </f:facet>
+                                    <h:outputText value="#{empresa.razaoSocial}" />
+                                </p:column>
+                                <p:column width="50">
+                                    <f:facet name="header">
+                                        <h:outputText value="cnpj"/>
+                                    </f:facet>
+                                    <h:outputText value="#{empresa.cnpj}" />
+                                </p:column>
+                                <p:column width="10">
+                                    <p:commandButton icon="ui-icon-disk" value="add" actionListener="#{TAPEditar.addEmpresaPatrocinador(empresa)}"/>
+                                </p:column>
+                            </p:dataTable>
+                        </h:panelGrid> 
+                    </p:dialog>    
+
+                    <p:dialog header="Adicionar stakeholder patrocinador do projeto" showEffect="explode" widgetVar="patrocinadorStakeholderProjeto" modal="true" width="600" height="350">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:dataTable id="tblStakeholdersPatrocinador" style="text-align:center" var="stakeholder" emptyMessage="Nenhum Registro Encontrado!"
+                                         value="#{TAPEditar.listarStakeholderPatrocinador()}"
+                                         paginator="true" rows="5">
+                                <p:column width="50">
+                                    <f:facet name="header">
+                                        <h:outputText value="nome"/>
+                                    </f:facet>
+                                    <h:outputText value="#{stakeholder.nome}" />
+                                </p:column>
+                                <p:column width="50">
+                                    <f:facet name="header">
+                                        <h:outputText value="cpf"/>
+                                    </f:facet>
+                                    <h:outputText value="#{stakeholder.cpf}" />
+                                </p:column>
+                                <p:column width="10">
+                                    <p:commandButton icon="ui-icon-disk" value="add" actionListener="#{TAPEditar.addStakeholderPatrocinador(stakeholder)}"/>
+                                </p:column>
+                            </p:dataTable>
+                        </h:panelGrid> 
+                    </p:dialog>
+
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

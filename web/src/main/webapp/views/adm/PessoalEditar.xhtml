@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link href="../../bootstrap/css/bootstrap-general.css" rel="stylesheet"/>
+        <script type="text/javascript" src="../../primefaces/js/showcase.js"></script>
+    </h:head>
+    <h:body>
+        <ui:composition template="template/template.xhtml">
+            <ui:define name="content">
+                <h:form id="form">
+                    <p:growl id="growl" showDetail="true" sticky="true" /> 
+                    <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+                    <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                        <img src="../../img/loading.gif" alt=""/>
+                    </p:dialog>
+                    <div class="margin-right-left-20">
+                        <div>
+                            <h3>PESSOAL</h3>
+                            <div class="right">
+                                <a class="btn btn" href="PessoalConsultar.xhtml">VOLTAR</a>
+                            </div>
+                            <p><strong>DETALHAMENTO</strong></p>
+                            <div>
+                            </div>
+                            <div class="space-40"></div>
+                            <div class="control-group">   
+                                <p:tabView dynamic="true" cache="true">
+                                    <p:tab title="Dados Gerais">
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <p:outputLabel for="nome" value="Nome (completo):" />
+                                            <p:inputText id="nome" maxlength="80" value="#{pessoalEditar.usuario.nome}"/>
+
+                                            <p:outputLabel for="data" value="Data de Nascimento" />
+                                            <p:calendar id="data" value="#{pessoalEditar.data}" pattern="dd/MM/yyyy" mask="true" />
+
+                                            <p:outputLabel for="rg" value="RG:" />
+                                            <p:inputText id="rg" maxlength="30" value="#{pessoalEditar.usuario.rg}"/>
+
+                                            <p:outputLabel for="cpf" value="CPF:" />
+                                            <p:inputText id="cpf" maxlength="30" value="#{pessoalEditar.usuario.cpf}"/>
+
+                                            <p:outputLabel for="email" value="E-mail:" />
+                                            <p:inputText id="email" maxlength="100" value="#{pessoalEditar.usuario.email}"/>
+
+                                            <p:outputLabel for="login" value="Login:" />
+                                            <p:inputText id="login" maxlength="30" value="#{pessoalEditar.usuario.login}"/>
+                                            
+                                            <p:outputLabel for="funcao" value="Função: " />
+                                            <p:selectOneMenu id="funcao"  value="#{pessoalEditar.funcaoSelecionada}" style="width:150px">
+                                                <f:selectItem itemLabel="#{pessoalEditar.usuario.consultarFuncao()}" itemValue="#{pessoalEditar.usuario.funcao.ID}" noSelectionOption="true" />
+                                                <f:selectItems value="#{pessoalEditar.funcoes}" />
+                                            </p:selectOneMenu>
+                                            
+                                            <p:outputLabel for="imagemUsuario" value="Imagem:" />
+                                            <p:outputLabel id="imagemUsuario"  value="#{pessoalEditar.imagem}"/>
+                                            
+                                            <p:fileUpload fileUploadListener="#{pessoalEditar.fileUploadImagem}" mode="advanced" dragDropSupport="false"
+                                                          update="imagemUsuario" sizeLimit="200000" fileLimit="1" allowTypes="/(\.|\/)(jpe?g|png)$/" />
+                                  
+                                        </h:panelGrid>
+                                    </p:tab>
+                                </p:tabView>
+                            </div>
+                            <div class="space-20"></div>
+
+                            <p:commandButton class="btn btn-success" value="SALVAR" update="growl" actionListener="#{pessoalEditar.editar()}"/>
+                            <p:commandButton class="btn btn-warning" value="ALTERAR SENHA" update="growl" actionListener="#{pessoalEditar.alterarSenha()}"/>
+                            <p:commandButton class="btn btn-danger" value="EXCLUIR" update="growl" actionListener="#{pessoalEditar.excluir()}"/>
+                        </div>
+                    </div>
+                    <div class="space-50"></div>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

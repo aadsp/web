@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RE_recursos" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="9c446f4e-ab22-49ba-93e2-8d196f5a9a5c">
+	<property name="ireport.zoom" value="1.6105100000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="ID_projeto" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT 
+       RA.descricao
+      ,RA.dataCadastro
+      ,RA.valor
+  FROM AADSP.PROJETO.RECURSOS_ADICIONAIS RA
+  WHERE RA.ID_projeto = $P{ID_projeto}]]>
+	</queryString>
+	<field name="descricao" class="java.lang.String"/>
+	<field name="dataCadastro" class="java.sql.Timestamp"/>
+	<field name="valor" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="41" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="14" width="555" height="1" uuid="58ec82a4-0dbd-4fce-9c6a-b45dddf9ff81"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="1" width="109" height="13" forecolor="#FFFFFF" backcolor="#000000" uuid="23bef847-4ed0-43d1-9251-2212eb1d1d8e"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dados Gerais]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="21" width="212" height="20" uuid="ec08f572-98d7-43e2-9364-9d75e0a2d5a6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[recurso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="221" y="21" width="204" height="20" uuid="386925a8-2a38-47e7-965d-ab5199d26cab"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[data cadastro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="425" y="21" width="130" height="20" uuid="7c1df4bd-ac01-4ef1-bf69-fb71a2600134"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[valor]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="9" y="0" width="212" height="20" uuid="59a7128a-a351-4f4d-8034-c7883016444f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="221" y="0" width="204" height="20" uuid="971c5f1a-3170-4107-b8d1-737bc2e58bcb"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{dataCadastro}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="425" y="0" width="120" height="20" uuid="c4d2a5ad-4d13-40e9-a934-a14c00c6c4a9"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

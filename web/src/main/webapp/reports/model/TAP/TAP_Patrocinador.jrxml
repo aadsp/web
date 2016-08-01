@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TAP_Patrocinador" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="5ea7b672-b1fd-49a4-8a78-720440f9f41a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="ID_tap" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT E.razaoSocial, e.cnpj cpfCnpj,'EMPRESA'TIPO  FROM TAP.PATROCINADOR P
+INNER JOIN TAP.TAP T
+ON P.ID_tap = T.ID_tap
+INNER JOIN TAP.EMPRESA E
+ON E.ID_empresa = P.ID_empresa
+WHERE T.ID_tap = $P{ID_tap}
+UNION
+SELECT S.nome, s.cpf cpfCnpj,'STAKEHOLDER'TIPO FROM TAP.PATROCINADOR P
+INNER JOIN TAP.TAP T
+ON P.ID_tap = T.ID_tap
+INNER JOIN TAP.STAKEHOLDER S
+ON P.ID_stakeholder = S.ID_stakeholder
+WHERE T.ID_tap = $P{ID_tap}]]>
+	</queryString>
+	<field name="razaoSocial" class="java.lang.String"/>
+	<field name="cpfCnpj" class="java.lang.String"/>
+	<field name="TIPO" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="250" height="20" uuid="74958725-cff6-43b9-a1e0-927686286a74"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="0" width="118" height="20" uuid="428ffbb0-35a8-4d92-9186-84a7e83d9be6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CPF / CNPJ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="368" y="0" width="187" height="20" uuid="3d5a8606-8f0d-43f8-9094-c06a161a99d7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="34" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="250" height="34" uuid="b2f8b06c-eb6a-4e38-9989-22dbddb07857"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{razaoSocial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="250" y="0" width="118" height="34" uuid="8a4cba6c-c0c9-4a3b-b934-629aa6114ac3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{cpfCnpj}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="368" y="0" width="187" height="34" uuid="610e2402-4716-4c2f-a2ac-7e22b1a3be04"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{TIPO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link href="../../bootstrap/css/bootstrap-general.css" rel="stylesheet"/>
+        <script type="text/javascript" src="../../primefaces/js/showcase.js"></script>
+    </h:head>
+    <h:body>
+        <ui:composition template="template/template.xhtml">
+            <ui:define name="content">
+                <h:form id="form">
+                    <p:growl id="growl" showDetail="true" sticky="true" /> 
+                    <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+                    <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                        <img src="../../img/loading.gif" alt=""/>
+                    </p:dialog>
+                    <div class="margin-right-left-20">
+                        <div>
+                            <h3>DOCUMENTO DE REQUISITOS</h3>
+                            <div class="right">
+                                <p:commandButton class="btn btn-info" ajax="true" onclick="PF('modelosDocRequisitos').show();" value="MODELOS"/>
+                                <a class="btn btn" href="DocumentoRequisitosConsultar.xhtml">VOLTAR</a>
+                            </div>
+                            <p><strong>CADASTRO</strong></p>
+                            <div>
+                            </div>
+                            <div class="space-40"></div>
+                            <div class="control-group">   
+                                <p:tabView scrollable="true" cache="true">
+                                    <p:tab title="Configuração do Documento">
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <p:outputLabel for="projeto" value="Projeto: " />
+                                            <p:selectOneMenu id="projeto"  value="#{documentoRequisitosCadastrar.projetoSelecionado}" style="width:150px">
+                                                <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
+                                                <f:selectItems value="#{documentoRequisitosCadastrar.projetos()}" />
+                                            </p:selectOneMenu>
+                                        </h:panelGrid>
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                             <p:outputLabel for="tipoDocReq" value="Tipo de documento de requisitos: " />
+                                             <p:selectOneMenu id="tipoDocReq"  value="#{documentoRequisitosCadastrar.tipoDocumentoRequisitoSelecionado}" style="width:150px">
+                                                <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
+                                                <f:selectItems value="#{documentoRequisitosCadastrar.tiposDocumentoRequisitos()}" />
+                                            </p:selectOneMenu>
+                                        </h:panelGrid>
+                                    </p:tab>
+                                    <p:tab title="Introdução">
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <p:outputLabel for="introducao" value="Introdução:" />
+                                            <p:inputTextarea id="introducao" rows="1" cols="400" required="true" value="#{documentoRequisitosCadastrar.documentoRequisitos.introducao}" counter="displayIntroducao" maxlength="500" counterTemplate="{0} caracteres restantes." autoResize="false" />
+                                            <h:outputText id="displayIntroducao" />
+                                        </h:panelGrid>
+                                    </p:tab>
+                                    <p:tab title="Visão geral">
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <p:outputLabel for="visaoGeral" value="Visão geral do documento:" />
+                                            <p:inputTextarea id="visaoGeral" rows="1" cols="400" required="true" value="#{documentoRequisitosCadastrar.documentoRequisitos.visaoGeral}" counter="displayvisaoGeral" maxlength="500" counterTemplate="{0} caracteres restantes." autoResize="false" />
+                                            <h:outputText id="displayvisaoGeral" />
+                                        </h:panelGrid>
+                                    </p:tab>
+                                    <p:tab title="Convenções e Termos">
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <p:outputLabel for="convencoesTermoAbreviacoes" value="Convenções, Termos e Abreviações:" />
+                                            <p:inputTextarea id="convencoesTermoAbreviacoes" rows="1" cols="400" required="true" value="#{documentoRequisitosCadastrar.documentoRequisitos.convencoesTermoAbreviacoes}" counter="displayconvencoesTermoAbreviacoes" maxlength="500" counterTemplate="{0} caracteres restantes." autoResize="false" />
+                                            <h:outputText id="displayconvencoesTermoAbreviacoes" />
+                                        </h:panelGrid>    
+                                    </p:tab>
+
+                                    <p:tab title="Requisitos Descrição">
+                                        <h:panelGrid columns="2" cellpadding="5">    
+                                            <p:outputLabel for="identificacaoDosRequisitos" value="Identificação dos requisitos:" />
+                                            <p:inputTextarea id="identificacaoDosRequisitos" rows="1" cols="400" required="true" value="#{documentoRequisitosCadastrar.documentoRequisitos.identificacaoDosRequisitos}" counter="displayidentificacaoDosRequisitos" maxlength="500" counterTemplate="{0} caracteres restantes." autoResize="false" />
+                                            <h:outputText id="displayidentificacaoDosRequisitos" />
+                                        </h:panelGrid>
+                                    </p:tab>
+                                    <p:tab title="Requisitos Funcionais">
+                                        <h:panelGrid columns="1" cellpadding="5">
+                                            <p:outputLabel for="descricaoRequisitosFuncionais" value="Descrição geral requisitos funcionais:" />
+                                            <p:inputTextarea id="descricaoRequisitosFuncionais" rows="1" cols="400" required="true" value="#{documentoRequisitosCadastrar.documentoRequisitos.descricaoRequisitosFuncionais}" counter="displaydescricaoRequisitosFuncionais" maxlength="300" counterTemplate="{0} caracteres restantes." autoResize="false" />
+                                            <h:outputText id="displaydescricaoRequisitosFuncionais" />
+                                        </h:panelGrid>
+                                        <h:panelGrid columns="1" cellpadding="5">
+
+                                        </h:panelGrid>
+                                    </p:tab>
+                                    <p:tab title="Requisitos Não Funcionais">
+                                        <h:panelGrid columns="1" cellpadding="5">
+                                            <p:outputLabel for="descricaoRequisitosNFuncionais" value="Descrição geral requisitos não funcionais:" />
+                                            <p:inputTextarea id="descricaoRequisitosNFuncionais" rows="1" cols="400" required="true" value="#{documentoRequisitosCadastrar.documentoRequisitos.descricaoRequisitosNFuncionais}" counter="displaydescricaoRequisitosNFuncionais" maxlength="300" counterTemplate="{0} caracteres restantes." autoResize="false" />
+                                            <h:outputText id="displaydescricaoRequisitosNFuncionais" />
+                                        </h:panelGrid>
+                                        <h:panelGrid columns="1" cellpadding="5">
+
+                                        </h:panelGrid>
+                                    </p:tab>
+                                    <p:tab title="Renferências">
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <p:outputLabel for="descricaoReferencia" value="Descrição geral sobre as referências:" />
+                                            <p:inputTextarea id="descricaoReferencia" rows="1" cols="400" required="true" value="#{documentoRequisitosCadastrar.documentoRequisitos.descricaoReferencia}" counter="displaydescricaoReferencia" maxlength="300" counterTemplate="{0} caracteres restantes." autoResize="false" />
+                                            <h:outputText id="displaydescricaoReferencia" />
+                                        </h:panelGrid>
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                        </h:panelGrid>
+                                    </p:tab>
+                                    <p:tab title="Sistema">
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <p:outputLabel for="descricaoGeralSistema" value="Descrição geral do sistema:" />
+                                            <p:inputTextarea id="descricaoGeralSistema" rows="1" cols="400" required="true" value="#{documentoRequisitosCadastrar.documentoRequisitos.descricaoGeralSistema}" counter="displaydescricaoGeralSistema" maxlength="500" counterTemplate="{0} caracteres restantes." autoResize="false" />
+                                            <h:outputText id="displaydescricaoGeralSistema" />
+                                        </h:panelGrid>
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <p:outputLabel for="abrangenciaSistemasRelacionados" value="Abrangência e sistemas relacionados:" />
+                                            <p:inputTextarea id="abrangenciaSistemasRelacionados" rows="1" cols="400" required="true" value="#{documentoRequisitosCadastrar.documentoRequisitos.abrangenciaSistemasRelacionados}" counter="displayabrangenciaSistemasRelacionados" maxlength="500" counterTemplate="{0} caracteres restantes." autoResize="false" />
+                                            <h:outputText id="displayabrangenciaSistemasRelacionados" />
+                                        </h:panelGrid>
+                                    </p:tab>
+                                    <p:tab title="Usuários">
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <p:outputLabel for="descricaoGeralUsuarios" value="Descrição geral dos usuários:" />
+                                            <p:inputTextarea id="descricaoGeralUsuarios" rows="1" cols="400" required="true" value="#{documentoRequisitosCadastrar.documentoRequisitos.descricaoGeralAtores}" counter="displaydescricaoGeralUsuarios" maxlength="500" counterTemplate="{0} caracteres restantes." autoResize="false" />
+                                            <h:outputText id="displaydescricaoGeralUsuarios" />
+                                        </h:panelGrid>
+                                        <h:panelGrid columns="2" cellpadding="5">
+
+                                        </h:panelGrid>
+                                    </p:tab>
+                                </p:tabView>
+                            </div>
+                            <div class="space-20"></div>
+                            <p:commandButton class="btn btn-success" ajax="false" disabled="#{documentoRequisitosCadastrar.controleDeCadastro()}" value="CADASTRAR" update="growl" actionListener="#{documentoRequisitosCadastrar.cadastrar()}"/>
+                        </div>
+                    </div>
+                    <div class="space-50"></div>
+                </h:form>
+                <h:form>
+                    <p:growl id="growl" showDetail="true" sticky="true" /> 
+                    <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+                    <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                        <img src="../../img/loading.gif" alt=""/>
+                    </p:dialog>
+                    <p:dialog header="MODELOS DE DOC. DE REQUISITOS" showEffect="explode" widgetVar="modelosDocRequisitos" modal="true" width="500" height="300">
+                        <h:panelGrid columns="1" cellpadding="5">
+                            <p:dataTable id="modeloDocumento" style="text-align:center" emptyMessage="Nenhum Registro Encontrado!"
+                                         var="template" value="#{documentoRequisitosCadastrar.listarModelosDocRequisitos()}"
+                                         paginator="true" rows="5">
+                                <p:column width="100">
+                                    <f:facet name="header">
+                                        <h:outputText value="nome modelo" />
+                                    </f:facet>
+                                    <h:outputText value="#{template.nome}"/>
+
+                                </p:column>
+                                <p:column style="width:20px;text-align: center" >
+                                    <f:facet name="header">
+                                        <h:outputText value="selecionar" />
+                                    </f:facet>
+                                    <p:commandButton icon="ui-icon-extlink" actionListener="#{documentoRequisitosCadastrar.selecionarModelo(template)}" />
+                                </p:column>
+                            </p:dataTable>
+                        </h:panelGrid>
+                    </p:dialog>
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

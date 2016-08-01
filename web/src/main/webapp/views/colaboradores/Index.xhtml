@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        
+    </h:head>
+    <h:body>
+        <ui:composition template="template/template.xhtml">
+            <ui:define id="indexMenu" name="content">
+                <h:form>
+                    <p:growl id="growl" showDetail="true" sticky="true" />
+                    <div class="container-fluid space-20">
+                    <div><h4>GERÊNCIA DE COLABORADORES</h4></div>
+                    <div class="bs-docs-example">
+                    <div class="accordion" id="AccordionMenuIndex">
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle alert-info" data-toggle="collapse"
+                                data-parent="#AccordionMenuIndex" href="#novidade1">
+                                <b>Informação:</b> Definição</a>
+                        </div>
+                        <div id="novidade1" class="accordion-body collapse in">
+                            <div class="accordion-inner">
+                                <div class="left">
+                                    <p>
+                                        O gerenciamento dos recursos humanos do projeto inclui os processos que organizam, gerenciam e guiam
+                                        a equipe do projeto. A equipe do projeto consiste das pessoas com papéis e resposabildiades designadas
+                                        para completar o projeto. Os membros da equipe do projeto podem ter vários conjuntos de habilidades, atuar
+                                        em regime de tempo integral ou parcial e podem ser acrescentados ou removidos da equipe à medida que projeto
+                                        progride. Os membros da equipe do projeto também podem ser referidos como pessoal do projeto. Embora em papéis
+                                        e resposabilidades específicos para os membros da equipe do projeto sejam designados, o envolvimento de todos
+                                        os membros da equipe no planejamento do projeto e na tomada de decisões pode ser benéfico. A participação dos membros
+                                        da equipe durante o planejamento agrega seus conhecimentos ao processo e fortalece o compromisso com o projeto
+                                        (GUIA PMBOK, 5º Ed.2013)
+
+                                    </p>
+                                </div>
+                                <div class="clear"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-20"></div>
+                        <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle alert-info" data-toggle="collapse"
+                                data-parent="#AccordionMenuIndex" href="#novidade2"><b>MAPA:</b> Fluxograma
+                            </a>
+                        </div>
+                        <div id="novidade2" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <p>
+                                    <img src="../../img/Fluxograma_GerenciaRecursosHumanos.jpg" width="756" height="322" alt="Fluxograma_GerenciaRecursosHumanos"/>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                    </div>
+                </h:form>    
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link href="../../bootstrap/css/bootstrap-general.css" rel="stylesheet"/>
+        <script type="text/javascript" src="../../primefaces/js/showcase.js"></script>
+    </h:head>
+    <h:body>
+        <ui:composition template="template/template.xhtml">
+            <ui:define name="content">
+            <h:form id="form">
+                <p:growl id="growl" showDetail="true" sticky="true" /> 
+                <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+                <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                    <img src="../../img/loading.gif" alt=""/>
+                </p:dialog>
+                <div class="margin-right-left-20">
+                    <div>
+                        <h3>STAKEHOLDER</h3>
+                         <div class="right">
+                             <a class="btn btn" href="StakeholderConsultar.xhtml">VOLTAR</a>
+                        </div>
+                        <p><strong>CADASTRO</strong></p>
+                    <div>
+                </div>
+                <div class="space-40"></div>
+                <div class="control-group">   
+                <p:tabView dynamic="true" cache="true">
+                  <p:tab title="Dados Gerais">
+                   <h:panelGrid columns="2" cellpadding="5">
+                        <p:outputLabel for="nome" value="Nome:" />
+                        <p:inputText id="nome" maxlength="80" value="#{stakeholderCadastrar.stakeholder.nome}"/>
+                        
+                        <p:outputLabel for="rg" value="RG:" />
+                        <p:inputText id="rg" maxlength="30" value="#{stakeholderCadastrar.stakeholder.rg}"/>
+                        
+                        <p:outputLabel for="cpf" value="CPF:" />
+                        <p:inputText id="cpf" maxlength="30" value="#{stakeholderCadastrar.stakeholder.cpf}"/>
+                        
+                        <p:outputLabel for="email" value="E-mail:" />
+                        <p:inputText id="email" maxlength="100" value="#{stakeholderCadastrar.stakeholder.email}"/>
+                        
+                    </h:panelGrid>
+                  </p:tab>
+                </p:tabView>
+                </div>
+                <div class="space-20"></div>
+                <p:commandButton class="btn btn-success" value="CADASTRAR" ajax="false" disabled="#{stakeholderCadastrar.controleDeCadastro()}" update="growl" actionListener="#{stakeholderCadastrar.cadastrar()}"/>
+                    </div>
+                </div>
+                <div class="space-50"></div>
+            </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

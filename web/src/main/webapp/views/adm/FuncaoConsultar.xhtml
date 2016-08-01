@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link href="../../bootstrap/css/bootstrap-general.css" rel="stylesheet"/>
+        <link rel="shortcut icon" href="../../img/favicon.ico"/>
+        <script type="text/javascript" src="../../primefaces/js/showcase.js"></script>
+    </h:head>
+    <h:body>
+        <ui:composition template="template/template.xhtml">
+            <ui:define name="content">
+            <h:form id="form">
+            <p:growl id="growl" showDetail="true" sticky="true" /> 
+            <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+            <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                <img src="../../img/loading.gif" alt=""/>
+            </p:dialog>
+            <div class="margin-right-left-20">
+            <div class="form-inline">
+                <div class="control-group">
+                    <div>
+                        <h3>FUNÇÃO</h3>
+                         <div class="right">
+                             <a class="btn btn-inverse" href="FuncaoCadastrar.xhtml">NOVO</a>
+                        </div>
+                        <p><strong>CONSULTA</strong></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="space-10"></div>
+
+                    <div class="space-10"></div>
+                        <div id="Filtros" > <!-- Div de construção de filtros -->
+                                    <h:panelGrid columns="6" cellpadding="6">
+                                        <div class="form-search">
+                                            <a class="label label-info">Filtrar por:</a>
+                                            <p:selectOneMenu id="operadorCondicional"  value="#{funcaoConsultar.filtro.operadorCondicionalSelecionada}">
+                                                <f:selectItems value="#{funcaoConsultar.filtro.operadorCondicional}" />
+                                            </p:selectOneMenu>
+                                            <p:selectOneMenu id="atributo"  value="#{funcaoConsultar.filtro.atributoSelecionado}">
+                                                <p:ajax listener="#{funcaoConsultar.filtro.onAtributoSelecionado}" update="operadorLogico,filtro" />
+                                                <f:selectItem itemLabel="FILTRAR POR" itemValue="" noSelectionOption="true" />
+                                                <f:selectItems value="#{funcaoConsultar.filtro.atributo}" />
+                                            </p:selectOneMenu>
+                                            <p:selectOneMenu id="operadorLogico"  value="#{funcaoConsultar.filtro.operadorLogicoSelecionado}">
+                                                <p:ajax listener="#{funcaoConsultar.filtro.onOperadorLogicoSelecionado}" update="atributoFiltro,filtro" />
+                                                <f:selectItem itemLabel="CONDIÇÃO" itemValue="" noSelectionOption="true" />
+                                                <f:selectItems value="#{funcaoConsultar.filtro.operadorLogico}" />
+                                            </p:selectOneMenu>
+                                           <p:inputText id="atributoFiltro" value="#{funcaoConsultar.filtro.atributoFiltro}"/>
+                                           <p:commandButton value="GERAR" style="color: #ffffff; background: #3399ff" ajax="true" update="filtro" actionListener="#{funcaoConsultar.filtro.filtrar()}"/>
+                                         </div>
+                                    </h:panelGrid>
+                                    <div class="label label-info">
+                                        <p:commandLink id="filtro" style="color: #ffffff" value="#{funcaoConsultar.filtro.filtro}" update="tbl" actionListener="#{funcaoConsultar.filtroConsulta()}"/>
+                                        <p:commandLink id="filtroLipar" update="filtro" actionListener="#{funcaoConsultar.filtro.removerFiltro()}">
+                                            <i class="icon-remove icon-white"></i>
+                                        </p:commandLink>
+                                    </div>
+                            </div>
+                        <div class="space-30"></div>
+                        <div>
+                            <div class="table-responsive">
+                           
+                                <p:dataTable id="tbl" style="text-align:center" var="funcoes" emptyMessage="Nenhum Registro Encontrado!"
+                                             value="#{funcaoConsultar.listarFuncoes}"
+                                                paginator="true" rows="10">
+                                    
+                                    <p:column width="100">
+                                           <f:facet name="header">
+                                               <h:outputText value="sigla"/>
+                                           </f:facet>
+                                        <h:outputText value="#{funcoes.sigla}" />
+                                       </p:column>
+                                    <p:column width="400">
+                                           <f:facet name="header">
+                                               <h:outputText value="nome" />
+                                           </f:facet>
+                                        <h:outputText value="#{funcoes.descricao}" />
+                                       </p:column>
+
+                                        <p:column style="width:30px" >
+                                            <f:facet name="header">
+                                               <h:outputText value="detalhar" />
+                                            </f:facet>
+                                            <p:commandButton icon="ui-icon-search" action="#{funcaoConsultar.editar(funcoes)}" />
+                                            
+                                        </p:column>
+                                    
+                                   </p:dataTable>
+                            
+                        </div>
+                 </div>
+            </div>
+            </div>
+            </div>
+            
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
