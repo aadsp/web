@@ -2,7 +2,7 @@ package model.projeto;
 
 import annotations.projeto.PontoContarTipoTransacao;
 import java.util.List;
-import model.ABaseModel;
+import interfaces.ABaseModel;
 import org.hibernate.Query;
 
 public class PontoContarTipoTransacaoModel extends ABaseModel

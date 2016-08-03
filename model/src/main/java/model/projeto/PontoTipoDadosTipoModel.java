@@ -2,7 +2,7 @@ package model.projeto;
 
 import annotations.projeto.PontoTipoDadosTipo;
 import java.util.List;
-import model.ABaseModel;
+import interfaces.ABaseModel;
 import org.hibernate.Query;
 
 public class PontoTipoDadosTipoModel extends ABaseModel

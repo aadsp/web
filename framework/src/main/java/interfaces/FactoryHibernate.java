@@ -1,4 +1,4 @@
-package model;
+package interfaces;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

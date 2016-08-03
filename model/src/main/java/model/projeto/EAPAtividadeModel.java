@@ -2,7 +2,7 @@ package model.projeto;
 
 import java.util.List;
 import annotations.projeto.EAPAtividade;
-import model.ABaseModel;
+import interfaces.ABaseModel;
 import org.hibernate.Query;
 
 public class EAPAtividadeModel extends ABaseModel

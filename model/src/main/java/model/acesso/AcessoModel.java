@@ -2,7 +2,7 @@ package model.acesso;
 
 import java.util.List;
 import annotations.acesso.Acesso;
-import model.ABaseModel;
+import interfaces.ABaseModel;
 import org.hibernate.Query;
 
 public class AcessoModel extends ABaseModel

@@ -2,7 +2,7 @@ package model.projeto;
 
 import java.util.List;
 import annotations.projeto.PontoContarFatorDeAjuste;
-import model.ABaseModel;
+import interfaces.ABaseModel;
 import org.hibernate.Query;
 
 public class PontoContarFatorDeAjusteModel extends ABaseModel

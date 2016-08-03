@@ -2,7 +2,7 @@ package model.tap;
 
 import java.util.List;
 import annotations.tap.Stakeholder;
-import model.ABaseModel;
+import interfaces.ABaseModel;
 import org.hibernate.Query;
 
 public class StakeholderModel extends ABaseModel

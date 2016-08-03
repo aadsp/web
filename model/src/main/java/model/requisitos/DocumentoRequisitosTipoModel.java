@@ -2,7 +2,7 @@ package model.requisitos;
 
 import java.util.List;
 import annotations.requisitos.DocumentoRequisitosTipo;
-import model.ABaseModel;
+import interfaces.ABaseModel;
 import org.hibernate.Query;
 
 public class DocumentoRequisitosTipoModel extends ABaseModel

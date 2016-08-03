@@ -2,7 +2,7 @@ package model.projeto;
 
 import java.util.List;
 import annotations.projeto.Equipe;
-import model.ABaseModel;
+import interfaces.ABaseModel;
 import org.hibernate.Query;
 
 public class EquipeModel extends ABaseModel

@@ -2,7 +2,7 @@ package model.projeto;
 
 import annotations.projeto.PontoCaracteristicaGeraisDosSistemas;
 import java.util.List;
-import model.ABaseModel;
+import interfaces.ABaseModel;
 import org.hibernate.Query;
 
 public class PontoCaracteristicaGeraisDosSistemasModel extends ABaseModel

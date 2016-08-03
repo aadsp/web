@@ -3,7 +3,7 @@ package model.tap;
 import java.util.List;
 import annotations.acesso.Pagina;
 import annotations.tap.Patrocinador;
-import model.ABaseModel;
+import interfaces.ABaseModel;
 import org.hibernate.Query;
 
 public class PatrocinadorModel extends ABaseModel

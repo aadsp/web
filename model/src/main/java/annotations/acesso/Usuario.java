@@ -17,10 +17,11 @@ import model.acesso.AcessoModel;
 import model.acesso.FuncaoModel;
 import model.acesso.UsuarioModel;
 import interfaces.IAnnotations;
+import interfaces.IUsuario;
 
 @Entity
 @Table(name = "ACESSO.USUARIO")
-public class Usuario implements Serializable, IAnnotations
+public class Usuario implements Serializable, IAnnotations, IUsuario
 {
 
     @Id
@@ -164,7 +165,7 @@ public class Usuario implements Serializable, IAnnotations
         model.excluir(this);
     }
 
-    public void setSenha(String senha) throws NoSuchAlgorithmException, UnsupportedEncodingException
+    public void setSenha(String senha)
     {
         this.senha = senha;
     }

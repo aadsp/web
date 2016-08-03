@@ -54,7 +54,7 @@ public class Filtro implements Serializable
 
             String nomeClasseAtributo = atributoClasse.get(atributoSelecionado);
             String tipoAtributo = "";
-            for (Field atributoClasse : Class.forName("org.aadsp.annotations." + nomeClasseAtributo).getDeclaredFields())
+            for (Field atributoClasse : Class.forName("annotations." + nomeClasseAtributo).getDeclaredFields())
             {
                 if (atributoClasse.getName().equals(atributoAnotacao))
                 {
@@ -217,7 +217,7 @@ public class Filtro implements Serializable
 
                     String nomeClasseAtributo = atributoClasse.get(atributoSelecionado);
                     String tipoAtributo = "";
-                    for (Field atributoClasse : Class.forName("org.aadsp.annotations." + nomeClasseAtributo).getDeclaredFields())
+                    for (Field atributoClasse : Class.forName("annotations." + nomeClasseAtributo).getDeclaredFields())
                     {
                         if (atributoClasse.getName().equals(atributoAnotacao))
                         {
@@ -263,5 +263,4 @@ public class Filtro implements Serializable
     public String operadorLogicoSelecionado;
     public String atributoFiltro;
     public String filtro;
-
 }

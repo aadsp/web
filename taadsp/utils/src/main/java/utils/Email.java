@@ -1,6 +1,6 @@
 package utils;
 
-import settings.DadosEmail;
+import utils.settings.DadosEmail;
 import javax.mail.MessagingException;
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.EmailException;
@@ -53,8 +53,7 @@ public class Email
             String loginUsuario, String emailUsuario,
             String mensagem, String pilha) throws MessagingException, EmailException
     {
-        try
-        {
+
             HtmlEmail email = new HtmlEmail();
             //email.setDebug(true);
             email.setHostName("smtp.gmail.com"); // o servidor SMTP para envio do e-mail
@@ -66,10 +65,6 @@ public class Email
             email.setSubject("AADSP - ERRO "); // assunto do e-mail
             email.setHtmlMsg(TemplateEmail.erro(nomeUsuario, loginUsuario, emailUsuario, mensagem, pilha));
             email.send(); //envia o e-mail
-        } catch (EmailException e)
-        {
-            Mensageiro.mensagemError("Erro ao executar operação de envio de email:" + e.getMessage());
-        }
     }
 
     /**
@@ -89,8 +84,6 @@ public class Email
             String loginUsuario, String emailUsuario,
             String mensagem, String pilha) throws MessagingException, EmailException
     {
-        try
-        {
             HtmlEmail email = new HtmlEmail();
             //email.setDebug(true);
             email.setHostName("smtp.gmail.com"); // o servidor SMTP para envio do e-mail
@@ -102,10 +95,6 @@ public class Email
             email.setSubject("AADSP - ERRO "); // assunto do e-mail
             email.setHtmlMsg(TemplateEmail.erro(nomeUsuario, loginUsuario, emailUsuario, mensagem, pilha));
             email.send(); //envia o e-mail
-        } catch (EmailException e)
-        {
-            Mensageiro.mensagemError("Erro ao executar operação de envio de email:" + e.getMessage());
-        }
     }
 
     /**

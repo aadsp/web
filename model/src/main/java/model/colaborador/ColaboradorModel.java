@@ -2,7 +2,7 @@ package model.colaborador;
 
 import java.util.List;
 import annotations.colaborador.Colaborador;
-import model.ABaseModel;
+import interfaces.ABaseModel;
 import org.hibernate.Query;
 
 public class ColaboradorModel extends ABaseModel

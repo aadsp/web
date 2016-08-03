@@ -1,4 +1,4 @@
-package settings;
+package utils.settings;
 
 /**
  * Classe para configuração geral de dados de email para o projeto

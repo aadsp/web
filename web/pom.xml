@@ -37,6 +37,11 @@
             <artifactId>framework</artifactId>
             <version>1</version>
         </dependency>
+        <dependency>
+            <groupId>utils</groupId>
+            <artifactId>utils</artifactId>
+            <version>1</version>
+        </dependency>
     </dependencies>
     <parent>
         <groupId>taadsp</groupId>

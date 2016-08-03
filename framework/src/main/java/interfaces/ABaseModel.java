@@ -1,6 +1,5 @@
-package model;
+package interfaces;
 
-import interfaces.ICRUD;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 

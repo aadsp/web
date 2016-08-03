@@ -2,7 +2,7 @@ package model.requisitos;
 
 import java.util.List;
 import annotations.requisitos.DocumentoRequisitosTemplate;
-import model.ABaseModel;
+import interfaces.ABaseModel;
 import org.hibernate.Query;
 
 public class DocumentoRequisitosTemplateModel extends ABaseModel

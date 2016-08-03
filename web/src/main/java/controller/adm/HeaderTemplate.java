@@ -6,10 +6,10 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import annotations.acesso.Usuario;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import interfaces.ABaseNamed;
+import interfaces.IUsuario;
 import utils.Mensageiro;
 
 /**
@@ -31,7 +31,7 @@ public class HeaderTemplate extends ABaseNamed {
             FacesContext facesContext = FacesContext.getCurrentInstance();
             HttpServletRequest request = (HttpServletRequest) facesContext.getCurrentInstance().getExternalContext().getRequest();
             HttpSession session = request.getSession();
-            usuario = (Usuario) session.getAttribute("usuario");
+            usuario = (IUsuario) session.getAttribute("usuario");
             
         } catch (Exception e) {
             try {
@@ -86,5 +86,5 @@ public class HeaderTemplate extends ABaseNamed {
         }
     }
 
-    private Usuario usuario;
+    private IUsuario usuario;
 }
