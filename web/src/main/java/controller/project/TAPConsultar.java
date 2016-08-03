@@ -41,7 +41,7 @@ public class TAPConsultar extends ABaseNamed
         Map<String, String> atributoClasse = new HashMap<>();
 
         atributo.put("Nome", "nome");
-        atributoClasse.put("nome", "TAP");
+        atributoClasse.put("nome", "acesso.TAP");
         filtro.setAtributo(atributo, atributoClasse);
     }
 

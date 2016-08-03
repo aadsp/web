@@ -43,10 +43,10 @@ public class EmpresaConsultar extends ABaseNamed
         atributo.put("CPF", "cpf");
         atributo.put("E-mail", "email");
 
-        atributoClasse.put("razaoSocial", "Empresa");
-        atributoClasse.put("cnpj", "Empresa");
-        atributoClasse.put("cpf", "Empresa");
-        atributoClasse.put("email", "Empresa");
+        atributoClasse.put("razaoSocial", "tap.Empresa");
+        atributoClasse.put("cnpj", "tap.Empresa");
+        atributoClasse.put("cpf", "tap.Empresa");
+        atributoClasse.put("email", "tap.Empresa");
         filtro.setAtributo(atributo, atributoClasse);
     }
 

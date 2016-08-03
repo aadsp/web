@@ -43,7 +43,7 @@ public class PaginalConsultar extends ABaseNamed
         Map<String, String> atributoClasse = new HashMap<>();
 
         atributo.put("Nome", "nome");
-        atributoClasse.put("nome", "Pagina");
+        atributoClasse.put("nome", "acesso.Pagina");
         filtro.setAtributo(atributo, atributoClasse);
     }
 

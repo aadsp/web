@@ -42,10 +42,10 @@ public class StakeholderConsultar extends ABaseNamed
         atributo.put("CPF", "cpf");
         atributo.put("E-mail", "email");
 
-        atributoClasse.put("nome", "Stakeholder");
-        atributoClasse.put("rg", "Stakeholder");
-        atributoClasse.put("cpf", "Stakeholder");
-        atributoClasse.put("email", "Stakeholder");
+        atributoClasse.put("nome", "tap.Stakeholder");
+        atributoClasse.put("rg", "tap.Stakeholder");
+        atributoClasse.put("cpf", "tap.Stakeholder");
+        atributoClasse.put("email", "tap.Stakeholder");
         filtro.setAtributo(atributo, atributoClasse);
     }
 

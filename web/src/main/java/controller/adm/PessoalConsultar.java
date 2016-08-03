@@ -22,7 +22,6 @@ import utils.Response;
 @Named
 public class PessoalConsultar extends ABaseNamed
 {
-
     public PessoalConsultar()
     {
         try
@@ -49,11 +48,11 @@ public class PessoalConsultar extends ABaseNamed
         atributo.put("Email", "email");
         atributo.put("Login", "login");
 
-        atributoClasse.put("nome", "Usuario");
-        atributoClasse.put("cpf", "Usuario");
-        atributoClasse.put("rg", "Usuario");
-        atributoClasse.put("email", "Usuario");
-        atributoClasse.put("login", "Usuario");
+        atributoClasse.put("nome", "acesso.Usuario");
+        atributoClasse.put("cpf", "acesso.Usuario");
+        atributoClasse.put("rg", "acesso.Usuario");
+        atributoClasse.put("email", "acesso.Usuario");
+        atributoClasse.put("login", "acesso.Usuario");
 
         filtro.setAtributo(atributo, atributoClasse);
     }

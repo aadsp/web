@@ -40,7 +40,7 @@ public class DEEConsultar extends ABaseNamed
         Map<String, String> atributoClasse = new HashMap<>();
 
         atributo.put("Nome do projeto", "t.nome");
-        atributoClasse.put("t.nome", "TAP");
+        atributoClasse.put("t.nome", "acesso.TAP");
         filtro.setAtributo(atributo, atributoClasse);
     }
 

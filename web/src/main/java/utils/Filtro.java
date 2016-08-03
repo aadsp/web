@@ -29,7 +29,10 @@ public class Filtro implements Serializable
 
     private void addOperadorLogico()
     {
-        this.filtro = null;
+        if(filtro.equals("TODOS") && !atributoSelecionado.equals("FILTRAR POR")){
+            filtro = null;
+        }
+            
         this.operadorLogico = new HashMap<>();
         operadorLogico.put("IGUAL", "=");
         operadorLogico.put("DIFERENTE", "<>");
@@ -43,7 +46,8 @@ public class Filtro implements Serializable
     public void onAtributoSelecionado() throws ClassNotFoundException
     {
         addOperadorLogico();
-        if (atributoSelecionado != null)
+        
+        if (atributoSelecionado != null && !atributoSelecionado.equals("FILTRAR POR"))
         {
             String atributoAnotacao = atributoSelecionado;
             if (atributoSelecionado.contains("."))
@@ -79,19 +83,10 @@ public class Filtro implements Serializable
             if (filtro == null)
             {
                 filtro = "( " + atributoSelecionado;
-            } else if (!filtro.endsWith(") ") && !atributoSelecionado.equals("FILTRAR POR"))
+            } else if (!filtro.endsWith(") ") && operadorCondicionalSelecionada != null)
             {
                 filtro = filtro + " " + operadorCondicionalSelecionada + " ( " + atributoSelecionado;
             }
-        } else
-        {
-            operadorLogico.remove("IGUAL");
-            operadorLogico.remove("DIFERENTE");
-            operadorLogico.remove("MAIOR OU IGUAL");
-            operadorLogico.remove("MENOR OU IGUAL");
-            operadorLogico.remove("SEMELHANTE");
-            operadorLogico.remove("MAIOR");
-            operadorLogico.remove("MENOR");
         }
 
     }
@@ -196,7 +191,7 @@ public class Filtro implements Serializable
 
     public void filtrar() throws ClassNotFoundException
     {
-        if (operadorLogicoSelecionado != null)
+        if (operadorLogicoSelecionado != null && !atributoSelecionado.equals("FILTRAR POR"))
         {
             if (filtro != null && atributoFiltro != null && operadorLogicoSelecionado != null)
             {
@@ -214,7 +209,7 @@ public class Filtro implements Serializable
                         String objMapeamento = Character.toString(atributoAnotacao.charAt(0));
                         atributoAnotacao = atributoAnotacao.replace(objMapeamento + ".", "");
                     }
-
+                    
                     String nomeClasseAtributo = atributoClasse.get(atributoSelecionado);
                     String tipoAtributo = "";
                     for (Field atributoClasse : Class.forName("annotations." + nomeClasseAtributo).getDeclaredFields())

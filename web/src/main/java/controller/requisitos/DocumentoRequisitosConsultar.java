@@ -43,7 +43,7 @@ public class DocumentoRequisitosConsultar extends ABaseNamed
         Map<String, String> atributoClasse = new HashMap<>();
 
         atributo.put("Título Projeto", "nome");
-        atributoClasse.put("nome", "TAP");
+        atributoClasse.put("nome", "acesso.TAP");
         filtro.setAtributo(atributo, atributoClasse);
     }
 

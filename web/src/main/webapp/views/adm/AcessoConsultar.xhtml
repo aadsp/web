@@ -43,7 +43,7 @@
                                             </p:selectOneMenu>
                                             <p:selectOneMenu id="atributo"  value="#{acessoConsultar.filtro.atributoSelecionado}">
                                                 <p:ajax listener="#{acessoConsultar.filtro.onAtributoSelecionado}" update="operadorLogico,filtro" />
-                                                <f:selectItem itemLabel="FILTRAR POR" itemValue="" noSelectionOption="true" />
+                                                <f:selectItem itemLabel="FILTRAR POR" itemValue="FILTRAR POR" noSelectionOption="true" />
                                                 <f:selectItems value="#{acessoConsultar.filtro.atributo}" />
                                             </p:selectOneMenu>
                                             <p:selectOneMenu id="operadorLogico"  value="#{acessoConsultar.filtro.operadorLogicoSelecionado}">

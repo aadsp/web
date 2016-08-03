@@ -45,8 +45,8 @@ public class ColaboradorConsultar extends ABaseNamed
         atributo.put("Nome", "u.nome");
         atributo.put("Função", "f.descricao");
 
-        atributoClasse.put("u.nome", "Usuario");
-        atributoClasse.put("f.descricao", "Funcao");
+        atributoClasse.put("u.nome", "acesso.Usuario");
+        atributoClasse.put("f.descricao", "acesso.Funcao");
         filtro.setAtributo(atributo, atributoClasse);
     }
 

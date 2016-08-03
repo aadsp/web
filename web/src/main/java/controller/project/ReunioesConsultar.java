@@ -40,7 +40,7 @@ public class ReunioesConsultar extends ABaseNamed
         Map<String, String> atributoClasse = new HashMap<>();
 
         atributo.put("Nome", "t.nome");
-        atributoClasse.put("t.nome", "TAP");
+        atributoClasse.put("t.nome", "acesso.TAP");
         filtro.setAtributo(atributo, atributoClasse);
     }
 

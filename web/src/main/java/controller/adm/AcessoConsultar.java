@@ -45,8 +45,8 @@ public class AcessoConsultar extends ABaseNamed
         atributo.put("Função", "f.descricao");
         atributo.put("Página", "p.nome");
 
-        atributoClasse.put("f.descricao", "Funcao");
-        atributoClasse.put("p.nome", "Pagina");
+        atributoClasse.put("f.descricao", "acesso.Funcao");
+        atributoClasse.put("p.nome", "acesso.Pagina");
         filtro.setAtributo(atributo, atributoClasse);
     }
 

@@ -46,8 +46,8 @@ public class FuncaoConsultar extends ABaseNamed
         atributo.put("Nome", "descricao");
         atributo.put("Sigla", "sigla");
 
-        atributoClasse.put("descricao", "Funcao");
-        atributoClasse.put("sigla", "Funcao");
+        atributoClasse.put("descricao", "acesso.Funcao");
+        atributoClasse.put("sigla", "acesso.Funcao");
         filtro.setAtributo(atributo, atributoClasse);
     }
 
