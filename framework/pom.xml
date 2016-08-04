@@ -14,5 +14,6 @@
         <groupId>taadsp</groupId>
         <artifactId>taadsp</artifactId>
         <version>1</version>
+        <relativePath>../taadsp/pom.xml</relativePath>
     </parent>
 </project>

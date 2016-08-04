@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2f3837a3-d734-4d32-8268-55725bc3ef06">
 	<property name="ireport.zoom" value="1.4641000000000008"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="1071"/>
 	<parameter name="ID_tap" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -11,15 +11,16 @@
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT ID_tap,UPPER(nome) nome,
-justificativa,
-objetivo,
+cast(justificativa as varchar(1500)) justificativa,
+cast(justificativa as varchar(500)) objetivo,
 dataInicio,
-alinhamentoEstrategico,
+cast(justificativa as varchar(500)) alinhamentoEstrategico,
 dataFim,
 dataCriacao,
 dataHomologacao,
+premissas,
 custo,
-riscosIniciais,
+cast(justificativa as varchar(300)) riscosIniciais,
 restricoes
 FROM TAP.TAP WHERE ID_tap = $P{ID_tap}]]>
 	</queryString>
@@ -32,6 +33,7 @@ FROM TAP.TAP WHERE ID_tap = $P{ID_tap}]]>
 	<field name="dataFim" class="java.sql.Timestamp"/>
 	<field name="dataCriacao" class="java.sql.Timestamp"/>
 	<field name="dataHomologacao" class="java.sql.Timestamp"/>
+	<field name="premissas" class="java.lang.String"/>
 	<field name="custo" class="java.math.BigDecimal"/>
 	<field name="riscosIniciais" class="java.lang.String"/>
 	<field name="restricoes" class="java.lang.String"/>
@@ -89,10 +91,12 @@ FROM TAP.TAP WHERE ID_tap = $P{ID_tap}]]>
 			</textField>
 			<textField>
 				<reportElement x="14" y="598" width="540" height="46" uuid="6769d68b-1d6d-4323-85fa-a43bd4a44ea3"/>
+				<textElement textAlignment="Justified"/>
 				<textFieldExpression><![CDATA[$F{restricoes}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="14" y="669" width="540" height="50" uuid="231c5dd3-0f39-4f7c-a055-8ecc302ccf5e"/>
+				<textElement textAlignment="Justified"/>
 				<textFieldExpression><![CDATA[$F{alinhamentoEstrategico}]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00">
@@ -126,12 +130,12 @@ FROM TAP.TAP WHERE ID_tap = $P{ID_tap}]]>
 				<text><![CDATA[Justificativa: ]]></text>
 			</staticText>
 			<textField>
-				<reportElement positionType="Float" x="14" y="154" width="540" height="130" uuid="02bee40d-4468-4525-9e6c-71f85e4e15b7"/>
+				<reportElement positionType="Float" x="14" y="154" width="540" height="62" uuid="02bee40d-4468-4525-9e6c-71f85e4e15b7"/>
 				<textElement textAlignment="Justified"/>
 				<textFieldExpression><![CDATA[$F{justificativa}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="14" y="303" width="540" height="45" uuid="85b06b7b-391f-48bb-ab95-bc929c78a17a"/>
+				<reportElement positionType="Float" x="14" y="303" width="540" height="45" uuid="85b06b7b-391f-48bb-ab95-bc929c78a17a"/>
 				<textElement textAlignment="Justified"/>
 				<textFieldExpression><![CDATA[$F{objetivo}]]></textFieldExpression>
 			</textField>
@@ -243,6 +247,18 @@ FROM TAP.TAP WHERE ID_tap = $P{ID_tap}]]>
 			<line>
 				<reportElement x="2" y="580" width="553" height="1" uuid="23fb0477-fcc5-4893-b5e6-c8e1eb73d6cc"/>
 			</line>
+			<staticText>
+				<reportElement positionType="Float" x="15" y="216" width="92" height="17" uuid="7256c491-6295-47e8-ba93-91d67cc071ba"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Premissas:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="16" y="233" width="538" height="54" uuid="ce1b74a4-9d33-483b-912e-c02c449b7734"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$F{premissas}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<detail>

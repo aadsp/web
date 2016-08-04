@@ -43,7 +43,7 @@ public class TAP implements Serializable, IAnnotations
     private Date dataHomologacao;
     @Column(name = "dataCriacao")
     private Date dataCriacao;
-    @Column(name = "premissas",length = 250)
+    @Column(name = "premissas",length = 800)
     private String premissas;
     @Column(name = "restricoes",length = 250)
     private String restricoes;
