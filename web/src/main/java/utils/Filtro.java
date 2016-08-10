@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -18,6 +19,7 @@ public class Filtro implements Serializable
         this.atributo = new HashMap<>();
         this.atributoClasse = new HashMap<>();
         this.filtro = "TODOS";
+        this.caminhoServidor = FacesContext.getCurrentInstance().getExternalContext().getRealPath("");
     }
 
     private void addOperadorCondicional()
@@ -58,7 +60,7 @@ public class Filtro implements Serializable
 
             String nomeClasseAtributo = atributoClasse.get(atributoSelecionado);
             String tipoAtributo = "";
-            for (Field atributoClasse : Class.forName("annotations." + nomeClasseAtributo).getDeclaredFields())
+            for (Field atributoClasse : Class.forName("annotations."  + nomeClasseAtributo).getDeclaredFields())
             {
                 if (atributoClasse.getName().equals(atributoAnotacao))
                 {
@@ -249,13 +251,14 @@ public class Filtro implements Serializable
         this.filtro = filtro;
     }
 
-    public Map<String, String> operadorCondicional;
-    public String operadorCondicionalSelecionada;
-    public Map<String, String> atributo;
-    public Map<String, String> atributoClasse;
-    public String atributoSelecionado;
-    public Map<String, String> operadorLogico;
-    public String operadorLogicoSelecionado;
-    public String atributoFiltro;
+    private Map<String, String> operadorCondicional;
+    private String operadorCondicionalSelecionada;
+    private Map<String, String> atributo;
+    private Map<String, String> atributoClasse;
+    private String atributoSelecionado;
+    private Map<String, String> operadorLogico;
+    private String operadorLogicoSelecionado;
+    private String atributoFiltro;
     public String filtro;
+    private String caminhoServidor;
 }

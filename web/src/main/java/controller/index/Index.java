@@ -41,7 +41,7 @@ public class Index extends ABaseNamed
             if (usuario != null && usuario.getLogin() != null && usuario.getSenha() != null)
             {
                 List<String> paginasPermitidas = usuario.paginasAcesso();
-
+                Session.setAttribute("usuario", null);
                 Session.setAttribute("usuario", usuario);
                 Session.setAttribute("paginasAcesso", paginasPermitidas);
 

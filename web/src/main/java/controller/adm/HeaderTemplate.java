@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import interfaces.ABaseNamed;
 import interfaces.IUsuario;
+import java.io.File;
 import utils.Mensageiro;
 
 /**
@@ -32,10 +33,10 @@ public class HeaderTemplate extends ABaseNamed {
             HttpServletRequest request = (HttpServletRequest) facesContext.getCurrentInstance().getExternalContext().getRequest();
             HttpSession session = request.getSession();
             usuario = (IUsuario) session.getAttribute("usuario");
-            
+
         } catch (Exception e) {
             try {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("../../../../web/faces/index.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("../../Index.xhtml");
             } catch (IOException ex) {
                 Logger.getLogger(HeaderTemplate.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -49,10 +50,13 @@ public class HeaderTemplate extends ABaseNamed {
 
     public String getImagemUsuario() {
         if (usuario.getImagem() != null) {
-            return "../../../img/user/" + usuario.getImagem();
-        } else {
+            File file = new File("../../../img/user/" + usuario.getImagem());
+            if(file.exists())
+                return "../../../img/user/" + usuario.getImagem();
+            else
+                 return "../../../img/user/usuario.jpg";
+        } else
             return "../../../img/user/usuario.jpg";
-        }
     }
 
     /**
@@ -80,7 +84,7 @@ public class HeaderTemplate extends ABaseNamed {
             FacesContext fc = FacesContext.getCurrentInstance();
             HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
             session.invalidate();
-            FacesContext.getCurrentInstance().getExternalContext().redirect("../../../../web/faces/index.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("../../Index.xhtml");
         } catch (IOException e) {
             Mensageiro.mensagemError("O ocerreu o seguinte erro ao executar esta operação:" + e.getMessage());
         }

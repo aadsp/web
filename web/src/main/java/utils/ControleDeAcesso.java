@@ -53,6 +53,7 @@ public class ControleDeAcesso implements Filter
                 || (req.getRequestURI().contains("chart/"))
                 || (req.getRequestURI().contains("img/"))
                 || (req.getRequestURI().contains("primefaces/"))
+                || (req.getRequestURI().contains("web/"))
                 || (req.getRequestURI().contains("javax.faces.resource/")))
         {
             if ((req.getRequestURI().endsWith("Index.xhtml"))
@@ -63,6 +64,7 @@ public class ControleDeAcesso implements Filter
                     || (req.getRequestURI().contains("chart/"))
                     || (req.getRequestURI().contains("img/"))
                     || (req.getRequestURI().contains("primefaces/"))
+                    || (req.getRequestURI().contains("web/"))
                     || (req.getRequestURI().contains("javax.faces.resource/")))
             {
                 chain.doFilter(request, response);
