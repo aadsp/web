@@ -70,7 +70,7 @@
                                 <p:dataTable id="tbl" style="text-align:center" var="projeto" emptyMessage="Nenhum Registro Encontrado!"
                                              value="#{projetoConsultar.listarProjetos()}"
                                                 paginator="true" rows="10">
-                                    <p:column class="dataTable-column-70-percent-center">
+                                    <p:column class="dataTable-column-60-percent-center">
                                            <f:facet name="header">
                                                <h:outputText value="nome" />
                                            </f:facet>
@@ -91,6 +91,12 @@
                                             </f:facet>
                                             <h:commandLink value="pdf" action="#{projetoConsultar.gerarPDF(projeto)}"  target="_blank" />
                                     </p:column>
+                                    <p:column class="dataTable-column-10-percent-center" >
+                                            <f:facet name="header">
+                                               <h:outputText value="fases" />
+                                           </f:facet>
+                                        <p:commandButton icon="ui-icon-shuffle" action="#{projetoConsultar.gerarDiagramDeFasesDoProjeto(projeto)}"  onclick="PF('fasesDoProjeto').show();"/>
+                                        </p:column>
                                         <p:column class="dataTable-column-10-percent-center" >
                                             <f:facet name="header">
                                                <h:outputText value="detalhar" />
@@ -105,6 +111,18 @@
             </div>
             </div>
             </div>
+                
+            <!-- Modais da Tela -->
+            <p:dialog dynamic="true"  header="FASES DO PROJETO" showEffect="explode" widgetVar="fasesDoProjeto" modal="true" width="600" height="350">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            
+                             <p:tree value="#{projetoConsultar.fases}" var="node" orientation="horizontal">
+                                <p:treeNode>
+                                    <h:outputText value="#{node}" />
+                                </p:treeNode>
+                            </p:tree>
+                        </h:panelGrid> 
+                    </p:dialog>
             
                 </h:form>
             </ui:define>

@@ -24,6 +24,22 @@ public class EAPModel extends ABaseModel
         }
 
     }
+    
+    public EAP consultarPorIDProjeto(EAP eap)
+    {
+        try
+        {
+            Query consulta = sessao.createQuery("select e from EAP e join e.projeto p  where e.projeto.ID = :ID");
+            consulta.setInteger("ID", eap.getProjeto().getID());
+            return (EAP) consulta.uniqueResult();
+        } catch (Exception e)
+        {
+            throw e;
+        } finally
+        {
+            sessao.close();
+        }
+    }
 
     public List<EAP> listar() throws Exception
     {

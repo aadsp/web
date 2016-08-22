@@ -113,6 +113,12 @@ public class EAP implements Serializable, IAnnotations
         EAPModel model = new EAPModel();
         return model.consultarPorID(this);
     }
+    
+    public EAP consultarPorIDProjeto() throws Exception
+    {
+        EAPModel model = new EAPModel();
+        return model.consultarPorIDProjeto(this);
+    }
 
     public List<EAP> listarPorFiltro(String filtro) throws Exception
     {

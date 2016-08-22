@@ -13,6 +13,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import model.projeto.ProjetoModel;
 import interfaces.IAnnotations;
+import model.tap.TAPModel;
 
 @Entity
 @Table(name = "PROJETO.PROJETO")
@@ -146,5 +147,12 @@ public class Projeto implements Serializable, IAnnotations
     {
         ProjetoModel model = new ProjetoModel();
         return model.listarPorFiltro(filtro);
+    }
+    
+    
+    public boolean verificarExistenciaTAP()
+    {
+        ProjetoModel model = new ProjetoModel();
+        return (model.consultarPorID(this).getTap().getID() != 0);
     }
 }

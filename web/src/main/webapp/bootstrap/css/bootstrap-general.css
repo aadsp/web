@@ -863,6 +863,13 @@ hr.style-six {
     width:10%;
     text-align: center
 }
+
+.dataTable-column-60-percent-center 
+{
+    width:60%;
+    text-align: center
+}
+
 .dataTable-column-70-percent-center 
 {
     width:70%;

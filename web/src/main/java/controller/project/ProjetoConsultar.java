@@ -1,5 +1,6 @@
 package controller.project;
 
+import annotations.projeto.EAP;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -10,6 +11,8 @@ import javax.inject.Named;
 import net.sf.jasperreports.engine.JRException;
 import annotations.projeto.Projeto;
 import interfaces.ABaseNamed;
+import org.primefaces.model.DefaultTreeNode;
+import org.primefaces.model.TreeNode;
 import utils.Criptografia;
 import utils.Filtro;
 import utils.Mensageiro;
@@ -32,6 +35,28 @@ public class ProjetoConsultar extends ABaseNamed
         {
             Mensageiro.mensagemError("Erro ao listar os projetos!!");
         }
+    }
+    
+    public void gerarDiagramDeFasesDoProjeto(Projeto projeto)
+    {
+        try{
+        this.fasesDoProjeto = new DefaultTreeNode("TAP", null);
+        TreeNode node0 = new DefaultTreeNode("Projetos", fasesDoProjeto);
+        EAP eap = new EAP();
+        eap.setProjeto(projeto);
+        eap = eap.consultarPorIDProjeto();
+        TreeNode node1 = null;
+        if(eap.getID() != null)
+        {
+            node1 = new DefaultTreeNode("EAP", node0);
+        }
+        }catch(Exception e){
+            Mensageiro.mensagemError("Erro ao gerar relatório para fases do projeto!!");
+        }
+    }
+    
+    public TreeNode getFases() {
+        return fasesDoProjeto;
     }
 
     private void criarFiltro()
@@ -96,4 +121,5 @@ public class ProjetoConsultar extends ABaseNamed
     private Projeto projeto;
     private List<Projeto> listaProjetos;
     private Filtro filtro;
+    private TreeNode fasesDoProjeto;
 }

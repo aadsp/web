@@ -22,7 +22,6 @@ public class ProjetoModel extends ABaseModel
         {
             sessao.close();
         }
-
     }
 
     public List<Projeto> listar() throws Exception
