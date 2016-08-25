@@ -37,22 +37,17 @@ public class ProjetoConsultar extends ABaseNamed
         }
     }
     
-    public void gerarDiagramDeFasesDoProjeto(Projeto projeto)
+    public void gerarDiagramDeFasesDoProjeto(Projeto projeto) throws Exception
     {
-        try{
+        this.fasesDoProjeto = null;
         this.fasesDoProjeto = new DefaultTreeNode("TAP", null);
         TreeNode node0 = new DefaultTreeNode("Projetos", fasesDoProjeto);
         EAP eap = new EAP();
         eap.setProjeto(projeto);
         eap = eap.consultarPorIDProjeto();
-        TreeNode node1 = null;
-        if(eap.getID() != null)
-        {
-            node1 = new DefaultTreeNode("EAP", node0);
-        }
-        }catch(Exception e){
-            Mensageiro.mensagemError("Erro ao gerar relatório para fases do projeto!!");
-        }
+        TreeNode node1;
+        if(eap != null)
+           node1 = new DefaultTreeNode("EAP", node0);
     }
     
     public TreeNode getFases() {
