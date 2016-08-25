@@ -13,7 +13,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import model.projeto.ProjetoModel;
 import interfaces.IAnnotations;
-import model.tap.TAPModel;
 
 @Entity
 @Table(name = "PROJETO.PROJETO")
